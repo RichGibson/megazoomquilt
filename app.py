@@ -2,6 +2,8 @@ from flask import Flask, render_template_string, abort, render_template
 import os
 import json
 import pdb
+import statistics
+from collections import defaultdict
 
 app = Flask(__name__)
 from pathlib import Path
@@ -10,7 +12,61 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent / "static/panos"
 
 # run: flask run --host=0.0.0.0 --port=5000
+def collect_tile_stats(base_dir):
+    base_dir = Path(base_dir)
+    results=[]
+    stats = defaultdict(lambda: {
+        "sizes": [],
+        "x_values": set(),
+        "y_values": set()
+    })
 
+    for root, _, files in os.walk(base_dir):
+        for file in files:
+            if file.lower().endswith((".jpg", ".png")):
+                full_path = Path(root) / file
+                try:
+                    size = full_path.stat().st_size
+                except Exception as e:
+                    print(f"Could not read {full_path}: {e}")
+                    continue
+
+                try:
+                    rel_parts = full_path.relative_to(base_dir).parts
+                    level = rel_parts[0]
+                    x = rel_parts[1]
+                    y = Path(rel_parts[2]).stem  # remove .jpg/.png
+                except Exception as e:
+                    print(f"Invalid path structure: {full_path} — {e}")
+                    continue
+
+                data = stats[level]
+                data["sizes"].append(size)
+                data["x_values"].add(int(x))
+                data["y_values"].add(int(y))
+    #print("\nTile Size Statistics by Level:")
+    #print(f"{'Level':<6} {'Count':>6} {'Min (B)':>10} {'Max (B)':>10} {'Avg (B)':>10} {'Cols':>6} {'Rows':>6}")
+    for level in sorted(stats.keys(), key=lambda x: int(x)):
+        data = stats[level]
+        sizes = data["sizes"]
+        count = len(sizes)
+        min_size = min(sizes)
+        max_size = max(sizes)
+        avg_size = int(statistics.mean(sizes))
+        cols = len(data["x_values"])
+        rows = len(data["y_values"])
+        #print(f"{level:<6} {count:>6} {min_size:>10} {max_size:>10} {avg_size:>10} {cols:>6} {rows:>6}")
+        results.append({
+            "level": level,
+            "count": count,
+            "min_size": min_size,
+            "max_size": max_size,
+            "avg_size": avg_size,
+            "cols": cols,
+            "rows": rows
+        })
+
+    return results
 
 def load_pano_data():
     panoramas = []
@@ -57,7 +113,8 @@ def view_pano(pano_id):
         pano_data = json.load(f)
     p={}
     p['page_title']='View '
-    return render_template("view.html", pano_id=pano_id, pano=pano_data['gigapan'], p=p)
+    results=collect_tile_stats(f"{BASE_DIR}/{pano_id}")
+    return render_template("view.html", pano_id=pano_id, pano=pano_data['gigapan'], p=p, results=results)
 
 if __name__ == "__main__":
     # foo=load_pano_data()

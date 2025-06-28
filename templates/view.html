@@ -22,6 +22,33 @@
 <p>Zoom level: <span id="zoom-level"></span></p>
 <p>Max tiles at this level (square): <span id="tiles"></span></p>
 
+<table border=\"1\">
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Count</th>
+      <th>Min Size</th>
+      <th>Max Size</th>
+      <th>Avg Size</th>
+      <th>Cols</th>
+      <th>Rows</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in results %}
+    <tr>
+      <td>{{ row.level }}</td>
+      <td>{{ row.count }}</td>
+      <td>{{ row.min_size }}</td>
+      <td>{{ row.max_size }}</td>
+      <td>{{ row.avg_size }}</td>
+      <td>{{ row.cols }}</td>
+      <td>{{ row.rows }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 <link
   rel="stylesheet"
   href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
