@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ pano.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ pano.name }}</h1>
+<p>{{ pano.description }}</p>
+
+<div id="map"></div>
+
+<ul>
+  <li><strong>ID:</strong> {{ pano_id }}</li>
+  <li><strong>Taken:</strong> {{ pano.taken_at }}</li>
+  <li><strong>Created:</strong> {{ pano.created_at }}</li>
+  <li><strong>Uploaded:</strong> {{ pano.updated_at }}</li>
+  <li><strong>Size:</strong> {{ pano.width }} x {{ pano.height }}</li>
+  <li><strong>Total tiles:</strong> {{ pano.tiles_total }}</li>
+  <li><strong>Lat/Lng:</strong> {{ pano.latitude }}, {{ pano.longitude }}</li>
+  <li><strong>Zoom Levels:</strong> {{ pano.levels }}</li>
+</ul>
+
+<p>Zoom level: <span id="zoom-level"></span></p>
+<p>Max tiles at this level (square): <span id="tiles"></span></p>
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  crossorigin=""
+/>
+<style>
+  #map {
+    height: 90vh;
+    width: 90vw;
+    margin-top: 1em;
+  }
+  .leaflet-tile {
+    border: solid red 1px;
+  }
+</style>
+
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  crossorigin=""
+></script>
+
+<script>
+  const tileUrlTemplate = `/static/panos/{{ pano_id }}/{z}/{x}/{y}.{{ pano.img_type }}`;
+  const imageWidth = {{ pano.width }};
+  const imageHeight = {{ pano.height }};
+  const maxZoom = {{ pano.levels - 1 }};
+
+  const map = L.map('map', {
+    minZoom: 0,
+    maxZoom: maxZoom,
+    center: [imageHeight / 2, imageWidth / 2],
+    zoom: maxZoom,
+    crs: L.CRS.Simple
+  });
+
+  const bounds = L.latLngBounds(
+    map.unproject([0, imageHeight], maxZoom),
+    map.unproject([imageWidth, 0], maxZoom)
+  );
+
+  map.setMaxBounds(bounds);
+
+  const tileLayer = L.tileLayer(tileUrlTemplate, {
+    tileSize: 256,
+    bounds: bounds,
+    noWrap: true,
+    maxZoom: maxZoom,
+    minZoom: 0,
+    keepBuffer: 20,
+    errorTileUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/480px-Placeholder_view_vector.svg.png'
+  }).addTo(map);
+
+  map.fitBounds(bounds);
+
+  function updateTileInfo() {
+    const zoom = map.getZoom();
+    document.getElementById('zoom-level').textContent = zoom;
+    const tileCnt = 4 ** zoom;
+    document.getElementById('tiles').textContent = tileCnt;
+  }
+
+  map.on('zoomend', updateTileInfo);
+  updateTileInfo();
+</script>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map with TileLayer</title>
+    <!-- Include Leaflet CSS and JS files -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+
+    <div id="map" style="height: 400px;"></div>
+
+    <script>
+        // Replace 'path/to/your/tilelayer/{z}/{x}/{y}.png' with the actual path to your TileLayer images
+        //var tileLayerUrl = 'path/to/your/tilelayer/{z}/{x}/{y}.png';
+        //var tileLayerUrl = 'http://localhost:5001/static/panos/karlsplatz_with_duck/{z}/{x}/{y}.png';
+        var tileLayerUrl = 'http://localhost:5001/static/panos/karlsplatz_with_duck/{z}/{y}/{x}.png';
+
+        // Set up the map
+        var map = L.map('map').setView([0, 0], 2);
+
+        // Add the TileLayer to the map
+        L.tileLayer(tileLayerUrl, {
+            attribution: 'Your attribution here',
+            maxZoom: 18,
+        }).addTo(map);
+    </script>
+
+</body>
+</html>
+

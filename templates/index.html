@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Available Panoramas</h1>
+    <ul>
+  {% for pano in panoramas %}
+    <li>
+    <a href="{{ url_for('view_pano', pano_id=pano['id']) }}">
+        {{ pano['id'] }} : {{ pano['name'] }} ({{ pano['width'] }}×{{ pano['height'] }})
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
