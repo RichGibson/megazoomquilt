@@ -30,8 +30,8 @@ def load_pano_data():
     return panoramas
 
 @app.route('/.well-known/appspecific/com.chrome.devtools.json')
-def ignore_chrome_probe():
-    return '', 204  # No Content
+def chrome_devtools_stub():
+    return jsonify({}), 200
 
 @app.route("/")
 def home():

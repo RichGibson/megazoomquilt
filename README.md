@@ -22,3 +22,8 @@ let me know [Rich.Gibson@gmail.com](mailto:rich.gibson@gmail.com)
 
 flask run --host=0.0.0.0 --port=5001 --reload
 
+## Todo
+
+- integrate the gigapan downloader
+- 
+
