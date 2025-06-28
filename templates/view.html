@@ -43,6 +43,10 @@
   crossorigin=""
 ></script>
 
+<!-- Include Leaflet MiniMap plugin -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.css" />
+<script src="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.js"></script>
+
 <script>
   const tileUrlTemplate = `/static/panos/{{ pano_id }}/{z}/{x}/{y}.{{ pano.img_type }}`;
   const imageWidth = {{ pano.width }};
@@ -75,6 +79,22 @@
   }).addTo(map);
 
   map.fitBounds(bounds);
+const miniMapLayer = L.tileLayer(tileUrlTemplate, {
+  tileSize: 256,
+  bounds: bounds,
+  noWrap: true,
+  maxZoom: maxZoom,
+  minZoom: 0
+});
+
+const miniMap = new L.Control.MiniMap(miniMapLayer, {
+  toggleDisplay: true,
+  minimized: false,
+  width: 200,         // Wider minimap viewport
+  height: 150,        // Taller minimap viewport
+  zoomLevelOffset: -7, // Show more area by zooming out relative to main map
+  zoomAnimation: false
+}).addTo(map);
 
   function updateTileInfo() {
     const zoom = map.getZoom();
