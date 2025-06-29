@@ -13,8 +13,10 @@
 
     {% block nav %}
       <nav>
-        <a href="{{ url_for('home') }}">Home</a> &nbsp; - &nbsp;
-        <a href="{{ url_for('admin') }}">Admin</a>
+        <ul class="navbar">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('admin')}}">Admin</a></li>
+        </ul>
       </nav>
     {% endblock %}
 

@@ -1,3 +1,5 @@
+# change google maps level/y/x.jpg tiles to osm level/x/y.jpg format.
+
 import click
 import shutil
 from pathlib import Path
