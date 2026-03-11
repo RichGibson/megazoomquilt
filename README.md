@@ -25,10 +25,12 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-flask run --host=0.0.0.0 --port=5000
+flask run --host=0.0.0.0 --port=5001
 ```
 
-Browse to [http://localhost:5000](http://localhost:5000)
+Browse to [http://localhost:5001](http://localhost:5001)
+
+> **Note:** Port 5000 is on Chrome's restricted ports list and will be blocked. Use 5001 or higher.
 
 ---
 
