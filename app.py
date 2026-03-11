@@ -1,9 +1,12 @@
-from flask import Flask, render_template_string, abort, render_template
+from flask import Flask, render_template_string, abort, render_template, send_file, Response
 import os
+import io
 import json
+import math
 import pdb
 import statistics
 from collections import defaultdict
+from PIL import Image
 
 app = Flask(__name__)
 from pathlib import Path
@@ -84,6 +87,84 @@ def load_pano_data():
                     print(f"Error loading {json_path}: {e}")
     panoramas = sorted(panoramas, key=lambda p: p['id'])
     return panoramas
+
+THUMB_MIN_DIM = 128   # target at least this many pixels on the shorter content side
+THUMB_MAX_TILES = 16  # never composite more tiles than this
+
+@app.route("/thumbnail/<pano_id>")
+def thumbnail(pano_id):
+    pano_json = BASE_DIR / pano_id / f"{pano_id}.json"
+    if not pano_json.exists():
+        abort(404)
+    with pano_json.open() as f:
+        meta = json.load(f)['gigapan']
+
+    W = int(meta['width'])
+    H = int(meta['height'])
+    levels = int(meta.get('levels', 1))
+    max_zoom = levels - 1
+
+    # Pick the shallowest zoom level where content is at least THUMB_MIN_DIM
+    # on its shorter side, without exceeding THUMB_MAX_TILES total tiles.
+    zoom = 1
+    for z in range(1, levels):
+        scale = 2 ** (max_zoom - z)
+        cw = max(1, int(W / scale))
+        ch = max(1, int(H / scale))
+        cols = math.ceil(cw / 256)
+        rows = math.ceil(ch / 256)
+        if cols * rows > THUMB_MAX_TILES:
+            break
+        zoom = z
+        if min(cw, ch) >= THUMB_MIN_DIM:
+            break
+
+    pano_dir = BASE_DIR / pano_id / str(zoom)
+    if not pano_dir.is_dir():
+        abort(404)
+
+    # Discover tile extension from existing files
+    img_ext = None
+    for x_dir in pano_dir.iterdir():
+        if not x_dir.is_dir():
+            continue
+        for tile_file in x_dir.iterdir():
+            if tile_file.suffix.lower() in ('.jpg', '.png'):
+                img_ext = tile_file.suffix.lower()
+                break
+        if img_ext:
+            break
+    if img_ext is None:
+        abort(404)
+
+    # Compute content bounds at this zoom level
+    scale = 2 ** (max_zoom - zoom)
+    content_w = max(1, int(W / scale))
+    content_h = max(1, int(H / scale))
+    cols = math.ceil(content_w / 256)
+    rows = math.ceil(content_h / 256)
+
+    # Load one tile to get actual tile size
+    sample = pano_dir / '0' / f'0{img_ext}'
+    tile_w, tile_h = Image.open(sample).size
+
+    composed = Image.new("RGB", (cols * tile_w, rows * tile_h))
+    for x in range(cols):
+        for y in range(rows):
+            tile_path = pano_dir / str(x) / f"{y}{img_ext}"
+            if tile_path.exists():
+                composed.paste(Image.open(tile_path).convert("RGB"), (x * tile_w, y * tile_h))
+
+    # Crop to actual content, removing black quadtree padding
+    crop_w = min(content_w, composed.width)
+    crop_h = min(content_h, composed.height)
+    composed = composed.crop((0, 0, crop_w, crop_h))
+
+    buf = io.BytesIO()
+    composed.save(buf, format="JPEG", quality=85)
+    buf.seek(0)
+    return send_file(buf, mimetype="image/jpeg")
+
 
 @app.route('/.well-known/appspecific/com.chrome.devtools.json')
 def chrome_devtools_stub():
