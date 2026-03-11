@@ -13,9 +13,8 @@
   <li><strong>Taken:</strong> {{ pano.taken_at }}</li>
   <li><strong>Created:</strong> {{ pano.created_at }}</li>
   <li><strong>Uploaded:</strong> {{ pano.updated_at }}</li>
-  <li><strong>Size:</strong> {{ pano.width }} x {{ pano.height }} = {{ "{:,}".format(pano.width * pano.height) }} pixels</li>
-
-  <!-- li><strong>Total tiles:</strong> {{ pano.tiles_total }}</li -->
+  <li><strong>Size:</strong> {{ pano.width }} x {{ pano.height }}</li>
+  <li><strong>Total tiles:</strong> {{ pano.tiles_total }}</li>
   <li><strong>Lat/Lng:</strong> {{ pano.latitude }}, {{ pano.longitude }}</li>
   <li><strong>Zoom Levels:</strong> {{ pano.levels }}</li>
 </ul>
@@ -50,15 +49,6 @@
   </tbody>
 </table>
 
-<ol>
-    <li> Level - zoom level
-    <li> Count - number of tiles
-    <li> Min Size - of a tile at this level
-    <li> Max Size - of a tile at this level
-    <li> Avg Size of tiles at this level
-    <li> Cols - number of tiles across.
-    <li> Rows - number to tiles top to bottom
-
 <link
   rel="stylesheet"
   href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -71,7 +61,7 @@
     margin-top: 1em;
   }
   .leaflet-tile {
-    border: solid red 0px;
+    border: solid red .5px;
   }
 </style>
 
@@ -115,7 +105,10 @@
     errorTileUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/480px-Placeholder_view_vector.svg.png'
   }).addTo(map);
 
-  map.fitBounds(bounds);
+  setTimeout(() => {
+  map.invalidateSize();
+}, 100);
+
 const miniMapLayer = L.tileLayer(tileUrlTemplate, {
   tileSize: 256,
   bounds: bounds,
@@ -124,14 +117,27 @@ const miniMapLayer = L.tileLayer(tileUrlTemplate, {
   minZoom: 0
 });
 
+  //debug, if this doesn't match the tiles it is messed up.
+  //L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(map);
+
 const miniMap = new L.Control.MiniMap(miniMapLayer, {
   toggleDisplay: true,
   minimized: false,
   width: 200,         // Wider minimap viewport
   height: 150,        // Taller minimap viewport
-  zoomLevelOffset: -7, // Show more area by zooming out relative to main map
+  zoomLevelOffset: -5, // Show more area by zooming out relative to main map
   zoomAnimation: false
 }).addTo(map);
+//
+
+//const miniMap = new L.Control.MiniMap(miniMapLayer, {
+  //toggleDisplay: true,
+  //aimingRectOptions: { color: '#f00', weight: 1 },
+  //shadowRectOptions: { color: '#000', weight: 1, opacity: 0, fillOpacity: 0 },
+  //zoomLevelFixed: map.getZoom(),  // Optional: lock zoom level
+  //zoomLevelOffset: -5, // Show more area by zooming out relative to main map
+  //zoomAnimation: false
+//}).addTo(map);
 
   function updateTileInfo() {
     const zoom = map.getZoom();
@@ -142,6 +148,7 @@ const miniMap = new L.Control.MiniMap(miniMapLayer, {
 
   map.on('zoomend', updateTileInfo);
   updateTileInfo();
+  map.fitBounds(bounds);
 </script>
 {% endblock %}
 

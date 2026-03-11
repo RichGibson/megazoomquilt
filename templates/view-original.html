@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ pano.name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  crossorigin=""
+/>
+  <style>
+    #map {
+      height: 90vh;
+      width: 90vw;
+      margin-top: 1em;
+    }
+    .leaflet-tile { border: solid red 1px; }
+  </style>
+</head>
+<body>
+  <h1>{{ pano.name }}</h1>
+    {{pano.img_type}}
+  <div id="map"></div>
+  <p>{{ pano.description }}</p>
+  <ul>
+    <li><strong>ID:</strong> {{ pano_id }}</li>
+    <li><strong>Taken:</strong> {{ pano.taken_at }}</li>
+    <li><strong>Created:</strong> {{ pano.created_at }}</li>
+    <li><strong>Uploaded:</strong> {{ pano.updated_at }}</li>
+    <li><strong>Size:</strong> {{ pano.width }} x {{ pano.height }}</li>
+    <li><strong>Total tiles:</strong> {{ pano.tiles_total }}</li>
+    <li><strong>Lat/Lng:</strong> {{ pano.latitude }}, {{ pano.longitude }}</li>
+    <li><strong>Zoom Levels:</strong> {{ pano.levels }}</li>
+  </ul>
+
+  <p>Zoom level: <span id="zoom-level"></span></p>
+  <p>max tiles at this level: <span id="tiles"></span> (if the panorama were square)</p>
+
+
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  crossorigin=""
+></script>
+
+
+  <script>
+    const tileUrlTemplate = `/static/panos/{{ pano_id }}/{z}/{x}/{y}.{{pano.img_type}}`;
+
+    const imageWidth = {{ pano.width }};
+    const imageHeight = {{ pano.height }};
+    const maxZoom = {{ pano.levels - 1 }};
+    const maxSize = Math.max(imageWidth, imageHeight);
+
+    const map = L.map('map', {
+      minZoom: 0,
+      maxZoom: maxZoom,
+      center: [imageHeight / 2, imageWidth / 2],
+      zoom: {{ pano.levels - 1 }},
+      crs: L.CRS.Simple
+    });
+
+    const southWest = map.unproject([0, imageHeight], maxZoom);
+    const northEast = map.unproject([imageWidth, 0], maxZoom);
+    const bounds = new L.LatLngBounds(southWest, northEast);
+    map.setMaxBounds(bounds);
+
+    const tileLayer = L.tileLayer(tileUrlTemplate, {
+      tileSize: 256,
+      bounds: bounds,
+      noWrap: true,
+      maxZoom: maxZoom,
+      minZoom: 0,
+      keepBuffer: 20,
+      errorTileUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/480px-Placeholder_view_vector.svg.png'
+    });
+
+    tileLayer.addTo(map);
+    map.fitBounds(bounds);
+
+    tile_cnt=4**map.getZoom();
+    document.getElementById('tiles').textContent = tile_cnt;
+    document.getElementById('zoom-level').textContent = map.getZoom();
+
+    // Listen for zoom events and update the text
+    map.on('zoomend', function () {
+        document.getElementById('zoom-level').textContent = map.getZoom();
+        tile_cnt=4**map.getZoom();
+        // this needs to be scaled by zoom level
+        const tiles_w = Math.ceil(imageWidth / 256);
+        const tiles_h = Math.ceil(imageHeight / 256);
+        console.log(tile_cnt)
+        document.getElementById('tiles').textContent = tile_cnt;
+        //document.getElementById('tiles').textContent = tiles_w*tiles_h;
+    });
+  </script>
+</body>
+</html>
+
