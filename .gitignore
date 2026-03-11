@@ -1,5 +1,24 @@
 # panoramas
 static/panos/
+
+# OS
+.DS_Store
+static/.DS_Store
+
+# Editor swap files
+*.swp
+*.swo
+
+# Project-specific scratch/generated files
+gigapan_list.json
+README-old.md
+README2.md
+try1.html
+names.md
+plan.md
+templates/*-original.html
+templates/temp
+static/save
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
