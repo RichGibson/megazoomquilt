@@ -14,13 +14,32 @@
     </ul>
   </aside>
 
-  <main class="card-grid">
+  <main>
+    <div class="sort-bar">
+      <span class="sort-label">Sort by:</span>
+      {% set sorts = [
+        ('id_asc',         'ID ↑'),
+        ('id_desc',        'ID ↓'),
+        ('name_asc',       'Name ↑'),
+        ('name_desc',      'Name ↓'),
+        ('date_asc',       'Taken ↑'),
+        ('date_desc',      'Taken ↓'),
+        ('uploaded_asc',   'Uploaded ↑'),
+        ('uploaded_desc',  'Uploaded ↓'),
+      ] %}
+      {% for key, label in sorts %}
+        <a href="{{ url_for('home', sort=key) }}"
+           class="sort-btn{% if sort == key %} sort-btn-active{% endif %}">{{ label }}</a>
+      {% endfor %}
+    </div>
+    <div class="card-grid">
     {% for pano in panoramas %}
     <a class="card" href="{{ url_for('view_pano', pano_id=pano['id']) }}">
       <div class="card-thumb">
         <img src="{{ url_for('thumbnail', pano_id=pano['id']) }}"
              alt="{{ pano['name'] }}"
-             onerror="this.style.display='none'">
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <span class="card-thumb-missing">No preview</span>
       </div>
       <div class="card-body">
         <div class="card-title">{{ pano['name'] }}</div>
@@ -32,11 +51,14 @@
           <span>👁 {{ pano.get('views', 0) }}</span>
           {% if pano.get('taken_at') %}
           <span>{{ pano['taken_at'][:10] }}</span>
+          {% elif pano.get('created_at') %}
+          <span>{{ pano['created_at'][:10] }} (uploaded)</span>
           {% endif %}
         </div>
       </div>
     </a>
     {% endfor %}
+    </div>
   </main>
 
 </div>

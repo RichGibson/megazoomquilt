@@ -1,9 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h2>Admin</h2>
 
-MegaZoomQuilt admin
+<p><strong>{{ panoramas|length }}</strong> panoramas downloaded</p>
 
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Levels</th>
+      <th>Views</th>
+      <th>Taken</th>
+      <th>Uploaded</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for pano in panoramas %}
+    <tr>
+      <td><a href="{{ url_for('view_pano', pano_id=pano['id']) }}">{{ pano['id'] }}</a></td>
+      <td>{{ pano['name'] }}</td>
+      <td>{{ pano['width'] }}×{{ pano['height'] }}
+        {% if pano.get('resolution') %}<br><small>{{ "{:,.0f}".format(pano['resolution'] / 1000000) }} MP</small>{% endif %}
+      </td>
+      <td>{{ pano['levels'] }}</td>
+      <td>{{ pano.get('views', 0) }}</td>
+      <td>{{ pano['taken_at'][:10] if pano.get('taken_at') else '—' }}</td>
+      <td>{{ pano['created_at'][:10] if pano.get('created_at') else '—' }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}
-
-

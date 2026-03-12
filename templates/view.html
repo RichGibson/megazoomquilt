@@ -2,6 +2,21 @@
 
 {% block title %}{{ pano.name }}{% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.css" />
+<style>
+  #map {
+    height: 90vh;
+    width: 90vw;
+    margin-top: 1em;
+  }
+  .leaflet-tile {
+    border: solid red 0px;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
 <h1>{{ pano.name }}</h1>
 <p>{{ pano.description }}</p>
@@ -9,21 +24,48 @@
 <div id="map"></div>
 
 <ul>
-  <li><strong>ID:</strong> {{ pano_id }}</li>
+  <li><strong>ID:</strong> {{ pano_id }} &nbsp;·&nbsp; <a href="https://www.gigapan.com/gigapans/{{ pano_id }}" target="_blank">View on gigapan.com</a></li>
   <li><strong>Taken:</strong> {{ pano.taken_at }}</li>
   <li><strong>Created:</strong> {{ pano.created_at }}</li>
   <li><strong>Uploaded:</strong> {{ pano.updated_at }}</li>
-  <li><strong>Size:</strong> {{ pano.width }} x {{ pano.height }} = {{ "{:,}".format(pano.width * pano.height) }} pixels</li>
-
-  <!-- li><strong>Total tiles:</strong> {{ pano.tiles_total }}</li -->
-  <li><strong>Lat/Lng:</strong> {{ pano.latitude }}, {{ pano.longitude }}</li>
+  <li><strong>Size:</strong> {{ pano.width }} x {{ pano.height }} = {{ "{:,}".format(pano.width * pano.height) }} pixels
+    {% if pano.resolution %}&nbsp;·&nbsp; {{ "{:,.0f}".format(pano.resolution / 1000000) }} MP{% endif %}
+  </li>
   <li><strong>Zoom Levels:</strong> {{ pano.levels }}</li>
+  {% if pano.latitude and pano.longitude %}
+  <li><strong>Lat/Lng:</strong> {{ pano.latitude }}, {{ pano.longitude }}
+    {% if pano.altitude %}&nbsp;·&nbsp; alt {{ pano.altitude }} m{% endif %}
+  </li>
+  {% endif %}
+  {% if pano.field_of_view_w or pano.field_of_view_h %}
+  <li><strong>Field of View:</strong>
+    {% if pano.field_of_view_w %}{{ pano.field_of_view_w }}° wide{% endif %}
+    {% if pano.field_of_view_w and pano.field_of_view_h %} × {% endif %}
+    {% if pano.field_of_view_h %}{{ pano.field_of_view_h }}° tall{% endif %}
+  </li>
+  {% endif %}
+  {% if pano.heading is not none %}
+  <li><strong>Heading:</strong> {{ pano.heading }}°</li>
+  {% endif %}
+  {% if pano.tilt is not none %}
+  <li><strong>Tilt:</strong> {{ pano.tilt }}°</li>
+  {% endif %}
+  {% if pano.distance %}
+  <li><strong>Distance to subject:</strong> {{ pano.distance }} m</li>
+  {% endif %}
+  <li><strong>Views:</strong> {{ pano.views }}
+    {% if pano.options and pano.options.comment_count %}&nbsp;·&nbsp; {{ pano.options.comment_count }} comments{% endif %}
+    {% if pano.options and pano.options.bookmark_count %}&nbsp;·&nbsp; {{ pano.options.bookmark_count }} bookmarks{% endif %}
+  </li>
+  {% if pano.explore_score %}
+  <li><strong>Explore score:</strong> {{ pano.explore_score }}</li>
+  {% endif %}
 </ul>
 
 <p>Zoom level: <span id="zoom-level"></span></p>
 <p>Max tiles at this level (square): <span id="tiles"></span></p>
 
-<table border=\"1\">
+<table border="1">
   <thead>
     <tr>
       <th>Level</th>
@@ -58,30 +100,9 @@
     <li> Avg Size of tiles at this level
     <li> Cols - number of tiles across.
     <li> Rows - number to tiles top to bottom
+</ol>
 
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  crossorigin=""
-/>
-<style>
-  #map {
-    height: 90vh;
-    width: 90vw;
-    margin-top: 1em;
-  }
-  .leaflet-tile {
-    border: solid red 0px;
-  }
-</style>
-
-<script
-  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  crossorigin=""
-></script>
-
-<!-- Include Leaflet MiniMap plugin -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.js"></script>
 
 <script>
@@ -116,22 +137,23 @@
   }).addTo(map);
 
   map.fitBounds(bounds);
-const miniMapLayer = L.tileLayer(tileUrlTemplate, {
-  tileSize: 256,
-  bounds: bounds,
-  noWrap: true,
-  maxZoom: maxZoom,
-  minZoom: 0
-});
 
-const miniMap = new L.Control.MiniMap(miniMapLayer, {
-  toggleDisplay: true,
-  minimized: false,
-  width: 200,         // Wider minimap viewport
-  height: 150,        // Taller minimap viewport
-  zoomLevelOffset: -7, // Show more area by zooming out relative to main map
-  zoomAnimation: false
-}).addTo(map);
+  const miniMapLayer = L.tileLayer(tileUrlTemplate, {
+    tileSize: 256,
+    bounds: bounds,
+    noWrap: true,
+    maxZoom: maxZoom,
+    minZoom: 0
+  });
+
+  const miniMap = new L.Control.MiniMap(miniMapLayer, {
+    toggleDisplay: true,
+    minimized: false,
+    width: 200,
+    height: 150,
+    zoomLevelOffset: -7,
+    zoomAnimation: false
+  }).addTo(map);
 
   function updateTileInfo() {
     const zoom = map.getZoom();
@@ -144,4 +166,3 @@ const miniMap = new L.Control.MiniMap(miniMapLayer, {
   updateTileInfo();
 </script>
 {% endblock %}
-

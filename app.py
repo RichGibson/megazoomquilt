@@ -1,9 +1,8 @@
-from flask import Flask, render_template_string, abort, render_template, send_file, Response
+from flask import Flask, render_template_string, abort, render_template, send_file, Response, request, jsonify
 import os
 import io
 import json
 import math
-import pdb
 import statistics
 from collections import defaultdict
 from PIL import Image
@@ -173,15 +172,32 @@ def chrome_devtools_stub():
 @app.route("/")
 def home():
     panoramas = load_pano_data()
+    sort = request.args.get('sort', 'id_asc')
+    # For date sorts, nulls always sort last regardless of direction.
+    # date_asc:  key=(0 if dated else 1, date), reverse=False  → earliest first, nulls last
+    # date_desc: key=(1 if dated else 0, date), reverse=True   → latest first, nulls last
+    sort_config = {
+        'id_asc':    (lambda p: p['id'],                                              False),
+        'id_desc':   (lambda p: p['id'],                                              True),
+        'name_asc':  (lambda p: p['name'].lower(),                                    False),
+        'name_desc': (lambda p: p['name'].lower(),                                    True),
+        'date_asc':       (lambda p: (0 if p.get('taken_at') else 1,   p.get('taken_at') or ''),   False),
+        'date_desc':      (lambda p: (1 if p.get('taken_at') else 0,   p.get('taken_at') or ''),   True),
+        'uploaded_asc':   (lambda p: (0 if p.get('created_at') else 1, p.get('created_at') or ''), False),
+        'uploaded_desc':  (lambda p: (1 if p.get('created_at') else 0, p.get('created_at') or ''), True),
+    }
+    key, reverse = sort_config.get(sort, sort_config['id_asc'])
+    panoramas = sorted(panoramas, key=key, reverse=reverse)
     p={}
     p['page_title']='Megazoomquilt'
-    return render_template("index.html", panoramas=panoramas, p=p)
+    return render_template("index.html", panoramas=panoramas, p=p, sort=sort)
 
 @app.route("/admin")
 def admin():
+    panoramas = load_pano_data()
     p={}
     p['page_title']='Admin'
-    return render_template("admin.html", p=p)
+    return render_template("admin.html", p=p, panoramas=panoramas)
 
 
 @app.route("/view/<pano_id>")
