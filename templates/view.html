@@ -7,100 +7,212 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.css" />
 <style>
   #map {
-    height: 90vh;
-    width: 90vw;
-    margin-top: 1em;
+    height: 80vh;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ddd;
   }
-  .leaflet-tile {
-    border: solid red 0px;
+  .pano-header { margin-bottom: 0.75rem; }
+  .back-link {
+    font-size: 0.85rem;
+    color: #888;
+    display: inline-block;
+    margin-bottom: 0.35rem;
+  }
+  .back-link:hover { color: #0077cc; text-decoration: none; }
+  .pano-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.2rem;
+  }
+  .pano-name { margin: 0; font-size: 1.5rem; font-weight: 700; }
+  .external-link { font-size: 0.82rem; white-space: nowrap; }
+  .pano-desc { margin: 0.2rem 0 0.5rem; font-size: 0.88rem; color: #555; line-height: 1.5; }
+  .pano-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+    color: #555;
+    row-gap: 0.2rem;
+  }
+  .pano-meta-bar span {
+    padding-right: 0.7rem;
+    margin-right: 0.7rem;
+    border-right: 1px solid #ddd;
+  }
+  .pano-meta-bar span:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+  .map-info-bar {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.82rem;
+    color: #777;
+    margin: 0.45rem 0 0.8rem;
+  }
+  .pano-details {
+    margin-top: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .pano-details > summary {
+    padding: 0.55rem 1rem;
+    background: #f7f7f7;
+    cursor: pointer;
+    font-size: 0.87rem;
+    font-weight: 600;
+    color: #555;
+    user-select: none;
+    list-style: none;
+  }
+  .pano-details > summary::-webkit-details-marker { display: none; }
+  .pano-details > summary::before { content: '▶ '; font-size: 0.7rem; }
+  .pano-details[open] > summary::before { content: '▼ '; }
+  .pano-details > summary:hover { background: #efefef; }
+  .details-inner {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) 2fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 800px) { .details-inner { grid-template-columns: 1fr; } }
+  .details-meta h3, .details-tiles h3 {
+    margin: 0 0 0.5rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #aaa;
+  }
+  .details-meta dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.2rem 0.75rem;
+    font-size: 0.83rem;
+    margin: 0;
+  }
+  .details-meta dt { color: #999; white-space: nowrap; }
+  .details-meta dd { margin: 0; color: #333; }
+  .tile-stats {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+  .tile-stats th, .tile-stats td {
+    padding: 0.28rem 0.55rem;
+    border-bottom: 1px solid #eee;
+    text-align: right;
+  }
+  .tile-stats th {
+    background: #f7f7f7;
+    font-weight: 600;
+    color: #666;
+    border-bottom: 2px solid #ddd;
+  }
+  .tile-stats td:first-child, .tile-stats th:first-child { text-align: left; }
+  .tile-stats tr:last-child td { border-bottom: none; }
+  .tile-legend {
+    margin: 0.5rem 0 0;
+    padding-left: 1.1rem;
+    font-size: 0.76rem;
+    color: #aaa;
+    line-height: 1.7;
   }
 </style>
 {% endblock %}
 
 {% block content %}
-<h1>{{ pano.name }}</h1>
-<p>{{ pano.description }}</p>
+<div class="pano-header">
+  <a href="{{ url_for('home') }}" class="back-link">← All panoramas</a>
+  <div class="pano-title-row">
+    <h1 class="pano-name">{{ pano.name }}</h1>
+    <a href="https://www.gigapan.com/gigapans/{{ pano_id }}" target="_blank" class="external-link">gigapan.com ↗</a>
+  </div>
+  {% if pano.description %}
+  <p class="pano-desc">{{ pano.description }}</p>
+  {% endif %}
+  <div class="pano-meta-bar">
+    <span>{{ pano.width }}×{{ pano.height }}{% if pano.resolution %} &nbsp;·&nbsp; {{ "{:,.0f}".format(pano.resolution / 1000000) }} MP{% endif %}</span>
+    <span>{{ pano.levels }} zoom levels</span>
+    {% if pano.views %}<span>👁 {{ pano.views }} views</span>{% endif %}
+    {% if pano.taken_at %}<span>{{ pano.taken_at[:10] }}</span>
+    {% elif pano.created_at %}<span>{{ pano.created_at[:10] }} (uploaded)</span>{% endif %}
+    {% if pano.field_of_view_w %}<span>{{ pano.field_of_view_w }}° FOV</span>{% endif %}
+    {% if pano.latitude and pano.longitude %}<span>📍 {{ "%.4f"|format(pano.latitude) }}, {{ "%.4f"|format(pano.longitude) }}</span>{% endif %}
+  </div>
+</div>
 
 <div id="map"></div>
 
-<ul>
-  <li><strong>ID:</strong> {{ pano_id }} &nbsp;·&nbsp; <a href="https://www.gigapan.com/gigapans/{{ pano_id }}" target="_blank">View on gigapan.com</a></li>
-  <li><strong>Taken:</strong> {{ pano.taken_at }}</li>
-  <li><strong>Created:</strong> {{ pano.created_at }}</li>
-  <li><strong>Uploaded:</strong> {{ pano.updated_at }}</li>
-  <li><strong>Size:</strong> {{ pano.width }} x {{ pano.height }} = {{ "{:,}".format(pano.width * pano.height) }} pixels
-    {% if pano.resolution %}&nbsp;·&nbsp; {{ "{:,.0f}".format(pano.resolution / 1000000) }} MP{% endif %}
-  </li>
-  <li><strong>Zoom Levels:</strong> {{ pano.levels }}</li>
-  {% if pano.latitude and pano.longitude %}
-  <li><strong>Lat/Lng:</strong> {{ pano.latitude }}, {{ pano.longitude }}
-    {% if pano.altitude %}&nbsp;·&nbsp; alt {{ pano.altitude }} m{% endif %}
-  </li>
-  {% endif %}
-  {% if pano.field_of_view_w or pano.field_of_view_h %}
-  <li><strong>Field of View:</strong>
-    {% if pano.field_of_view_w %}{{ pano.field_of_view_w }}° wide{% endif %}
-    {% if pano.field_of_view_w and pano.field_of_view_h %} × {% endif %}
-    {% if pano.field_of_view_h %}{{ pano.field_of_view_h }}° tall{% endif %}
-  </li>
-  {% endif %}
-  {% if pano.heading is not none %}
-  <li><strong>Heading:</strong> {{ pano.heading }}°</li>
-  {% endif %}
-  {% if pano.tilt is not none %}
-  <li><strong>Tilt:</strong> {{ pano.tilt }}°</li>
-  {% endif %}
-  {% if pano.distance %}
-  <li><strong>Distance to subject:</strong> {{ pano.distance }} m</li>
-  {% endif %}
-  <li><strong>Views:</strong> {{ pano.views }}
-    {% if pano.options and pano.options.comment_count %}&nbsp;·&nbsp; {{ pano.options.comment_count }} comments{% endif %}
-    {% if pano.options and pano.options.bookmark_count %}&nbsp;·&nbsp; {{ pano.options.bookmark_count }} bookmarks{% endif %}
-  </li>
-  {% if pano.explore_score %}
-  <li><strong>Explore score:</strong> {{ pano.explore_score }}</li>
-  {% endif %}
-</ul>
+<div class="map-info-bar">
+  <span>Zoom: <strong id="zoom-level"></strong></span>
+  <span>Max tiles at this level: <strong id="tiles"></strong></span>
+</div>
 
-<p>Zoom level: <span id="zoom-level"></span></p>
-<p>Max tiles at this level (square): <span id="tiles"></span></p>
+<details class="pano-details">
+  <summary>Technical details &amp; tile statistics</summary>
+  <div class="details-inner">
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>Level</th>
-      <th>Count</th>
-      <th>Min Size</th>
-      <th>Max Size</th>
-      <th>Avg Size</th>
-      <th>Cols</th>
-      <th>Rows</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for row in results %}
-    <tr>
-      <td>{{ row.level }}</td>
-      <td>{{ row.count }}</td>
-      <td>{{ row.min_size }}</td>
-      <td>{{ row.max_size }}</td>
-      <td>{{ row.avg_size }}</td>
-      <td>{{ row.cols }}</td>
-      <td>{{ row.rows }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+    <div class="details-meta">
+      <h3>Details</h3>
+      <dl>
+        <dt>ID</dt><dd>{{ pano_id }}</dd>
+        {% if pano.taken_at %}<dt>Taken</dt><dd>{{ pano.taken_at }}</dd>{% endif %}
+        <dt>Created</dt><dd>{{ pano.created_at }}</dd>
+        <dt>Updated</dt><dd>{{ pano.updated_at }}</dd>
+        {% if pano.latitude and pano.longitude %}
+        <dt>Lat/Lng</dt><dd>{{ pano.latitude }}, {{ pano.longitude }}{% if pano.altitude %} · {{ pano.altitude }}m{% endif %}</dd>
+        {% endif %}
+        {% if pano.field_of_view_w or pano.field_of_view_h %}
+        <dt>FOV</dt><dd>{% if pano.field_of_view_w %}{{ pano.field_of_view_w }}° wide{% endif %}{% if pano.field_of_view_w and pano.field_of_view_h %} × {% endif %}{% if pano.field_of_view_h %}{{ pano.field_of_view_h }}° tall{% endif %}</dd>
+        {% endif %}
+        {% if pano.heading is not none %}<dt>Heading</dt><dd>{{ pano.heading }}°</dd>{% endif %}
+        {% if pano.tilt is not none %}<dt>Tilt</dt><dd>{{ pano.tilt }}°</dd>{% endif %}
+        {% if pano.distance %}<dt>Distance</dt><dd>{{ pano.distance }} m</dd>{% endif %}
+        {% if pano.explore_score %}<dt>Explore score</dt><dd>{{ pano.explore_score }}</dd>{% endif %}
+        {% if pano.options and pano.options.comment_count %}<dt>Comments</dt><dd>{{ pano.options.comment_count }}</dd>{% endif %}
+        {% if pano.options and pano.options.bookmark_count %}<dt>Bookmarks</dt><dd>{{ pano.options.bookmark_count }}</dd>{% endif %}
+      </dl>
+    </div>
 
-<ol>
-    <li> Level - zoom level
-    <li> Count - number of tiles
-    <li> Min Size - of a tile at this level
-    <li> Max Size - of a tile at this level
-    <li> Avg Size of tiles at this level
-    <li> Cols - number of tiles across.
-    <li> Rows - number to tiles top to bottom
-</ol>
+    <div class="details-tiles">
+      <h3>Tile statistics</h3>
+      <table class="tile-stats">
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Count</th>
+            <th>Min size</th>
+            <th>Max size</th>
+            <th>Avg size</th>
+            <th>Cols</th>
+            <th>Rows</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in results %}
+          <tr>
+            <td>{{ row.level }}</td>
+            <td>{{ row.count }}</td>
+            <td>{{ row.min_size }}</td>
+            <td>{{ row.max_size }}</td>
+            <td>{{ row.avg_size }}</td>
+            <td>{{ row.cols }}</td>
+            <td>{{ row.rows }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <ol class="tile-legend">
+        <li>Level — zoom level</li>
+        <li>Count — number of tiles</li>
+        <li>Min / Max / Avg size — tile file size in bytes</li>
+        <li>Cols / Rows — tile grid dimensions</li>
+      </ol>
+    </div>
+
+  </div>
+</details>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.js"></script>

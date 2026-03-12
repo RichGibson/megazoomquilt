@@ -4,62 +4,86 @@
 <div class="page-layout">
 
   <aside class="sidebar">
-    <h3>Panoramas</h3>
-    <p><strong>{{ panoramas|length }}</strong> images</p>
+    <input type="search" id="pano-search" class="search-input" placeholder="Search…" autocomplete="off">
+    <p class="sidebar-count"><strong id="visible-count">{{ panoramas|length }}</strong> of {{ panoramas|length }}</p>
     <hr>
     <ul class="sidebar-list">
       {% for pano in panoramas %}
-        <li><a href="{{ url_for('view_pano', pano_id=pano['id']) }}">{{ pano['name'] }}</a></li>
+        <li data-name="{{ pano['name']|lower }}">
+          <a href="{{ url_for('view_pano', pano_id=pano['id']) }}">{{ pano['name'] }}</a>
+        </li>
       {% endfor %}
     </ul>
   </aside>
 
   <main>
     <div class="sort-bar">
-      <span class="sort-label">Sort by:</span>
-      {% set sorts = [
-        ('id_asc',         'ID ↑'),
-        ('id_desc',        'ID ↓'),
-        ('name_asc',       'Name ↑'),
-        ('name_desc',      'Name ↓'),
-        ('date_asc',       'Taken ↑'),
-        ('date_desc',      'Taken ↓'),
-        ('uploaded_asc',   'Uploaded ↑'),
-        ('uploaded_desc',  'Uploaded ↓'),
-      ] %}
-      {% for key, label in sorts %}
-        <a href="{{ url_for('home', sort=key) }}"
-           class="sort-btn{% if sort == key %} sort-btn-active{% endif %}">{{ label }}</a>
+      <span class="sort-label">Sort:</span>
+      {% for field, label in [('id', 'ID'), ('name', 'Name'), ('date', 'Taken'), ('uploaded', 'Uploaded')] %}
+        {% set is_asc = sort == field + '_asc' %}
+        {% set is_desc = sort == field + '_desc' %}
+        {% set is_active = is_asc or is_desc %}
+        {% set next_sort = (field + '_desc') if is_asc else (field + '_asc') %}
+        <a href="{{ url_for('home', sort=next_sort) }}"
+           class="sort-btn{% if is_active %} sort-btn-active{% endif %}">
+          {{ label }}{% if is_asc %} ↑{% elif is_desc %} ↓{% endif %}
+        </a>
       {% endfor %}
     </div>
-    <div class="card-grid">
-    {% for pano in panoramas %}
-    <a class="card" href="{{ url_for('view_pano', pano_id=pano['id']) }}">
-      <div class="card-thumb">
-        <img src="{{ url_for('thumbnail', pano_id=pano['id']) }}"
-             alt="{{ pano['name'] }}"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <span class="card-thumb-missing">No preview</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">{{ pano['name'] }}</div>
-        <div class="card-meta">{{ pano['width'] }}×{{ pano['height'] }} &nbsp;·&nbsp; {{ pano['levels'] }} levels</div>
-        {% if pano.get('description') %}
-        <div class="card-desc">{{ pano['description'][:120] }}{% if pano['description']|length > 120 %}…{% endif %}</div>
-        {% endif %}
-        <div class="card-footer">
-          <span>👁 {{ pano.get('views', 0) }}</span>
-          {% if pano.get('taken_at') %}
-          <span>{{ pano['taken_at'][:10] }}</span>
-          {% elif pano.get('created_at') %}
-          <span>{{ pano['created_at'][:10] }} (uploaded)</span>
+
+    <div class="card-grid" id="card-grid">
+      {% for pano in panoramas %}
+      <a class="card" href="{{ url_for('view_pano', pano_id=pano['id']) }}"
+         data-name="{{ pano['name']|lower }} {{ pano.get('description', '')|lower }}">
+        <div class="card-thumb">
+          <img src="{{ url_for('thumbnail', pano_id=pano['id']) }}"
+               alt="{{ pano['name'] }}"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="card-thumb-missing">No preview</span>
+          {% if pano.get('resolution') %}
+          <span class="card-thumb-badge">{{ "{:,.0f}".format(pano['resolution'] / 1000000) }} MP</span>
           {% endif %}
         </div>
-      </div>
-    </a>
-    {% endfor %}
+        <div class="card-body">
+          <div class="card-title">{{ pano['name'] }}</div>
+          <div class="card-meta">{{ pano['width'] }}×{{ pano['height'] }} &nbsp;·&nbsp; {{ pano['levels'] }} levels</div>
+          {% if pano.get('description') %}
+          <div class="card-desc">{{ pano['description'][:120] }}{% if pano['description']|length > 120 %}…{% endif %}</div>
+          {% endif %}
+          <div class="card-footer">
+            <span>👁 {{ pano.get('views', 0) }}</span>
+            {% if pano.get('taken_at') %}
+            <span>{{ pano['taken_at'][:10] }}</span>
+            {% elif pano.get('created_at') %}
+            <span>{{ pano['created_at'][:10] }} (uploaded)</span>
+            {% endif %}
+          </div>
+        </div>
+      </a>
+      {% endfor %}
     </div>
   </main>
 
 </div>
+
+<script>
+  const searchInput = document.getElementById('pano-search');
+  const cards = document.querySelectorAll('#card-grid .card');
+  const sidebarItems = document.querySelectorAll('.sidebar-list li');
+  const visibleCount = document.getElementById('visible-count');
+
+  searchInput.addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    let count = 0;
+    cards.forEach(card => {
+      const match = !q || card.dataset.name.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) count++;
+    });
+    sidebarItems.forEach(li => {
+      li.style.display = !q || li.dataset.name.includes(q) ? '' : 'none';
+    });
+    visibleCount.textContent = count;
+  });
+</script>
 {% endblock %}
