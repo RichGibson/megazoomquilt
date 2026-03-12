@@ -1,6 +1,9 @@
 # panoramas
 static/panos/
 
+# accidental directory
+util/static/
+
 # OS
 .DS_Store
 static/.DS_Store
