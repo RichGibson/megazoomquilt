@@ -90,6 +90,7 @@ def main():
     parser.add_argument("--delay",       type=float, default=1.0,      help="Seconds between panos (default: 1.0)")
     parser.add_argument("--workers",     type=int,   default=16,       help="Concurrent tile workers (default: 16)")
     parser.add_argument("--skip-verify", action="store_true",          help="Skip tile count — trust directory existence")
+    parser.add_argument("--reverse",     action="store_true",          help="Download from end of list to beginning")
     args = parser.parse_args()
 
     list_path = Path(args.list)
@@ -109,6 +110,8 @@ def main():
     )
 
     to_download = incomplete + not_started
+    if args.reverse:
+        to_download = list(reversed(to_download))
     total       = len(to_download)
 
     log(f"Scan complete: {len(complete)} complete, "

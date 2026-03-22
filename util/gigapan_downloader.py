@@ -41,7 +41,7 @@ HEADERS = {
     )
 }
 
-BASE_URL = "https://gigapan.com"
+BASE_URL = "https://www.gigapan.com"
 
 
 def ts():
