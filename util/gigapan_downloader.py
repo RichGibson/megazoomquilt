@@ -33,6 +33,16 @@ REPORT_INTERVAL = 300   # seconds between progress lines (~5 minutes)
 MAX_RETRIES     = 7     # attempts per tile before giving up
 BASE_BACKOFF    = 2     # seconds; doubled on each retry
 
+HEADERS = {
+    'User-Agent': (
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
+        'AppleWebKit/537.36 (KHTML, like Gecko) '
+        'Chrome/122.0.0.0 Safari/537.36'
+    )
+}
+
+BASE_URL = "https://gigapan.com"
+
 
 def ts():
     """Current time as HH:MM:SS string."""
@@ -50,10 +60,10 @@ def download_metadata(fmt, photo_id, output_dir):
         with open(path, 'r', encoding='utf-8') as f:
             data = f.read()
     else:
-        url = f"http://www.gigapan.com/gigapans/{photo_id}.{fmt}"
+        url = f"{BASE_URL}/gigapans/{photo_id}.{fmt}"
         for attempt in range(MAX_RETRIES):
             try:
-                resp = requests.get(url, timeout=30)
+                resp = requests.get(url, timeout=30, headers=HEADERS)
                 if resp.status_code == 200:
                     data = resp.content
                     path.write_bytes(data)
@@ -163,7 +173,7 @@ def safe_request(url):
             time.sleep(wait)
 
         try:
-            resp = requests.get(url, timeout=20)
+            resp = requests.get(url, timeout=20, headers=HEADERS)
 
             if resp.status_code == 429:
                 retry_after = int(resp.headers.get('Retry-After', 60))
@@ -207,7 +217,7 @@ def is_valid_jpeg(data):
 # ---------------------------------------------------------------------------
 
 def download_tile(photo_id, level, col, row, output_dir):
-    tile_url  = f"http://www.gigapan.com/get_ge_tile/{photo_id}/{level}/{row}/{col}"
+    tile_url  = f"{BASE_URL}/get_ge_tile/{photo_id}/{level}/{row}/{col}"
     tile_path = Path(output_dir) / str(level) / str(col) / f"{row}.jpg"
     tile_path.parent.mkdir(parents=True, exist_ok=True)
 
