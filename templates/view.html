@@ -143,6 +143,7 @@
 {% block content %}
 <div class="pano-header">
   <a href="{{ url_for('home') }}" class="back-link">← All panoramas</a>
+  <a href="{{ url_for('edit_pano', pano_id=pano_id) }}" class="back-link" style="margin-left:1rem;">✎ Edit</a>
   <div class="pano-title-row">
     <h1 class="pano-name">{{ pano.name }}</h1>
     <a href="https://www.gigapan.com/gigapans/{{ pano_id }}" target="_blank" class="external-link">gigapan.com ↗</a>
@@ -160,6 +161,14 @@
     {% if pano.latitude and pano.longitude %}<span>📍 {{ "%.4f"|format(pano.latitude) }}, {{ "%.4f"|format(pano.longitude) }}</span>{% endif %}
   </div>
 </div>
+
+{% if pano.tags %}
+<div class="tag-list">
+  {% for tag in pano.tags %}
+  <a class="tag" href="{{ url_for('tag_view', tag=tag) }}">#{{ tag }}</a>
+  {% endfor %}
+</div>
+{% endif %}
 
 <div id="map"></div>
 

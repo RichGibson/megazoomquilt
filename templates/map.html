@@ -40,6 +40,20 @@
     border-bottom: 1px solid #eee;
     flex-shrink: 0;
   }
+  .pending-count {
+    font-size: 0.74rem;
+    color: #999;
+    margin-top: 0.15rem;
+  }
+  .pending-badge {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #666;
+    border: 1.5px solid #333;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
   .map-sidebar-list {
     display: flex;
     flex-direction: column;
@@ -121,6 +135,7 @@
 
   <aside class="map-sidebar">
     <div class="map-sidebar-count" id="sidebar-count">{{ panoramas|length }} in view</div>
+    <div class="pending-count" id="pending-count"></div>
     <div class="map-sidebar-list" id="sidebar-list"></div>
   </aside>
 
@@ -131,20 +146,25 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" crossorigin=""></script>
 <script>
-  const panos = {{ panoramas | tojson }};
+  const panos        = {{ panoramas    | tojson }};
+  const pendingPanos = {{ pending_panos | tojson }};
 
   const map = L.map('pano-map');
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  const baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     maxZoom: 19
   }).addTo(map);
 
-  const cluster = L.markerClusterGroup();
-  const bounds = [];
+  // ── Downloaded panoramas (blue default markers) ──────────────────
+  const cluster = L.markerClusterGroup({
+    maxClusterRadius: 40,
+    disableClusteringAtZoom: 13
+  });
+  const bounds  = [];
 
   panos.forEach(p => {
-    const taken = p.taken_at ? p.taken_at.slice(0, 10) : (p.created_at ? p.created_at.slice(0, 10) : '');
+    const taken  = p.taken_at ? p.taken_at.slice(0, 10) : (p.created_at ? p.created_at.slice(0, 10) : '');
     const marker = L.marker([p.latitude, p.longitude]);
     marker.bindPopup(`
       <a href="/view/${p.id}">${p.name}</a>
@@ -156,14 +176,47 @@
     bounds.push([p.latitude, p.longitude]);
   });
 
-  // Re-open permanent tooltips after cluster animation completes
   cluster.on('animationend', () => {
     cluster.eachLayer(m => {
       if (m.getTooltip && m.getTooltip()) m.openTooltip();
     });
   });
 
+  // ── Pending panoramas (dark gray circle markers) ─────────────────
+  const pendingCluster = L.markerClusterGroup({
+    maxClusterRadius: 40,
+    disableClusteringAtZoom: 13,
+    iconCreateFunction: function (c) {
+      return L.divIcon({
+        html: `<div style="background:#555;color:#eee;border:2px solid #222;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;">${c.getChildCount()}</div>`,
+        className: '',
+        iconSize: [32, 32],
+        iconAnchor: [16, 16]
+      });
+    }
+  });
+
+  pendingPanos.forEach(p => {
+    const marker = L.circleMarker([p.latitude, p.longitude], {
+      radius:      6,
+      color:       '#222',
+      fillColor:   '#666',
+      fillOpacity: 0.85,
+      weight:      1.5
+    });
+    const desc = p.description ? `<br><span class="popup-meta">${p.description.slice(0, 120)}${p.description.length > 120 ? '…' : ''}</span>` : '';
+    marker.bindPopup(`<strong>${p.name}</strong><br><em class="popup-meta">Not yet downloaded</em>${desc}`);
+    pendingCluster.addLayer(marker);
+  });
+
   map.addLayer(cluster);
+  map.addLayer(pendingCluster);
+
+  // Layer toggle control
+  L.control.layers(null, {
+    'Downloaded': cluster,
+    'Pending download': pendingCluster
+  }, { collapsed: false, position: 'topright' }).addTo(map);
 
   if (bounds.length > 0) {
     map.fitBounds(bounds, { padding: [40, 40] });
@@ -171,18 +224,24 @@
     map.setView([20, 0], 2);
   }
 
-  // Sidebar: show thumbnails of panos visible in current map extent
+  // ── Sidebar: downloaded panos visible in current extent ──────────
   function updateSidebar() {
     const mapBounds = map.getBounds();
+
     const visible = panos.filter(p =>
       mapBounds.contains(L.latLng(p.latitude, p.longitude))
     );
+    const pendingVisible = pendingPanos.filter(p =>
+      mapBounds.contains(L.latLng(p.latitude, p.longitude))
+    );
 
-    const countEl = document.getElementById('sidebar-count');
-    const listEl  = document.getElementById('sidebar-list');
+    document.getElementById('sidebar-count').textContent = visible.length + ' downloaded in view';
+    const pendingEl = document.getElementById('pending-count');
+    pendingEl.innerHTML = pendingVisible.length
+      ? `<span class="pending-badge"></span>${pendingVisible.length} pending in view`
+      : '';
 
-    countEl.textContent = visible.length + ' in view';
-    listEl.innerHTML = visible.map(p => `
+    document.getElementById('sidebar-list').innerHTML = visible.map(p => `
       <a class="map-thumb-item" href="/view/${p.id}">
         <img src="/thumbnail/${p.id}" alt="${p.name}" loading="lazy"
              onerror="this.style.background='#333';this.removeAttribute('src')">

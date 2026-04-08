@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit — {{ pano.name }}{% endblock %}
+
+{% block head %}
+<style>
+  .edit-form {
+    max-width: 720px;
+    margin-top: 1.5rem;
+  }
+  .edit-form h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.1rem;
+  }
+  .field label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #666;
+  }
+  .field input[type="text"],
+  .field textarea {
+    width: 100%;
+    padding: 0.45rem 0.65rem;
+    font-size: 0.92rem;
+    font-family: inherit;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fafafa;
+    color: #111;
+    box-sizing: border-box;
+  }
+  .field input[type="text"]:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: #0077cc;
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(0,119,204,0.12);
+  }
+  .field textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  .field .hint {
+    font-size: 0.75rem;
+    color: #999;
+  }
+  .edit-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  .btn-save {
+    padding: 0.45rem 1.2rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    background: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .btn-save:hover { background: #005fa3; }
+  .btn-cancel {
+    font-size: 0.88rem;
+    color: #888;
+  }
+  .btn-cancel:hover { color: #333; }
+
+  /* Skin overrides */
+  .skin-retro .field label, .skin-amber .field label { color: var(--p-dim); }
+  .skin-retro .field input, .skin-retro .field textarea,
+  .skin-amber .field input, .skin-amber .field textarea {
+    background: var(--bg); border-color: var(--p-ghost);
+    color: var(--p); font-family: "Courier New", monospace; border-radius: 0;
+  }
+  .skin-retro .field input:focus, .skin-retro .field textarea:focus,
+  .skin-amber .field input:focus, .skin-amber .field textarea:focus {
+    border-color: var(--p); box-shadow: 0 0 6px var(--p-ghost); background: var(--bg);
+  }
+  .skin-retro .btn-save, .skin-amber .btn-save {
+    background: var(--p-dim); color: var(--bg); border-radius: 0;
+  }
+  .skin-retro .btn-save:hover, .skin-amber .btn-save:hover { background: var(--p); }
+
+  .skin-museum .field label { color: #5a4030; }
+  .skin-museum .field input, .skin-museum .field textarea {
+    background: #0a0807; border-color: #2e1e10; color: #e8ddd0; border-radius: 0;
+  }
+  .skin-museum .field input:focus, .skin-museum .field textarea:focus {
+    border-color: #c8924a; box-shadow: none; background: #0a0807;
+  }
+  .skin-museum .btn-save { background: #c8924a; color: #0a0807; border-radius: 0; }
+  .skin-museum .btn-save:hover { background: #e8b87a; }
+
+  .skin-blueprint .field label { color: rgba(74,159,212,0.5); font-family: 'IBM Plex Mono', monospace; }
+  .skin-blueprint .field input, .skin-blueprint .field textarea {
+    background: rgba(7,21,37,0.8); border-color: rgba(74,159,212,0.3);
+    color: #a8cce8; font-family: 'IBM Plex Mono', monospace; border-radius: 0;
+  }
+  .skin-blueprint .field input:focus, .skin-blueprint .field textarea:focus {
+    border-color: #4a9fd4; box-shadow: 0 0 8px rgba(74,159,212,0.18); background: rgba(7,21,37,0.8);
+  }
+  .skin-blueprint .btn-save { background: rgba(74,159,212,0.2); color: #7bc4f0; border: 1px solid #4a9fd4; border-radius: 0; }
+  .skin-blueprint .btn-save:hover { background: rgba(74,159,212,0.35); }
+
+  .skin-magazine .field label { color: #888; font-family: 'DM Sans', sans-serif; }
+  .skin-magazine .field input, .skin-magazine .field textarea {
+    border: 2px solid #111; border-radius: 0; background: #fff; color: #111;
+  }
+  .skin-magazine .field input:focus, .skin-magazine .field textarea:focus {
+    border-color: #d4001f; box-shadow: none;
+  }
+  .skin-magazine .btn-save { background: #d4001f; border-radius: 0; }
+  .skin-magazine .btn-save:hover { background: #b0001a; }
+
+  .skin-explorer .field label { color: #8b7355; font-family: 'Lora', serif; font-style: italic; }
+  .skin-explorer .field input, .skin-explorer .field textarea {
+    background: #fdf6e3; border-color: #c8a87a; border-radius: 2px; color: #3d2b1f; font-family: 'Lora', serif;
+  }
+  .skin-explorer .field input:focus, .skin-explorer .field textarea:focus {
+    border-color: #8b3a2a; box-shadow: none; background: #fdf6e3;
+  }
+  .skin-explorer .btn-save { background: #8b3a2a; border-radius: 2px; }
+  .skin-explorer .btn-save:hover { background: #6b2a1a; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="edit-form">
+  <a href="{{ url_for('view_pano', pano_id=pano_id) }}" class="back-link">← Back to {{ pano.name }}</a>
+
+  <h2 style="margin-top:1rem;">Edit panorama #{{ pano_id }}</h2>
+
+  <form method="POST" action="{{ url_for('edit_pano_post', pano_id=pano_id) }}">
+
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" value="{{ pano.name or '' }}">
+    </div>
+
+    <div class="field">
+      <label for="description">Description</label>
+      <textarea id="description" name="description">{{ pano.description or '' }}</textarea>
+    </div>
+
+    <div class="field">
+      <label for="tags">Tags</label>
+      <input type="text" id="tags" name="tags" value="{{ tags_str }}"
+             placeholder="comma separated, e.g. vienna, burning_man, 2008">
+      <span class="hint">Comma-separated. Spaces within a tag become underscores.</span>
+    </div>
+
+    <div class="edit-actions">
+      <button type="submit" class="btn-save">Save</button>
+      <a href="{{ url_for('view_pano', pano_id=pano_id) }}" class="btn-cancel">Cancel</a>
+    </div>
+
+  </form>
+</div>
+{% endblock %}

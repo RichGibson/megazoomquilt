@@ -1,0 +1,165 @@
+[
+  {
+    "note": "Burning Man — match by name/description or Black Rock Desert location",
+    "patterns": ["\\bbm[_\\s]", "\\bbm$", "burning man", "\\bbme\\b", "black rock desert", "black rock city"],
+    "fields": ["name", "description"],
+    "geo_bounds": {
+      "min_lat": 40.70, "max_lat": 40.90,
+      "min_lng": -119.35, "max_lng": -119.10
+    },
+    "tags": ["burning_man"],
+    "year_tag_prefix": "bm_",
+    "year_from": ["taken_at", "created_at", "name"]
+  },
+  {
+    "note": "Vienna — match by name/description or coordinates",
+    "patterns": ["vienna", "wien"],
+    "fields": ["name", "description"],
+    "geo_bounds": {
+      "min_lat": 48.10, "max_lat": 48.32,
+      "min_lng": 16.17, "max_lng": 16.58
+    },
+    "tags": ["vienna"]
+  },
+  {
+    "note": "Maker Faire — San Mateo County Event Center",
+    "patterns": ["maker fair", "\\bmf\\d", "\\bmf\\b"],
+    "exclude_patterns": ["where 2\\.0", "where2\\.0"],
+    "fields": ["name", "description"],
+    "geo_bounds": {
+      "min_lat": 37.53, "max_lat": 37.56,
+      "min_lng": -122.32, "max_lng": -122.29
+    },
+    "tags": ["maker_faire"]
+  },
+  {
+    "note": "Where 2.0 conference",
+    "patterns": ["where 2\\.0", "where2\\.0"],
+    "fields": ["name", "description"],
+    "tags": ["where2.0"]
+  },
+  {
+    "note": "London, UK",
+    "patterns": ["london"],
+    "fields": ["name", "description"],
+    "geo_bounds": {
+      "min_lat": 51.28, "max_lat": 51.70,
+      "min_lng": -0.51, "max_lng": 0.33
+    },
+    "tags": ["london"]
+  },
+  {
+    "note": "Hursley — IBM Hursley, Hampshire, UK",
+    "patterns": ["hursley"],
+    "fields": ["name", "description"],
+    "geo_bounds": {
+      "min_lat": 51.00, "max_lat": 51.05,
+      "min_lng": -1.45, "max_lng": -1.35
+    },
+    "tags": ["hursley"]
+  },
+  {
+    "note": "SIGGRAPH conference",
+    "patterns": ["siggraph"],
+    "fields": ["name", "description"],
+    "tags": ["siggraph"]
+  },
+  {
+    "note": "WhereCamp unconference",
+    "patterns": ["wherecamp"],
+    "fields": ["name", "description"],
+    "tags": ["wherecamp"]
+  },
+  {
+    "note": "Roboexotica — robot cocktail festival, Vienna",
+    "patterns": ["roboexotica", "roboe"],
+    "fields": ["name", "description"],
+    "tags": ["roboexotica"]
+  },
+  {
+    "note": "Sasha Shulgin — chemist, first to synthesize MDMA for human use",
+    "patterns": ["shulgin", "sasha shulgin"],
+    "fields": ["name", "description"],
+    "tags": ["sasha_shulgin"]
+  },
+  {
+    "note": "NASA Ames Research Center — Moffett Field, Mountain View CA",
+    "patterns": ["\\bnasa\\b", "\\bames\\b"],
+    "fields": ["name", "description"],
+    "geo_bounds": {
+      "min_lat": 37.38, "max_lat": 37.43,
+      "min_lng": -122.10, "max_lng": -122.04
+    },
+    "tags": ["nasa_ames"]
+  },
+  {
+    "note": "Mendocino — coastal town, Northern California",
+    "patterns": ["mendocino"],
+    "fields": ["name", "description"],
+    "geo_bounds": {
+      "min_lat": 39.20, "max_lat": 39.40,
+      "min_lng": -123.90, "max_lng": -123.70
+    },
+    "tags": ["mendocino"]
+  },
+  {
+    "note": "Arizona",
+    "patterns": ["arizona", "\\baz\\b"],
+    "fields": ["name", "description"],
+    "geo_bounds": {
+      "min_lat": 31.33, "max_lat": 37.00,
+      "min_lng": -114.82, "max_lng": -109.05
+    },
+    "tags": ["arizona"]
+  },
+  {
+    "note": "Volcano / SP Crater area — north of Flagstaff AZ",
+    "patterns": ["volcano", "sp crater", "lava flow"],
+    "fields": ["name", "description"],
+    "geo_bounds": {
+      "min_lat": 35.57, "max_lat": 35.61,
+      "min_lng": -111.66, "max_lng": -111.62
+    },
+    "tags": ["arizona", "volcano"]
+  },
+  {
+    "note": "MAK Vienna — Museum für angewandte Kunst",
+    "patterns": ["\\bmak\\b"],
+    "fields": ["name", "description"],
+    "tags": ["mak_vienna", "vienna"]
+  },
+  {
+    "note": "Geffrye Museum, London (now Museum of the Home)",
+    "patterns": ["geffrye"],
+    "fields": ["name", "description"],
+    "tags": ["geffrye", "london"]
+  },
+  {
+    "note": "Q21 / Quartier 21 — hall in Museumsquartier, Vienna",
+    "patterns": ["q21", "quartier 21", "fashion"],
+    "fields": ["name", "description"],
+    "tags": ["q21", "vienna"]
+  },
+  {
+    "note": "Florence Ave, Sebastopol CA",
+    "patterns": ["florence ave", "florence avenue", "\\bflorence,"],
+    "fields": ["name", "description"],
+    "tags": ["florence_ave"]
+  },
+  {
+    "note": "Steamboat Ed — person",
+    "patterns": ["steamboat"],
+    "fields": ["name", "description"],
+    "tags": ["steamboat_ed"]
+  },
+  {
+    "note": "Sebastopol — match by name/description or coordinates",
+    "patterns": ["sebastopol"],
+    "fields": ["name", "description"],
+    "geo_bounds": {
+      "min_lat": 38.37, "max_lat": 38.44,
+      "min_lng": -122.88, "max_lng": -122.77
+    },
+    "tags": ["sebastopol"]
+  }
+]

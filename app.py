@@ -8,9 +8,11 @@ from collections import defaultdict
 from PIL import Image
 
 app = Flask(__name__)
+app.secret_key = 'mzq-dev-key-change-in-prod'
 from pathlib import Path
 
 SKINS = ['default', 'retro', 'amber', 'museum', 'blueprint', 'magazine', 'explorer']
+GIGAPAN_LIST_PATH = Path(__file__).resolve().parent / "gigapan_list.json"
 
 @app.context_processor
 def inject_skin():
@@ -223,13 +225,71 @@ def home():
     p['page_title']='Megazoomquilt'
     return render_template("index.html", panoramas=panoramas, p=p, sort=sort)
 
+@app.route("/tags")
+def tags_page():
+    panoramas = load_pano_data()
+    counts = {}
+    for pano in panoramas:
+        for tag in pano.get('tags') or []:
+            counts[tag] = counts.get(tag, 0) + 1
+    tags = sorted(counts.items(), key=lambda x: (-x[1], x[0]))
+    min_count = min(counts.values(), default=1)
+    max_count = max(counts.values(), default=1)
+    return render_template("tags.html", tags=tags,
+                           min_count=min_count, max_count=max_count,
+                           min_size=0.85, max_size=2.2,
+                           p={'page_title': 'Tags'})
+
+@app.route("/tag/<tag>")
+def tag_view(tag):
+    panoramas = load_pano_data()
+    sort = request.args.get('sort', 'id_asc')
+    sort_config = {
+        'id_asc':       (lambda p: p['id'],                                              False),
+        'id_desc':      (lambda p: p['id'],                                              True),
+        'name_asc':     (lambda p: p['name'].lower(),                                    False),
+        'name_desc':    (lambda p: p['name'].lower(),                                    True),
+        'date_asc':     (lambda p: (0 if p.get('taken_at') else 1,   p.get('taken_at') or ''),   False),
+        'date_desc':    (lambda p: (1 if p.get('taken_at') else 0,   p.get('taken_at') or ''),   True),
+        'uploaded_asc': (lambda p: (0 if p.get('created_at') else 1, p.get('created_at') or ''), False),
+        'uploaded_desc':(lambda p: (1 if p.get('created_at') else 0, p.get('created_at') or ''), True),
+        'size_asc':     (lambda p: p.get('width', 0) * p.get('height', 0),              False),
+        'size_desc':    (lambda p: p.get('width', 0) * p.get('height', 0),              True),
+    }
+    key, reverse = sort_config.get(sort, sort_config['id_asc'])
+    filtered = [p for p in panoramas if tag in (p.get('tags') or [])]
+    filtered = sorted(filtered, key=key, reverse=reverse)
+    return render_template("index.html", panoramas=filtered, sort=sort,
+                           active_tag=tag, p={'page_title': f'#{tag}'})
+
 @app.route("/map")
 def map_view():
     panoramas = load_pano_data()
     mapped = [p for p in panoramas
               if p.get('latitude') and p.get('longitude')
               and p['latitude'] != 0 and p['longitude'] != 0]
-    return render_template("map.html", panoramas=mapped, p={'page_title': 'Map'})
+
+    # Pending: in gigapan_list.json but not yet downloaded, with coordinates
+    downloaded_ids = {p['id'] for p in panoramas}
+    pending_panos = []
+    if GIGAPAN_LIST_PATH.exists():
+        with open(GIGAPAN_LIST_PATH) as f:
+            gigapan_list = json.load(f)
+        pending_panos = [
+            {
+                'id':          g['id'],
+                'name':        g['name'],
+                'description': g.get('description') or '',
+                'latitude':    g['latitude'],
+                'longitude':   g['longitude'],
+            }
+            for g in gigapan_list
+            if g.get('latitude') and g.get('longitude')
+            and g['latitude'] != 0 and g['longitude'] != 0
+            and g['id'] not in downloaded_ids
+        ]
+
+    return render_template("map.html", panoramas=mapped, pending_panos=pending_panos, p={'page_title': 'Map'})
 
 @app.route("/admin")
 def admin():
@@ -262,6 +322,72 @@ def view_pano(pano_id):
 
     return render_template("view.html", pano_id=pano_id, pano=pano_data['gigapan'],
                            p=p, results=results, geo_panos=geo_panos)
+
+def backup_json(json_path: Path):
+    """Copy id.json → id.bak, then id.bk1, id.bk2 … if .bak already exists."""
+    bak = json_path.with_suffix('.bak')
+    if not bak.exists():
+        import shutil
+        shutil.copy2(json_path, bak)
+        return
+    n = 1
+    while True:
+        numbered = json_path.with_suffix(f'.bk{n}')
+        if not numbered.exists():
+            import shutil
+            shutil.copy2(json_path, numbered)
+            return
+        n += 1
+
+
+@app.route("/edit/<pano_id>", methods=["GET"])
+def edit_pano(pano_id):
+    json_path = BASE_DIR / pano_id / f"{pano_id}.json"
+    if not json_path.exists():
+        abort(404)
+    with open(json_path) as f:
+        data = json.load(f)
+    pano = data['gigapan']
+    tags_str = ', '.join(pano.get('tags') or [])
+    return render_template("edit.html", pano=pano, pano_id=pano_id,
+                           tags_str=tags_str, p={'page_title': f'Edit {pano.get("name", pano_id)}'})
+
+
+@app.route("/edit/<pano_id>", methods=["POST"])
+def edit_pano_post(pano_id):
+    json_path = BASE_DIR / pano_id / f"{pano_id}.json"
+    if not json_path.exists():
+        abort(404)
+
+    with open(json_path) as f:
+        data = json.load(f)
+    pano = data['gigapan']
+
+    # Parse fields
+    name        = request.form.get('name', '').strip()
+    description = request.form.get('description', '').strip()
+    tags_raw    = request.form.get('tags', '')
+    tags = [
+        t.strip().replace(' ', '_')
+        for t in tags_raw.split(',')
+        if t.strip()
+    ]
+
+    # Apply changes
+    if name:
+        pano['name'] = name
+    pano['description'] = description
+    pano['tags'] = tags if tags else []
+
+    # Backup then write
+    backup_json(json_path)
+    with open(json_path, 'w') as f:
+        json.dump(data, f, indent=2)
+
+    from flask import flash
+    flash(f'Saved — backup written.')
+    return redirect(url_for('view_pano', pano_id=pano_id))
+
 
 if __name__ == "__main__":
     # foo=load_pano_data()

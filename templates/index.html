@@ -22,6 +22,13 @@
   </aside>
 
   <main>
+    {% if active_tag %}
+    <div class="tag-filter-bar">
+      <span>Filtered by</span>
+      <span class="tag-active">#{{ active_tag }}</span>
+      <a href="{{ url_for('home') }}">✕ clear</a>
+    </div>
+    {% endif %}
     <div class="sort-bar">
       <span class="sort-label">Sort:</span>
       {% for field, label in [('id', 'ID'), ('name', 'Name'), ('size', 'Size'), ('date', 'Taken'), ('uploaded', 'Uploaded')] %}
@@ -62,6 +69,9 @@
           {% endif %}
           <div class="card-footer">
             <span>👁 {{ pano.get('views', 0) }}</span>
+            {% if pano.get('latitude') and pano.get('longitude') %}
+            <span>📍 {{ "%.4f"|format(pano['latitude']) }}, {{ "%.4f"|format(pano['longitude']) }}</span>
+            {% endif %}
             {% if pano.get('taken_at') %}
             <span>{{ pano['taken_at'][:10] }}</span>
             {% elif pano.get('created_at') %}
@@ -121,7 +131,7 @@
 
 <script>
   // ── Hover preview settings ──────────────────────────────────────
-  const HOVER_DELAY_MS  = 400;   // ms before popup appears
+  const HOVER_DELAY_MS  = 800;   // ms before popup appears
   const POPUP_FILL      = 0.80;  // fraction of viewport to fill
   const LABEL_HEIGHT_PX = 28;    // matches the label padding above
   // ───────────────────────────────────────────────────────────────

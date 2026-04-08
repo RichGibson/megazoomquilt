@@ -1,0 +1,9 @@
+[
+  {
+    "note": "Monochrom office, Vienna (Museumsquartier / Q21)",
+    "patterns": ["monochrom office", "monochrom_office", "q21"],
+    "fields": ["name", "description"],
+    "latitude": 48.2038186,
+    "longitude": 16.3572444
+  }
+]
