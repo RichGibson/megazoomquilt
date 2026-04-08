@@ -40,7 +40,11 @@
       {% for pano in panoramas %}
       <a class="card" href="{{ url_for('view_pano', pano_id=pano['id']) }}"
          data-name="{{ pano['name']|lower }} {{ pano.get('description', '')|lower }}"
-         data-local="{{ 'true' if pano['id'] >= 1000000 else 'false' }}">
+         data-local="{{ 'true' if pano['id'] >= 1000000 else 'false' }}"
+         data-pano-id="{{ pano['id'] }}"
+         data-pano-w="{{ pano['width'] }}"
+         data-pano-h="{{ pano['height'] }}"
+         data-pano-name="{{ pano['name'] }}">
         <div class="card-thumb">
           <img src="{{ url_for('thumbnail', pano_id=pano['id']) }}"
                alt="{{ pano['name'] }}"
@@ -72,7 +76,118 @@
 
 </div>
 
+<!-- Hover preview popup -->
+<div id="pano-popup" aria-hidden="true">
+  <img id="pano-popup-img" src="" alt="">
+  <div id="pano-popup-label"></div>
+</div>
+
+<style>
+  #pano-popup {
+    display: none;
+    position: fixed;
+    z-index: 9000;
+    pointer-events: none;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.45);
+    background: #111;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  #pano-popup.visible {
+    display: flex;
+    opacity: 1;
+  }
+  #pano-popup img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    flex: 1;
+    min-height: 0;
+  }
+  #pano-popup-label {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    color: #eee;
+    background: rgba(0,0,0,0.75);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 0;
+  }
+</style>
+
 <script>
+  // ── Hover preview settings ──────────────────────────────────────
+  const HOVER_DELAY_MS  = 400;   // ms before popup appears
+  const POPUP_FILL      = 0.80;  // fraction of viewport to fill
+  const LABEL_HEIGHT_PX = 28;    // matches the label padding above
+  // ───────────────────────────────────────────────────────────────
+
+  (function () {
+    const popup     = document.getElementById('pano-popup');
+    const popupImg  = document.getElementById('pano-popup-img');
+    const popupLbl  = document.getElementById('pano-popup-label');
+    let   timer     = null;
+
+    function showPopup(card) {
+      const panoId = card.dataset.panoId;
+      const panoW  = parseInt(card.dataset.panoW, 10);
+      const panoH  = parseInt(card.dataset.panoH, 10);
+      const name   = card.dataset.panoName;
+
+      // Available space (80% of viewport)
+      const maxW = window.innerWidth  * POPUP_FILL;
+      const maxH = window.innerHeight * POPUP_FILL;
+
+      // Aspect ratio of the full panorama
+      const ratio = panoW / panoH;
+
+      // Fit within maxW × maxH, preserving ratio
+      let w = maxW;
+      let h = w / ratio;
+      if (h > maxH) { h = maxH; w = h * ratio; }
+
+      // Center in viewport
+      const left = (window.innerWidth  - w) / 2;
+      const top  = (window.innerHeight - h) / 2;
+
+      // Image area height (label sits below)
+      const imgH = h - LABEL_HEIGHT_PX;
+
+      popup.style.width  = w + 'px';
+      popup.style.height = h + 'px';
+      popup.style.left   = left + 'px';
+      popup.style.top    = top  + 'px';
+      popupImg.style.height = imgH + 'px';
+
+      popupImg.src    = `/thumbnail/${panoId}`;
+      popupLbl.textContent = name;
+
+      popup.style.display = 'flex';
+      // Force reflow so the transition fires
+      popup.offsetHeight;
+      popup.classList.add('visible');
+    }
+
+    function hidePopup() {
+      clearTimeout(timer);
+      timer = null;
+      popup.classList.remove('visible');
+      // Hide after transition
+      setTimeout(() => { if (!popup.classList.contains('visible')) popup.style.display = 'none'; }, 160);
+    }
+
+    document.querySelectorAll('#card-grid .card').forEach(card => {
+      card.addEventListener('mouseenter', function () {
+        timer = setTimeout(() => showPopup(this), HOVER_DELAY_MS);
+      });
+      card.addEventListener('mouseleave', hidePopup);
+    });
+  })();
+
   const searchInput = document.getElementById('pano-search');
   const cards = document.querySelectorAll('#card-grid .card');
   const sidebarItems = document.querySelectorAll('.sidebar-list li');
