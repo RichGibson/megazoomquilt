@@ -1,0 +1,579 @@
+# Deduplication report: stitchable .gigapan files already on gigapan.com
+# 111 unique gigapan.com IDs matched to 241 local .gigapan files
+# These projects were already uploaded — you can skip re-stitching them
+# (no files have been deleted or modified)
+
+gigapan.com/2613  Alembic guitar
+  5707x13487  3164 views  2008-01-16
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/guitar.gigapan
+
+gigapan.com/2783  Long Now (ln2a)
+  51680x17661  1667 views  2008-01-23
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/ln2a.gigapan
+
+gigapan.com/2842  Laguna de Santa Rosa (m12c)
+  42393x6754  1197 views  2008-01-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/m12c.gigapan
+
+gigapan.com/2844  Laguna de Santa Rosa (m12a)
+  47738x11804  1354 views  2008-01-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/m12a.gigapan
+
+gigapan.com/2858  Laguna de Santa Rosa (m12b)
+  47759x11810  1216 views  2008-01-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/m12b.gigapan
+
+gigapan.com/2862  Laguna de Santa Rosa (m12d)
+  14444x6743  1099 views  2008-01-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/m12d.gigapan
+
+gigapan.com/2863  Laguna de Santa Rosa (m12d) recropped
+  12706x6555  988 views  2008-01-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/m12d.gigapan
+
+gigapan.com/3215  Above Portugese Beach, Mendocino, CA (n1_b) Feb 16, 2008
+  61470x14770  1402 views  2008-02-16
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/n1_b.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/n1_b.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/n1_b.gigapan
+
+gigapan.com/4962  Crude Awakening, at the Maker Faire (mf21_crude_awakening)
+  21727x5996  9240 views  2008-05-04
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf21_crude_awakening.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf21_crude_awakening.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf21_crude_awakening.gigapan
+
+gigapan.com/4968  TechShop Pavilion (mf23)
+  25932x9829  2169 views  2008-05-04
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf23.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf23.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf23.gigapan
+
+gigapan.com/4969  TechShop Pavilion (mf24)
+  11948x7203  1753 views  2008-05-04
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf24.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf24.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf24.gigapan
+
+gigapan.com/4972  TechShop Pavilion (mf25)
+  19401x9395  2590 views  2008-05-04
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf25.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf25.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf25.gigapan
+
+gigapan.com/4973  Stout Tool Corp TechShop Pavilion (mf26)
+  15329x11305  1389 views  2008-05-04
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf26.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf26.gigapan
+
+gigapan.com/4974  Combat Tanks (mf27)
+  24621x10221  3822 views  2008-05-04
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf27.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf27.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf27.gigapan
+
+gigapan.com/4978  Gassifier (mf33)
+  25523x7625  2702 views  2008-05-04
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf33.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf33.gigapan
+
+gigapan.com/4979  Gassifier (mf34)
+  25446x7644  2041 views  2008-05-04
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf34.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf34.gigapan
+
+gigapan.com/4980  Alameda Computer Resource Center (mf28)
+  20309x8195  1967 views  2008-05-07
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf28.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf28.gigapan
+
+gigapan.com/4983  Lego Trains (mf29)
+  20023x11650  4903 views  2008-05-04
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf29.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf29.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf29.gigapan
+
+gigapan.com/4985  Lego Trains (mf30)
+  17578x9375  2153 views  2008-05-04
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf30.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf30.gigapan
+
+gigapan.com/4986  Institute for the Future conference  (iftf01)
+  27564x6680  3110 views  2008-05-05
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/iftf01.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/iftf01.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/iftf01.gigapan
+
+gigapan.com/4987  Institute for the Future conference  (iftf02)
+  26972x6475  1339 views  2008-05-05
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/iftf02.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/iftf02.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/iftf02.gigapan
+
+gigapan.com/4992  Maker Faire In front of Expo and Fiesta (mf02)
+  95656x8534  1320 views  2008-05-03
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf02.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf02.gigapan
+
+gigapan.com/4995  Maker Faire my Gassifier fixation continues (mf03)
+  10787x6214  2304 views  2008-05-03
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf03.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf03.gigapan
+
+gigapan.com/4999  Maker Faire - out by the entrance to the fire and outside stage area (mf05)
+  36570x6176  1327 views  2008-05-03
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf05.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf05.gigapan
+
+gigapan.com/5001  Maker Faire (mf10)
+  26362x6964  1157 views  2008-05-03
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf10.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf10.gigapan
+
+gigapan.com/5002  Maker Faire my Gassifier fixation continues (mf14)
+  28270x7577  1244 views  2008-05-03
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf14.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf14.gigapan
+
+gigapan.com/5004  Maker Faire my Gassifier fixation continues (mf15)
+  15297x9536  1423 views  2008-05-03
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf15.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf15.gigapan
+
+gigapan.com/5024  IFTF Conference (iftf03)
+  43351x8138  1523 views  2008-05-07
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/iftf03.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/iftf03.gigapan
+
+gigapan.com/5153  Where 2.0 (where_a_04)
+  28025x12692  2254 views  2008-05-13
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/where_a_04.gigapan
+
+gigapan.com/5188  Where 2.0 (where_a_05)
+  12195x5211  2496 views  2008-05-13
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/where_a_05.gigapan
+
+gigapan.com/5267  From Bernal Hill (bernal_05)
+  30773x14738  767 views  2008-05-16
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/bernal_05.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bernal_05.gigapan
+
+gigapan.com/5270  From Bernal Hill (bernal_01)
+  68174x13583  689 views  2008-05-16
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/bernal_01.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bernal_01.gigapan
+
+gigapan.com/5302  Paige Saez does her thing at Where Camp 2008 (wherecamp_05_paige)
+  14341x7051  7652 views  2008-05-17
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_05_paige.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_05_paige.gigapan
+
+gigapan.com/5303  Where Camp! (wherecamp_03_session)
+  38216x9458  6474 views  2008-05-17
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_03_session.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_03_session.gigapan
+
+gigapan.com/5308  (wherecamp_02)
+  29215x10179  2170 views  2008-05-17
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_02.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_02.gigapan
+
+gigapan.com/5311  (wherecamp_09
+  61980x7531  7132 views  2008-05-18
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_09.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_09.gigapan
+
+gigapan.com/5347  wherecamp_04_paige
+  14331x7059  1683 views  2008-05-17
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_04_paige.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_04_paige.gigapan
+
+gigapan.com/5348  wherecamp_06_paige
+  14341x7051  2241 views  2008-05-17
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_06_paige.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_06_paige.gigapan
+
+gigapan.com/5351  wherecamp_01
+  54654x12233  5605 views  2008-05-17
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_01.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_01.gigapan
+
+gigapan.com/5441  Berkeley Adventure Playground (adventure_playground_01)
+  27255x10504  2840 views  2008-05-24
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/adventure_playground_01.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/adventure_playground_01.gigapan
+
+gigapan.com/5442  Rosie the Riveteer WWII Home Front Memorial (rosie_01)
+  16197x8089  2782 views  2008-05-24
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/rosie_01.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/rosie_01.gigapan
+
+gigapan.com/5443  Rosie the Riveteer WWII Home Front Memorial - from the 'prow' of the memorial looking towards the harbor  (rosie_02)
+  36848x5964  1886 views  2008-05-24
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/rosie_02.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/rosie_02.gigapan
+
+gigapan.com/5469  copy of rosie_01
+  15801x7797  599 views  2008-05-24
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/rosie_01.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/rosie_01.gigapan
+
+gigapan.com/5554  Former Barrow plant, future NorthEast Plan area, Sebastopol, CA (barrow_01)
+  73792x7954  2197 views  2008-05-27
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/barrow_01.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/barrow_01.gigapan
+
+gigapan.com/5562  Barrow Plant (barrow_02)
+  44806x14590  2968 views  2008-05-27
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/barrow_02.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/barrow_02.gigapan
+
+gigapan.com/5571  Street paving in Sebastopol (street_work_01)
+  24423x7215  1811 views  2008-05-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/street_work_01.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/street_work_01.gigapan
+
+gigapan.com/5581  Fancy truck doing street paving in Sebastopol (street_work_01)
+  17501x9625  2460 views  2008-05-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/street_work_01.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/street_work_01.gigapan
+
+gigapan.com/5587  The new Sebastopol Skate Park, under construction (skate_park_02)
+  18430x8969  4617 views  2008-05-27
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/skate_park_02.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/skate_park_02.gigapan
+
+gigapan.com/5593  The new Sebastopol Skate Park, under construction - wider view (skate_park_03)
+  23559x9860  2667 views  2008-05-27
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/skate_park_03.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/skate_park_03.gigapan
+
+gigapan.com/5617  Richmond San Rafael Bridge, and Bay, from near San Quintin.  Scenic view near Marin Rod and Gun Club. (bay_day_01)
+  288790x6150  2491 views  2008-05-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/bay_day_01.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bay_day_01.gigapan
+
+gigapan.com/5638  Sebastopol town square, behind the farmer's market (farmers_market_coffee)
+  28746x7423  2584 views  2008-05-29
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/farmers_market_coffee.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/farmers_market_coffee.gigapan
+
+gigapan.com/5647  Richmond San Rafael Bridge repost - without the bottom row of mostly water (bay_day_01b)
+  127172x4949  1801 views  2008-05-29
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bay_day_01b.gigapan
+
+gigapan.com/5655  Maker Faire, Sunday afternoon during tear down (mf32)
+  15905x4185  593 views  2008-05-30
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf32.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf32.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf32.gigapan
+
+gigapan.com/5662  From top of Neverwas Haul towards the stage the Maker Faire (mf12)
+  18820x8286  811 views  2008-05-30
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf12.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf12.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf12.gigapan
+
+gigapan.com/5668  Overview  of the (origami) Crane, at Steamboat Ed's (steamboat_ed_01)
+  33508x8177  1567 views  2008-05-30
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_01.gigapan
+
+gigapan.com/5669  Steamboat Ed's Shop - Bridgeport Mill and Lathe (steamboat_ed_06)
+  32412x19974  9273 views  2008-05-31
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_06.gigapan
+
+gigapan.com/5671  Steamboat Ed's Shop - Doorway, from outside. (steamboat_ed_04)
+  18316x10107  1870 views  2008-05-31
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_04.gigapan
+
+gigapan.com/5677  Detail of the (origami) Crane, at Steamboat Ed's (steamboat_ed_02)
+  33574x13033  829 views  2008-05-31
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_02.gigapan
+
+gigapan.com/5680  Fail, but maybe an interesting fail - 14 rows x 1 col (steamboat_ed_05)
+  3685x18192  929 views  2008-05-31
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_05.gigapan
+
+gigapan.com/5702  Steamboat Ed's Shop - from outside. (steamboat_ed_03)
+  66480x33862  1496 views  2008-06-01
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_03.gigapan
+
+gigapan.com/5765  Sunflower Club - Planting sunflowers with Maddy and Spencer (june_2008_04)
+  12797x4906  586 views  2008-06-03
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/june_2008_04.gigapan
+
+gigapan.com/5767  Sunflower Club - Planting sunflowers with Maddy and Spencer (june_2008_03)
+  12681x4897  1073 views  2008-06-03
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/june_2008_03.gigapan
+
+gigapan.com/5777  Sebastopol Plaza during farmer's market (june_2008_01)
+  28202x10361  770 views  2008-06-03
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/june_2008_01.gigapan
+
+gigapan.com/5844  Sebastopol Independent Charter School from driveway entrance (sics_03)
+  31029x13051  1332 views  2008-06-05
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/sics_03.gigapan
+
+gigapan.com/5850  Sebastopol Independent Charter School from near the rear gate  (sics_04)
+  37522x9721  1036 views  2008-06-05
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/sics_04.gigapan
+
+gigapan.com/5925  Corner of Depot and Brown Streets, Sebastopol, Northeast Plan area (20080608-01)
+  64297x11010  6013 views  2008-06-08
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080608-01.gigapan
+
+gigapan.com/5973  East entrance to Sebastopol on Hgwy 12.  NW Corner Sebastopol and Morris (20080611-01) 
+  69568x6965  1523 views  2008-06-10
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-01.gigapan
+
+gigapan.com/5976  East entrance to Sebastopol on Hgwy 12.  NE Corner Sebastopol and Morris (20080611-02)
+  32506x9267  1467 views  2008-06-11
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-02.gigapan
+
+gigapan.com/5978  Barrow Plant, just north of Sebastopol Ave from east side of  Morris (20080611-03)
+  43474x7365  1722 views  2008-06-11
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-03.gigapan
+
+gigapan.com/5979  from West side of Morris looking East, Barrow plant to my back, just north of Sebastopol Ave (20080611-04)
+  42032x6259  1544 views  2008-06-11
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-04.gigapan
+
+gigapan.com/5980  Into parking lot, from West side of Morris looking East, Barrow plant to my back, just north of Sebastopol Ave (20080611-05)
+  39623x7275  1455 views  2008-06-11
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-05.gigapan
+
+gigapan.com/5982  Barrow plant seen through flowers growing on the road margin (20080611-06)
+  15443x7581  2369 views  2008-06-11
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-06.gigapan
+
+gigapan.com/5983  Graventstein Station from north side of Sebastopol Ave (20080611-07)
+  32331x7192  1663 views  2008-06-11
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-07.gigapan
+
+gigapan.com/6032  Sebastopol Police Station (20080613_06)
+  32183x7452  2365 views  2008-06-13
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080613_06.gigapan
+
+gigapan.com/6038  Wilton and High Streets, Sebastopol (20080613_07)
+  17027x9886  1398 views  2008-06-13
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080613_07.gigapan
+
+gigapan.com/6041  Wilton and High Streets, Sebastopol (20080613_08)
+  16985x9879  1091 views  2008-06-13
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080613_08.gigapan
+
+gigapan.com/6060  Gassification power exchange workshop at the Shipyard (20080614_01)
+  31080x16753  2105 views  2008-06-14
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080614_01.gigapan
+
+gigapan.com/8543  Burning Man 2008 - looking up inside of the temple (temple4)
+  20846x12077  3396 views  2008-08-29
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple4.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple4.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple4.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple4.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/temple4.gigapan
+
+gigapan.com/8547  Burning Man 2008 - 360 degree view from a Cherry Picker (crane3)
+  63626x14651  1680 views  2008-08-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/crane3.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/crane3.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/crane3.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/crane3.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/crane3.gigapan
+
+gigapan.com/8548  burning Man 2008 - from the cherry picker (crane1)
+  23230x6461  1860 views  2008-08-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/crane1.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/crane1.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/crane1.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/crane1.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/crane1.gigapan
+
+gigapan.com/8550  Burning Man 2008 - from the technology platform (bm2008_05)
+  21634x5148  1306 views  2008-08-27
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_05.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_05.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_05.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_05.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_05.gigapan
+
+gigapan.com/8553  Burning Man 2008 - from the technology platform (bm2008_06)
+  21650x5156  1290 views  2008-08-27
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_06.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_06.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_06.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_06.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_06.gigapan
+
+gigapan.com/8559  Burning Man 208 - from the Technology Platform (bm2008_07)
+  51188x8344  1476 views  2008-08-27
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_07.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_07.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_07.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_07.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_07.gigapan
+
+gigapan.com/8562  Burning Man 2008 Center Camp (bm2008_10)
+  13829x6112  1823 views  2008-08-27
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_10.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_10.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_10.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_10.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_10.gigapan
+
+gigapan.com/8564  Burning Man 2008 Center Camp (bm2008_09)
+  44484x6377  3065 views  2008-08-27
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_09.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_09.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_09.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_09.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_09.gigapan
+
+gigapan.com/8566  Burning Man 2008 - The People Speak project (bm2008_16)
+  14943x4985  1240 views  2008-08-27
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_16.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_16.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_16.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_16.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_16.gigapan
+
+gigapan.com/8571  Burning Man 2008 - near the man (near_man_x)
+  52364x4935  1186 views  2008-08-27
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/near_man_x.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/near_man_x.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/near_man_x.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/near_man_x.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/near_man_x.gigapan
+
+gigapan.com/8577  Burning Man 2008 Temple (temple6?)
+  73770x4733  3393 views  2008-08-29
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple6.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple6.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple6.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple6.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/temple6.gigapan
+
+gigapan.com/8579  From the airport art tower (airport4)
+  21488x9779  1380 views  2008-08-31
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/airport4.gigapan
+
+gigapan.com/8580  Burning Man 2008 - The Man and Cherry Picker (bm2008b_04)
+  23318x19436  1294 views  2008-08-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008b_04.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008b_04.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008b_04.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008b_04.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008b_04.gigapan
+
+gigapan.com/8581  Burning Man 2008 - The Airport (airport2)
+  81380x15303  3902 views  2008-08-31
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/airport2.gigapan
+
+gigapan.com/8582  Burning Man 2008 - The Man (crane2)
+  21798x47605  8115 views  2008-08-28
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/crane2.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/crane2.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/crane2.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/crane2.gigapan
+
+gigapan.com/8583  Burning Man 2008 Temple (temple2)
+  38673x15101  2581 views  2008-08-29
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple2.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple2.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple2.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple2.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/temple2.gigapan
+
+gigapan.com/8585  Burning Man 2008 - Dreamland Checkpoint (checkpoint3)
+  24253x5128  1542 views  2008-08-29
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/checkpoint3.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/checkpoint3.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/checkpoint3.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/checkpoint3.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/checkpoint3.gigapan
+
+gigapan.com/8586  Burning Man 2008 Temple (temple5)
+  19628x12837  3356 views  2008-08-29
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple5.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple5.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple5.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple5.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/temple5.gigapan
+
+gigapan.com/8589  Burning Man 2008 Temple (temple1)
+  38666x9476  2891 views  2008-08-29
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple1.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple1.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple1.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple1.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/temple1.gigapan
+
+gigapan.com/8590  Burning Man 2008 - detail of plane (airport1)
+  24925x9521  6013 views  2008-08-31
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/airport1.gigapan
+
+gigapan.com/8592  Burning Man 2008 Temple (temple3)
+  34909x24893  2437 views  2008-08-29
+  local: /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple3.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple3.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple3.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple3.gigapan
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/temple3.gigapan
+
+gigapan.com/8596  Burning Man 2008 Detail of airport (airport3)
+  21493x15209  5012 views  2008-08-31
+  local: /Volumes/bigeneration/pix_consolidated/bm_2008/airport3.gigapan
+
+gigapan.com/14061  'upload l64_bay_36x11 - 0.4.3865 - l64_bay_36x11'
+  82978x20577  1866 views  2008-01-04
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l64_bay.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l64_bay.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/l64_bay.gigapan
+
+gigapan.com/14079  'upload l53_north_from_kiluhua_lighthouse_11x7 - 0.4.3865 - l53_north_from_kiluhua_lighthouse_11x7'
+  29512x14102  1028 views  2008-01-03
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l53_north_from_kiluhua_lighthouse.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l53_north_from_kiluhua_lighthouse.gigapan
+  local: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/l53_north_from_kiluhua_lighthouse.gigapan
+
+gigapan.com/17465  'upload sfbay_39x9 - 0.4.4087 - sfbay_39x9'
+  114773x19354  2610 views  2009-02-11
+  local: /Volumes/bigeneration/pix_consolidated/copy_20090212_plastiki/sfbay_39x9/sfbay_39x9.gigapan
+
+gigapan.com/17715  40% off - an art show for the new Economy (abco_interior_f_8x4)
+  21939x7214  1040 views  2009-02-20
+  local: /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_f_8x4/abco_interior_f_8x4.gigapan
+
+gigapan.com/17726  40% off - an art show for the new Economy (abco_interior_f2_8x4 - darker)
+  21864x7168  930 views  2009-02-20
+  local: /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_f2_8x4/abco_interior_f2_8x4.gigapan
+
+gigapan.com/17735  40% off - an art show for the new Economy (abco_interior_e_8x4)
+  20642x8061  962 views  2009-02-20
+  local: /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_e_8x4/abco_interior_e_8x4.gigapan
+
+gigapan.com/17736  40% off - an art show for the new Economy (taken from floor abco_interior_c_11x5)
+  25006x8935  1145 views  2009-02-20
+  local: /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_c_11x5/abco_interior_c_11x5.gigapan
+
+gigapan.com/17742  40% off - an art show for the new Economy (abco_interior_d_10x4)
+  26093x7364  950 views  2009-02-20
+  local: /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_d_10x4/abco_interior_d_10x4.gigapan
+
+gigapan.com/27144  'upload subway_2_11x5 -  - subway_2_11x5 notes: job created by python uploader version 0.03'
+  24988x8435  1219 views  2009-06-28
+  local: /Volumes/bigeneration/pix_consolidated/ny_june_2009/subway_2_11x5/subway_2_11x5.gigapan
+
+gigapan.com/111505  SIGGRAPH Studio Portraits 2012 (Chris)
+  17548x20560  323 views  2012-08-07
+  local: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/chris.gigapan
+
+gigapan.com/111612  Lovely statue in Chris' yard
+  29833x16318  506 views  2012-08-08
+  local: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/chris.gigapan
+
+gigapan.com/112405  Chris as a mosaic
+  23328x27994  469 views  2012-08-17
+  local: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/chris.gigapan
+

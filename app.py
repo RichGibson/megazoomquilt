@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string, abort, render_template, send_file, Response, request, jsonify
+from flask import Flask, render_template_string, abort, render_template, send_file, Response, request, jsonify, redirect, make_response, url_for
 import os
 import io
 import json
@@ -9,6 +9,24 @@ from PIL import Image
 
 app = Flask(__name__)
 from pathlib import Path
+
+SKINS = ['default', 'retro', 'amber']
+
+@app.context_processor
+def inject_skin():
+    skin = request.cookies.get('skin', 'default')
+    if skin not in SKINS:
+        skin = 'default'
+    return {'skin': skin}
+
+@app.route('/skin/<name>')
+def set_skin(name):
+    if name not in SKINS:
+        name = 'default'
+    dest = request.referrer or url_for('home')
+    resp = make_response(redirect(dest))
+    resp.set_cookie('skin', name, max_age=60*60*24*365)
+    return resp
 # Directory where image folders (e.g., 590/, 591/) are stored
 #BASE_DIR = os.path.join(os.path.dirname(__file__), "panos")
 BASE_DIR = Path(__file__).resolve().parent / "static/panos"
@@ -92,11 +110,17 @@ THUMB_MAX_TILES = 16  # never composite more tiles than this
 
 @app.route("/thumbnail/<pano_id>")
 def thumbnail(pano_id):
+    # Serve cached thumbnail if it exists
+    cached_path = BASE_DIR / pano_id / f"{pano_id}_thumb.jpg"
+    if cached_path.exists():
+        return send_file(cached_path, mimetype="image/jpeg")
+
     pano_json = BASE_DIR / pano_id / f"{pano_id}.json"
     if not pano_json.exists():
         abort(404)
     with pano_json.open() as f:
-        meta = json.load(f)['gigapan']
+        raw = json.load(f)
+    meta = raw.get('gigapan', raw)
 
     W = int(meta['width'])
     H = int(meta['height'])
@@ -159,10 +183,15 @@ def thumbnail(pano_id):
     crop_h = min(content_h, composed.height)
     composed = composed.crop((0, 0, crop_w, crop_h))
 
-    buf = io.BytesIO()
-    composed.save(buf, format="JPEG", quality=85)
-    buf.seek(0)
-    return send_file(buf, mimetype="image/jpeg")
+    # Save to cache then serve
+    try:
+        composed.save(cached_path, format="JPEG", quality=85)
+        return send_file(cached_path, mimetype="image/jpeg")
+    except Exception:
+        buf = io.BytesIO()
+        composed.save(buf, format="JPEG", quality=85)
+        buf.seek(0)
+        return send_file(buf, mimetype="image/jpeg")
 
 
 @app.route('/.well-known/appspecific/com.chrome.devtools.json')
@@ -185,12 +214,22 @@ def home():
         'date_desc':      (lambda p: (1 if p.get('taken_at') else 0,   p.get('taken_at') or ''),   True),
         'uploaded_asc':   (lambda p: (0 if p.get('created_at') else 1, p.get('created_at') or ''), False),
         'uploaded_desc':  (lambda p: (1 if p.get('created_at') else 0, p.get('created_at') or ''), True),
+        'size_asc':       (lambda p: p.get('width', 0) * p.get('height', 0),                        False),
+        'size_desc':      (lambda p: p.get('width', 0) * p.get('height', 0),                        True),
     }
     key, reverse = sort_config.get(sort, sort_config['id_asc'])
     panoramas = sorted(panoramas, key=key, reverse=reverse)
     p={}
     p['page_title']='Megazoomquilt'
     return render_template("index.html", panoramas=panoramas, p=p, sort=sort)
+
+@app.route("/map")
+def map_view():
+    panoramas = load_pano_data()
+    mapped = [p for p in panoramas
+              if p.get('latitude') and p.get('longitude')
+              and p['latitude'] != 0 and p['longitude'] != 0]
+    return render_template("map.html", panoramas=mapped, p={'page_title': 'Map'})
 
 @app.route("/admin")
 def admin():
@@ -211,7 +250,18 @@ def view_pano(pano_id):
     p={}
     p['page_title']='View '
     results=collect_tile_stats(f"{BASE_DIR}/{pano_id}")
-    return render_template("view.html", pano_id=pano_id, pano=pano_data['gigapan'], p=p, results=results)
+
+    # Collect geo-located panos for the location mini-map
+    geo_panos = [
+        {'id': pg['id'], 'name': pg['name'],
+         'lat': pg['latitude'], 'lng': pg['longitude']}
+        for pg in load_pano_data()
+        if pg.get('latitude') and pg.get('longitude')
+        and pg['latitude'] != 0 and pg['longitude'] != 0
+    ]
+
+    return render_template("view.html", pano_id=pano_id, pano=pano_data['gigapan'],
+                           p=p, results=results, geo_panos=geo_panos)
 
 if __name__ == "__main__":
     # foo=load_pano_data()

@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% block title %}Map — MegaZoomQuilt{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" crossorigin="" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" crossorigin="" />
+<style>
+  .map-layout {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    align-items: flex-start;
+    height: 82vh;
+  }
+  #pano-map {
+    flex: 1;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
+  .map-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    height: 100%;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .map-sidebar-count {
+    font-size: 0.78rem;
+    color: #777;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #eee;
+    flex-shrink: 0;
+  }
+  .map-sidebar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+  }
+  .map-thumb-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .map-thumb-item:hover { border-color: #0077cc; text-decoration: none; }
+  .map-thumb-item img {
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+    display: block;
+    background: #222;
+  }
+  .map-thumb-name {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+  }
+  .leaflet-popup-content a { font-weight: 600; display: block; margin-bottom: 0.2rem; }
+  .leaflet-popup-content .popup-meta { font-size: 0.8rem; color: #666; }
+  .pano-label {
+    background: rgba(255,255,255,0.85);
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 1px 5px;
+    white-space: nowrap;
+    box-shadow: none;
+  }
+  .pano-label::before { display: none; }
+  .skin-retro .pano-label, .skin-amber .pano-label {
+    background: var(--bg);
+    border-color: var(--p-dim);
+    color: var(--p);
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  /* Phosphor skin overrides */
+  .skin-retro #pano-map, .skin-amber #pano-map {
+    border: 2px double var(--p-dim);
+    border-radius: 0;
+  }
+  .skin-retro .map-sidebar, .skin-amber .map-sidebar {
+    background: var(--bg-up);
+    border: 2px double var(--p-dim);
+    border-radius: 0;
+  }
+  .skin-retro .map-sidebar-count, .skin-amber .map-sidebar-count {
+    color: var(--p-dim);
+    border-bottom-color: var(--p-ghost);
+  }
+  .skin-retro .map-thumb-item, .skin-amber .map-thumb-item {
+    border-color: var(--p-ghost);
+    border-radius: 0;
+  }
+  .skin-retro .map-thumb-item:hover, .skin-amber .map-thumb-item:hover {
+    border-color: var(--p);
+  }
+  .skin-retro .map-thumb-name, .skin-amber .map-thumb-name { color: var(--p); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="map-layout">
+
+  <aside class="map-sidebar">
+    <div class="map-sidebar-count" id="sidebar-count">{{ panoramas|length }} in view</div>
+    <div class="map-sidebar-list" id="sidebar-list"></div>
+  </aside>
+
+  <div id="pano-map"></div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" crossorigin=""></script>
+<script>
+  const panos = {{ panoramas | tojson }};
+
+  const map = L.map('pano-map');
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19
+  }).addTo(map);
+
+  const cluster = L.markerClusterGroup();
+  const bounds = [];
+
+  panos.forEach(p => {
+    const taken = p.taken_at ? p.taken_at.slice(0, 10) : (p.created_at ? p.created_at.slice(0, 10) : '');
+    const marker = L.marker([p.latitude, p.longitude]);
+    marker.bindPopup(`
+      <a href="/view/${p.id}">${p.name}</a>
+      <span class="popup-meta">${p.width}×${p.height}${taken ? ' &nbsp;·&nbsp; ' + taken : ''}</span>
+    `);
+    marker.bindTooltip(p.name, { permanent: true, direction: 'top', className: 'pano-label', pane: 'tooltipPane' });
+    marker.pano = p;
+    cluster.addLayer(marker);
+    bounds.push([p.latitude, p.longitude]);
+  });
+
+  // Re-open permanent tooltips after cluster animation completes
+  cluster.on('animationend', () => {
+    cluster.eachLayer(m => {
+      if (m.getTooltip && m.getTooltip()) m.openTooltip();
+    });
+  });
+
+  map.addLayer(cluster);
+
+  if (bounds.length > 0) {
+    map.fitBounds(bounds, { padding: [40, 40] });
+  } else {
+    map.setView([20, 0], 2);
+  }
+
+  // Sidebar: show thumbnails of panos visible in current map extent
+  function updateSidebar() {
+    const mapBounds = map.getBounds();
+    const visible = panos.filter(p =>
+      mapBounds.contains(L.latLng(p.latitude, p.longitude))
+    );
+
+    const countEl = document.getElementById('sidebar-count');
+    const listEl  = document.getElementById('sidebar-list');
+
+    countEl.textContent = visible.length + ' in view';
+    listEl.innerHTML = visible.map(p => `
+      <a class="map-thumb-item" href="/view/${p.id}">
+        <img src="/thumbnail/${p.id}" alt="${p.name}" loading="lazy"
+             onerror="this.style.background='#333';this.removeAttribute('src')">
+        <div class="map-thumb-name">${p.name}</div>
+      </a>
+    `).join('');
+  }
+
+  map.on('moveend zoomend', updateSidebar);
+  updateSidebar();
+</script>
+{% endblock %}

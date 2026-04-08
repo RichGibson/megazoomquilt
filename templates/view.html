@@ -118,6 +118,25 @@
     color: #aaa;
     line-height: 1.7;
   }
+  /* Location mini-map */
+  .location-map-section {
+    margin: 1rem 0 1.2rem;
+  }
+  .location-map-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #aaa;
+    margin: 0 0 0.4rem;
+    font-weight: 600;
+  }
+  #location-map {
+    height: calc(100vh - 120px);
+    min-height: 400px;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+  }
 </style>
 {% endblock %}
 
@@ -132,7 +151,7 @@
   <p class="pano-desc">{{ pano.description }}</p>
   {% endif %}
   <div class="pano-meta-bar">
-    <span>{{ pano.width }}×{{ pano.height }}{% if pano.resolution %} &nbsp;·&nbsp; {{ "{:,.0f}".format(pano.resolution / 1000000) }} MP{% endif %}</span>
+    <span>{{ pano.width }}×{{ pano.height }} &nbsp;·&nbsp; {{ "%.2f"|format(pano.width * pano.height / 1e9) }} GP{% if pano.resolution %} &nbsp;·&nbsp; {{ "{:,.0f}".format(pano.resolution / 1000000) }} MP{% endif %}</span>
     <span>{{ pano.levels }} zoom levels</span>
     {% if pano.views %}<span>👁 {{ pano.views }} views</span>{% endif %}
     {% if pano.taken_at %}<span>{{ pano.taken_at[:10] }}</span>
@@ -214,6 +233,13 @@
   </div>
 </details>
 
+{% if pano.latitude and pano.longitude %}
+<div class="location-map-section">
+  <h3 class="location-map-label">Location</h3>
+  <div id="location-map"></div>
+</div>
+{% endif %}
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.js"></script>
 
@@ -276,5 +302,74 @@
 
   map.on('zoomend', updateTileInfo);
   updateTileInfo();
+
+  /* ── Location mini-map ── */
+  {% if pano.latitude and pano.longitude %}
+  (function () {
+    const LAT = {{ pano.latitude }};
+    const LNG = {{ pano.longitude }};
+    const CURRENT_ID = String({{ pano_id }});
+    const CURRENT_NAME = {{ pano.name | tojson }};
+    const geoPanos = {{ geo_panos | tojson }};
+
+    // Build a panorama-camera SVG icon
+    // Shape: wide rounded rect (evokes landscape/panoramic format) with an arc inside
+    function panoIcon(width, height, fill, stroke) {
+      const rx = 3;
+      const arcY = height * 0.72;
+      const arcPullY = height * 0.18;
+      // Arc endpoints inset 22% from sides, pulls up toward center
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg"
+          width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+        <rect x="1" y="1" width="${width-2}" height="${height-2}"
+              rx="${rx}" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/>
+        <path d="M ${width*0.22},${arcY}
+                 Q ${width*0.5},${arcY - height*0.52}
+                   ${width*0.78},${arcY}"
+              fill="none" stroke="white"
+              stroke-width="${Math.max(1.4, width/18)}"
+              stroke-linecap="round"/>
+        <circle cx="${width*0.5}" cy="${arcY}" r="${width/10}"
+                fill="white" opacity="0.95"/>
+      </svg>`;
+      return L.divIcon({
+        html: svg,
+        className: '',
+        iconSize:   [width,  height],
+        iconAnchor: [width/2, height/2],
+        popupAnchor:[0, -height/2 - 4]
+      });
+    }
+
+    // Current pano: larger, warm gold
+    const iconCurrent = panoIcon(44, 28, '#e8950a', '#b56d00');
+    // Nearby panos: smaller, slate blue
+    const iconNearby  = panoIcon(28, 18, '#3a7bd5', 'white');
+
+    const locMap = L.map('location-map', {
+      center: [LAT, LNG],
+      zoom: 13
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 19,
+      subdomains: 'abcd'
+    }).addTo(locMap);
+
+    // Current panorama marker
+    L.marker([LAT, LNG], { icon: iconCurrent, zIndexOffset: 1000 })
+      .bindPopup(`<strong>${CURRENT_NAME}</strong><br><em>This panorama</em>`)
+      .addTo(locMap);
+
+    // Nearby panorama markers
+    geoPanos.forEach(function(gp) {
+      if (String(gp.id) === CURRENT_ID) return;
+      L.marker([gp.lat, gp.lng], { icon: iconNearby })
+        .bindPopup(`<a href="/view/${gp.id}">${gp.name}</a>`)
+        .addTo(locMap);
+    });
+  })();
+  {% endif %}
 </script>
 {% endblock %}

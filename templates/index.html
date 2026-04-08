@@ -5,7 +5,12 @@
 
   <aside class="sidebar">
     <input type="search" id="pano-search" class="search-input" placeholder="Search…" autocomplete="off">
-    <p class="sidebar-count"><strong id="visible-count">{{ panoramas|length }}</strong> of {{ panoramas|length }}</p>
+    {% set gigapan_count = panoramas|selectattr('id', 'lt', 1000000)|list|length %}
+    {% set local_count = panoramas|selectattr('id', 'ge', 1000000)|list|length %}
+    <p class="sidebar-count">
+      <strong id="visible-count">{{ panoramas|length }}</strong> of {{ panoramas|length }}<br>
+      <span id="gigapan-count">{{ gigapan_count }}</span> gigapan.com &nbsp;·&nbsp; <span id="local-count">{{ local_count }}</span> local
+    </p>
     <hr>
     <ul class="sidebar-list">
       {% for pano in panoramas %}
@@ -19,7 +24,7 @@
   <main>
     <div class="sort-bar">
       <span class="sort-label">Sort:</span>
-      {% for field, label in [('id', 'ID'), ('name', 'Name'), ('date', 'Taken'), ('uploaded', 'Uploaded')] %}
+      {% for field, label in [('id', 'ID'), ('name', 'Name'), ('size', 'Size'), ('date', 'Taken'), ('uploaded', 'Uploaded')] %}
         {% set is_asc = sort == field + '_asc' %}
         {% set is_desc = sort == field + '_desc' %}
         {% set is_active = is_asc or is_desc %}
@@ -34,7 +39,8 @@
     <div class="card-grid" id="card-grid">
       {% for pano in panoramas %}
       <a class="card" href="{{ url_for('view_pano', pano_id=pano['id']) }}"
-         data-name="{{ pano['name']|lower }} {{ pano.get('description', '')|lower }}">
+         data-name="{{ pano['name']|lower }} {{ pano.get('description', '')|lower }}"
+         data-local="{{ 'true' if pano['id'] >= 1000000 else 'false' }}">
         <div class="card-thumb">
           <img src="{{ url_for('thumbnail', pano_id=pano['id']) }}"
                alt="{{ pano['name'] }}"
@@ -46,7 +52,7 @@
         </div>
         <div class="card-body">
           <div class="card-title">{{ pano['name'] }}</div>
-          <div class="card-meta">{{ pano['width'] }}×{{ pano['height'] }} &nbsp;·&nbsp; {{ pano['levels'] }} levels</div>
+          <div class="card-meta">{{ pano['width'] }}×{{ pano['height'] }} &nbsp;·&nbsp; {{ "%.2f"|format(pano['width'] * pano['height'] / 1e9) }} GP &nbsp;·&nbsp; {{ pano['levels'] }} levels</div>
           {% if pano.get('description') %}
           <div class="card-desc">{{ pano['description'][:120] }}{% if pano['description']|length > 120 %}…{% endif %}</div>
           {% endif %}
@@ -71,19 +77,26 @@
   const cards = document.querySelectorAll('#card-grid .card');
   const sidebarItems = document.querySelectorAll('.sidebar-list li');
   const visibleCount = document.getElementById('visible-count');
+  const gigapanCount = document.getElementById('gigapan-count');
+  const localCount = document.getElementById('local-count');
 
   searchInput.addEventListener('input', function() {
     const q = this.value.toLowerCase().trim();
-    let count = 0;
+    let count = 0, gp = 0, loc = 0;
     cards.forEach(card => {
       const match = !q || card.dataset.name.includes(q);
       card.style.display = match ? '' : 'none';
-      if (match) count++;
+      if (match) {
+        count++;
+        if (card.dataset.local === 'true') loc++; else gp++;
+      }
     });
     sidebarItems.forEach(li => {
       li.style.display = !q || li.dataset.name.includes(q) ? '' : 'none';
     });
     visibleCount.textContent = count;
+    gigapanCount.textContent = gp;
+    localCount.textContent = loc;
   });
 </script>
 {% endblock %}

@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   {% block head %}{% endblock %}
 </head>
-<body>
+<body class="skin-{{ skin }}">
   <div class="content">
     <header>
       {% block header %}{% include 'header.html' %}{% endblock %}
@@ -16,7 +16,15 @@
       <nav>
         <ul class="navbar">
             <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('map_view') }}">Map</a></li>
             <li><a href="{{ url_for('admin')}}">Admin</a></li>
+            <li class="skin-switcher">
+              <select id="skin-select" onchange="location='/skin/'+this.value">
+                {% for s in ['default', 'retro', 'amber'] %}
+                  <option value="{{ s }}"{% if skin == s %} selected{% endif %}>{{ s }}</option>
+                {% endfor %}
+              </select>
+            </li>
         </ul>
       </nav>
     {% endblock %}

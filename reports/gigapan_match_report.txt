@@ -1,0 +1,584 @@
+# Master deduplication report
+# Comparing 830 stitchable local .gigapan files against gigapan.com list
+# NOTHING has been deleted or modified
+
+TOTALS
+  830  total stitchable .gigapan files
+  234  matched in first pass (filename in gigapan.com name) → 111 unique IDs
+   72  additional matches from deep search (description/token/grid)
+  524  still unmatched — likely never uploaded or name unrecognizable
+
+================================================================================
+DEEP MATCH DETAILS (new matches only)
+================================================================================
+
+
+SUMMARY
+  570 unmatched .gigapan files checked
+  114 confident additional matches found below
+
+
+--- score 84 ---
+  l63_park_ship_beach                            →  14092 | 'upload l63_park_beach_ship_68x5 - 0.4.3865 - l63_park_
+    why: stem_tokens_in_name(beach,park,ship); token_overlap_3+(beach,park,ship); grid+keyword(340imgs,beach,park)
+    local: 340 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l63_park_ship_beach.gigapan
+
+  l65_ship_park_beach                            →  14092 | 'upload l63_park_beach_ship_68x5 - 0.4.3865 - l63_park_
+    why: stem_tokens_in_name(beach,park,ship); token_overlap_3+(beach,park,ship); grid+keyword(340imgs,beach,park)
+    local: 340 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l65_ship_park_beach.gigapan
+
+
+--- score 76 ---
+  7909_7997_helicopter_and_tu134                 →  14425 | 'upload gx_ccc_helicopter_tu134_11x8 - 0.4.3865 - gx_cc
+    why: stem_tokens_in_name(helicopter,tu134); token_overlap_2long(helicopter,tu134); grid+keyword(88imgs,helicopter,tu134)
+    local: 88 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/7909_7997_helicopter_and_tu134.gigapan
+
+
+--- score 62 ---
+  a5_hursley_churchyard_detail_wall              →  2004 | Hursley Churchyard, back wall detail (a5)
+    why: stem_tokens_in_name(churchyard,detail,hursley); token_overlap_3+(churchyard,detail,hursley,wall)
+    local: 35 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a5_hursley_churchyard_detail_wall.gigapan
+    desc: More on the whole 'wow, take closeups' idea.
+
+  l23_treasure_island_clipper_cove               →  2047 | Clipper Cove, Treasure Island, California (l23)
+    why: stem_tokens_in_name(clipper,cove,island); token_overlap_3+(clipper,cove,island,treasure)
+    local: 36 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l23_treasure_island_clipper_cove.gigapan
+
+  k1_grave_creek_bridge_oregon                   →  1762 | Grave Creek Covered Bridge, Oregon (k1)
+    why: stem_tokens_in_name(bridge,creek,grave); token_overlap_3+(bridge,creek,grave,oregon)
+    local: 102 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/k1_grave_creek_bridge_oregon.gigapan
+
+
+--- score 59 ---
+  john_carlin_f                                  →  91918 | John and Carlin in front of John's boat
+    why: stem_tokens_in_name(carlin,john); token_overlap_3+(boat,carlin,john)
+    local: 6 imgs  /Volumes/bigeneration/pix_consolidated/ny_june_2009/john_boat_back_15x8/john_carlin_f.gigapan
+
+  john_carlin_f                                  →  26924 | John Good's boat - rear
+    why: stem_tokens_in_name(carlin,john); token_overlap_3+(boat,carlin,john)
+    local: 6 imgs  /Volumes/bigeneration/pix_consolidated/ny_june_2009/john_boat_back_15x8/john_carlin_f.gigapan
+    desc: John and Carlin at the transom of the boat.
+
+  8188_8219_plane_cool_lights                    →  2016 | Plane, water, cool lights at Chaos Communications Camp 
+    why: stem_tokens_in_name(cool,lights,plane); token_overlap_3+(cool,lights,plane)
+    local: 32 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/8188_8219_plane_cool_lights.gigapan
+    desc: The guys who camped here set up this awesome tank of water with bio-engineered algae, and 
+
+  a13_hursley_woods_red_flowers                  →  2104 | Hursley, UK Woods and red flowers (a13)
+    why: stem_tokens_in_name(flowers,hursley,woods); token_overlap_3+(flowers,hursley,woods)
+    local: 40 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a13_hursley_woods_red_flowers.gigapan
+
+  a14_hursley_golden_field                       →  2105 | Hursley, UK Golden Field (a14)
+    why: stem_tokens_in_name(field,golden,hursley); token_overlap_3+(field,golden,hursley)
+    local: 45 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a14_hursley_golden_field.gigapan
+
+  5963_6011_geffrye_victorian_room               →  1923 | Geffrye's museum 'Victorian Room,' London, UK (f2)
+    why: stem_tokens_in_name(geffrye,room,victorian); token_overlap_3+(geffrye,room,victorian)
+    local: 49 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/5963_6011_geffrye_victorian_room.gigapan
+    desc: Victorian Room at the Geffrye's 
+
+  l6_cinder_cone_and_shasta                      →  1850 | Cinder cone and Mount Shasta (l6)
+    why: stem_tokens_in_name(cinder,cone,shasta); token_overlap_3+(cinder,cone,shasta)
+    local: 52 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l6_cinder_cone_and_shasta.gigapan
+    desc: Mount Shasta straight ahead, the cinder cone to the left.
+
+
+
+  l25_treasure_island_sunset                     →  2053 | Treasure Island, CA at sunset (l25)
+    why: stem_tokens_in_name(island,sunset,treasure); token_overlap_3+(island,sunset,treasure)
+    local: 60 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l25_treasure_island_sunset.gigapan
+
+  a3_hursley_churchyard_detail                   →  2004 | Hursley Churchyard, back wall detail (a5)
+    why: stem_tokens_in_name(churchyard,detail,hursley); token_overlap_3+(churchyard,detail,hursley)
+    local: 72 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a3_hursley_churchyard_detail.gigapan
+    desc: More on the whole 'wow, take closeups' idea.
+
+  a3_hursley_churchyard_detail                   →  1993 | All Soul's Hursley Churchyard detail (a3)
+    why: stem_tokens_in_name(churchyard,detail,hursley); token_overlap_3+(churchyard,detail,hursley)
+    local: 72 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a3_hursley_churchyard_detail.gigapan
+    desc: Detail of gravestones.
+
+  l14b_howarth_dock                              →  2113 | Dock and lake at Howarth Park, Santa Rosa, California (
+    why: stem_tokens_in_name(dock,howarth,l14b); token_overlap_3+(dock,howarth,l14b)
+    local: 72 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l14b_howarth_dock.gigapan
+
+  l20_treasure_island_tanks                      →  2044 | Tanks, blowers, and batting cage Treasure Island, Calif
+    why: stem_tokens_in_name(island,tanks,treasure); token_overlap_3+(island,tanks,treasure)
+    local: 72 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l20_treasure_island_tanks.gigapan
+
+  l24_treasure_island_seaward                    →  2050 | Treasure Island, looking seaward (l24)
+    why: stem_tokens_in_name(island,seaward,treasure); token_overlap_3+(island,seaward,treasure)
+    local: 84 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l24_treasure_island_seaward.gigapan
+
+  l1_rainier_columbia_river                      →  1843 | Columbia River from Rainier, Oregon (l1)
+    why: stem_tokens_in_name(columbia,rainier,river); token_overlap_3+(columbia,rainier,river)
+    local: 112 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l1_rainier_columbia_river.gigapan
+    desc: The Columbia River from a beach in Rainier Oregon.
+
+Forest products processing plants vi
+
+  l2_rainier_columbia_river                      →  1843 | Columbia River from Rainier, Oregon (l1)
+    why: stem_tokens_in_name(columbia,rainier,river); token_overlap_3+(columbia,rainier,river)
+    local: 114 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l2_rainier_columbia_river.gigapan
+    desc: The Columbia River from a beach in Rainier Oregon.
+
+Forest products processing plants vi
+
+  k4_yoncalla_cemetary_overview                  →  1837 | Yoncalla Pioneer Cemetary - overview (k4)
+    why: stem_tokens_in_name(cemetary,overview,yoncalla); token_overlap_3+(cemetary,overview,yoncalla)
+    local: 126 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/k4_yoncalla_cemetary_overview.gigapan
+    desc: View of the Yoncalla Pioneer Cemetary from near to the entrance.  The miller plot is on th
+
+  l59_fort_elizabeth_beach                       →  2483 | fort elizabeth beach (l59)
+    why: stem_tokens_in_name(beach,elizabeth,fort); token_overlap_3+(beach,elizabeth,fort)
+    local: 132 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l59_fort_elizabeth_beach.gigapan
+    desc: By Fort Elizabeth
+
+The exif data confirms I shot this at f8, but I still got vignetting,
+
+  k3_dick_and_john_graves                        →  1806 | Dick and John Gale Graves at Yoncalla Cemetery, Yoncall
+    why: stem_tokens_in_name(dick,graves,john); token_overlap_3+(dick,graves,john)
+    local: 132 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/k3_dick_and_john_graves.gigapan
+    desc: The grave stones of my Father, Uncle, and Great Grandfather.
+
+  l28_382_florence_patrick_amiot                 →  2092 | Patrick Amiot's House 353 Florence, Sebastopol CA (l28)
+    why: stem_tokens_in_name(amiot,florence,patrick); token_overlap_3+(amiot,florence,patrick)
+    local: 136 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l28_382_florence_patrick_amiot.gigapan
+
+  k2_miller_plot_overview                        →  1837 | Yoncalla Pioneer Cemetary - overview (k4)
+    why: stem_tokens_in_name(miller,overview,plot); token_overlap_3+(miller,overview,plot)
+    local: 136 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/k2_miller_plot_overview.gigapan
+    desc: View of the Yoncalla Pioneer Cemetary from near to the entrance.  The miller plot is on th
+
+  k2_miller_plot_overview                        →  1793 | Overview of Miller family plot, Yoncalla Pioneer Cemete
+    why: stem_tokens_in_name(miller,overview,plot); token_overlap_3+(miller,overview,plot)
+    local: 136 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/k2_miller_plot_overview.gigapan
+    desc: The Miller family plot in the Yoncalla pioneer cemetery.
+
+My great grandfather's oldest 
+
+  i1_portugese_beach_cliffs                      →  1936 | Portugese Beach cliffs, beach.  Mendocino, CA (i1)
+    why: stem_tokens_in_name(beach,cliffs,portugese); token_overlap_3+(beach,cliffs,portugese)
+    local: 153 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/i1_portugese_beach_cliffs.gigapan
+
+  l45_creek_spencer_rich                         →  2485 | creek spencer rich (l45)
+    why: stem_tokens_in_name(creek,rich,spencer); token_overlap_3+(creek,rich,spencer)
+    local: 168 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l45_creek_spencer_rich.gigapan
+    desc:  Spencer and i waded a bit in the creek.  It was fun.  I waded out a bit, feeling the curr
+
+  l11_shasta_bottom_of_stairs                    →  1855 | Lake Shasta Marina 1, at the bottom of the stairs (l11)
+    why: stem_tokens_in_name(bottom,shasta,stairs); token_overlap_3+(bottom,shasta,stairs)
+    local: 168 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l11_shasta_bottom_of_stairs.gigapan
+    desc: A low lake shasta from down on the banks.
+
+The ground was littered with dead and open fr
+
+  a9_hursley_flint_wall                          →  2097 | Hursley, UK Flint Wall (a9)
+    why: stem_tokens_in_name(flint,hursley,wall); token_overlap_3+(flint,hursley,wall)
+    local: 175 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a9_hursley_flint_wall.gigapan
+    desc: this is the flint wall to All Soul's Church.  The building covered in ivy to the left is t
+
+
+--- score 51 ---
+  e1_tower_bridge                                →  60076 | Concrete details of bunker near Golden Gate Bridge - nu
+    why: stem_tokens_in_name(bridge,tower); token_overlap_2long(bridge,tower)
+    local: 35 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/e1_tower_bridge.gigapan
+    desc: Looking into the observation 'tower.'  I think they would have someone on watch, maybe wit
+
+  e1_tower_bridge                                →  1973 | Tower Bridge and thames details, London, UK (e1)
+    why: stem_tokens_in_name(bridge,tower); token_overlap_2long(bridge,tower)
+    local: 35 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/e1_tower_bridge.gigapan
+    desc: The tower bridge over the thames.
+
+  l17_331_florence_tractor                       →  2055 | 331 Florence Ave, Sebastopol, CA  Tractor (l17)
+    why: stem_tokens_in_name(florence,tractor); token_overlap_2long(florence,tractor)
+    local: 40 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l17_331_florence_tractor.gigapan
+
+  7997_8045_helicopter_and_truck                 →  2014 | Chaos Communciations Camp helicopter and truck (7997_80
+    why: stem_tokens_in_name(helicopter,truck); token_overlap_2long(helicopter,truck)
+    local: 49 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/7997_8045_helicopter_and_truck.gigapan
+
+  sebastopol_ready_mix_01                        →  5563 | Sebastopol Ready Mix
+    why: stem_tokens_in_name(ready,sebastopol); token_overlap_2long(ready,sebastopol)
+    local: 56 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/sebastopol_ready_mix_01.gigapan
+    desc: The Sebastopol Ready Mix plant from the North West.
+
+Relatively small field of view.  56
+
+  sebastopol_ready_mix_01                        →  2547 | Sebastopol Ready Mix (m8)
+    why: stem_tokens_in_name(ready,sebastopol); token_overlap_2long(ready,sebastopol)
+    local: 56 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/sebastopol_ready_mix_01.gigapan
+    desc: The ready mix plant in Sebastopol.
+
+  a6_hursley_churchyard                          →  2004 | Hursley Churchyard, back wall detail (a5)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 60 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a6_hursley_churchyard.gigapan
+    desc: More on the whole 'wow, take closeups' idea.
+
+  a6_hursley_churchyard                          →  1993 | All Soul's Hursley Churchyard detail (a3)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 60 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a6_hursley_churchyard.gigapan
+    desc: Detail of gravestones.
+
+  a6_hursley_churchyard                          →  1944 | All Souls Churchyard, Hursley, UK (a6)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 60 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a6_hursley_churchyard.gigapan
+    desc: I love this attenuated light.  Everything from the churchyard feels ephemeral, the way a c
+
+  a6_hursley_churchyard                          →  1937 | All Saints Churchyard, Hursley, UK (a2)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 60 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a6_hursley_churchyard.gigapan
+    desc: Grave stones planted by the back wall of All Saint's church.
+
+I don't _think_ that those
+
+  a6_hursley_churchyard                          →  1931 | Hursley Churchyard (p2)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 60 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a6_hursley_churchyard.gigapan
+
+  a6_hursley_churchyard                          →  597 | All Saints Church, Hursely, UK (a8)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 60 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a6_hursley_churchyard.gigapan
+    desc: All Saints Church, Hursley, is another of those little Parish churchs which, to pardon the
+
+  a12_hursley_woods                              →  2104 | Hursley, UK Woods and red flowers (a13)
+    why: stem_tokens_in_name(hursley,woods); token_overlap_2long(hursley,woods)
+    local: 70 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a12_hursley_woods.gigapan
+
+  a12_hursley_woods                              →  2102 | Hursley, UK Woods (a12)
+    why: stem_tokens_in_name(hursley,woods); token_overlap_2long(hursley,woods)
+    local: 70 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a12_hursley_woods.gigapan
+    desc: I finally figured out how to stittch and upload from the command line, so I didn't see thi
+
+  l27_353_florence_surfer                        →  2089 | Surfer Sculpture 353 Florence, Sebastopol CA (l27)
+    why: stem_tokens_in_name(florence,surfer); token_overlap_2long(florence,surfer)
+    local: 80 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l27_353_florence_surfer.gigapan
+
+  l48_pride_of_america                           →  2480 | aloha (l66)
+    why: stem_tokens_in_name(america,pride); token_overlap_2long(america,pride)
+    local: 90 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l48_pride_of_america.gigapan
+    desc: The aloha deck and swimming pool on the Pride of America cruise ship.  (not the same image
+
+  l48_pride_of_america                           →  2435 | Side of Pride of America (l70)
+    why: stem_tokens_in_name(america,pride); token_overlap_2long(america,pride)
+    local: 90 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l48_pride_of_america.gigapan
+
+  l48_pride_of_america                           →  2434 | Pride of America at Maui, HI (l48)
+    why: stem_tokens_in_name(america,pride); token_overlap_2long(america,pride)
+    local: 90 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l48_pride_of_america.gigapan
+    desc: Spencer did Kung Fu with his bamboo sticks from the Iao valley (they later seized his stic
+
+  l48_pride_of_america                           →  2432 | Side of Pride of America (l69)
+    why: stem_tokens_in_name(america,pride); token_overlap_2long(america,pride)
+    local: 90 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l48_pride_of_america.gigapan
+
+  l48_pride_of_america                           →  2414 | Pride of America pool deck (l67)
+    why: stem_tokens_in_name(america,pride); token_overlap_2long(america,pride)
+    local: 90 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l48_pride_of_america.gigapan
+
+  l47_japanese_garden                            →  2447 | japanese garden (l47)
+    why: stem_tokens_in_name(garden,japanese); token_overlap_2long(garden,japanese)
+    local: 96 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l47_japanese_garden.gigapan
+    desc: Spencer in front of the Japanese memorial garden up the Iao Valley.
+(126mm equivalent)
+
+  l42_spencer_creek                              →  2485 | creek spencer rich (l45)
+    why: stem_tokens_in_name(creek,spencer); token_overlap_2long(creek,spencer)
+    local: 105 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l42_spencer_creek.gigapan
+    desc:  Spencer and i waded a bit in the creek.  It was fun.  I waded out a bit, feeling the curr
+
+  l42_spencer_creek                              →  2416 | Spencer and Creek, Iao Valley (l42)
+    why: stem_tokens_in_name(creek,spencer); token_overlap_2long(creek,spencer)
+    local: 105 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l42_spencer_creek.gigapan
+    desc: Spencer and I rented a car...well, I did the renting, and drove up to the Iao Valley.  The
+
+  a18_hursley_cemetery                           →  14405 | Cemetery Hursley, UK (A19)
+    why: stem_tokens_in_name(cemetery,hursley); token_overlap_2long(cemetery,hursley)
+    local: 105 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a18_hursley_cemetery.gigapan
+    desc: Cemetery in Hursley
+
+  a18_hursley_cemetery                           →  2114 | The 'new' cemetery, Hursley, UK (a18)
+    why: stem_tokens_in_name(cemetery,hursley); token_overlap_2long(cemetery,hursley)
+    local: 105 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a18_hursley_cemetery.gigapan
+
+  a18_hursley_cemetery                           →  600 | Lychgate, Hursley, UK
+    why: stem_tokens_in_name(cemetery,hursley); token_overlap_2long(cemetery,hursley)
+    local: 105 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/a18_hursley_cemetery.gigapan
+    desc: A Lychgate is covered gate into a traditional British cemetery.
+
+Check out the wikipedia
+
+  j1_tomales_highway_one                         →  2111 | Countryside near Tomales Bay on Highway 1, California (
+    why: stem_tokens_in_name(highway,tomales); token_overlap_2long(highway,tomales)
+    local: 105 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/j1_tomales_highway_one.gigapan
+
+  1892_2010_h3_farmer_market                     →  5465 | Tomato plants at the Sebastopol Farmer's market
+    why: stem_tokens_in_name(farmer,market); token_overlap_2long(farmer,market)
+    local: 119 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/1892_2010_h3_farmer_market.gigapan
+    desc: Tomato plants and a little surprise at the sebastopol farmer's market
+
+  1892_2010_h3_farmer_market                     →  744 | Sebastopol Square during Sunday 9/23/2007 Farmer's mark
+    why: stem_tokens_in_name(farmer,market); token_overlap_2long(farmer,market)
+    local: 119 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/1892_2010_h3_farmer_market.gigapan
+
+  l56_hanalei_valley                             →  2469 | hanalei valley (l56)
+    why: stem_tokens_in_name(hanalei,valley); token_overlap_2long(hanalei,valley)
+    local: 119 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l56_hanalei_valley.gigapan
+    desc: Near Princeville, the Hanalei valley is the quintessential Hawai'in landscape.
+
+(150mm e
+
+  j3_laguna_bridge                               →  1854 | Laguna de Santa Rosa from Occidental Road bridge (j3)
+    why: stem_tokens_in_name(bridge,laguna); token_overlap_2long(bridge,laguna)
+    local: 119 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/j3_laguna_bridge.gigapan
+
+  j3_laguna_bridge                               →  748 | Laguna de santa rosa by the seasonal bridge
+    why: stem_tokens_in_name(bridge,laguna); token_overlap_2long(bridge,laguna)
+    local: 119 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/j3_laguna_bridge.gigapan
+
+  j3_laguna_bridge                               →  740 | Laguna de Santa Rosa-on the seasonal bridge
+    why: stem_tokens_in_name(bridge,laguna); token_overlap_2long(bridge,laguna)
+    local: 119 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/j3_laguna_bridge.gigapan
+
+  l31_jungle_mural                               →  2106 | Jungle Mural, Sebastopol CA (l31)
+    why: stem_tokens_in_name(jungle,mural); token_overlap_2long(jungle,mural)
+    local: 120 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l31_jungle_mural.gigapan
+
+  l29_392_florence_soccer                        →  2098 | Soccer Sculpture 392 Florence, Sebastopol CA (l29)
+    why: stem_tokens_in_name(florence,soccer); token_overlap_2long(florence,soccer)
+    local: 136 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l29_392_florence_soccer.gigapan
+
+  l10_shasta_top_of_stairs                       →  1855 | Lake Shasta Marina 1, at the bottom of the stairs (l11)
+    why: stem_tokens_in_name(shasta,stairs); token_overlap_2long(shasta,stairs)
+    local: 136 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l10_shasta_top_of_stairs.gigapan
+    desc: A low lake shasta from down on the banks.
+
+The ground was littered with dead and open fr
+
+  l10_shasta_top_of_stairs                       →  1829 | Lake Shasta Marina 1, from the top of the stairs (l10)
+    why: stem_tokens_in_name(shasta,stairs); token_overlap_2long(shasta,stairs)
+    local: 136 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l10_shasta_top_of_stairs.gigapan
+    desc: Lake Shasta Marina 1, and I5 Shasta Bridge on the right.
+
+I have crossed that bridge man
+
+  1716_1891_laguna-by_bridge                     →  1854 | Laguna de Santa Rosa from Occidental Road bridge (j3)
+    why: stem_tokens_in_name(bridge,laguna); token_overlap_2long(bridge,laguna)
+    local: 174 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/1716_1891_laguna-by_bridge.gigapan
+
+  1716_1891_laguna-by_bridge                     →  748 | Laguna de santa rosa by the seasonal bridge
+    why: stem_tokens_in_name(bridge,laguna); token_overlap_2long(bridge,laguna)
+    local: 174 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/1716_1891_laguna-by_bridge.gigapan
+
+  1716_1891_laguna-by_bridge                     →  740 | Laguna de Santa Rosa-on the seasonal bridge
+    why: stem_tokens_in_name(bridge,laguna); token_overlap_2long(bridge,laguna)
+    local: 174 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/1716_1891_laguna-by_bridge.gigapan
+
+  i7_mendo_tower                                 →  9601 | Mendocino from Mom's water tower - one side (mendo_towe
+    why: stem_tokens_in_name(mendo,tower); token_overlap_2long(mendo,tower)
+    local: 198 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/i7_mendo_tower.gigapan
+
+  i2_portugese_beach                             →  9524 | Cliff's at Portugese Beach, Mendocino (cliff_portugese_
+    why: stem_tokens_in_name(beach,portugese); token_overlap_2long(beach,portugese)
+    local: 203 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/i2_portugese_beach.gigapan
+
+  i2_portugese_beach                             →  1936 | Portugese Beach cliffs, beach.  Mendocino, CA (i1)
+    why: stem_tokens_in_name(beach,portugese); token_overlap_2long(beach,portugese)
+    local: 203 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/i2_portugese_beach.gigapan
+
+  i2_portugese_beach                             →  828 | Looking over Portugese Beach (i3)
+    why: stem_tokens_in_name(beach,portugese); token_overlap_2long(beach,portugese)
+    local: 203 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/i2_portugese_beach.gigapan
+    desc: From a narrow little trail above a massive cliff..
+
+  b3_great_windmill                              →  2108 | London, UK Intersection of Shaftesbury, Denman and Grea
+    why: stem_tokens_in_name(great,windmill); token_overlap_2long(great,windmill)
+    local: 209 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/b3_great_windmill.gigapan
+
+  b3_great_windmill                              →  724 | London Shaftesbury, Denman, and Great Windmill streets 
+    why: stem_tokens_in_name(great,windmill); token_overlap_2long(great,windmill)
+    local: 209 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/b3_great_windmill.gigapan
+    desc: I liked this corner of Shaftesbury, Denman, and Great Windmill streets.  According to my i
+
+  i4_mendocino_cliffs                            →  1936 | Portugese Beach cliffs, beach.  Mendocino, CA (i1)
+    why: stem_tokens_in_name(cliffs,mendocino); token_overlap_2long(cliffs,mendocino)
+    local: 222 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/i4_mendocino_cliffs.gigapan
+
+  1484_1715_laguna_bridge                        →  1854 | Laguna de Santa Rosa from Occidental Road bridge (j3)
+    why: stem_tokens_in_name(bridge,laguna); token_overlap_2long(bridge,laguna)
+    local: 232 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/1484_1715_laguna_bridge.gigapan
+
+  1484_1715_laguna_bridge                        →  748 | Laguna de santa rosa by the seasonal bridge
+    why: stem_tokens_in_name(bridge,laguna); token_overlap_2long(bridge,laguna)
+    local: 232 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/1484_1715_laguna_bridge.gigapan
+
+  1484_1715_laguna_bridge                        →  740 | Laguna de Santa Rosa-on the seasonal bridge
+    why: stem_tokens_in_name(bridge,laguna); token_overlap_2long(bridge,laguna)
+    local: 232 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/1484_1715_laguna_bridge.gigapan
+
+  l62_marriot_garden                             →  2477 | marriot garden (l62)
+    why: stem_tokens_in_name(garden,marriot); token_overlap_2long(garden,marriot)
+    local: 260 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l62_marriot_garden.gigapan
+    desc: I ran into my Dad and Step Mom.  They were on a tear to go check out the Marriot.  They we
+
+  p2_hursley_churchyard                          →  2004 | Hursley Churchyard, back wall detail (a5)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 315 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/p2_hursley_churchyard.gigapan
+    desc: More on the whole 'wow, take closeups' idea.
+
+  p2_hursley_churchyard                          →  1993 | All Soul's Hursley Churchyard detail (a3)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 315 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/p2_hursley_churchyard.gigapan
+    desc: Detail of gravestones.
+
+  p2_hursley_churchyard                          →  1944 | All Souls Churchyard, Hursley, UK (a6)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 315 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/p2_hursley_churchyard.gigapan
+    desc: I love this attenuated light.  Everything from the churchyard feels ephemeral, the way a c
+
+  p2_hursley_churchyard                          →  1937 | All Saints Churchyard, Hursley, UK (a2)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 315 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/p2_hursley_churchyard.gigapan
+    desc: Grave stones planted by the back wall of All Saint's church.
+
+I don't _think_ that those
+
+  p2_hursley_churchyard                          →  1931 | Hursley Churchyard (p2)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 315 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/p2_hursley_churchyard.gigapan
+
+  p2_hursley_churchyard                          →  597 | All Saints Church, Hursely, UK (a8)
+    why: stem_tokens_in_name(churchyard,hursley); token_overlap_2long(churchyard,hursley)
+    local: 315 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/p2_hursley_churchyard.gigapan
+    desc: All Saints Church, Hursley, is another of those little Parish churchs which, to pardon the
+
+  i8_mendo_tower                                 →  9601 | Mendocino from Mom's water tower - one side (mendo_towe
+    why: stem_tokens_in_name(mendo,tower); token_overlap_2long(mendo,tower)
+    local: 370 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/i8_mendo_tower.gigapan
+
+
+--- score 36 ---
+  small_work                                     →  48329 | Two and a Half Tenths of an Inch
+    why: stem_tokens_in_name(small,work)
+    local: 12 imgs  /Volumes/bigeneration/pix_consolidated/copy_20081223/pudding_creek_sand_cliff_11x8/small_work.gigapan
+    desc: Microscopic Gigapan of six inch ruler.  The numbers mark tenths of an inch.  The hash mark
+
+  l30_rite_aid_hill                              →  2101 | Rite Aid Hill, Sebastopol CA (l30)
+    why: stem_tokens_in_name(hill,rite)
+    local: 48 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l30_rite_aid_hill.gigapan
+
+  f3_saul_office                                 →  1926 | London street - outside Saul Albert's office (f3)
+    why: stem_tokens_in_name(office,saul)
+    local: 48 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/f3_saul_office.gigapan
+
+  ives_pool_20070920_b                           →  723 | 2nd view of Ives Pool, Sebastopol, CA
+    why: stem_tokens_in_name(ives,pool)
+    local: 55 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/ives_pool_20070920_b.gigapan
+
+  ives_pool_20070920_b                           →  697 | Ives Pool, Ives Park, Sebastopol, CA
+    why: stem_tokens_in_name(ives,pool)
+    local: 55 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/ives_pool_20070920_b.gigapan
+    desc: Ives pools is where the Sebastopol Sea Serpents swim.  It was the first place I added to P
+
+  mf22_lego_car                                  →  4964 | Lego Jeep at the maker faire (mf22)
+    why: stem_tokens_in_name(lego,mf22)
+    local: 66 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf22_lego_car.gigapan
+
+  l14b_howarth_doc                               →  2113 | Dock and lake at Howarth Park, Santa Rosa, California (
+    why: stem_tokens_in_name(howarth,l14b)
+    local: 72 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l14b_howarth_doc.gigapan
+
+  pony_ride_01                                   →  39459 | Pony Rides in front of Karlskirche
+    why: stem_tokens_in_name(pony,ride)
+    local: 72 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/pony_ride_01.gigapan
+    desc: I stumbled on the  one day, and it was awesome!   Exploring a city is filled with connetio
+
+  pony_ride_01                                   →  5732 | Pony Ride at Howarth Park
+    why: stem_tokens_in_name(pony,ride)
+    local: 72 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/pony_ride_01.gigapan
+    desc: My nephew Colin volunteers at the pony ride in Howarth Park.  
+
+72 images, Focal length 
+
+  l46_picnic_area                                →  2445 | picnic area (l46)
+    why: stem_tokens_in_name(area,picnic)
+    local: 78 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l46_picnic_area.gigapan
+    desc: By the picnic area and memorial gardens.
+(95mm equivalent)
+
+  l8_castle_crag                                 →  1881 | Castle Crag and Trees (l7)
+    why: stem_tokens_in_name(castle,crag)
+    local: 78 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l8_castle_crag.gigapan
+    desc: The view point for Castle Crag is lovely.  Just far enough from the car park that you can 
+
+  l8_castle_crag                                 →  1879 | Castle Crag State Park, California (l8)
+    why: stem_tokens_in_name(castle,crag)
+    local: 78 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l8_castle_crag.gigapan
+    desc: from the view point of Castle Crag state park.
+
+  j2_laguna_pull_out                             →  80040 | Laguna de Santa Rosa vernal pool - close up
+    why: stem_tokens_in_name(laguna,pull)
+    local: 96 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/j2_laguna_pull_out.gigapan
+    desc: Close up of part of the pool shown in gigapan http://gigapan.org/gigapans/80039/
+
+The La
+
+  ives_pool_20070920_a                           →  723 | 2nd view of Ives Pool, Sebastopol, CA
+    why: stem_tokens_in_name(ives,pool)
+    local: 98 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/ives_pool_20070920_a.gigapan
+
+  ives_pool_20070920_a                           →  697 | Ives Pool, Ives Park, Sebastopol, CA
+    why: stem_tokens_in_name(ives,pool)
+    local: 98 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/ives_pool_20070920_a.gigapan
+    desc: Ives pools is where the Sebastopol Sea Serpents swim.  It was the first place I added to P
+
+  home_batman                                    →  1901 | Batman in the yard (home)
+    why: stem_tokens_in_name(batman,home)
+    local: 112 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/home_batman.gigapan
+
+  e5_tate_modern                                 →  2013 | Tate Modern, London, UK (e5)
+    why: stem_tokens_in_name(modern,tate)
+    local: 171 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/e5_tate_modern.gigapan
+    desc: Tate Modern Gallery
+
+  e5_tate_modern                                 →  730 | Tate Modern, London, UK
+    why: stem_tokens_in_name(modern,tate)
+    local: 171 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/e5_tate_modern.gigapan
+
+  l61_salt_ponds                                 →  2450 | salt ponds (l61)
+    why: stem_tokens_in_name(ponds,salt)
+    local: 174 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l61_salt_ponds.gigapan
+    desc: Salt Ponds - some of the individual images are not in focus :-(
+
+The sign reads "absolut
+
+  l7_castle_crag_big                             →  1881 | Castle Crag and Trees (l7)
+    why: stem_tokens_in_name(castle,crag)
+    local: 216 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l7_castle_crag_big.gigapan
+    desc: The view point for Castle Crag is lovely.  Just far enough from the car park that you can 
+
+  l7_castle_crag_big                             →  1879 | Castle Crag State Park, California (l8)
+    why: stem_tokens_in_name(castle,crag)
+    local: 216 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l7_castle_crag_big.gigapan
+    desc: from the view point of Castle Crag state park.
+
+  l49_burned_dock                                →  2442 | ocean (l50)
+    why: stem_tokens_in_name(burned,dock)
+    local: 248 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l49_burned_dock.gigapan
+    desc: This one is a 163 35mm equivalent lens.  check out dem chickens in the snapshot.  Same spo
+
+  l49_burned_dock                                →  2439 | burned dock Hanamaulu Bay (l49)
+    why: stem_tokens_in_name(burned,dock)
+    local: 248 imgs  /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l49_burned_dock.gigapan
+    desc: Burned out dock.  As I was walking back to the temporarilly unattended camera a group of k
+
+
+--- score 32 ---
+  small_work                                     →  14346 | Madeline on a cliff of sand Pudding Creek
+    why: token_overlap_3+(cliff,creek,pudding,sand)
+    local: 12 imgs  /Volumes/bigeneration/pix_consolidated/copy_20081223/pudding_creek_sand_cliff_11x8/small_work.gigapan
+
+  pudding_creek_sand_cliff_11x8                  →  14346 | Madeline on a cliff of sand Pudding Creek
+    why: token_overlap_3+(cliff,creek,pudding,sand)
+    local: 88 imgs  /Volumes/bigeneration/pix_consolidated/copy_20081223/pudding_creek_sand_cliff_11x8/pudding_creek_sand_cliff_11x8.gigapan
+

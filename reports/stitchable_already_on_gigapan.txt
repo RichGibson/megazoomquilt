@@ -1,0 +1,249 @@
+# 238 stitchable .gigapan files matched to gigapan.com entries
+# match types: paren_exact = filename in parens in name; word_match = stem found as word in name
+# columns: match_type | gigapan_id | gigapan_name | images | local_path
+
+paren_exact  |    5844 | Sebastopol Independent Charter School from driveway ent |  104 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/sics_03.gigapan
+paren_exact  |    8579 | From the airport art tower (airport4)                   |  104 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/airport4.gigapan
+paren_exact  |    5024 | IFTF Conference (iftf03)                                |  105 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/iftf03.gigapan
+paren_exact  |    5024 | IFTF Conference (iftf03)                                |  105 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/iftf03.gigapan
+paren_exact  |    8589 | Burning Man 2008 Temple (temple1)                       |  108 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple1.gigapan
+word_match   |    8577 | Burning Man 2008 Temple (temple6?)                      |  108 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple6.gigapan
+paren_exact  |    8589 | Burning Man 2008 Temple (temple1)                       |  108 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple1.gigapan
+word_match   |    8577 | Burning Man 2008 Temple (temple6?)                      |  108 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple6.gigapan
+word_match   |    5311 | (wherecamp_09                                           |  108 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_09.gigapan
+paren_exact  |    8589 | Burning Man 2008 Temple (temple1)                       |  108 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple1.gigapan
+word_match   |    8577 | Burning Man 2008 Temple (temple6?)                      |  108 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple6.gigapan
+word_match   |    5311 | (wherecamp_09                                           |  108 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_09.gigapan
+paren_exact  |    8589 | Burning Man 2008 Temple (temple1)                       |  108 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple1.gigapan
+word_match   |    8577 | Burning Man 2008 Temple (temple6?)                      |  108 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple6.gigapan
+paren_exact  |    8589 | Burning Man 2008 Temple (temple1)                       |  108 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/temple1.gigapan
+word_match   |    8577 | Burning Man 2008 Temple (temple6?)                      |  108 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/temple6.gigapan
+paren_exact  |    5680 | Fail, but maybe an interesting fail - 14 rows x 1 col ( |   11 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_05.gigapan
+paren_exact  |    2842 | Laguna de Santa Rosa (m12c)                             |  110 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/m12c.gigapan
+paren_exact  |    5562 | Barrow Plant (barrow_02)                                |  112 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/barrow_02.gigapan
+paren_exact  |    5973 | East entrance to Sebastopol on Hgwy 12.  NW Corner Seba |  112 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-01.gigapan
+paren_exact  |    5562 | Barrow Plant (barrow_02)                                |  112 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/barrow_02.gigapan
+paren_exact  |    8559 | Burning Man 208 - from the Technology Platform (bm2008_ |  115 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_07.gigapan
+paren_exact  |    8559 | Burning Man 208 - from the Technology Platform (bm2008_ |  115 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_07.gigapan
+paren_exact  |    8559 | Burning Man 208 - from the Technology Platform (bm2008_ |  115 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_07.gigapan
+paren_exact  |    8559 | Burning Man 208 - from the Technology Platform (bm2008_ |  115 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_07.gigapan
+paren_exact  |    8559 | Burning Man 208 - from the Technology Platform (bm2008_ |  115 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_07.gigapan
+paren_exact  |    5554 | Former Barrow plant, future NorthEast Plan area, Sebast |  116 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/barrow_01.gigapan
+paren_exact  |    5554 | Former Barrow plant, future NorthEast Plan area, Sebast |  116 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/barrow_01.gigapan
+paren_exact  |    8583 | Burning Man 2008 Temple (temple2)                       |  120 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple2.gigapan
+paren_exact  |    8543 | Burning Man 2008 - looking up inside of the temple (tem |  120 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple4.gigapan
+paren_exact  |    8583 | Burning Man 2008 Temple (temple2)                       |  120 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple2.gigapan
+paren_exact  |    8543 | Burning Man 2008 - looking up inside of the temple (tem |  120 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple4.gigapan
+paren_exact  |    8583 | Burning Man 2008 Temple (temple2)                       |  120 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple2.gigapan
+paren_exact  |    8543 | Burning Man 2008 - looking up inside of the temple (tem |  120 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple4.gigapan
+paren_exact  |    8583 | Burning Man 2008 Temple (temple2)                       |  120 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple2.gigapan
+paren_exact  |    8543 | Burning Man 2008 - looking up inside of the temple (tem |  120 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple4.gigapan
+paren_exact  |    8583 | Burning Man 2008 Temple (temple2)                       |  120 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/temple2.gigapan
+paren_exact  |    8543 | Burning Man 2008 - looking up inside of the temple (tem |  120 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/temple4.gigapan
+paren_exact  |    5677 | Detail of the (origami) Crane, at Steamboat Ed's (steam |  128 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_02.gigapan
+paren_exact  |    6060 | Gassification power exchange workshop at the Shipyard ( |  130 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080614_01.gigapan
+paren_exact  |    5655 | Maker Faire, Sunday afternoon during tear down (mf32)   |   14 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf32.gigapan
+paren_exact  |    5655 | Maker Faire, Sunday afternoon during tear down (mf32)   |   14 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf32.gigapan
+paren_exact  |    5655 | Maker Faire, Sunday afternoon during tear down (mf32)   |   14 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf32.gigapan
+paren_exact  |    2844 | Laguna de Santa Rosa (m12a)                             |  147 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/m12a.gigapan
+paren_exact  |    2858 | Laguna de Santa Rosa (m12b)                             |  147 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/m12b.gigapan
+word_match   |    5351 | wherecamp_01                                            |  147 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_01.gigapan
+word_match   |    5351 | wherecamp_01                                            |  147 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_01.gigapan
+paren_exact  |    5767 | Sunflower Club - Planting sunflowers with Maddy and Spe |   15 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/june_2008_03.gigapan
+paren_exact  |    5765 | Sunflower Club - Planting sunflowers with Maddy and Spe |   15 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/june_2008_04.gigapan
+paren_exact  |    5270 | From Bernal Hill (bernal_01)                            |  161 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/bernal_01.gigapan
+paren_exact  |    5270 | From Bernal Hill (bernal_01)                            |  161 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bernal_01.gigapan
+paren_exact  |    5925 | Corner of Depot and Brown Streets, Sebastopol, Northeas |  162 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080608-01.gigapan
+paren_exact  |    8566 | Burning Man 2008 - The People Speak project (bm2008_16) |   18 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_16.gigapan
+paren_exact  |    8566 | Burning Man 2008 - The People Speak project (bm2008_16) |   18 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_16.gigapan
+paren_exact  |    5188 | Where 2.0 (where_a_05)                                  |   18 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/where_a_05.gigapan
+paren_exact  |    8566 | Burning Man 2008 - The People Speak project (bm2008_16) |   18 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_16.gigapan
+paren_exact  |    8566 | Burning Man 2008 - The People Speak project (bm2008_16) |   18 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_16.gigapan
+paren_exact  |    8566 | Burning Man 2008 - The People Speak project (bm2008_16) |   18 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_16.gigapan
+paren_exact  |    2783 | Long Now (ln2a)                                         |  180 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/ln2a.gigapan
+paren_exact  |    5669 | Steamboat Ed's Shop - Bridgeport Mill and Lathe (steamb |  180 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_06.gigapan
+paren_exact  |    8592 | Burning Man 2008 Temple (temple3)                       |  196 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple3.gigapan
+paren_exact  |    8592 | Burning Man 2008 Temple (temple3)                       |  196 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple3.gigapan
+paren_exact  |    8592 | Burning Man 2008 Temple (temple3)                       |  196 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple3.gigapan
+paren_exact  |    8592 | Burning Man 2008 Temple (temple3)                       |  196 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple3.gigapan
+paren_exact  |    8592 | Burning Man 2008 Temple (temple3)                       |  196 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/temple3.gigapan
+paren_exact  |    4969 | TechShop Pavilion (mf24)                                |   20 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf24.gigapan
+word_match   |    2613 | Alembic guitar                                          |   20 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/guitar.gigapan
+paren_exact  |    4995 | Maker Faire my Gassifier fixation continues (mf03)      |   20 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf03.gigapan
+paren_exact  |    4969 | TechShop Pavilion (mf24)                                |   20 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf24.gigapan
+paren_exact  |    4995 | Maker Faire my Gassifier fixation continues (mf03)      |   20 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf03.gigapan
+paren_exact  |    4969 | TechShop Pavilion (mf24)                                |   20 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf24.gigapan
+paren_exact  |    5617 | Richmond San Rafael Bridge, and Bay, from near San Quin |  200 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/bay_day_01.gigapan
+paren_exact  |    5617 | Richmond San Rafael Bridge, and Bay, from near San Quin |  200 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bay_day_01.gigapan
+paren_exact  |    8582 | Burning Man 2008 - The Man (crane2)                     |  224 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/crane2.gigapan
+paren_exact  |    8582 | Burning Man 2008 - The Man (crane2)                     |  224 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/crane2.gigapan
+paren_exact  |    8582 | Burning Man 2008 - The Man (crane2)                     |  224 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/crane2.gigapan
+paren_exact  |    8582 | Burning Man 2008 - The Man (crane2)                     |  224 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/crane2.gigapan
+paren_exact  |    4992 | Maker Faire In front of Expo and Fiesta (mf02)          |  225 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf02.gigapan
+paren_exact  |    4992 | Maker Faire In front of Expo and Fiesta (mf02)          |  225 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf02.gigapan
+paren_exact  |    5587 | The new Sebastopol Skate Park, under construction (skat |   24 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/skate_park_02.gigapan
+word_match   |    5347 | wherecamp_04_paige                                      |   24 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_04_paige.gigapan
+paren_exact  |    5302 | Paige Saez does her thing at Where Camp 2008 (wherecamp |   24 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_05_paige.gigapan
+word_match   |    5348 | wherecamp_06_paige                                      |   24 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_06_paige.gigapan
+paren_exact  |    5982 | Barrow plant seen through flowers growing on the road m |   24 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-06.gigapan
+paren_exact  |    5587 | The new Sebastopol Skate Park, under construction (skat |   24 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/skate_park_02.gigapan
+word_match   |    5347 | wherecamp_04_paige                                      |   24 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_04_paige.gigapan
+paren_exact  |    5302 | Paige Saez does her thing at Where Camp 2008 (wherecamp |   24 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_05_paige.gigapan
+word_match   |    5348 | wherecamp_06_paige                                      |   24 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_06_paige.gigapan
+paren_exact  |    4962 | Crude Awakening, at the Maker Faire (mf21_crude_awakeni |   27 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf21_crude_awakening.gigapan
+paren_exact  |    4962 | Crude Awakening, at the Maker Faire (mf21_crude_awakeni |   27 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf21_crude_awakening.gigapan
+paren_exact  |    4962 | Crude Awakening, at the Maker Faire (mf21_crude_awakeni |   27 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf21_crude_awakening.gigapan
+paren_exact  |    3215 | Above Portugese Beach, Mendocino, CA (n1_b) Feb 16, 200 |  270 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/n1_b.gigapan
+paren_exact  |    3215 | Above Portugese Beach, Mendocino, CA (n1_b) Feb 16, 200 |  270 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/n1_b.gigapan
+paren_exact  |    3215 | Above Portugese Beach, Mendocino, CA (n1_b) Feb 16, 200 |  270 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/n1_b.gigapan
+paren_exact  |    8562 | Burning Man 2008 Center Camp (bm2008_10)                |   28 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_10.gigapan
+paren_exact  |    8562 | Burning Man 2008 Center Camp (bm2008_10)                |   28 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_10.gigapan
+paren_exact  |    8562 | Burning Man 2008 Center Camp (bm2008_10)                |   28 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_10.gigapan
+paren_exact  |    8562 | Burning Man 2008 Center Camp (bm2008_10)                |   28 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_10.gigapan
+paren_exact  |    8562 | Burning Man 2008 Center Camp (bm2008_10)                |   28 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_10.gigapan
+paren_exact  |   17711 | 40% off - an art show for the new Economy(abco_interio |   28 imgs | /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_b_7x4/abco_interior_b_7x4.gigapan
+paren_exact  |    8581 | Burning Man 2008 - The Airport (airport2)               |  280 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/airport2.gigapan
+paren_exact  |   17735 | 40% off - an art show for the new Economy (abco_interio |   32 imgs | /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_e_8x4/abco_interior_e_8x4.gigapan
+word_match   |   17726 | 40% off - an art show for the new Economy (abco_interio |   32 imgs | /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_f2_8x4/abco_interior_f2_8x4.gigapan
+paren_exact  |   17715 | 40% off - an art show for the new Economy (abco_interio |   32 imgs | /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_f_8x4/abco_interior_f_8x4.gigapan
+paren_exact  |    8550 | Burning Man 2008 - from the technology platform (bm2008 |   33 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_05.gigapan
+paren_exact  |    8553 | Burning Man 2008 - from the technology platform (bm2008 |   33 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_06.gigapan
+paren_exact  |    8550 | Burning Man 2008 - from the technology platform (bm2008 |   33 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_05.gigapan
+paren_exact  |    8553 | Burning Man 2008 - from the technology platform (bm2008 |   33 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_06.gigapan
+paren_exact  |    8550 | Burning Man 2008 - from the technology platform (bm2008 |   33 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_05.gigapan
+paren_exact  |    8553 | Burning Man 2008 - from the technology platform (bm2008 |   33 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_06.gigapan
+paren_exact  |    8550 | Burning Man 2008 - from the technology platform (bm2008 |   33 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_05.gigapan
+paren_exact  |    8553 | Burning Man 2008 - from the technology platform (bm2008 |   33 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_06.gigapan
+paren_exact  |    8550 | Burning Man 2008 - from the technology platform (bm2008 |   33 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_05.gigapan
+paren_exact  |    8553 | Burning Man 2008 - from the technology platform (bm2008 |   33 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_06.gigapan
+paren_exact  |    8547 | Burning Man 2008 - 360 degree view from a Cherry Picker |  330 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/crane3.gigapan
+paren_exact  |    8547 | Burning Man 2008 - 360 degree view from a Cherry Picker |  330 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/crane3.gigapan
+paren_exact  |    8547 | Burning Man 2008 - 360 degree view from a Cherry Picker |  330 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/crane3.gigapan
+paren_exact  |    8547 | Burning Man 2008 - 360 degree view from a Cherry Picker |  330 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/crane3.gigapan
+paren_exact  |    8547 | Burning Man 2008 - 360 degree view from a Cherry Picker |  330 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/crane3.gigapan
+paren_exact  |    2863 | Laguna de Santa Rosa (m12d) recropped                   |   35 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/m12d.gigapan
+paren_exact  |    2862 | Laguna de Santa Rosa (m12d)                             |   35 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/m12d.gigapan
+word_match   |    5469 | copy of rosie_01                                        |   35 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/rosie_01.gigapan
+paren_exact  |    5442 | Rosie the Riveteer WWII Home Front Memorial (rosie_01)  |   35 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/rosie_01.gigapan
+word_match   |    5469 | copy of rosie_01                                        |   35 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/rosie_01.gigapan
+paren_exact  |    5442 | Rosie the Riveteer WWII Home Front Memorial (rosie_01)  |   35 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/rosie_01.gigapan
+paren_exact  |    5671 | Steamboat Ed's Shop - Doorway, from outside. (steamboat |   35 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_04.gigapan
+word_match   |   17465 | 'upload sfbay_39x9 - 0.4.4087 - sfbay_39x9'             |  351 imgs | /Volumes/bigeneration/pix_consolidated/copy_20090212_plastiki/sfbay_39x9/sfbay_39x9.gigapan
+paren_exact  |    5004 | Maker Faire my Gassifier fixation continues (mf15)      |   36 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf15.gigapan
+paren_exact  |    5004 | Maker Faire my Gassifier fixation continues (mf15)      |   36 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf15.gigapan
+paren_exact  |    8585 | Burning Man 2008 - Dreamland Checkpoint (checkpoint3)   |   39 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/checkpoint3.gigapan
+paren_exact  |    8585 | Burning Man 2008 - Dreamland Checkpoint (checkpoint3)   |   39 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/checkpoint3.gigapan
+paren_exact  |    8585 | Burning Man 2008 - Dreamland Checkpoint (checkpoint3)   |   39 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/checkpoint3.gigapan
+paren_exact  |    8585 | Burning Man 2008 - Dreamland Checkpoint (checkpoint3)   |   39 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/checkpoint3.gigapan
+paren_exact  |    8585 | Burning Man 2008 - Dreamland Checkpoint (checkpoint3)   |   39 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/checkpoint3.gigapan
+word_match   |   14061 | 'upload l64_bay_36x11 - 0.4.3865 - l64_bay_36x11'       |  396 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l64_bay.gigapan
+word_match   |   14061 | 'upload l64_bay_36x11 - 0.4.3865 - l64_bay_36x11'       |  396 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l64_bay.gigapan
+word_match   |   14061 | 'upload l64_bay_36x11 - 0.4.3865 - l64_bay_36x11'       |  396 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/l64_bay.gigapan
+paren_exact  |    5662 | From top of Neverwas Haul towards the stage the Maker F |   40 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf12.gigapan
+paren_exact  |    4972 | TechShop Pavilion (mf25)                                |   40 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf25.gigapan
+paren_exact  |    5662 | From top of Neverwas Haul towards the stage the Maker F |   40 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf12.gigapan
+paren_exact  |    4972 | TechShop Pavilion (mf25)                                |   40 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf25.gigapan
+paren_exact  |    5662 | From top of Neverwas Haul towards the stage the Maker F |   40 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf12.gigapan
+paren_exact  |    4972 | TechShop Pavilion (mf25)                                |   40 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf25.gigapan
+paren_exact  |   17742 | 40% off - an art show for the new Economy (abco_interio |   40 imgs | /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_d_10x4/abco_interior_d_10x4.gigapan
+paren_exact  |    5702 | Steamboat Ed's Shop - from outside. (steamboat_ed_03)   |  408 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_03.gigapan
+paren_exact  |    4973 | Stout Tool Corp TechShop Pavilion (mf26)                |   42 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf26.gigapan
+paren_exact  |    4985 | Lego Trains (mf30)                                      |   42 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf30.gigapan
+paren_exact  |    6038 | Wilton and High Streets, Sebastopol (20080613_07)       |   42 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080613_07.gigapan
+paren_exact  |    6041 | Wilton and High Streets, Sebastopol (20080613_08)       |   42 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080613_08.gigapan
+paren_exact  |    4973 | Stout Tool Corp TechShop Pavilion (mf26)                |   42 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf26.gigapan
+paren_exact  |    4985 | Lego Trains (mf30)                                      |   42 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf30.gigapan
+paren_exact  |    4987 | Institute for the Future conference  (iftf02)           |   44 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/iftf02.gigapan
+paren_exact  |    4987 | Institute for the Future conference  (iftf02)           |   44 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/iftf02.gigapan
+paren_exact  |    4978 | Gassifier (mf33)                                        |   44 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf33.gigapan
+paren_exact  |    4979 | Gassifier (mf34)                                        |   44 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf34.gigapan
+paren_exact  |    4987 | Institute for the Future conference  (iftf02)           |   44 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/iftf02.gigapan
+paren_exact  |    4978 | Gassifier (mf33)                                        |   44 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf33.gigapan
+paren_exact  |    4979 | Gassifier (mf34)                                        |   44 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf34.gigapan
+paren_exact  |    4980 | Alameda Computer Resource Center (mf28)                 |   45 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf28.gigapan
+paren_exact  |    4980 | Alameda Computer Resource Center (mf28)                 |   45 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf28.gigapan
+word_match   |  112405 | Chris as a mosaic                                       |   45 imgs | /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/chris.gigapan
+word_match   |  111612 | Lovely statue in Chris' yard                            |   45 imgs | /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/chris.gigapan
+paren_exact  |  111505 | SIGGRAPH Studio Portraits 2012 (Chris)                  |   45 imgs | /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/chris.gigapan
+paren_exact  |    8548 | burning Man 2008 - from the cherry picker (crane1)      |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/crane1.gigapan
+paren_exact  |    8548 | burning Man 2008 - from the cherry picker (crane1)      |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/crane1.gigapan
+paren_exact  |    4986 | Institute for the Future conference  (iftf01)           |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/iftf01.gigapan
+paren_exact  |    5638 | Sebastopol town square, behind the farmer's market (far |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/farmers_market_coffee.gigapan
+paren_exact  |    4986 | Institute for the Future conference  (iftf01)           |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/iftf01.gigapan
+paren_exact  |    5001 | Maker Faire (mf10)                                      |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf10.gigapan
+paren_exact  |    5002 | Maker Faire my Gassifier fixation continues (mf14)      |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf14.gigapan
+paren_exact  |    8548 | burning Man 2008 - from the cherry picker (crane1)      |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/crane1.gigapan
+paren_exact  |    5638 | Sebastopol town square, behind the farmer's market (far |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/farmers_market_coffee.gigapan
+paren_exact  |    4986 | Institute for the Future conference  (iftf01)           |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/iftf01.gigapan
+paren_exact  |    5001 | Maker Faire (mf10)                                      |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf10.gigapan
+paren_exact  |    5002 | Maker Faire my Gassifier fixation continues (mf14)      |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf14.gigapan
+paren_exact  |    8548 | burning Man 2008 - from the cherry picker (crane1)      |   48 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/crane1.gigapan
+paren_exact  |    8548 | burning Man 2008 - from the cherry picker (crane1)      |   48 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/crane1.gigapan
+paren_exact  |    4968 | TechShop Pavilion (mf23)                                |   50 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf23.gigapan
+paren_exact  |    4968 | TechShop Pavilion (mf23)                                |   50 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf23.gigapan
+paren_exact  |    4968 | TechShop Pavilion (mf23)                                |   50 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf23.gigapan
+paren_exact  |    8590 | Burning Man 2008 - detail of plane (airport1)           |   50 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/airport1.gigapan
+word_match   |   17736 | 40% off - an art show for the new Economy (taken from f |   55 imgs | /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_c_11x5/abco_interior_c_11x5.gigapan
+paren_exact  |   17776 | 40% off - an art show for the new Economy (abco_interi |   55 imgs | /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_d_11x5/abco_interior_d_11x5.gigapan
+word_match   |   17732 | 40% off - an art show for the new Economy (abco_interi |   55 imgs | /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_f3_11x5/abco_interior_f3_11x5.gigapan
+word_match   |   27144 | 'upload subway_2_11x5 -  - subway_2_11x5 notes: job cre |   55 imgs | /Volumes/bigeneration/pix_consolidated/ny_june_2009/subway_2_11x5/subway_2_11x5.gigapan
+paren_exact  |    4983 | Lego Trains (mf29)                                      |   56 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf29.gigapan
+paren_exact  |    4983 | Lego Trains (mf29)                                      |   56 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf29.gigapan
+paren_exact  |    5983 | Graventstein Station from north side of Sebastopol Ave  |   56 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-07.gigapan
+paren_exact  |    6032 | Sebastopol Police Station (20080613_06)                 |   56 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080613_06.gigapan
+paren_exact  |    4983 | Lego Trains (mf29)                                      |   56 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf29.gigapan
+paren_exact  |    4974 | Combat Tanks (mf27)                                     |   60 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf27.gigapan
+paren_exact  |    4974 | Combat Tanks (mf27)                                     |   60 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf27.gigapan
+paren_exact  |    5593 | The new Sebastopol Skate Park, under construction - wid |   60 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/skate_park_03.gigapan
+paren_exact  |    5581 | Fancy truck doing street paving in Sebastopol (street_w |   60 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/street_work_01.gigapan
+paren_exact  |    5571 | Street paving in Sebastopol (street_work_01)            |   60 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/street_work_01.gigapan
+paren_exact  |    4974 | Combat Tanks (mf27)                                     |   60 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf27.gigapan
+paren_exact  |    5593 | The new Sebastopol Skate Park, under construction - wid |   60 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/skate_park_03.gigapan
+paren_exact  |    5581 | Fancy truck doing street paving in Sebastopol (street_w |   60 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/street_work_01.gigapan
+paren_exact  |    5571 | Street paving in Sebastopol (street_work_01)            |   60 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/street_work_01.gigapan
+paren_exact  |    4999 | Maker Faire - out by the entrance to the fire and outsi |   64 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/mf05.gigapan
+paren_exact  |    5443 | Rosie the Riveteer WWII Home Front Memorial - from the  |   64 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/rosie_02.gigapan
+paren_exact  |    5980 | Into parking lot, from West side of Morris looking East |   64 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-05.gigapan
+paren_exact  |    4999 | Maker Faire - out by the entrance to the fire and outsi |   64 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/mf05.gigapan
+paren_exact  |    5443 | Rosie the Riveteer WWII Home Front Memorial - from the  |   64 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/rosie_02.gigapan
+paren_exact  |    8596 | Burning Man 2008 Detail of airport (airport3)           |   64 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/airport3.gigapan
+paren_exact  |    5976 | East entrance to Sebastopol on Hgwy 12.  NE Corner Seba |   65 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-02.gigapan
+paren_exact  |    5850 | Sebastopol Independent Charter School from near the rea |   65 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/sics_04.gigapan
+paren_exact  |    5441 | Berkeley Adventure Playground (adventure_playground_01) |   66 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/adventure_playground_01.gigapan
+paren_exact  |    5441 | Berkeley Adventure Playground (adventure_playground_01) |   66 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/adventure_playground_01.gigapan
+paren_exact  |    5777 | Sebastopol Plaza during farmer's market (june_2008_01)  |   66 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/june_2008_01.gigapan
+paren_exact  |   17709 | 40% off - an art show for the new Economy (abco_interi |   66 imgs | /Volumes/bigeneration/pix_consolidated/copy_20090221/abco_interior_a_11x6/abco_interior_a_11x6.gigapan
+paren_exact  |    5978 | Barrow Plant, just north of Sebastopol Ave from east si |   68 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-03.gigapan
+paren_exact  |    5979 | from West side of Morris looking East, Barrow plant to  |   68 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080611-04.gigapan
+paren_exact  |    5267 | From Bernal Hill (bernal_05)                            |   70 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/bernal_05.gigapan
+paren_exact  |    5267 | From Bernal Hill (bernal_05)                            |   70 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bernal_05.gigapan
+paren_exact  |    5668 | Overview  of the (origami) Crane, at Steamboat Ed's (st |   70 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_01.gigapan
+paren_exact  |    8571 | Burning Man 2008 - near the man (near_man_x)            |   72 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/near_man_x.gigapan
+paren_exact  |    8586 | Burning Man 2008 Temple (temple5)                       |   72 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/temple5.gigapan
+paren_exact  |    8571 | Burning Man 2008 - near the man (near_man_x)            |   72 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/near_man_x.gigapan
+paren_exact  |    8586 | Burning Man 2008 Temple (temple5)                       |   72 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/temple5.gigapan
+paren_exact  |    5308 | (wherecamp_02)                                          |   72 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_02.gigapan
+paren_exact  |    8571 | Burning Man 2008 - near the man (near_man_x)            |   72 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/near_man_x.gigapan
+paren_exact  |    8586 | Burning Man 2008 Temple (temple5)                       |   72 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/temple5.gigapan
+paren_exact  |    5308 | (wherecamp_02)                                          |   72 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_02.gigapan
+paren_exact  |    8571 | Burning Man 2008 - near the man (near_man_x)            |   72 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/near_man_x.gigapan
+paren_exact  |    8586 | Burning Man 2008 Temple (temple5)                       |   72 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/temple5.gigapan
+paren_exact  |    8571 | Burning Man 2008 - near the man (near_man_x)            |   72 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/near_man_x.gigapan
+paren_exact  |    8586 | Burning Man 2008 Temple (temple5)                       |   72 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/temple5.gigapan
+word_match   |   14079 | 'upload l53_north_from_kiluhua_lighthouse_11x7 - 0.4.38 |   77 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_external_250/l53_north_from_kiluhua_lighthouse.gigapan
+word_match   |   14079 | 'upload l53_north_from_kiluhua_lighthouse_11x7 - 0.4.38 |   77 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/l53_north_from_kiluhua_lighthouse.gigapan
+paren_exact  |    5153 | Where 2.0 (where_a_04)                                  |   77 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/where_a_04.gigapan
+word_match   |   14079 | 'upload l53_north_from_kiluhua_lighthouse_11x7 - 0.4.38 |   77 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/l53_north_from_kiluhua_lighthouse.gigapan
+paren_exact  |    5647 | Richmond San Rafael Bridge repost - without the bottom  |    8 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bay_day_01b.gigapan
+paren_exact  |    5303 | Where Camp! (wherecamp_03_session)                      |   80 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_files_2007/wherecamp_03_session.gigapan
+paren_exact  |    5303 | Where Camp! (wherecamp_03_session)                      |   80 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_03_session.gigapan
+paren_exact  |    8564 | Burning Man 2008 Center Camp (bm2008_09)                |   92 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008_09.gigapan
+paren_exact  |    8564 | Burning Man 2008 Center Camp (bm2008_09)                |   92 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008_09.gigapan
+paren_exact  |    8564 | Burning Man 2008 Center Camp (bm2008_09)                |   92 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008_09.gigapan
+paren_exact  |    8564 | Burning Man 2008 Center Camp (bm2008_09)                |   92 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008_09.gigapan
+paren_exact  |    8564 | Burning Man 2008 Center Camp (bm2008_09)                |   92 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008_09.gigapan
+paren_exact  |    8580 | Burning Man 2008 - The Man and Cherry Picker (bm2008b_0 |   99 imgs | /Volumes/bigeneration/panos_consolidated/gigapan/bm2008_copy/bm2008b_04.gigapan
+paren_exact  |    8580 | Burning Man 2008 - The Man and Cherry Picker (bm2008b_0 |   99 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_eritrea_newer/bm2008_copy/bm2008b_04.gigapan
+paren_exact  |    8580 | Burning Man 2008 - The Man and Cherry Picker (bm2008b_0 |   99 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_old/bm2008_copy/bm2008b_04.gigapan
+paren_exact  |    8580 | Burning Man 2008 - The Man and Cherry Picker (bm2008b_0 |   99 imgs | /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/bm2008b_04.gigapan
+paren_exact  |    8580 | Burning Man 2008 - The Man and Cherry Picker (bm2008b_0 |   99 imgs | /Volumes/bigeneration/pix_consolidated/bm_2008/bm2008b_04.gigapan
