@@ -10,7 +10,7 @@ from PIL import Image
 app = Flask(__name__)
 from pathlib import Path
 
-SKINS = ['default', 'retro', 'amber']
+SKINS = ['default', 'retro', 'amber', 'museum', 'blueprint', 'magazine', 'explorer']
 
 @app.context_processor
 def inject_skin():

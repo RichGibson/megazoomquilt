@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %}MegaZoomQuilt{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@400;600&family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=IBM+Plex+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   {% block head %}{% endblock %}
 </head>
@@ -20,7 +23,7 @@
             <li><a href="{{ url_for('admin')}}">Admin</a></li>
             <li class="skin-switcher">
               <select id="skin-select" onchange="location='/skin/'+this.value">
-                {% for s in ['default', 'retro', 'amber'] %}
+                {% for s in ['default', 'retro', 'amber', 'museum', 'blueprint', 'magazine', 'explorer'] %}
                   <option value="{{ s }}"{% if skin == s %} selected{% endif %}>{{ s }}</option>
                 {% endfor %}
               </select>

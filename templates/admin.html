@@ -3,7 +3,13 @@
 {% block content %}
 <h2>Admin</h2>
 
-<p><strong>{{ panoramas|length }}</strong> panoramas downloaded</p>
+{% set gigapan_count = panoramas|selectattr('id', 'lt', 1000000)|list|length %}
+{% set local_count = panoramas|selectattr('id', 'ge', 1000000)|list|length %}
+<p>
+  <strong>{{ panoramas|length }}</strong> total panoramas &mdash;
+  <strong>{{ gigapan_count }}</strong> downloaded from gigapan.com,
+  <strong>{{ local_count }}</strong> local (id &ge; 1,000,000)
+</p>
 
 <table border="1" cellpadding="6" cellspacing="0">
   <thead>
