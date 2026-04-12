@@ -44,6 +44,9 @@
       <label class="geo-filter-label" title="Hide panoramas that already have coordinates">
         <input type="checkbox" id="geo-filter"> 📍 Unlocated only
       </label>
+      <label class="geo-filter-label" title="Show only panoramas with tiles on Cloudflare">
+        <input type="checkbox" id="cf-filter" checked> ☁️ Cloudflare only
+      </label>
       <div class="size-btns" title="Thumbnail size">
         <button class="size-btn" data-size="small">Small</button>
         <button class="size-btn" data-size="medium">Medium</button>
@@ -58,6 +61,7 @@
          data-name="{{ pano['name']|lower }} {{ pano.get('description', '')|lower }}"
          data-local="{{ 'true' if pano['id'] >= 1000000 else 'false' }}"
          data-geo="{{ 'true' if (pano.get('latitude') and pano.get('longitude')) else 'false' }}"
+         data-cloudflare="{{ 'true' if pano.get('tile_base_url') else 'false' }}"
          data-pano-id="{{ pano['id'] }}"
          data-pano-w="{{ pano['width'] }}"
          data-pano-h="{{ pano['height'] }}"
@@ -270,6 +274,7 @@
 
   const searchInput = document.getElementById('pano-search');
   const geoFilter   = document.getElementById('geo-filter');
+  const cfFilter    = document.getElementById('cf-filter');
   const cards = document.querySelectorAll('#card-grid .card');
   const sidebarItems = document.querySelectorAll('.sidebar-list li');
   const visibleCount = document.getElementById('visible-count');
@@ -279,11 +284,13 @@
   function applyFilters() {
     const q        = searchInput.value.toLowerCase().trim();
     const geoOnly  = geoFilter.checked;
+    const cfOnly   = cfFilter.checked;
     let count = 0, gp = 0, loc = 0;
     cards.forEach(card => {
       const textMatch = !q || card.dataset.name.includes(q);
       const geoMatch  = !geoOnly || card.dataset.geo !== 'true';
-      const match = textMatch && geoMatch;
+      const cfMatch   = !cfOnly  || card.dataset.cloudflare === 'true';
+      const match = textMatch && geoMatch && cfMatch;
       card.style.display = match ? '' : 'none';
       // Keep nav context on the href
       const base = card.dataset.baseHref || card.getAttribute('href');
@@ -303,6 +310,8 @@
 
   searchInput.addEventListener('input', applyFilters);
   geoFilter.addEventListener('change', applyFilters);
+  cfFilter.addEventListener('change', applyFilters);
+  applyFilters();
 
   // ── Thumbnail size ──
   const grid = document.getElementById('card-grid');

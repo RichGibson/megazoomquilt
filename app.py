@@ -166,23 +166,7 @@ def thumbnail(pano_id):
         if min(cw, ch) >= THUMB_MIN_DIM:
             break
 
-    pano_dir = BASE_DIR / pano_id / str(zoom)
-    if not pano_dir.is_dir():
-        abort(404)
-
-    # Discover tile extension from existing files
-    img_ext = None
-    for x_dir in pano_dir.iterdir():
-        if not x_dir.is_dir():
-            continue
-        for tile_file in x_dir.iterdir():
-            if tile_file.suffix.lower() in ('.jpg', '.png'):
-                img_ext = tile_file.suffix.lower()
-                break
-        if img_ext:
-            break
-    if img_ext is None:
-        abort(404)
+    img_ext = '.' + meta.get('img_type', 'jpg')
 
     # Compute content bounds at this zoom level
     scale = 2 ** (max_zoom - zoom)
@@ -191,16 +175,59 @@ def thumbnail(pano_id):
     cols = math.ceil(content_w / 256)
     rows = math.ceil(content_h / 256)
 
-    # Load one tile to get actual tile size
-    sample = pano_dir / '0' / f'0{img_ext}'
-    tile_w, tile_h = Image.open(sample).size
+    tile_base_url = meta.get('tile_base_url')
 
-    composed = Image.new("RGB", (cols * tile_w, rows * tile_h))
-    for x in range(cols):
-        for y in range(rows):
-            tile_path = pano_dir / str(x) / f"{y}{img_ext}"
-            if tile_path.exists():
-                composed.paste(Image.open(tile_path).convert("RGB"), (x * tile_w, y * tile_h))
+    if tile_base_url:
+        import urllib.request
+        def fetch_tile(x, y):
+            url = f"{tile_base_url}/{zoom}/{x}/{y}{img_ext}"
+            try:
+                with urllib.request.urlopen(url, timeout=10) as resp:
+                    return Image.open(io.BytesIO(resp.read())).convert("RGB")
+            except Exception:
+                return None
+
+        sample = fetch_tile(0, 0)
+        if sample is None:
+            abort(404)
+        tile_w, tile_h = sample.size
+        composed = Image.new("RGB", (cols * tile_w, rows * tile_h))
+        composed.paste(sample, (0, 0))
+        for x in range(cols):
+            for y in range(rows):
+                if x == 0 and y == 0:
+                    continue
+                tile = fetch_tile(x, y)
+                if tile:
+                    composed.paste(tile, (x * tile_w, y * tile_h))
+    else:
+        pano_dir = BASE_DIR / pano_id / str(zoom)
+        if not pano_dir.is_dir():
+            abort(404)
+
+        # Discover tile extension from existing files
+        found_ext = None
+        for x_dir in pano_dir.iterdir():
+            if not x_dir.is_dir():
+                continue
+            for tile_file in x_dir.iterdir():
+                if tile_file.suffix.lower() in ('.jpg', '.png'):
+                    found_ext = tile_file.suffix.lower()
+                    break
+            if found_ext:
+                break
+        if found_ext is None:
+            abort(404)
+        img_ext = found_ext
+
+        sample = pano_dir / '0' / f'0{img_ext}'
+        tile_w, tile_h = Image.open(sample).size
+        composed = Image.new("RGB", (cols * tile_w, rows * tile_h))
+        for x in range(cols):
+            for y in range(rows):
+                tile_path = pano_dir / str(x) / f"{y}{img_ext}"
+                if tile_path.exists():
+                    composed.paste(Image.open(tile_path).convert("RGB"), (x * tile_w, y * tile_h))
 
     # Crop to actual content, removing black quadtree padding
     crop_w = min(content_w, composed.width)
