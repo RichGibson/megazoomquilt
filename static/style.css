@@ -24,6 +24,10 @@ body {
   padding: 0.4rem 0;
   margin-bottom: 0.1rem;
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: var(--bg, #fff);
 }
 .site-header nav { flex: 1; }
 
@@ -82,9 +86,10 @@ a:hover {
   border-radius: 6px;
   padding: 1rem;
   position: sticky;
-  top: 1rem;
-  max-height: 90vh;
-  overflow-y: auto;
+  top: calc(var(--header-h) + 1rem);
+  max-height: calc(90vh - var(--header-h));
+  display: flex;
+  flex-direction: column;
 }
 .sidebar-count {
   font-size: 0.82rem;
@@ -101,6 +106,8 @@ a:hover {
   padding: 0 0 0 1.2rem;
   margin: 0;
   font-size: 0.85rem;
+  overflow-y: auto;
+  flex: 1;
 }
 .sidebar-list li {
   padding: 0.2rem 0;
@@ -123,6 +130,7 @@ a:hover {
 }
 
 /* Sort bar */
+:root { --header-h: 2.8rem; }
 .sort-bar {
   display: flex;
   align-items: center;
@@ -130,7 +138,7 @@ a:hover {
   flex-wrap: wrap;
   margin-bottom: 0.75rem;
   position: sticky;
-  top: 0;
+  top: var(--header-h);
   z-index: 100;
   background: #fff;
   padding: 0.4rem 0;
