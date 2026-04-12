@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000316,
+    "name": "Panels2",
+    "width": 59026,
+    "height": 17874,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: panels2.psb",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/greg/panels2.psb"
+  }
+}

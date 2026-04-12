@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000150,
+    "name": "iftf03",
+    "width": 43520,
+    "height": 8192,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: iftf03 | Source: /Volumes/bigeneration/panos_consolidated/gigapan_external_250",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/iftf03.gigapan"
+  }
+}

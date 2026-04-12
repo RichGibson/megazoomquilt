@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000257,
+    "name": "Lucky13 01",
+    "width": 21622,
+    "height": 12381,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: lucky13-01.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/lucky13-01.tif"
+  }
+}

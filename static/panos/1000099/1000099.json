@@ -1,0 +1,19 @@
+{
+  "gigapan": {
+    "id": 1000099,
+    "name": "mf34",
+    "width": 25600,
+    "height": 7680,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: mf34 | Source: /Volumes/bigeneration/panos_consolidated/gigapan_external_250",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf34.gigapan",
+    "latitude": 37.54739,
+    "longitude": -122.302998,
+    "tags": [
+      "maker_faire"
+    ]
+  }
+}

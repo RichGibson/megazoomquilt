@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000265,
+    "name": "5311.100",
+    "width": 61980,
+    "height": 7531,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: 5311.100.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/5311.100.tif"
+  }
+}

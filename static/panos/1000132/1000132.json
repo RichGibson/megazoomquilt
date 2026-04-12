@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000132,
+    "name": "try2",
+    "width": 16384,
+    "height": 65536,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: try2 | Source: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/jen_grey",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/jen_grey/try2.gigapan",
+    "tags": [
+      "siggraph"
+    ]
+  }
+}

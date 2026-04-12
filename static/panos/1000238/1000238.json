@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000238,
+    "name": "Siggraph Prasanna Revan",
+    "width": 17784,
+    "height": 21376,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: siggraph_prasanna_revan.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/siggraph_prasanna_revan.tif",
+    "tags": [
+      "siggraph"
+    ]
+  }
+}

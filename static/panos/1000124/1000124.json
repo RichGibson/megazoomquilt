@@ -1,0 +1,18 @@
+{
+  "gigapan": {
+    "id": 1000124,
+    "name": "adventure_playground_01",
+    "width": 27392,
+    "height": 10752,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: adventure_playground_01 | Source: /Volumes/bigeneration/panos_consolidated/gigapan_external_250",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/adventure_playground_01.gigapan",
+    "tags": [],
+    "latitude": 37.8629413,
+    "longitude": -122.31475,
+    "geo_precision": "approximate"
+  }
+}

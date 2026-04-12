@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000064,
+    "name": "siggraph_chris",
+    "width": 18432,
+    "height": 21504,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: siggraph_chris | Source: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/siggraph_chris.gigapan",
+    "tags": [
+      "siggraph"
+    ]
+  }
+}

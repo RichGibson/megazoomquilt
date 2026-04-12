@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000241,
+    "name": "Chris",
+    "width": 17548,
+    "height": 20560,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: chris.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/chris.tif"
+  }
+}

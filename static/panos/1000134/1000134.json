@@ -1,0 +1,20 @@
+{
+  "gigapan": {
+    "id": 1000134,
+    "name": "roboe09_sat_bender_under_construction_5x9",
+    "width": 21504,
+    "height": 20480,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: roboe09_sat_bender_under_construction_5x9 | Source: /Volumes/bigeneration/europe_2009/gigapans_early",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/roboe09_sat_bender_under_construction_5x9.gigapan",
+    "latitude": 48.195937,
+    "longitude": 16.30481,
+    "tags": [
+      "roboexotica",
+      "vienna"
+    ]
+  }
+}

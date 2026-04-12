@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000261,
+    "name": "Wherecamp 10",
+    "width": 30016,
+    "height": 10681,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: wherecamp_10.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_10.tif",
+    "tags": [
+      "wherecamp"
+    ]
+  }
+}

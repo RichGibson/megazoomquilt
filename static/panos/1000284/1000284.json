@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000284,
+    "name": "Pillowb",
+    "width": 14630,
+    "height": 10346,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: pillowb.psd",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/pillowb.psd"
+  }
+}

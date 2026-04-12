@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000321,
+    "name": "Core Circle",
+    "width": 107343,
+    "height": 10450,
+    "levels": 10,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: core_circle.psb",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/core_circle.psb"
+  }
+}

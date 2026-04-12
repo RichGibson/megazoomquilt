@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000311,
+    "name": "Chris Mosaic",
+    "width": 23328,
+    "height": 27994,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: chris_mosaic.psb",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/chris_mosaic.psb"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gigapan": {
+    "id": 1000114,
+    "name": "made_in_italy_6x9",
+    "width": 17408,
+    "height": 20480,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: made_in_italy_6x9 | Source: /Volumes/bigeneration/europe_2009/gigapans_italian_fashion",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_italian_fashion/made_in_italy_6x9.gigapan",
+    "tags": [
+      "q21",
+      "vienna"
+    ]
+  }
+}

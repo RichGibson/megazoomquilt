@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000020,
+    "name": "Spinthing",
+    "width": 15360,
+    "height": 9216,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: Spinthing | Source: /Volumes/bigeneration/pix_consolidated/bm2012/panos",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/Spinthing.gigapan"
+  }
+}

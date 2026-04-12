@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000231,
+    "name": "Media Bbq",
+    "width": 10134,
+    "height": 5655,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: media_bbq.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/media_bbq.tif"
+  }
+}

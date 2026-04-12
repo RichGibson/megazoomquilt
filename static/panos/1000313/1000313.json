@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000313,
+    "name": "Panels1 Flat",
+    "width": 65980,
+    "height": 17874,
+    "levels": 10,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: panels1_flat.psb",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/greg/panels1_flat.psb"
+  }
+}

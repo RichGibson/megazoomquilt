@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000240,
+    "name": "Core Psychophilia",
+    "width": 26235,
+    "height": 10003,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: CORE_PsychoPhilia.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/CORE_PsychoPhilia.tif"
+  }
+}

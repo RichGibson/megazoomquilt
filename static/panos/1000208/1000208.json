@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000208,
+    "name": "temple6",
+    "width": 38912,
+    "height": 9728,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: temple6 | Source: /Volumes/bigeneration/pix_consolidated/bm_2008/new",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm_2008/new/temple6.gigapan",
+    "tags": [
+      "burning_man"
+    ]
+  }
+}

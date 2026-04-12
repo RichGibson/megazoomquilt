@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000098,
+    "name": "gp360trains",
+    "width": 25600,
+    "height": 11264,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: gp360trains | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gp360trains.gigapan"
+  }
+}

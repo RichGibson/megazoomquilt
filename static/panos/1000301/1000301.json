@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000301,
+    "name": "Josh Ellingson Vienna",
+    "width": 15902,
+    "height": 17452,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: josh_ellingson_vienna.psd",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/josh_ellingson_vienna.psd",
+    "tags": [
+      "vienna"
+    ]
+  }
+}

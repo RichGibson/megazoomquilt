@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000102,
+    "name": "gas_valve_4x11",
+    "width": 14336,
+    "height": 25600,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: gas_valve_4x11 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gas_valve_4x11.gigapan"
+  }
+}

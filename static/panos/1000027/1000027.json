@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000027,
+    "name": "david_spoelstra_gigapan_try1",
+    "width": 12288,
+    "height": 15360,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: david_spoelstra_gigapan_try1 | Source: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-06/david_spoelstra",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-06/david_spoelstra/david_spoelstra_gigapan_try1.gigapan",
+    "tags": [
+      "siggraph"
+    ]
+  }
+}

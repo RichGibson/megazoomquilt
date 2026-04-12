@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000200,
+    "name": "checkpoint4",
+    "width": 24320,
+    "height": 6144,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: checkpoint4 | Source: /Volumes/bigeneration/pix_consolidated/bm_2008/new",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm_2008/new/checkpoint4.gigapan",
+    "tags": [
+      "burning_man"
+    ]
+  }
+}

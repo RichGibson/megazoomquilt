@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000252,
+    "name": "Farmers Market Tomatos",
+    "width": 18860,
+    "height": 10248,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: farmers_market_tomatos.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/farmers_market_tomatos.tif"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000052,
+    "name": "johnreinertnash",
+    "width": 16384,
+    "height": 18432,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: johnreinertnash | Source: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-05",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-05/johnreinertnash.gigapan",
+    "tags": [
+      "siggraph"
+    ]
+  }
+}

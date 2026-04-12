@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000204,
+    "name": "airport4",
+    "width": 21504,
+    "height": 9984,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: airport4 | Source: /Volumes/bigeneration/pix_consolidated/bm_2008/new",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm_2008/new/airport4.gigapan",
+    "tags": [
+      "burning_man"
+    ]
+  }
+}

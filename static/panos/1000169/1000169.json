@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000169,
+    "name": "gpfleischmarkt_18x9",
+    "width": 49152,
+    "height": 18432,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: gpfleischmarkt_18x9 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gpfleischmarkt_18x9.gigapan"
+  }
+}

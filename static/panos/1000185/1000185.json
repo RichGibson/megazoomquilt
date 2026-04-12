@@ -1,0 +1,18 @@
+{
+  "gigapan": {
+    "id": 1000185,
+    "name": "war_facism_11x18",
+    "width": 35840,
+    "height": 40960,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: war_facism_11x18 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091220",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/war_facism_11x18.gigapan",
+    "tags": [],
+    "latitude": 48.2044998,
+    "longitude": 16.3689503,
+    "geo_precision": "exact"
+  }
+}

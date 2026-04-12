@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000271,
+    "name": "Bay Day 01B",
+    "width": 127172,
+    "height": 4949,
+    "levels": 10,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: bay_day_01b.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bay_day_01b.tif"
+  }
+}

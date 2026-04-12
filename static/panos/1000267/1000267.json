@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000267,
+    "name": "Try3",
+    "width": 23520,
+    "height": 35244,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: try3.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-07/jan_grey_experiment/set3/try3.tif"
+  }
+}

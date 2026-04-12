@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000155,
+    "name": "roboe_1_11x5",
+    "width": 27648,
+    "height": 11264,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: roboe_1_11x5 | Source: /Volumes/bigeneration/europe_2009/gigapans_early",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/roboe_1_11x5.gigapan",
+    "tags": [
+      "roboexotica"
+    ]
+  }
+}

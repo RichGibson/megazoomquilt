@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000041,
+    "name": "bm2008_01",
+    "width": 23040,
+    "height": 6656,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: bm2008_01 | Source: /Volumes/bigeneration/pix_consolidated/bm_2008/new",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm_2008/new/bm2008_01.gigapan",
+    "tags": [
+      "burning_man"
+    ]
+  }
+}

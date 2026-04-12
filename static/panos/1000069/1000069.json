@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000069,
+    "name": "decom_1_10x5",
+    "width": 28672,
+    "height": 10240,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: decom_1_10x5 | Source: /Volumes/bigeneration/pix_consolidated/copy_20091016",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20091016/decom_1_10x5.gigapan"
+  }
+}

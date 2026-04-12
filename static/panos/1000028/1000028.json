@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000028,
+    "name": "wall_1_5x3",
+    "width": 13312,
+    "height": 6144,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: wall_1_5x3 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/wall_1_5x3.gigapan"
+  }
+}

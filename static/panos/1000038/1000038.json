@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000038,
+    "name": "joe_cychosz_gigapan1",
+    "width": 14336,
+    "height": 15360,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: joe_cychosz_gigapan1 | Source: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-06/joe_cychosz",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-06/joe_cychosz/joe_cychosz_gigapan1.gigapan",
+    "tags": [
+      "siggraph"
+    ]
+  }
+}

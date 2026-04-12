@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000068,
+    "name": "siggraph_c",
+    "width": 16384,
+    "height": 21504,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: siggraph_c | Source: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/siggraph_c.gigapan",
+    "tags": [
+      "siggraph"
+    ]
+  }
+}

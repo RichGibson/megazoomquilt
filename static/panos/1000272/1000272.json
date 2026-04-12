@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000272,
+    "name": "Barrow 01",
+    "width": 73792,
+    "height": 7954,
+    "levels": 10,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: barrow_01.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/barrow_01.tif"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000045,
+    "name": "gpposta_6x4",
+    "width": 18432,
+    "height": 8192,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: gpposta_6x4 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091220",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/gpposta_6x4.gigapan"
+  }
+}

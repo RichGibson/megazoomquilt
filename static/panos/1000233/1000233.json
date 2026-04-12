@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000233,
+    "name": "Pano 5906 Workh",
+    "width": 16882,
+    "height": 2003,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: pano_5906-workh.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20070620_muddy-panos/pano_5906/pano_5906-workh.tif"
+  }
+}

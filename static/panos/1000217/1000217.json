@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000217,
+    "name": "Benihana 1",
+    "width": 9328,
+    "height": 4725,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: benihana_1.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/benihana_1.tif"
+  }
+}

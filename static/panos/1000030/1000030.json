@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000030,
+    "name": "pipe_3x9",
+    "width": 9216,
+    "height": 21504,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: pipe_3x9 | Source: /Volumes/bigeneration/europe_2009/gigapans_early",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/pipe_3x9.gigapan"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000273,
+    "name": "Where Bay 01B",
+    "width": 88415,
+    "height": 13518,
+    "levels": 10,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: where_bay_01b.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/where_bay_01b.tif"
+  }
+}

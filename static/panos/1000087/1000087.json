@@ -1,0 +1,19 @@
+{
+  "gigapan": {
+    "id": 1000087,
+    "name": "mf28",
+    "width": 20480,
+    "height": 8448,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: mf28 | Source: /Volumes/bigeneration/panos_consolidated/gigapan_external_250",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf28.gigapan",
+    "latitude": 37.54739,
+    "longitude": -122.302998,
+    "tags": [
+      "maker_faire"
+    ]
+  }
+}

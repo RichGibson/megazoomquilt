@@ -1,0 +1,18 @@
+{
+  "gigapan": {
+    "id": 1000154,
+    "name": "boot_south_9x12",
+    "width": 29696,
+    "height": 28672,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: boot_south_9x12 | Source: /Volumes/bigeneration/europe_2009/gigapans_italian_fashion",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_italian_fashion/boot_south_9x12.gigapan",
+    "tags": [
+      "q21",
+      "vienna"
+    ]
+  }
+}

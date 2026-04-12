@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000268,
+    "name": "Bull",
+    "width": 30974,
+    "height": 25439,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: bull.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/bull.tif"
+  }
+}

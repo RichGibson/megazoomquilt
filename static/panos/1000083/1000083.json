@@ -1,0 +1,19 @@
+{
+  "gigapan": {
+    "id": 1000083,
+    "name": "mf15",
+    "width": 15360,
+    "height": 9728,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: mf15 | Source: /Volumes/bigeneration/panos_consolidated/gigapan_external_250",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/mf15.gigapan",
+    "latitude": 37.54739,
+    "longitude": -122.302998,
+    "tags": [
+      "maker_faire"
+    ]
+  }
+}

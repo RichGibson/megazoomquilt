@@ -1,0 +1,19 @@
+{
+  "gigapan": {
+    "id": 1000196,
+    "name": "monochrom_office_28x15",
+    "width": 89088,
+    "height": 34816,
+    "levels": 10,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: monochrom_office_28x15 | Source: /Volumes/bigeneration/europe_2009/gigapans_early",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/monochrom_office_28x15.gigapan",
+    "latitude": 48.2038186,
+    "longitude": 16.3572444,
+    "tags": [
+      "vienna"
+    ]
+  }
+}

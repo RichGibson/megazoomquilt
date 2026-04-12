@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000011,
+    "name": "mirror_thing",
+    "width": 9216,
+    "height": 11264,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: mirror_thing | Source: /Volumes/bigeneration/pix_consolidated/bm2012/panos",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/mirror_thing.gigapan"
+  }
+}

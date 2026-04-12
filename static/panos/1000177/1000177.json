@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000177,
+    "name": "gpcent_20x10",
+    "width": 56320,
+    "height": 20480,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: gpcent_20x10 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/gpcent_20x10.gigapan"
+  }
+}

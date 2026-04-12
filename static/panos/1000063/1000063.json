@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000063,
+    "name": "pillow",
+    "width": 29696,
+    "height": 12288,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: pillow | Source: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/pillow.gigapan",
+    "tags": [
+      "siggraph"
+    ]
+  }
+}

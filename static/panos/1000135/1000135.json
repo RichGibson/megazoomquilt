@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000135,
+    "name": "isail_ovic",
+    "width": 16384,
+    "height": 58368,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: isail_ovic | Source: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-05/isailovic",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-05/isailovic/isail_ovic.gigapan",
+    "tags": [
+      "siggraph"
+    ]
+  }
+}

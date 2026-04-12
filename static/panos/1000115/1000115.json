@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000115,
+    "name": "spittelberg_market",
+    "width": 29696,
+    "height": 14336,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: spittelberg_market | Source: /Volumes/bigeneration/europe_2009/gigapans_stitched",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_stitched/spittelberg_market.gigapan"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000002,
+    "name": "hand_y",
+    "width": 6656,
+    "height": 2560,
+    "levels": 6,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: hand_y | Source: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/hand_y.gigapan",
+    "tags": [
+      "burning_man"
+    ]
+  }
+}

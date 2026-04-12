@@ -1,0 +1,20 @@
+{
+  "gigapan": {
+    "id": 1000065,
+    "name": "roboe09_not_stirred_6x7",
+    "width": 18432,
+    "height": 15360,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: roboe09_not_stirred_6x7 | Source: /Volumes/bigeneration/europe_2009/gigapans_early",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/roboe09_not_stirred_6x7.gigapan",
+    "latitude": 48.195937,
+    "longitude": 16.30481,
+    "tags": [
+      "roboexotica",
+      "vienna"
+    ]
+  }
+}

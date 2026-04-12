@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000234,
+    "name": "Steamboat Ed 03 Extract2",
+    "width": 6125,
+    "height": 8351,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: steamboat_ed_03_extract2.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_03_extract2.tif",
+    "tags": [
+      "steamboat_ed"
+    ]
+  }
+}

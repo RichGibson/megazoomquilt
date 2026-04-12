@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000291,
+    "name": "Siggraph Studio 2012 Group Copy",
+    "width": 22663,
+    "height": 8526,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: siggraph_studio_2012_group copy.psd",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures3/group/siggraph_studio_2012_group copy.psd",
+    "tags": [
+      "siggraph"
+    ]
+  }
+}

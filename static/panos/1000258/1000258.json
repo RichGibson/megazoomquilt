@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000258,
+    "name": "Willow Face",
+    "width": 18206,
+    "height": 17253,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: willow_face.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/willow_face.tif"
+  }
+}

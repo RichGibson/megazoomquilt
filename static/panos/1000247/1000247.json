@@ -1,0 +1,16 @@
+{
+  "gigapan": {
+    "id": 1000247,
+    "name": "Sics Doran 06",
+    "width": 17979,
+    "height": 6995,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: sics_doran_06.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/sics_doran_06.tif",
+    "latitude": 38.3122601,
+    "longitude": -123.0465679
+  }
+}

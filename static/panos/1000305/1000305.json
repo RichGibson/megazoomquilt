@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000305,
+    "name": "Try1 Large",
+    "width": 17428,
+    "height": 16041,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: try1_large.psd",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-07/omar_ortega/try1_large.psd"
+  }
+}

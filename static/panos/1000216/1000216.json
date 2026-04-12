@@ -1,0 +1,19 @@
+{
+  "gigapan": {
+    "id": 1000216,
+    "name": "Workshop1",
+    "width": 14163,
+    "height": 1888,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: workshop1.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20070615/workshop1.tif",
+    "latitude": 38.4017718,
+    "longitude": -122.830435,
+    "tags": [
+      "sebastopol"
+    ]
+  }
+}

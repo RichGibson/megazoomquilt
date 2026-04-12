@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000074,
+    "name": "m7_test",
+    "width": 14336,
+    "height": 20480,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: m7_test | Source: /Volumes/bigeneration/panos_consolidated/panos_2012_2013ish",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/m7_test.gigapan"
+  }
+}

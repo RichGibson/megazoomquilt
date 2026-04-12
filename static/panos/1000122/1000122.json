@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000122,
+    "name": "gpengine_2_13x6",
+    "width": 37888,
+    "height": 14336,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: gpengine_2_13x6 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gpengine_2_13x6.gigapan"
+  }
+}

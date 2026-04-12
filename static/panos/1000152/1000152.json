@@ -1,0 +1,18 @@
+{
+  "gigapan": {
+    "id": 1000152,
+    "name": "gphausdermeeres_1_8x11",
+    "width": 25600,
+    "height": 24576,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: gphausdermeeres_1_8x11 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gphausdermeeres_1_8x11.gigapan",
+    "tags": [],
+    "latitude": 48.1972452,
+    "longitude": 16.3525808,
+    "geo_precision": "exact"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000141,
+    "name": "sra_15x7",
+    "width": 45056,
+    "height": 15360,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: sra_15x7 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091210",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091210/sra_15x7.gigapan"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000072,
+    "name": "ln2-front",
+    "width": 17408,
+    "height": 8960,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: ln2-front | Source: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/ln2",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/ln2/ln2-front.gigapan"
+  }
+}

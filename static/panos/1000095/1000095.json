@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000095,
+    "name": "crane2",
+    "width": 10752,
+    "height": 23808,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: crane2 | Source: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/crane2.gigapan",
+    "tags": [
+      "burning_man"
+    ]
+  }
+}

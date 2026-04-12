@@ -1,0 +1,20 @@
+{
+  "gigapan": {
+    "id": 1000324,
+    "name": "mf04 - Spider and Crude Awakening (Maker Faire 2008)",
+    "description": "The Spider sculpture and the Crude Awakening figure at Maker Faire, San Mateo Fairgrounds, May 3, 2008. Source images IMG_1669\u2013IMG_1726, Canon S5IS at 19.1mm (113mm equiv). Stitched with Hugin from 58 source images.",
+    "width": 32647,
+    "height": 4754,
+    "levels": 6,
+    "taken_at": "2008-05-03",
+    "created_at": "2026-03-29",
+    "latitude": 37.54739,
+    "longitude": -122.302998,
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20080503_makerfaire/IMG_1669.JPG",
+    "img_type": "png",
+    "tags": [
+      "maker_faire"
+    ]
+  }
+}

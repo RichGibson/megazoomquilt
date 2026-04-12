@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000193,
+    "name": "man_sunset_x",
+    "width": 10240,
+    "height": 8192,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: man_sunset_x | Source: /Volumes/bigeneration/pix_consolidated/bm_2008/new",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm_2008/new/man_sunset_x.gigapan",
+    "tags": [
+      "burning_man"
+    ]
+  }
+}

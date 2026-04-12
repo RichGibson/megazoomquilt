@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000164,
+    "name": "home_10x6",
+    "width": 15360,
+    "height": 8192,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: home_10x6 | Source: /Volumes/bigeneration/europe_2009/gigapans_early",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/home_10x6.gigapan"
+  }
+}

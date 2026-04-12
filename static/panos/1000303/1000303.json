@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000303,
+    "name": "Try2",
+    "width": 29572,
+    "height": 10975,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: try2.psd",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures3/group/try2.psd"
+  }
+}

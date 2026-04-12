@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000194,
+    "name": "media_bbq",
+    "width": 10240,
+    "height": 5888,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: media_bbq | Source: /Volumes/bigeneration/pix_consolidated/bm_2008/new",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm_2008/new/media_bbq.gigapan",
+    "tags": [
+      "burning_man"
+    ]
+  }
+}

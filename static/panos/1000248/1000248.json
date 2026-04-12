@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000248,
+    "name": "Ln2 Front",
+    "width": 17162,
+    "height": 8837,
+    "levels": 8,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: ln2-front.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/ln2/ln2-front.tif"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000264,
+    "name": "Sics Doran 05 Subset",
+    "width": 36056,
+    "height": 8704,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: sics_doran_05_subset.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/sics_doran_05_subset.tif"
+  }
+}

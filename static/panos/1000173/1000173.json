@@ -1,0 +1,18 @@
+{
+  "gigapan": {
+    "id": 1000173,
+    "name": "gpnathistsnow_16x11",
+    "width": 49152,
+    "height": 25600,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: gpnathistsnow_16x11 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091220",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/gpnathistsnow_16x11.gigapan",
+    "tags": [],
+    "latitude": 48.204273,
+    "longitude": 16.3609815,
+    "geo_precision": "exact"
+  }
+}

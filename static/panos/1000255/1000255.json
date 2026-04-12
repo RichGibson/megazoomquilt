@@ -1,0 +1,14 @@
+{
+  "gigapan": {
+    "id": 1000255,
+    "name": "Headless Man",
+    "width": 13598,
+    "height": 32839,
+    "levels": 9,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Tiled from: headless_man.tif",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/headless_man.tif"
+  }
+}

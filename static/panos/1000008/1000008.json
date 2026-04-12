@@ -1,0 +1,17 @@
+{
+  "gigapan": {
+    "id": 1000008,
+    "name": "siggraph_jordyn",
+    "width": 8192,
+    "height": 9216,
+    "levels": 7,
+    "img_type": "jpg",
+    "views": 0,
+    "description": "Imported from local Gigapan Stitcher file: siggraph_jordyn | Source: /Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures",
+    "source": "local",
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/siggraph_jordyn.gigapan",
+    "tags": [
+      "siggraph"
+    ]
+  }
+}
