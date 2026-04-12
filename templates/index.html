@@ -41,13 +41,23 @@
           {{ label }}{% if is_asc %} ↑{% elif is_desc %} ↓{% endif %}
         </a>
       {% endfor %}
+      <label class="geo-filter-label" title="Hide panoramas that already have coordinates">
+        <input type="checkbox" id="geo-filter"> 📍 Unlocated only
+      </label>
+      <div class="size-btns" title="Thumbnail size">
+        <button class="size-btn" data-size="small">Small</button>
+        <button class="size-btn" data-size="medium">Medium</button>
+        <button class="size-btn" data-size="large">Large</button>
+      </div>
     </div>
 
-    <div class="card-grid" id="card-grid">
+    <div class="card-grid" id="card-grid" data-active-tag="{{ active_tag or '' }}">
       {% for pano in panoramas %}
-      <a class="card" href="{{ url_for('view_pano', pano_id=pano['id']) }}"
+      <a class="card" href="{{ url_for('view_pano', pano_id=pano['id']) }}{% if active_tag %}?tag={{ active_tag | urlencode }}{% endif %}"
+         data-base-href="{{ url_for('view_pano', pano_id=pano['id']) }}{% if active_tag %}?tag={{ active_tag | urlencode }}{% endif %}"
          data-name="{{ pano['name']|lower }} {{ pano.get('description', '')|lower }}"
          data-local="{{ 'true' if pano['id'] >= 1000000 else 'false' }}"
+         data-geo="{{ 'true' if (pano.get('latitude') and pano.get('longitude')) else 'false' }}"
          data-pano-id="{{ pano['id'] }}"
          data-pano-w="{{ pano['width'] }}"
          data-pano-h="{{ pano['height'] }}"
@@ -93,6 +103,64 @@
 </div>
 
 <style>
+  /* size-medium: images only, 320px columns */
+  #card-grid.size-medium .card-body { display: none; }
+  #card-grid.size-medium .card { border-radius: 4px; overflow: hidden; }
+  #card-grid.size-medium .card-thumb { border-radius: 0; }
+  #card-grid.size-medium { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 0.4rem; }
+
+  /* size-large: images only, 640px columns */
+  #card-grid.size-large .card-body { display: none; }
+  #card-grid.size-large .card { border-radius: 4px; overflow: hidden; }
+  #card-grid.size-large .card-thumb { border-radius: 0; }
+  #card-grid.size-large { grid-template-columns: repeat(auto-fill, minmax(640px, 1fr)); gap: 0.4rem; }
+
+  .size-btns {
+    display: flex;
+    gap: 0.2rem;
+    margin-left: 0.25rem;
+  }
+  .size-btn {
+    padding: 0.18rem 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    color: #555;
+    cursor: pointer;
+    line-height: 1.4;
+  }
+  .size-btn:hover { border-color: #aaa; color: #222; }
+  .size-btn.active { background: #0077cc; border-color: #0077cc; color: #fff; }
+
+  .geo-filter-label {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.82rem;
+    color: #666;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .geo-filter-label input { cursor: pointer; accent-color: #0077cc; }
+
+  /* Skin overrides */
+  .skin-retro .geo-filter-label,
+  .skin-amber .geo-filter-label { color: var(--p-dim); }
+  .skin-retro .geo-filter-label input,
+  .skin-amber .geo-filter-label input { accent-color: var(--p); }
+  .skin-museum .geo-filter-label { color: #8b6a4a; }
+  .skin-museum .geo-filter-label input { accent-color: #c8924a; }
+  .skin-blueprint .geo-filter-label { color: rgba(74,159,212,0.7); }
+  .skin-blueprint .geo-filter-label input { accent-color: #4a9fd4; }
+  .skin-magazine .geo-filter-label { color: #555; }
+  .skin-magazine .geo-filter-label input { accent-color: #d4001f; }
+  .skin-explorer .geo-filter-label { color: #8b7355; font-family: 'Lora', serif; font-style: italic; }
+  .skin-explorer .geo-filter-label input { accent-color: #8b3a2a; }
+
   #pano-popup {
     display: none;
     position: fixed;
@@ -191,26 +259,35 @@
     }
 
     document.querySelectorAll('#card-grid .card').forEach(card => {
-      card.addEventListener('mouseenter', function () {
-        timer = setTimeout(() => showPopup(this), HOVER_DELAY_MS);
+      const thumb = card.querySelector('.card-thumb');
+      if (!thumb) return;
+      thumb.addEventListener('mouseenter', function () {
+        timer = setTimeout(() => showPopup(card), HOVER_DELAY_MS);
       });
-      card.addEventListener('mouseleave', hidePopup);
+      thumb.addEventListener('mouseleave', hidePopup);
     });
   })();
 
   const searchInput = document.getElementById('pano-search');
+  const geoFilter   = document.getElementById('geo-filter');
   const cards = document.querySelectorAll('#card-grid .card');
   const sidebarItems = document.querySelectorAll('.sidebar-list li');
   const visibleCount = document.getElementById('visible-count');
   const gigapanCount = document.getElementById('gigapan-count');
   const localCount = document.getElementById('local-count');
 
-  searchInput.addEventListener('input', function() {
-    const q = this.value.toLowerCase().trim();
+  function applyFilters() {
+    const q        = searchInput.value.toLowerCase().trim();
+    const geoOnly  = geoFilter.checked;
     let count = 0, gp = 0, loc = 0;
     cards.forEach(card => {
-      const match = !q || card.dataset.name.includes(q);
+      const textMatch = !q || card.dataset.name.includes(q);
+      const geoMatch  = !geoOnly || card.dataset.geo !== 'true';
+      const match = textMatch && geoMatch;
       card.style.display = match ? '' : 'none';
+      // Keep nav context on the href
+      const base = card.dataset.baseHref || card.getAttribute('href');
+      card.setAttribute('href', q ? base + (base.includes('?') ? '&' : '?') + 'q=' + encodeURIComponent(q) : base);
       if (match) {
         count++;
         if (card.dataset.local === 'true') loc++; else gp++;
@@ -222,6 +299,26 @@
     visibleCount.textContent = count;
     gigapanCount.textContent = gp;
     localCount.textContent = loc;
-  });
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  geoFilter.addEventListener('change', applyFilters);
+
+  // ── Thumbnail size ──
+  const grid = document.getElementById('card-grid');
+  const sizeBtns = document.querySelectorAll('.size-btn');
+  const SIZE_KEY = 'mzq-thumb-size';
+
+  function applySize(size) {
+    grid.classList.remove('size-medium', 'size-large');
+    if (size === 'medium' || size === 'large') grid.classList.add('size-' + size);
+    sizeBtns.forEach(b => b.classList.toggle('active', b.dataset.size === size));
+    localStorage.setItem(SIZE_KEY, size);
+  }
+
+  sizeBtns.forEach(btn => btn.addEventListener('click', () => applySize(btn.dataset.size)));
+
+  // Restore saved preference
+  applySize(localStorage.getItem(SIZE_KEY) || 'small');
 </script>
 {% endblock %}

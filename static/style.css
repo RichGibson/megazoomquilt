@@ -10,20 +10,33 @@ body {
 }
 
 .content {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
-/* Site title / header */
+/* Top bar: title + nav on one line */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-bottom: 1px solid #ddd;
+  padding: 0.4rem 0;
+  margin-bottom: 0.1rem;
+  flex-wrap: wrap;
+}
+.site-header nav { flex: 1; }
+
+/* Site title */
 .site-title {
   display: inline-block;
   font-size: 1.4rem;
   font-weight: 700;
   color: #222;
   letter-spacing: -0.02em;
-  margin: 0.5rem 0;
+  white-space: nowrap;
   text-decoration: none;
+  flex-shrink: 0;
 }
 .site-title:hover {
   color: #0077cc;
@@ -42,10 +55,11 @@ a:hover {
 .navbar {
   list-style: none;
   display: flex;
+  align-items: center;
   gap: 1em;
-  padding: 0.5rem 0;
+  padding: 0;
   margin: 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: none;
 }
 .navbar li {
   display: inline;
@@ -115,7 +129,19 @@ a:hover {
   gap: 0.4rem;
   flex-wrap: wrap;
   margin-bottom: 0.75rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #eee;
 }
+.skin-retro .sort-bar, .skin-amber .sort-bar { background: var(--bg); border-bottom-color: var(--p-ghost); }
+.skin-museum .sort-bar    { background: #0a0807; border-bottom-color: #2e1e10; }
+.skin-blueprint .sort-bar { background: #071525; border-bottom-color: rgba(74,159,212,0.2); }
+.skin-magazine .sort-bar  { background: #fff;    border-bottom-color: #111; border-bottom-width: 2px; }
+.skin-explorer .sort-bar  { background: #fdf6e3; border-bottom-color: #c8a87a; }
+
 .sort-label {
   font-size: 0.82rem;
   color: #777;
@@ -148,7 +174,7 @@ a:hover {
 /* Card grid */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
 }
 
@@ -379,8 +405,8 @@ footer {
 }
 
 /* Nav */
-.skin-retro .navbar, .skin-amber .navbar {
-  border-bottom: 1px solid var(--p-ghost);
+.skin-retro .site-header, .skin-amber .site-header {
+  border-bottom-color: var(--p-ghost);
 }
 .skin-retro .navbar li a, .skin-amber .navbar li a {
   color: var(--p);
@@ -586,7 +612,7 @@ footer {
 }
 .skin-museum .site-title:hover { color: #e8b87a; }
 
-.skin-museum .navbar { border-bottom: 1px solid #2e1e10; }
+.skin-museum .site-header { border-bottom-color: #2e1e10; }
 .skin-museum .navbar li a {
   font-family: 'Crimson Pro', serif;
   color: #8a6a45;
@@ -755,7 +781,7 @@ footer {
 }
 .skin-blueprint .site-title:hover { color: #7bc4f0; }
 
-.skin-blueprint .navbar { border-bottom: 1px solid rgba(74, 159, 212, 0.3); }
+.skin-blueprint .site-header { border-bottom-color: rgba(74, 159, 212, 0.3); }
 .skin-blueprint .navbar li a {
   color: #4a9fd4;
   letter-spacing: 0.1em;
@@ -964,7 +990,7 @@ footer {
 }
 .skin-magazine .site-title:hover { color: #d4001f; }
 
-.skin-magazine .navbar { border-bottom: 3px solid #111; }
+.skin-magazine .site-header { border-bottom: 3px solid #111; }
 .skin-magazine .navbar li a {
   font-family: 'Bebas Neue', sans-serif;
   color: #111;
@@ -1155,7 +1181,7 @@ footer {
 }
 .skin-explorer .site-title:hover { color: #8b3a2a; text-decoration: none; }
 
-.skin-explorer .navbar { border-bottom: 2px solid #b09060; }
+.skin-explorer .site-header { border-bottom-color: #b09060; }
 .skin-explorer .navbar li a {
   color: #5a4030;
   font-family: 'Lora', serif;

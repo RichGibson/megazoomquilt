@@ -3,6 +3,7 @@
 {% block title %}Edit — {{ pano.name }}{% endblock %}
 
 {% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
 <style>
   .edit-form {
     max-width: 720px;
@@ -132,6 +133,177 @@
   }
   .skin-explorer .btn-save { background: #8b3a2a; border-radius: 2px; }
   .skin-explorer .btn-save:hover { background: #6b2a1a; }
+
+  /* ── Geo location section ── */
+  .geo-section {
+    margin-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1.5rem;
+  }
+  .geo-section h3 {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #666;
+    margin: 0 0 0.9rem;
+  }
+  #loc-map {
+    height: 340px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 0.6rem;
+    cursor: crosshair;
+  }
+  .loc-coords-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .loc-coord-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .loc-coord-field label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+  }
+  .loc-coord-field input[type="text"] {
+    width: 13ch;
+    padding: 0.32rem 0.55rem;
+    font-size: 0.85rem;
+    font-family: monospace;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fafafa;
+    color: #111;
+    box-sizing: border-box;
+  }
+  .loc-coord-field input[type="text"]:focus {
+    outline: none;
+    border-color: #0077cc;
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(0,119,204,0.12);
+  }
+  .loc-coord-field input[type="text"].coord-updated {
+    border-color: #27ae60;
+    box-shadow: 0 0 0 2px rgba(39,174,96,0.15);
+  }
+  .btn-clear-loc {
+    font-size: 0.78rem;
+    color: #c0392b;
+    background: none;
+    border: 1px solid #e0c0be;
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  .btn-clear-loc:hover { background: #fdf0ef; }
+
+  /* Precision + note row */
+  .geo-meta {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .geo-meta .field { flex: 1; min-width: 150px; margin-bottom: 0; }
+  .geo-meta select {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.88rem;
+    font-family: inherit;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fafafa;
+    color: #111;
+  }
+  .geo-meta select:focus { outline: none; border-color: #0077cc; }
+
+  /* Locked overlay */
+  .geo-lock-wrap { position: relative; }
+  .geo-lock-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(240,240,240,0.82);
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: 5px;
+    backdrop-filter: blur(1px);
+  }
+  .geo-lock-overlay p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #555;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  .geo-lock-overlay .lock-icon { font-size: 1.6rem; }
+  .btn-unlock {
+    font-size: 0.82rem;
+    font-weight: 600;
+    background: #c0392b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.35rem 1rem;
+    cursor: pointer;
+  }
+  .btn-unlock:hover { background: #a93226; }
+
+  /* Coord input skin overrides */
+  .skin-retro .loc-coord-field label, .skin-amber .loc-coord-field label { color: var(--p-dim); }
+  .skin-retro .loc-coord-field input, .skin-amber .loc-coord-field input {
+    background: var(--bg); border-color: var(--p-ghost); color: var(--p); border-radius: 0;
+  }
+  .skin-retro .loc-coord-field input:focus, .skin-amber .loc-coord-field input:focus {
+    border-color: var(--p); box-shadow: 0 0 6px var(--p-ghost); background: var(--bg);
+  }
+  .skin-museum .loc-coord-field label { color: #5a4030; }
+  .skin-museum .loc-coord-field input { background: #0a0807; border-color: #2e1e10; color: #e8ddd0; border-radius: 0; }
+  .skin-museum .loc-coord-field input:focus { border-color: #c8924a; box-shadow: none; background: #0a0807; }
+  .skin-blueprint .loc-coord-field label { color: rgba(74,159,212,0.5); font-family: 'IBM Plex Mono', monospace; }
+  .skin-blueprint .loc-coord-field input { background: rgba(7,21,37,0.8); border-color: rgba(74,159,212,0.3); color: #a8cce8; border-radius: 0; }
+  .skin-blueprint .loc-coord-field input:focus { border-color: #4a9fd4; box-shadow: 0 0 8px rgba(74,159,212,0.18); background: rgba(7,21,37,0.8); }
+  .skin-magazine .loc-coord-field input { border: 2px solid #111; border-radius: 0; }
+  .skin-explorer .loc-coord-field label { color: #8b7355; font-family: 'Lora', serif; font-style: italic; }
+  .skin-explorer .loc-coord-field input { background: #fdf6e3; border-color: #c8a87a; border-radius: 2px; color: #3d2b1f; }
+
+  /* Skin overrides for geo section */
+  .skin-retro .geo-section, .skin-amber .geo-section { border-color: var(--p-ghost); }
+  .skin-retro .geo-section h3, .skin-amber .geo-section h3 { color: var(--p-dim); }
+  .skin-retro #loc-map, .skin-amber #loc-map { border-color: var(--p-ghost); border-radius: 0; }
+  .skin-retro .geo-meta select, .skin-amber .geo-meta select {
+    background: var(--bg); border-color: var(--p-ghost); color: var(--p);
+    font-family: "Courier New", monospace; border-radius: 0;
+  }
+  .skin-museum .geo-section { border-color: #2e1e10; }
+  .skin-museum .geo-section h3 { color: #5a4030; }
+  .skin-museum #loc-map { border-color: #2e1e10; border-radius: 0; }
+  .skin-museum .geo-meta select { background: #0a0807; border-color: #2e1e10; color: #e8ddd0; border-radius: 0; }
+  .skin-blueprint .geo-section { border-color: rgba(74,159,212,0.3); }
+  .skin-blueprint .geo-section h3 { color: rgba(74,159,212,0.6); font-family: 'IBM Plex Mono', monospace; }
+  .skin-blueprint #loc-map { border-color: rgba(74,159,212,0.3); border-radius: 0; }
+  .skin-blueprint .geo-meta select { background: rgba(7,21,37,0.8); border-color: rgba(74,159,212,0.3); color: #a8cce8; border-radius: 0; font-family: 'IBM Plex Mono', monospace; }
+  .skin-magazine .geo-section { border-color: #111; }
+  .skin-magazine #loc-map { border-radius: 0; border: 2px solid #111; }
+  .skin-magazine .geo-meta select { border: 2px solid #111; border-radius: 0; }
+  .skin-explorer .geo-section { border-color: #c8a87a; }
+  .skin-explorer .geo-section h3 { color: #8b7355; font-family: 'Lora', serif; font-style: italic; }
+  .skin-explorer #loc-map { border-color: #c8a87a; border-radius: 2px; }
+  .skin-explorer .geo-meta select { background: #fdf6e3; border-color: #c8a87a; border-radius: 2px; color: #3d2b1f; font-family: 'Lora', serif; }
 </style>
 {% endblock %}
 
@@ -160,11 +332,242 @@
       <span class="hint">Comma-separated. Spaces within a tag become underscores.</span>
     </div>
 
-    <div class="edit-actions">
+    <!-- ── Geo location ── -->
+    <div class="geo-section">
+      <h3>Location</h3>
+
+      <div class="geo-lock-wrap">
+        <div id="loc-map"></div>
+
+        {% if pano.geo_precision == 'exact' %}
+        <div class="geo-lock-overlay" id="geo-lock-overlay">
+          <span class="lock-icon">🔒</span>
+          <p>This panorama has a GPS-exact location.<br>Unlock to edit coordinates.</p>
+          <button type="button" class="btn-unlock" id="btn-unlock">Unlock GPS location</button>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="loc-coords-row">
+        <div class="loc-coord-field">
+          <label for="latitude">Lat</label>
+          <input type="text" id="lat-display" name="latitude"
+                 value="{{ '%.7f'|format(pano.latitude)  if pano.latitude  else '' }}"
+                 placeholder="e.g. 38.4028961"
+                 inputmode="decimal" autocomplete="off">
+        </div>
+        <div class="loc-coord-field">
+          <label for="longitude">Lng</label>
+          <input type="text" id="lng-display" name="longitude"
+                 value="{{ '%.7f'|format(pano.longitude) if pano.longitude else '' }}"
+                 placeholder="e.g. -122.8294939"
+                 inputmode="decimal" autocomplete="off">
+        </div>
+        <button type="button" class="btn-clear-loc" id="btn-clear-loc">✕ Clear</button>
+      </div>
+
+      <div class="geo-meta">
+        <div class="field">
+          <label for="geo_precision">Precision</label>
+          <select id="geo_precision" name="geo_precision">
+            <option value="">— unknown —</option>
+            <option value="exact"       {% if pano.geo_precision == 'exact' %}selected{% endif %}>Exact (GPS)</option>
+            <option value="approximate" {% if pano.geo_precision == 'approximate' %}selected{% endif %}>Approximate</option>
+            <option value="region"      {% if pano.geo_precision == 'region' %}selected{% endif %}>Region / city</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="geo_note">Note <span class="hint" style="text-transform:none;font-weight:400;">(optional)</span></label>
+          <input type="text" id="geo_note" name="geo_note"
+                 value="{{ pano.geo_note or '' }}"
+                 placeholder="e.g. Inferred from Burning Man 2008">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="edit-actions" style="margin-top:1.5rem;">
       <button type="submit" class="btn-save">Save</button>
       <a href="{{ url_for('view_pano', pano_id=pano_id) }}" class="btn-cancel">Cancel</a>
     </div>
 
   </form>
 </div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(function () {
+  const existingLat = {{ pano.latitude  | tojson if pano.latitude  else 'null' }};
+  const existingLng = {{ pano.longitude | tojson if pano.longitude else 'null' }};
+  const isExact     = {{ (pano.geo_precision == 'exact') | tojson }};
+  const hintCenter  = {{ hint_center | tojson if hint_center else 'null' }};
+  const geoPanos    = {{ geo_panos | tojson }};
+  const CURRENT_ID  = String({{ pano_id }});
+
+  // ── Build map ──
+  let defaultCenter = [20, 0], defaultZoom = 2;
+  if (existingLat !== null) {
+    defaultCenter = [existingLat, existingLng];
+    defaultZoom = 13;
+  } else if (hintCenter) {
+    defaultCenter = [hintCenter[0], hintCenter[1]];
+    defaultZoom   = hintCenter[2];
+  }
+
+  const locMap = L.map('loc-map', { center: defaultCenter, zoom: defaultZoom });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19, subdomains: 'abcd'
+  }).addTo(locMap);
+
+  // ── Nearby panorama markers ──
+  function panoIcon(width, height, fill, stroke) {
+    const rx = 3;
+    const arcY = height * 0.72;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg"
+        width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+      <rect x="1" y="1" width="${width-2}" height="${height-2}"
+            rx="${rx}" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/>
+      <path d="M ${width*0.22},${arcY}
+               Q ${width*0.5},${arcY - height*0.52}
+                 ${width*0.78},${arcY}"
+            fill="none" stroke="white"
+            stroke-width="${Math.max(1.4, width/18)}"
+            stroke-linecap="round"/>
+      <circle cx="${width*0.5}" cy="${arcY}" r="${width/10}"
+              fill="white" opacity="0.95"/>
+    </svg>`;
+    return L.divIcon({
+      html: svg, className: '',
+      iconSize: [width, height],
+      iconAnchor: [width/2, height/2],
+      popupAnchor: [0, -height/2 - 4]
+    });
+  }
+
+  const iconNearby = panoIcon(28, 18, '#3a7bd5', 'white');
+
+  geoPanos.forEach(function (gp) {
+    if (String(gp.id) === CURRENT_ID) return;
+    L.marker([gp.lat, gp.lng], { icon: iconNearby, zIndexOffset: -100 })
+      .bindPopup(`<a href="/view/${gp.id}" target="_blank">${gp.name}</a>`)
+      .addTo(locMap);
+  });
+
+  const latInput = document.getElementById('lat-display');
+  const lngInput = document.getElementById('lng-display');
+  let mapInteractive = !isExact;
+
+  // ── Marker ──
+  let marker = null;
+
+  function setMarker(lat, lng, panMap) {
+    if (marker) {
+      marker.setLatLng([lat, lng]);
+    } else {
+      marker = L.marker([lat, lng], { draggable: mapInteractive }).addTo(locMap);
+      marker.on('dragend', function () {
+        const ll = marker.getLatLng();
+        updateCoords(ll.lat, ll.lng, false);
+      });
+    }
+    updateCoords(lat, lng, false);
+    if (panMap !== false) locMap.panTo([lat, lng]);
+  }
+
+  function updateCoords(lat, lng, panMap) {
+    latInput.value = lat.toFixed(7);
+    lngInput.value = lng.toFixed(7);
+    flashGreen(latInput);
+    flashGreen(lngInput);
+    if (panMap !== false) locMap.panTo([lat, lng]);
+  }
+
+  function flashGreen(el) {
+    el.classList.add('coord-updated');
+    setTimeout(() => el.classList.remove('coord-updated'), 1200);
+  }
+
+  function clearLocation() {
+    if (marker) { locMap.removeLayer(marker); marker = null; }
+    latInput.value = '';
+    lngInput.value = '';
+  }
+
+  // Place existing marker
+  if (existingLat !== null) {
+    setMarker(existingLat, existingLng, false);
+  }
+
+  // Click to place
+  locMap.on('click', function (e) {
+    if (!mapInteractive) return;
+    setMarker(e.latlng.lat, e.latlng.lng, false);
+  });
+
+  // ── Coords → map (typing / paste) ──
+  let coordTimer = null;
+
+  function coordsFromFields() {
+    // Support pasting "lat, lng" into the lat field
+    const rawLat = latInput.value.trim();
+    const commaPaste = rawLat.match(/^(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)$/);
+    if (commaPaste) {
+      latInput.value = commaPaste[1];
+      lngInput.value = commaPaste[2];
+    }
+
+    const lat = parseFloat(latInput.value);
+    const lng = parseFloat(lngInput.value);
+    if (isNaN(lat) || isNaN(lng)) return;
+    if (lat < -90 || lat > 90 || lng < -180 || lng > 180) return;
+
+    if (marker) {
+      marker.setLatLng([lat, lng]);
+    } else {
+      marker = L.marker([lat, lng], { draggable: mapInteractive }).addTo(locMap);
+      marker.on('dragend', function () {
+        const ll = marker.getLatLng();
+        updateCoords(ll.lat, ll.lng, false);
+      });
+    }
+    locMap.panTo([lat, lng]);
+  }
+
+  function scheduleCoordUpdate() {
+    clearTimeout(coordTimer);
+    coordTimer = setTimeout(coordsFromFields, 350);
+  }
+
+  latInput.addEventListener('input', scheduleCoordUpdate);
+  lngInput.addEventListener('input', scheduleCoordUpdate);
+  // Also fire immediately on paste
+  latInput.addEventListener('paste', function () { setTimeout(coordsFromFields, 0); });
+  lngInput.addEventListener('paste', function () { setTimeout(coordsFromFields, 0); });
+
+  document.getElementById('btn-clear-loc').addEventListener('click', clearLocation);
+
+  // ── Lock / unlock ──
+  const overlay = document.getElementById('geo-lock-overlay');
+  const unlockBtn = document.getElementById('btn-unlock');
+  if (unlockBtn) {
+    unlockBtn.addEventListener('click', function () {
+      if (!confirm('This location has GPS-level precision.\nAre you sure you want to edit it?')) return;
+      mapInteractive = true;
+      overlay.style.display = 'none';
+      if (marker) marker.dragging.enable();
+      latInput.disabled = false;
+      lngInput.disabled = false;
+    });
+  }
+
+  // Lock the text inputs too when GPS-exact
+  if (isExact) {
+    latInput.disabled = true;
+    lngInput.disabled = true;
+    if (marker) marker.dragging.disable();
+  }
+})();
+</script>
 {% endblock %}

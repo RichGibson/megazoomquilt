@@ -118,6 +118,66 @@
     color: #aaa;
     line-height: 1.7;
   }
+  /* Prev / next navigation */
+  .pano-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 800;
+    text-decoration: none;
+  }
+  .pano-nav-prev { left: 0.6rem; }
+  .pano-nav-next { right: 0.6rem; }
+  .pano-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 4rem;
+    background: rgba(255,255,255,0.82);
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    color: #444;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: background 0.15s, color 0.15s;
+  }
+  .pano-nav-btn:hover { background: #fff; color: #0077cc; border-color: #aac; }
+  .nav-context {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 800;
+  }
+
+  /* Skin overrides */
+  .skin-retro .pano-nav-btn, .skin-amber .pano-nav-btn {
+    background: var(--bg); border-color: var(--p-ghost); color: var(--p); border-radius: 0; backdrop-filter: none;
+  }
+  .skin-retro .pano-nav-btn:hover, .skin-amber .pano-nav-btn:hover { background: var(--p-ghost); }
+  .skin-museum .pano-nav-btn {
+    background: rgba(10,8,7,0.88); border-color: #2e1e10; color: #c8924a; border-radius: 0;
+  }
+  .skin-museum .pano-nav-btn:hover { color: #e8b87a; }
+  .skin-blueprint .pano-nav-btn {
+    background: rgba(7,21,37,0.88); border-color: rgba(74,159,212,0.4); color: #4a9fd4; border-radius: 0;
+  }
+  .skin-blueprint .pano-nav-btn:hover { color: #7bc4f0; }
+  .skin-magazine .pano-nav-btn { border-radius: 0; border: 2px solid #111; }
+  .skin-magazine .pano-nav-btn:hover { color: #d4001f; }
+  .skin-explorer .pano-nav-btn { border-radius: 2px; border-color: #c8a87a; background: rgba(253,246,227,0.9); }
+  .skin-explorer .pano-nav-btn:hover { color: #8b3a2a; }
+
   /* Location mini-map */
   .location-map-section {
     margin: 1rem 0 1.2rem;
@@ -141,6 +201,34 @@
 {% endblock %}
 
 {% block content %}
+{# Build a reusable query suffix for nav links #}
+{% set _qs = [] %}
+{% if nav_tag %}{% set _ = _qs.append('tag=' ~ nav_tag | urlencode) %}{% endif %}
+{% if nav_q   %}{% set _ = _qs.append('q='   ~ nav_q   | urlencode) %}{% endif %}
+{% set nav_qs = ('?' ~ _qs | join('&')) if _qs else '' %}
+
+{% if prev_id %}
+<a class="pano-nav pano-nav-prev"
+   href="{{ url_for('view_pano', pano_id=prev_id) }}{{ nav_qs }}"
+   title="Previous panorama (←)">
+  <div class="pano-nav-btn">‹</div>
+</a>
+{% endif %}
+
+{% if next_id %}
+<a class="pano-nav pano-nav-next"
+   href="{{ url_for('view_pano', pano_id=next_id) }}{{ nav_qs }}"
+   title="Next panorama (→)">
+  <div class="pano-nav-btn">›</div>
+</a>
+{% endif %}
+
+{% if nav_tag or nav_q %}
+<div class="nav-context">
+  {% if nav_tag %}browsing #{{ nav_tag }}{% endif %}{% if nav_tag and nav_q %} · {% endif %}{% if nav_q %}"{{ nav_q }}"{% endif %}
+</div>
+{% endif %}
+
 <div class="pano-header">
   <a href="{{ url_for('home') }}" class="back-link">← All panoramas</a>
   <a href="{{ url_for('edit_pano', pano_id=pano_id) }}" class="back-link" style="margin-left:1rem;">✎ Edit</a>
@@ -158,6 +246,7 @@
     {% if pano.taken_at %}<span>{{ pano.taken_at[:10] }}</span>
     {% elif pano.created_at %}<span>{{ pano.created_at[:10] }} (uploaded)</span>{% endif %}
     {% if pano.field_of_view_w %}<span>{{ pano.field_of_view_w }}° FOV</span>{% endif %}
+    <span>{% if pano.tile_base_url %}cloudflare{% else %}local{% endif %}</span>
     {% if pano.latitude and pano.longitude %}<span>📍 {{ "%.4f"|format(pano.latitude) }}, {{ "%.4f"|format(pano.longitude) }}</span>{% endif %}
   </div>
 </div>
@@ -253,7 +342,8 @@
 <script src="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.js"></script>
 
 <script>
-  const tileUrlTemplate = `/static/panos/{{ pano_id }}/{z}/{x}/{y}.{{ pano.img_type }}`;
+  const tileBase = {{ pano.tile_base_url | tojson if pano.tile_base_url else ('"/static/panos/' + pano_id + '"') | safe }};
+  const tileUrlTemplate = tileBase + `/{z}/{x}/{y}.{{ pano.img_type }}`;
   const imageWidth = {{ pano.width }};
   const imageHeight = {{ pano.height }};
   const maxZoom = {{ pano.levels - 1 }};
@@ -380,5 +470,16 @@
     });
   })();
   {% endif %}
+
+  // ── Keyboard navigation ──
+  document.addEventListener('keydown', function (e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    {% if prev_id %}
+    if (e.key === 'ArrowLeft')  window.location = '{{ url_for("view_pano", pano_id=prev_id) }}{{ nav_qs }}';
+    {% endif %}
+    {% if next_id %}
+    if (e.key === 'ArrowRight') window.location = '{{ url_for("view_pano", pano_id=next_id) }}{{ nav_qs }}';
+    {% endif %}
+  });
 </script>
 {% endblock %}

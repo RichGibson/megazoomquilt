@@ -14,6 +14,28 @@ from pathlib import Path
 SKINS = ['default', 'retro', 'amber', 'museum', 'blueprint', 'magazine', 'explorer']
 GIGAPAN_LIST_PATH = Path(__file__).resolve().parent / "gigapan_list.json"
 
+# Tag → suggested map center [lat, lng, zoom] for the edit page location picker
+TAG_GEO_HINTS = {
+    'burning_man':  [40.786, -119.203, 12],
+    'vienna':       [48.208, 16.373,   13],
+    'sebastopol':   [38.402, -122.824, 14],
+    'london':       [51.507, -0.128,   12],
+    'nasa_ames':    [37.408, -122.064, 14],
+    'mendocino':    [39.305, -123.797, 12],
+    'maker_faire':  [37.546, -122.305, 14],
+    'hursley':      [51.024, -1.398,   14],
+    'arizona':      [34.048, -111.094, 8],
+    'florence_ave': [38.402, -122.829, 16],
+    'mak_vienna':   [48.205, 16.373,   15],
+    'q21':          [48.203, 16.359,   16],
+    'geffrye':      [51.531, -0.076,   15],
+    'siggraph':     [34.050, -118.260, 12],
+    'wherecamp':    [37.422, -122.084, 13],
+    'roboexotica':  [48.203, 16.366,   14],
+    'sasha_shulgin':[37.927, -122.513, 14],
+    'london':       [51.507, -0.128,   12],
+}
+
 @app.context_processor
 def inject_skin():
     skin = request.cookies.get('skin', 'default')
@@ -320,8 +342,29 @@ def view_pano(pano_id):
         and pg['latitude'] != 0 and pg['longitude'] != 0
     ]
 
+    nav_tag = request.args.get('tag', '').strip()
+    nav_q   = request.args.get('q',   '').strip().lower()
+
+    all_panos = load_pano_data()  # sorted by id asc
+    if nav_tag:
+        all_panos = [p for p in all_panos if nav_tag in (p.get('tags') or [])]
+    if nav_q:
+        all_panos = [p for p in all_panos
+                     if nav_q in p.get('name', '').lower()
+                     or nav_q in (p.get('description') or '').lower()]
+
+    ids = [p['id'] for p in all_panos]
+    try:
+        idx = ids.index(int(pano_id))
+        prev_id = ids[(idx - 1) % len(ids)]
+        next_id = ids[(idx + 1) % len(ids)]
+    except ValueError:
+        prev_id = next_id = None
+
     return render_template("view.html", pano_id=pano_id, pano=pano_data['gigapan'],
-                           p=p, results=results, geo_panos=geo_panos)
+                           p=p, results=results, geo_panos=geo_panos,
+                           prev_id=prev_id, next_id=next_id,
+                           nav_tag=nav_tag, nav_q=nav_q)
 
 def backup_json(json_path: Path):
     """Copy id.json → id.bak, then id.bk1, id.bk2 … if .bak already exists."""
@@ -349,8 +392,26 @@ def edit_pano(pano_id):
         data = json.load(f)
     pano = data['gigapan']
     tags_str = ', '.join(pano.get('tags') or [])
+
+    # Build a geo hint: first tag that has a known centroid
+    hint_center = None
+    for tag in (pano.get('tags') or []):
+        if tag in TAG_GEO_HINTS:
+            hint_center = TAG_GEO_HINTS[tag]
+            break
+
+    geo_panos = [
+        {'id': pg['id'], 'name': pg['name'],
+         'lat': pg['latitude'], 'lng': pg['longitude']}
+        for pg in load_pano_data()
+        if pg.get('latitude') and pg.get('longitude')
+        and pg['latitude'] != 0 and pg['longitude'] != 0
+    ]
+
     return render_template("edit.html", pano=pano, pano_id=pano_id,
-                           tags_str=tags_str, p={'page_title': f'Edit {pano.get("name", pano_id)}'})
+                           tags_str=tags_str, hint_center=hint_center,
+                           geo_panos=geo_panos,
+                           p={'page_title': f'Edit {pano.get("name", pano_id)}'})
 
 
 @app.route("/edit/<pano_id>", methods=["POST"])
@@ -373,11 +434,41 @@ def edit_pano_post(pano_id):
         if t.strip()
     ]
 
+    # Geo fields
+    lat_str = request.form.get('latitude', '').strip()
+    lng_str = request.form.get('longitude', '').strip()
+    geo_precision = request.form.get('geo_precision', '').strip() or None
+    geo_note      = request.form.get('geo_note', '').strip() or None
+
     # Apply changes
     if name:
         pano['name'] = name
     pano['description'] = description
     pano['tags'] = tags if tags else []
+
+    # Apply geo if provided
+    if lat_str and lng_str:
+        try:
+            pano['latitude']  = float(lat_str)
+            pano['longitude'] = float(lng_str)
+        except ValueError:
+            pass
+    elif lat_str == '' and lng_str == '':
+        # Both cleared → remove coordinates
+        if 'latitude' in pano:  del pano['latitude']
+        if 'longitude' in pano: del pano['longitude']
+        geo_precision = None
+        geo_note = None
+
+    if geo_precision is not None:
+        pano['geo_precision'] = geo_precision
+    elif 'geo_precision' in pano and not (lat_str or lng_str):
+        del pano['geo_precision']
+
+    if geo_note is not None:
+        pano['geo_note'] = geo_note
+    elif 'geo_note' in pano and not (lat_str or lng_str):
+        del pano['geo_note']
 
     # Backup then write
     backup_json(json_path)
