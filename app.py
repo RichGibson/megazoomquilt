@@ -134,7 +134,7 @@ THUMB_MAX_TILES = 16  # never composite more tiles than this
 
 @app.route("/thumbnail/<pano_id>")
 def thumbnail(pano_id):
-    # Serve cached thumbnail if it exists
+    # Serve cached thumbnail if it exists locally
     cached_path = BASE_DIR / pano_id / f"{pano_id}_thumb.jpg"
     if cached_path.exists():
         return send_file(cached_path, mimetype="image/jpeg")
@@ -145,6 +145,11 @@ def thumbnail(pano_id):
     with pano_json.open() as f:
         raw = json.load(f)
     meta = raw.get('gigapan', raw)
+
+    # Redirect to R2 thumbnail if tile_base_url is set
+    tile_base_url = meta.get('tile_base_url')
+    if tile_base_url:
+        return redirect(f"{tile_base_url}/{pano_id}_thumb.jpg")
 
     W = int(meta['width'])
     H = int(meta['height'])
