@@ -67,7 +67,7 @@
          data-pano-h="{{ pano['height'] }}"
          data-pano-name="{{ pano['name'] }}">
         <div class="card-thumb">
-          <img src="{{ url_for('thumbnail', pano_id=pano['id']) }}"
+          <img src="{{ pano['tile_base_url'] + '/' + pano['id']|string + '_thumb.jpg' if pano.get('tile_base_url') else url_for('thumbnail', pano_id=pano['id']) }}"
                alt="{{ pano['name'] }}"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <span class="card-thumb-missing">No preview</span>
