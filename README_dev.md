@@ -23,3 +23,15 @@ Only null/missing/zero fields in the pano JSON are updated — existing values a
 Fields `source`, `source_path`, `img_type`, and `levels` are never touched (pano JSON is authoritative for those).
 
 Local panos (IDs ≥ 1,000,000) are skipped — their `static/panos/{id}/{id}.json` is the authoritative record.
+
+## Server / SSH notes
+
+- Server IP: `95.216.142.119` (Hetzner CX33)
+- `megazoomquilt.com` DNS is proxied through Cloudflare — SSH via the domain will not work.
+- Always SSH directly to the IP: `ssh root@95.216.142.119`
+- To avoid session timeouts, add to `~/.ssh/config`:
+  ```
+  Host 95.216.142.119
+      ServerAliveInterval 60
+      ServerAliveCountMax 10
+  ```
