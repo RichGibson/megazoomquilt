@@ -53,6 +53,7 @@
       "california",
       "i5",
       "volcano"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1850"
   }
 }

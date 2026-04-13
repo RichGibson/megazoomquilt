@@ -52,6 +52,7 @@
     "tags": [
       "florence_ave",
       "sebastopol"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2049"
   }
 }
