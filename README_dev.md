@@ -24,6 +24,35 @@ Fields `source`, `source_path`, `img_type`, and `levels` are never touched (pano
 
 Local panos (IDs ≥ 1,000,000) are skipped — their `static/panos/{id}/{id}.json` is the authoritative record.
 
+## Rclone / R2 sync
+
+Remote name: `r2`, bucket: `megazoomquilt-panos`
+
+**Upload tiles for a single pano:**
+```bash
+rclone copy static/panos/{id}/ r2:megazoomquilt-panos/panos/{id}/ \
+  --transfers 32 --checkers 16 --s3-upload-concurrency 8 \
+  --progress
+```
+
+**Upload thumbnails only:**
+```bash
+rclone copy static/panos/ r2:megazoomquilt-panos/panos/ \
+  --include "*_thumb.jpg" \
+  --transfers 16 --progress
+```
+
+**Upload all tiles (slow — millions of files):**
+```bash
+rclone copy static/panos/ r2:megazoomquilt-panos/panos/ \
+  --exclude "*_thumb.jpg" --exclude "*.json" \
+  --transfers 32 --checkers 16 --s3-upload-concurrency 8 \
+  --progress
+```
+
+Note: R2 is object storage — you cannot tar/untar on the remote side.
+Each tile must be uploaded as an individual object.
+
 ## Deploying
 
 ```bash
