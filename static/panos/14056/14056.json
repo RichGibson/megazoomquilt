@@ -50,6 +50,7 @@
     "distance": null,
     "allow_others_to_add_to_gallery": true,
     "tags": [],
-    "geo_precision": "exact"
+    "geo_precision": "exact",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14056"
   }
 }
