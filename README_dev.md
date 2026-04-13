@@ -24,6 +24,29 @@ Fields `source`, `source_path`, `img_type`, and `levels` are never touched (pano
 
 Local panos (IDs ≥ 1,000,000) are skipped — their `static/panos/{id}/{id}.json` is the authoritative record.
 
+## Deploying
+
+```bash
+# 1. Pull latest code (as webapps)
+su - webapps
+cd /var/www/megazoomquilt
+git pull
+
+# 2. Restart the app (as root)
+exit
+systemctl restart megazoomquilt
+
+# 3. Restart nginx (only needed if nginx config changed)
+systemctl restart nginx
+```
+
+Check status:
+```bash
+systemctl status megazoomquilt
+systemctl status nginx
+journalctl -u megazoomquilt -n 50   # app logs
+```
+
 ## Server / SSH notes
 
 - Server IP: `95.216.142.119` (Hetzner CX33)
