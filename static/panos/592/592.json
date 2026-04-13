@@ -53,6 +53,7 @@
       "bm_2007",
       "burning_man",
       "sebastopol"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/592"
   }
 }

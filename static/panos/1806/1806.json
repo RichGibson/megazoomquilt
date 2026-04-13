@@ -53,6 +53,7 @@
       "oregon",
       "yoncalla",
       "graveyard"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1806"
   }
 }

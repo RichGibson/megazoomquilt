@@ -52,6 +52,7 @@
     "tags": [
       "geffrye",
       "london"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/703"
   }
 }

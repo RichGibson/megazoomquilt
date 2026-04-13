@@ -52,6 +52,7 @@
     "tags": [
       "Oregon",
       "bridge"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1762"
   }
 }

@@ -52,6 +52,7 @@
     "tags": [
       "ocean",
       "calshot"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/606"
   }
 }
