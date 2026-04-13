@@ -52,6 +52,7 @@
     "tags": [
       "steamboat_ed"
     ],
-    "geo_precision": "exact"
+    "geo_precision": "exact",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5669"
   }
 }

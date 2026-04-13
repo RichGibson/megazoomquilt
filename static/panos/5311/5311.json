@@ -52,6 +52,7 @@
     "tags": [
       "nasa_ames",
       "wherecamp"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5311"
   }
 }
