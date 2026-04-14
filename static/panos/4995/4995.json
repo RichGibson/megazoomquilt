@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 67030400.0,
-    "latitude": null,
+    "latitude": 37.54597,
     "created_at": "2008-05-07T11:45:03-04:00",
     "auth_key": "3ff1fb245078413fcf304b7eeadf3cdf",
     "tiles_requested": 17000,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 6214,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.3030958,
     "levels": 7,
     "description": "The insert to the Gassifier Experimenters kit is in the foreground on the planter.",
     "visible": true,
@@ -52,6 +52,7 @@
     "tags": [
       "maker_faire"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4995"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4995",
+    "geo_precision": "approximate"
   }
 }

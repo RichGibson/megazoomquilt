@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 1681930000.0,
-    "latitude": null,
+    "latitude": 37.8067224,
     "created_at": "2008-01-26T06:41:55-05:00",
     "auth_key": "4fce274ce27121fea1bb97e864a48f02",
     "tiles_requested": 18553,
@@ -31,9 +31,9 @@
     "allow_anonymous_snapshotting": false,
     "height": 17815,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.4339223,
     "levels": 10,
-    "description": "360 degrees of the Long Now Museum, from the back area.\r\n\r\n9 rows, 37 columns, 333 images.  35mm equivalent 145mm lens.\r\n",
+    "description": "360 degrees of the Long Now Museum, from the back area.\r\n\r\n9 rows, 37 columns, 333 images.  35mm equivalent 145mm lens.",
     "visible": true,
     "tilt": null,
     "embeddable": false,
@@ -49,6 +49,9 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2795"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2795",
+    "tags": [
+      "long_now"
+    ]
   }
 }

@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 453532000.0,
-    "latitude": null,
+    "latitude": 37.7431416,
     "created_at": "2008-05-16T23:40:13-04:00",
     "auth_key": "80490874afec5bd164a2022ff26ec44f",
     "tiles_requested": 9152,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 14738,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.4564171,
     "levels": 8,
     "description": "",
     "visible": true,
@@ -49,6 +49,10 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5267"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5267",
+    "tags": [
+      "san_francisco"
+    ],
+    "geo_precision": "approximate"
   }
 }

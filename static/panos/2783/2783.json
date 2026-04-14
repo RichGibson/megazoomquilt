@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 912721000.0,
-    "latitude": null,
+    "latitude": 37.8067224,
     "created_at": "2008-01-25T09:16:01-05:00",
     "auth_key": "3005367b34914e73cf7c821d9e0b9528",
     "tiles_requested": 11954,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 17661,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.4339223,
     "levels": 9,
     "description": "",
     "visible": true,
@@ -49,6 +49,10 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2783"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2783",
+    "tags": [
+      "long_now"
+    ],
+    "geo_precision": "approximate"
   }
 }

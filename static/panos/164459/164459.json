@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 902279000.0,
-    "latitude": null,
+    "latitude": 37.9184858,
     "created_at": "2014-10-18T20:13:29-04:00",
     "auth_key": "565e06330c3e7866bfa5430db6279771",
     "tiles_requested": null,
@@ -31,9 +31,9 @@
     "allow_anonymous_snapshotting": false,
     "height": 37346,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.0969266,
     "levels": 9,
-    "description": "Image taken June 10, 2014, showing detail of one of the storage cabinets at Sasha Shulgin's lab.\n\n",
+    "description": "Image taken June 10, 2014, showing detail of one of the storage cabinets at Sasha Shulgin's lab.",
     "visible": true,
     "tilt": null,
     "embeddable": true,
@@ -47,6 +47,9 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/164459"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/164459",
+    "tags": [
+      "sasha_shulgin"
+    ]
   }
 }

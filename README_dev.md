@@ -1,5 +1,12 @@
  python  util/bulk_download.py --list util/gigapan_list.json --panos-dir static/panos --workers 2 --log-file dow --reverse
 
+## TODO
+
+- [ ] **Move `app.secret_key` out of source code.** Currently hardcoded in `app.py` line 11.
+  Replace with `app.secret_key = os.environ.get('SECRET_KEY', 'mzq-dev-key-change-in-prod')` and set
+  `SECRET_KEY` in the production environment (e.g. systemd unit file or `.env`). Required before
+  this app handles any real user sessions or auth.
+
 ## Metadata reconciliation
 
 `gigapan_list.json` is the authoritative source for gigapan.com metadata (IDs < 1,000,000).

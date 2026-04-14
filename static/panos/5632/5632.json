@@ -1,7 +1,7 @@
 {
   "gigapan": {
     "roll": null,
-    "name": "From Richmond Ferry Point: Track Hoist overexposed  (bay_day_4) ",
+    "name": "From Richmond Ferry Point: Track Hoist overexposed  (bay_day_4)",
     "is_game": false,
     "snapshottable": true,
     "resolution": 374273000.0,
@@ -33,7 +33,7 @@
     "allow_revenue_sharing": false,
     "longitude": null,
     "levels": 9,
-    "description": " Focal Length:  72.0mm (35mm equivalent: 426)\r\n\r\n78 images.  ",
+    "description": "Focal Length:  72.0mm (35mm equivalent: 426)\r\n\r\n78 images.",
     "visible": true,
     "tilt": null,
     "embeddable": false,
@@ -49,6 +49,8 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5632"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5632",
+    "tags": [],
+    "geo_precision": "approximate"
   }
 }

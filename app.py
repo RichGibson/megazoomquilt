@@ -52,10 +52,8 @@ def set_skin(name):
     resp.set_cookie('skin', name, max_age=60*60*24*365)
     return resp
 # Directory where image folders (e.g., 590/, 591/) are stored
-#BASE_DIR = os.path.join(os.path.dirname(__file__), "panos")
 BASE_DIR = Path(__file__).resolve().parent / "static/panos"
 
-# run: flask run --host=0.0.0.0 --port=5000
 def collect_tile_stats(base_dir):
     base_dir = Path(base_dir)
     results=[]
@@ -513,6 +511,4 @@ def edit_pano_post(pano_id):
 
 
 if __name__ == "__main__":
-    # foo=load_pano_data()
-    # pdb.set_trace()
     app.run(debug=True)

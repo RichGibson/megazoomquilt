@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 926007000.0,
-    "latitude": null,
+    "latitude": 37.7431416,
     "created_at": "2008-05-17T04:18:30-04:00",
     "auth_key": "17fd988604a47d5ef9f8348da605730b",
     "tiles_requested": 12108,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 13583,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.4564171,
     "levels": 10,
     "description": "",
     "visible": true,
@@ -49,6 +49,9 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5270"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5270",
+    "tags": [
+      "san_francico"
+    ]
   }
 }
