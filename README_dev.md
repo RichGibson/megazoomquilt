@@ -2,6 +2,9 @@
 
 ## TODO
 
+- [ ] **Non-rectangular images.** Some panoramas have irregular/non-rectangular content
+  surrounded by black fill. Investigate smarter thumbnail cropping — detect content
+  bounding box, consider how to present these in the viewer. See `README_thumbnail.md`.
 - [ ] **Move `app.secret_key` out of source code.** Currently hardcoded in `app.py` line 11.
   Replace with `app.secret_key = os.environ.get('SECRET_KEY', 'mzq-dev-key-change-in-prod')` and set
   `SECRET_KEY` in the production environment (e.g. systemd unit file or `.env`). Required before
