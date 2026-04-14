@@ -13,6 +13,7 @@
     "tags": [],
     "latitude": 37.8629413,
     "longitude": -122.31475,
-    "geo_precision": "approximate"
+    "geo_precision": "approximate",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000124"
   }
 }

@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: gp_mercurie_15x11 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20100101/gp_mercurie_15x11",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20100101/gp_mercurie_15x11/gp_mercurie_15x11.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20100101/gp_mercurie_15x11/gp_mercurie_15x11.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000167"
   }
 }

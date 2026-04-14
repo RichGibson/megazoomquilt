@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: man_2012-08-24.psb",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/man_2012-08-24.psb"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/man_2012-08-24.psb",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000323"
   }
 }

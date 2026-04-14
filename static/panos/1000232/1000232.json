@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: dick_gale_koac_radio.tiff",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/scans_2013-02-04/dick_gale_koac_radio.tiff"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/scans_2013-02-04/dick_gale_koac_radio.tiff",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000232"
   }
 }

@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: ln2-front | Source: /Volumes/bigeneration/panos_consolidated/gigapan_work_2008/ln2",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/ln2/ln2-front.gigapan"
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/ln2/ln2-front.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000072"
   }
 }

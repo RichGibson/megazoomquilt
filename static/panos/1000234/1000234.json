@@ -12,6 +12,7 @@
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/steamboat_ed_03_extract2.tif",
     "tags": [
       "steamboat_ed"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000234"
   }
 }

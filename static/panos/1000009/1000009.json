@@ -12,6 +12,7 @@
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/media_bbq.gigapan",
     "tags": [
       "burning_man"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000009"
   }
 }

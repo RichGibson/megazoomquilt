@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: m7_test | Source: /Volumes/bigeneration/panos_consolidated/panos_2012_2013ish",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/m7_test.gigapan"
+    "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/m7_test.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000074"
   }
 }

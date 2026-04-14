@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: try2.psd",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures3/group/try2.psd"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures3/group/try2.psd",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000303"
   }
 }

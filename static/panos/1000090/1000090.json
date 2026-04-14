@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: gpsoldier_9x5 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gpsoldier_9x5.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gpsoldier_9x5.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000090"
   }
 }

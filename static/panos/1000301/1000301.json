@@ -12,6 +12,7 @@
     "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/josh_ellingson_vienna.psd",
     "tags": [
       "vienna"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000301"
   }
 }

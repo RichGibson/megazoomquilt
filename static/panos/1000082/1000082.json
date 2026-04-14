@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: amsterdam_11x4_try2 | Source: /Volumes/bigeneration/europe_2009/gigapans_stitched",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_stitched/amsterdam_11x4_try2.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_stitched/amsterdam_11x4_try2.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000082"
   }
 }

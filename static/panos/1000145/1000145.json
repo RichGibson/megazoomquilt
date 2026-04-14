@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: the_man_crane_1 | Source: /Volumes/bigeneration/pix_consolidated/bm2012/panos",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/the_man_crane_1.gigapan"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/the_man_crane_1.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000145"
   }
 }

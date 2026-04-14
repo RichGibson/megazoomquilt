@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: gpmqu2_1_10x3 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091220",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/gpmqu2_1_10x3.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/gpmqu2_1_10x3.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000024"
   }
 }

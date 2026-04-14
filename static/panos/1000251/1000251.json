@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: CORE_Twisted_Upright_House.tif",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/CORE_Twisted_Upright_House.tif"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/CORE_Twisted_Upright_House.tif",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000251"
   }
 }

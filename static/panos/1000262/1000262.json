@@ -12,6 +12,7 @@
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/wherecamp_03_session.tif",
     "tags": [
       "wherecamp"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000262"
   }
 }

@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: CORE_PsychoPhilia.tif",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/CORE_PsychoPhilia.tif"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/CORE_PsychoPhilia.tif",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000240"
   }
 }

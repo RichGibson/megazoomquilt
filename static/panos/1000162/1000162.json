@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: sary_doner_20x8 | Source: /Volumes/bigeneration/europe_2009/gigapans_stitched",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_stitched/sary_doner_20x8.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_stitched/sary_doner_20x8.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000162"
   }
 }

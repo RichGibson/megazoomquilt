@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: jen_grey.tif",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/jen_grey/jen_grey.tif"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/jen_grey/jen_grey.tif",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000235"
   }
 }

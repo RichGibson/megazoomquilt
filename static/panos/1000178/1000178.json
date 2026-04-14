@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: annakirche_15x15 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091220",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/annakirche_15x15.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/annakirche_15x15.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000178"
   }
 }

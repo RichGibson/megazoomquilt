@@ -12,6 +12,7 @@
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/cafe_alt_wien_2_12x5.gigapan",
     "tags": [
       "vienna"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000060"
   }
 }

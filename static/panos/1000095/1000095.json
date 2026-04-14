@@ -12,6 +12,7 @@
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/crane2.gigapan",
     "tags": [
       "burning_man"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000095"
   }
 }

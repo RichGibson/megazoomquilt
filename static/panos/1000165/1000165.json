@@ -12,6 +12,7 @@
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/roboe_fri_taug_e_13x8.gigapan",
     "tags": [
       "roboexotica"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000165"
   }
 }

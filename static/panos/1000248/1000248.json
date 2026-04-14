@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: ln2-front.tif",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/ln2/ln2-front.tif"
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/ln2/ln2-front.tif",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000248"
   }
 }

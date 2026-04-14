@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: kokepelli_rising.psd",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/kokepelli_rising.psd"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/kokepelli_rising.psd",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000280"
   }
 }

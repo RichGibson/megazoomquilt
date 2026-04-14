@@ -52,6 +52,7 @@
     ],
     "latitude": 39.3032612,
     "longitude": -123.8045293,
-    "geo_precision": "approximate"
+    "geo_precision": "approximate",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14411"
   }
 }

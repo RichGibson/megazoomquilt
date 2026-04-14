@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: [Group 3]-IMG_7343_IMG_7397-54 images.tif",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-05/gigapan_n2/[Group 3]-IMG_7343_IMG_7397-54 images.tif"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-05/gigapan_n2/[Group 3]-IMG_7343_IMG_7397-54 images.tif",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000249"
   }
 }

@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: media_bbq.tif",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/media_bbq.tif"
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/media_bbq.tif",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000231"
   }
 }

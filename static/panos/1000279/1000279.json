@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: willow3_cropped_down.psd",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/willow3_cropped_down.psd"
+    "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/willow3_cropped_down.psd",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000279"
   }
 }

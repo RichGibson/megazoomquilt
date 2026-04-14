@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: l48_pride_of_america | Source: /Volumes/bigeneration/biscuit/laptop_20080512/Users/admin/Library/Favorites/Documents",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/biscuit/laptop_20080512/Users/admin/Library/Favorites/Documents/l48_pride_of_america.gigapan"
+    "source_path": "/Volumes/bigeneration/biscuit/laptop_20080512/Users/admin/Library/Favorites/Documents/l48_pride_of_america.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000118"
   }
 }

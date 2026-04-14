@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: greg_panel01.psd",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/greg/greg_panel01.psd"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/greg/greg_panel01.psd",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000292"
   }
 }

@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: night_skyline_8x3.tif",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20090108/night_skyline_8x3/night_skyline_8x3.tif"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20090108/night_skyline_8x3/night_skyline_8x3.tif",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000242"
   }
 }

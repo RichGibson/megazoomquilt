@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: willow3_try3.psd",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/willow3_try3.psd"
+    "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/willow3_try3.psd",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000307"
   }
 }

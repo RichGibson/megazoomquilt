@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: IMG_9280.tif",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/iPhoto Library_2008-2012/Originals/2011/hackers/IMG_9280.tif"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/iPhoto Library_2008-2012/Originals/2011/hackers/IMG_9280.tif",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000225"
   }
 }

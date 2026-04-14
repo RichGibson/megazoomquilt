@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: spencer_hawaii_2007.tiff",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/scans_2013-02-04/spencer_hawaii_2007.tiff"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/scans_2013-02-04/spencer_hawaii_2007.tiff",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000236"
   }
 }

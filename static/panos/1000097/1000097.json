@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: kauzechen_sat_12x4 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/kauzechen_sat_12x4.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/kauzechen_sat_12x4.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000097"
   }
 }

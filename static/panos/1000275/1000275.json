@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: paige_head.psd",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/paige_head.psd"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/paige_head.psd",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000275"
   }
 }

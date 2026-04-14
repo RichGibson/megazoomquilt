@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: willow2 | Source: /Volumes/bigeneration/pix_consolidated/2012-10-25_willow",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/2012-10-25_willow/willow2.gigapan"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/2012-10-25_willow/willow2.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000106"
   }
 }

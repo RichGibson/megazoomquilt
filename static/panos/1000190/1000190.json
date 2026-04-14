@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: gpkarlskirche_12x14 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091220",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/gpkarlskirche_12x14.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/gpkarlskirche_12x14.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000190"
   }
 }

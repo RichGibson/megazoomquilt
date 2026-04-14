@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: [Group 2]-IMG_0105_IMG_0185-75 images.psb",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/shulgin_2014/[Group 2]-IMG_0105_IMG_0185-75 images.psb"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/shulgin_2014/[Group 2]-IMG_0105_IMG_0185-75 images.psb",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000318"
   }
 }

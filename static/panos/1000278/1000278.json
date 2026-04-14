@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: la_llorena_dismantling.psd",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/la_llorena_dismantling.psd"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/la_llorena_dismantling.psd",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000278"
   }
 }

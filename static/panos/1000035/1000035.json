@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: continis_4x5 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/continis_4x5.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/continis_4x5.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000035"
   }
 }

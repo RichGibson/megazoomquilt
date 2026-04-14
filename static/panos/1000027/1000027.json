@@ -12,6 +12,7 @@
     "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-06/david_spoelstra/david_spoelstra_gigapan_try1.gigapan",
     "tags": [
       "siggraph"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000027"
   }
 }

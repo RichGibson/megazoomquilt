@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: mqsnow1_14x5 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091220",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/mqsnow1_14x5.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/mqsnow1_14x5.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000112"
   }
 }

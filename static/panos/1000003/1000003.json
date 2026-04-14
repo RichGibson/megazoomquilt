@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: figlemuller_table_11x5_test_3865 | Source: /Volumes/bigeneration/europe_2009/gigapans_early",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/figlemuller_table_11x5_test_3865.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/figlemuller_table_11x5_test_3865.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000003"
   }
 }

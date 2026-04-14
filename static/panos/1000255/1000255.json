@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: headless_man.tif",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/headless_man.tif"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/headless_man.tif",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000255"
   }
 }

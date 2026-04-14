@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: pipe_3x9 | Source: /Volumes/bigeneration/europe_2009/gigapans_early",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/pipe_3x9.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/pipe_3x9.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000030"
   }
 }

@@ -12,6 +12,7 @@
     "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/siggraph_jordyn2.gigapan",
     "tags": [
       "siggraph"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000056"
   }
 }

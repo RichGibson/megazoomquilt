@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: panels2.psb",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/greg/panels2.psb"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/greg/panels2.psb",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000316"
   }
 }

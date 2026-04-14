@@ -14,6 +14,7 @@
     "longitude": 16.3572444,
     "tags": [
       "vienna"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000196"
   }
 }

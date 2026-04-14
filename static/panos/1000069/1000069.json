@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: decom_1_10x5 | Source: /Volumes/bigeneration/pix_consolidated/copy_20091016",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20091016/decom_1_10x5.gigapan"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20091016/decom_1_10x5.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000069"
   }
 }

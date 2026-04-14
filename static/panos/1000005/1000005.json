@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: d3_red_canal_boat_partial | Source: /Volumes/bigeneration/pix_consolidated/copy_2007_summer_iphoto",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_2007_summer_iphoto/d3_red_canal_boat_partial.gigapan"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_2007_summer_iphoto/d3_red_canal_boat_partial.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000005"
   }
 }

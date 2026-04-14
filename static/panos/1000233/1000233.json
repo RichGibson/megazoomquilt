@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: pano_5906-workh.tif",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20070620_muddy-panos/pano_5906/pano_5906-workh.tif"
+    "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20070620_muddy-panos/pano_5906/pano_5906-workh.tif",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000233"
   }
 }

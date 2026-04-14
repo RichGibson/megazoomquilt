@@ -12,6 +12,7 @@
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/roboe_1_11x5.gigapan",
     "tags": [
       "roboexotica"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000155"
   }
 }

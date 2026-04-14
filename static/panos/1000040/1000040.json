@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: rosie_01 | Source: /Volumes/bigeneration/panos_consolidated/gigapan_external_250",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/rosie_01.gigapan"
+    "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/rosie_01.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000040"
   }
 }

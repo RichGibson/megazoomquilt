@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Tiled from: maddy_molly_jay.psd",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/maddy_molly_jay.psd"
+    "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/maddy_molly_jay.psd",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000302"
   }
 }

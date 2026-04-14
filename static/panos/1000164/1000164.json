@@ -9,6 +9,7 @@
     "views": 0,
     "description": "Imported from local Gigapan Stitcher file: home_10x6 | Source: /Volumes/bigeneration/europe_2009/gigapans_early",
     "source": "local",
-    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/home_10x6.gigapan"
+    "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/home_10x6.gigapan",
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000164"
   }
 }
