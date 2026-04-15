@@ -1,11 +1,11 @@
 {
   "gigapan": {
     "roll": null,
-    "name": "copy 20080922 g9/RED van damme a",
+    "name": "Van Damme State Park - Redwood Empire Divers campout",
     "is_game": false,
     "snapshottable": true,
     "resolution": 416887000.0,
-    "latitude": null,
+    "latitude": 39.2767516,
     "created_at": "2008-09-22T20:58:21-04:00",
     "auth_key": "5c9260982dce3ab3f2bd196fe664450b",
     "tiles_requested": 11988,
@@ -31,9 +31,9 @@
     "allow_anonymous_snapshotting": false,
     "height": 12460,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -123.7878868,
     "levels": 9,
-    "description": "",
+    "description": "Not the multiple instances of Spencer.\r\n\r\ncopy 20080922 g9/RED van damme a",
     "visible": true,
     "tilt": null,
     "embeddable": false,
@@ -49,6 +49,11 @@
     "field_of_view_h": 31.6954,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/9469"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/9469",
+    "tags": [
+      "camping"
+    ],
+    "geo_precision": "approximate",
+    "geo_note": "Approximate from Google Maps"
   }
 }

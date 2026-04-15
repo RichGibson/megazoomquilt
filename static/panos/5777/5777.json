@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 292201000.0,
-    "latitude": null,
+    "latitude": 38.4032419,
     "created_at": "2008-06-04T14:32:51-04:00",
     "auth_key": "494abe614938a25e27fe47e8dfbcd4c2",
     "tiles_requested": 8021,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 10361,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.8246754,
     "levels": 8,
     "description": "",
     "visible": true,
@@ -52,6 +52,7 @@
     "tags": [
       "sebastopol"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5777"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5777",
+    "geo_precision": "approximate"
   }
 }

@@ -1,11 +1,11 @@
 {
   "gigapan": {
     "roll": null,
-    "name": "m7 restitch for dust",
+    "name": "Camp during pack up",
     "is_game": false,
     "snapshottable": true,
     "resolution": 1429480000.0,
-    "latitude": null,
+    "latitude": 40.7964028,
     "created_at": "2013-01-05T19:50:55-05:00",
     "auth_key": "6244192beacd4a766afc087993d34221",
     "tiles_requested": null,
@@ -31,9 +31,9 @@
     "allow_anonymous_snapshotting": false,
     "height": 19812,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -119.1783142,
     "levels": 10,
-    "description": "1/2 size stitch, applied dust algorithm, vignette correction off",
+    "description": "Most of our Burning Man Earth camp has already left. This is Monday, time to be getting home.\r\n\r\nMy calendar for this period says 'Rich to field test.'\r\n\r\n1/2 size stitch, applied dust algorithm, vignette correction off\r\nm7 restitch for dust",
     "visible": true,
     "tilt": null,
     "embeddable": false,
@@ -47,6 +47,10 @@
     "field_of_view_h": 98.8513,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/121087"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/121087",
+    "tags": [
+      "burning_man"
+    ],
+    "geo_precision": "region"
   }
 }

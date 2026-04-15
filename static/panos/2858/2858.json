@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 564034000.0,
-    "latitude": null,
+    "latitude": 38.4258911,
     "created_at": "2008-01-29T13:51:35-05:00",
     "auth_key": "dfc2e7dc6df40237d928466cc12da80b",
     "tiles_requested": 9720,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 11810,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.8320515,
     "levels": 9,
     "description": "From High School Road, Sebastopol, CA. 137mm equivalent. The light developed and changed through the session. This is normally a field, except when it becomes a flood plain.  Compare with m12a, this one is more golden, more in the zone.  I started it 14 minutes after m12a.\r\n\r\n146 images, about 10 minutes of exposure.",
     "visible": true,
@@ -52,6 +52,7 @@
     "tags": [
       "sebastopol"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2858"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2858",
+    "geo_precision": "approximate"
   }
 }

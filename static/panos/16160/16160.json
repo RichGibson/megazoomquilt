@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 203191000.0,
-    "latitude": null,
+    "latitude": 38.4316,
     "created_at": "2009-02-02T08:47:56-05:00",
     "auth_key": "3bf8074cabb649bbf11a3e8b6a28bb6b",
     "tiles_requested": 6251,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 9124,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.7904,
     "levels": 8,
     "description": "Gigapan by Spencer, another view of the new workshop",
     "visible": true,
@@ -49,6 +49,7 @@
     "field_of_view_h": 147.492,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/16160"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/16160",
+    "tags": []
   }
 }

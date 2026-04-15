@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 175034000.0,
-    "latitude": null,
+    "latitude": 35.5474,
     "created_at": "2012-10-18T20:36:32-04:00",
     "auth_key": "165e1901cc3cf4cb05c79bbf89a71c2b",
     "tiles_requested": null,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 8170,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -111.63449,
     "levels": 8,
     "description": "location: (35.54740, -111.63449) There is more description, links to more of these images, and maps, at http://scaleindependent.com/projects/drats",
     "visible": true,
@@ -45,6 +45,7 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/116844"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/116844",
+    "tags": []
   }
 }

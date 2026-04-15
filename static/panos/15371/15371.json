@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 107290000.0,
-    "latitude": null,
+    "latitude": 38.4315956,
     "created_at": "2009-01-21T18:18:47-05:00",
     "auth_key": "f69af0639143a13b45b9ef53283bc1b3",
     "tiles_requested": 10021,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 9418,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.7903539,
     "levels": 7,
     "description": "This is where 'it' all happens.",
     "visible": true,
@@ -49,6 +49,7 @@
     "field_of_view_h": 120.401,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/15371"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/15371",
+    "tags": []
   }
 }

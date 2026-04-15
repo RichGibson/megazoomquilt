@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 168329000.0,
-    "latitude": null,
+    "latitude": 38.4028615,
     "created_at": "2008-06-14T14:26:41-04:00",
     "auth_key": "157c4988a791759eed80bdeba53eaea3",
     "tiles_requested": 7499,
@@ -31,9 +31,9 @@
     "allow_anonymous_snapshotting": false,
     "height": 9886,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.8264189,
     "levels": 8,
-    "description": "From above the top of the 'Rite Aid Hill.'\r\n\r\n",
+    "description": "From above the top of the 'Rite Aid Hill.'",
     "visible": true,
     "tilt": null,
     "embeddable": false,
@@ -52,6 +52,7 @@
     "tags": [
       "sebastopol"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/6038"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/6038",
+    "geo_precision": "exact"
   }
 }
