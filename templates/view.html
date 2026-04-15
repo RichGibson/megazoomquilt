@@ -7,11 +7,14 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.css" />
 <style>
   #map {
-    height: 80vh;
     width: 100%;
+    min-height: 320px;
+    max-height: 80vh;
     border-radius: 6px;
     border: 1px solid #ddd;
   }
+  /* Background outside the image tiles — keep it neutral, not distracting */
+  .leaflet-container { background: #111; }
   .pano-header { margin-bottom: 0.75rem; }
   .back-link {
     font-size: 0.85rem;
@@ -45,11 +48,25 @@
   .pano-meta-bar span:last-child { border-right: none; margin-right: 0; padding-right: 0; }
   .map-info-bar {
     display: flex;
+    align-items: center;
     gap: 1.5rem;
     font-size: 0.82rem;
     color: #777;
     margin: 0.45rem 0 0.8rem;
   }
+  #source-toggle {
+    padding: 0.18rem 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    color: #555;
+    cursor: pointer;
+    line-height: 1.4;
+  }
+  #source-toggle:hover { border-color: #aaa; color: #222; }
+  #source-toggle.active { background: #0077cc; border-color: #0077cc; color: #fff; }
   .pano-details {
     margin-top: 0.5rem;
     border: 1px solid #ddd;
@@ -246,7 +263,15 @@
     {% if pano.taken_at %}<span>{{ pano.taken_at[:10] }}</span>
     {% elif pano.created_at %}<span>{{ pano.created_at[:10] }} (uploaded)</span>{% endif %}
     {% if pano.field_of_view_w %}<span>{{ pano.field_of_view_w }}° FOV</span>{% endif %}
-    <span>{% if pano.tile_base_url %}cloudflare{% else %}local{% endif %}</span>
+    <span id="tile-source-badge">
+      {%- if pano.tile_base_url and pano.has_local_tiles -%}
+        ☁️+💾
+      {%- elif pano.tile_base_url -%}
+        ☁️ cloudflare
+      {%- else -%}
+        💾 local
+      {%- endif -%}
+    </span>
     {% if pano.latitude and pano.longitude %}<span>📍 {{ "%.4f"|format(pano.latitude) }}, {{ "%.4f"|format(pano.longitude) }}</span>{% endif %}
   </div>
 </div>
@@ -263,6 +288,11 @@
 
 <div class="map-info-bar">
   <span>Zoom: <strong id="zoom-level"></strong></span>
+  {% if pano.tile_base_url and pano.has_local_tiles %}
+  <span id="source-toggle-wrap">
+    <button id="source-toggle" class="size-btn" title="Switch tile source"></button>
+  </span>
+  {% endif %}
   <span>Max tiles at this level: <strong id="tiles"></strong></span>
 </div>
 
@@ -342,17 +372,37 @@
 <script src="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.js"></script>
 
 <script>
-  const tileBase = {{ pano.tile_base_url | tojson if pano.tile_base_url else ('"/static/panos/' + pano_id + '"') | safe }};
+  const tileBaseRemote = {{ pano.tile_base_url | tojson if pano.tile_base_url else 'null' }};
+  const tileBaseLocal  = "/static/panos/{{ pano_id }}";
+  const hasLocalTiles  = {{ 'true' if pano.has_local_tiles else 'false' }};
+  const useLocal = (new URLSearchParams(window.location.search).get('source') === 'local')
+                   && hasLocalTiles;
+  const tileBase = (useLocal || !tileBaseRemote) ? tileBaseLocal : tileBaseRemote;
   const tileUrlTemplate = tileBase + `/{z}/{x}/{y}.{{ pano.img_type }}`;
-  const imageWidth = {{ pano.width }};
+  const imageWidth  = {{ pano.width }};
   const imageHeight = {{ pano.height }};
-  const maxZoom = {{ pano.levels - 1 }};
+  const maxZoom     = {{ pano.levels - 1 }};
+
+  // Size the map container to the panorama's aspect ratio, capped at 80vh.
+  // This eliminates most of the empty background around wide/tall images.
+  (function () {
+    const mapDiv   = document.getElementById('map');
+    const maxH     = window.innerHeight * 0.80;
+    const aspect   = imageWidth / imageHeight;
+    const idealH   = mapDiv.offsetWidth / aspect;
+    mapDiv.style.height = Math.min(idealH, maxH) + 'px';
+  })();
+
+  // Compute correct CRS-space center: pixel coords ÷ 2^maxZoom
+  const crsScale  = Math.pow(2, maxZoom);
+  const centerLat = imageHeight / 2 / crsScale;
+  const centerLng = imageWidth  / 2 / crsScale;
 
   const map = L.map('map', {
     minZoom: 0,
     maxZoom: maxZoom,
-    center: [imageHeight / 2, imageWidth / 2],
-    zoom: maxZoom,
+    center: [centerLat, centerLng],
+    zoom: 0,
     crs: L.CRS.Simple
   });
 
@@ -373,7 +423,8 @@
     errorTileUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/480px-Placeholder_view_vector.svg.png'
   }).addTo(map);
 
-  map.fitBounds(bounds);
+  map.invalidateSize(false);   // ensure Leaflet knows the resized container
+  map.fitBounds(bounds, { animate: false });
 
   const miniMapLayer = L.tileLayer(tileUrlTemplate, {
     tileSize: 256,
@@ -464,12 +515,41 @@
     // Nearby panorama markers
     geoPanos.forEach(function(gp) {
       if (String(gp.id) === CURRENT_ID) return;
+      const thumbUrl = `/thumbnail/${gp.id}`;
+      const ratio    = gp.height > 0 ? (gp.width / gp.height).toFixed(4) : 2;
       L.marker([gp.lat, gp.lng], { icon: iconNearby })
-        .bindPopup(`<a href="/view/${gp.id}">${gp.name}</a>`)
+        .bindPopup(`
+          <a href="/view/${gp.id}" style="display:block;text-decoration:none;color:inherit;">
+            <img src="${thumbUrl}" alt="${gp.name}"
+                 style="width:270px;aspect-ratio:${ratio};object-fit:cover;display:block;margin-bottom:0.3rem;background:#222;">
+            <strong>${gp.name}</strong>
+          </a>
+        `, { maxWidth: 290 })
         .addTo(locMap);
     });
   })();
   {% endif %}
+
+  // ── Tile source toggle (only present when both remote and local tiles exist) ──
+  (function () {
+    const btn = document.getElementById('source-toggle');
+    if (!btn) return;
+    function updateToggle(isLocal) {
+      btn.textContent = isLocal ? '💾 Local tiles' : '☁️ Cloudflare tiles';
+      btn.classList.toggle('active', isLocal);
+      document.getElementById('tile-source-badge').textContent = isLocal ? '💾 local' : '☁️ cloudflare';
+    }
+    updateToggle(useLocal);
+    btn.addEventListener('click', function () {
+      const url = new URL(window.location.href);
+      if (useLocal) {
+        url.searchParams.delete('source');
+      } else {
+        url.searchParams.set('source', 'local');
+      }
+      window.location.href = url.toString();
+    });
+  })();
 
   // ── Keyboard navigation ──
   document.addEventListener('keydown', function (e) {

@@ -6,29 +6,39 @@ Usage:
     python3 util/gen_thumb.py <pano_id>
     python3 util/gen_thumb.py <pano_id> --zoom 2
     python3 util/gen_thumb.py <pano_id> --out /tmp/test.jpg
+    python3 util/gen_thumb.py <pano_id> --no-fill
     python3 util/gen_thumb.py <pano_id> --no-crop-bg
     python3 util/gen_thumb.py <pano_id> --no-crop-sides
     python3 util/gen_thumb.py <pano_id> --aspect 16:9
     python3 util/gen_thumb.py <pano_id> --bg-tolerance 20
+    python3 util/gen_thumb.py <pano_id> --black-crop edge
+    python3 util/gen_thumb.py <pano_id> --black-crop tight
+    python3 util/gen_thumb.py <pano_id> --black-crop tight --black-threshold 10
 
 Algorithm:
     1. Pick the lowest zoom level where the image is at least THUMB_MIN_DIM px
        on its shorter side, without exceeding THUMB_MAX_TILES total tiles.
     2. Composite the full tile grid at that zoom level.
-    3. Detect solid-color borders on the composited image using per-edge
-       corner-pixel analysis. Only crops an edge if both corners at that edge
-       agree on a very dark or very light (padding) color.
-    4. Crop to the detected content region.
-    5. Apply aspect ratio rule: show full height, center-crop width if wider
+    3. Trim tile-grid padding (crop to actual content dimensions).
+    4. Fill black regions by extending edge content inward (default on, --no-fill to skip).
+    5. Detect solid-color borders and crop to content region (or --black-crop edge/tight).
+    6. Apply aspect ratio rule: show full height, center-crop width if wider
        than target ratio.
-    6. Save result.
+    7. Save result.
 """
 
 import argparse
+import io
 import json
 import math
+import sys
 from pathlib import Path
+from urllib.request import urlopen, Request
+from urllib.error import URLError
 from PIL import Image
+
+sys.path.insert(0, str(Path(__file__).parent))
+from fill_black import fill_black_regions
 
 BASE_DIR = Path(__file__).resolve().parent.parent / "static/panos"
 
@@ -39,6 +49,7 @@ BG_ROW_THRESHOLD = 0.95  # fraction of sampled pixels in a row/col that must be 
 BG_PADDING_MAX   = 30    # brightness below this → likely generated black padding
 BG_PADDING_MIN   = 225   # brightness above this → likely generated white padding
 BORDER_MARGIN_PX = 20    # safety margin added outward after border detection
+BLACK_THRESHOLD  = 15    # per-channel max value to be considered "black" for --black-crop
 
 
 def pick_zoom(W, H, levels, min_dim=THUMB_MIN_DIM):
@@ -62,9 +73,28 @@ def pick_zoom(W, H, levels, min_dim=THUMB_MIN_DIM):
     return zoom
 
 
-def composite_full(pano_dir, zoom, W, H, levels, img_ext):
+def _open_tile(local_path, remote_url):
+    """
+    Open a tile as a PIL Image.  Try local file first; fall back to remote URL.
+    Returns None if neither source has the tile.
+    """
+    if local_path is not None and local_path.exists():
+        return Image.open(local_path)
+    if remote_url is not None:
+        try:
+            req = Request(remote_url, headers={"User-Agent": "Mozilla/5.0"})
+            with urlopen(req, timeout=15) as resp:
+                return Image.open(io.BytesIO(resp.read()))
+        except URLError as e:
+            print(f"  WARNING: could not fetch {remote_url}: {e}")
+    return None
+
+
+def composite_full(pano_dir, zoom, W, H, levels, img_ext, tile_base_url=None):
     """
     Composite the full tile grid at the given zoom level.
+    Local tiles are used when present; tiles missing locally are fetched from
+    tile_base_url (if provided) using the path pattern {tile_base_url}/{z}/{x}/{y}{ext}.
     Returns the composited PIL image.
     """
     max_zoom = levels - 1
@@ -75,21 +105,40 @@ def composite_full(pano_dir, zoom, W, H, levels, img_ext):
     rows = math.ceil(full_h / 256)
 
     zoom_dir = pano_dir / str(zoom)
-    if not zoom_dir.is_dir():
-        raise FileNotFoundError(f"Zoom level {zoom} not found at {zoom_dir}")
+    local_available = zoom_dir.is_dir()
 
-    sample_path = zoom_dir / '0' / f'0{img_ext}'
-    if not sample_path.exists():
-        raise FileNotFoundError(f"Sample tile not found at {sample_path}")
-    tile_w, tile_h = Image.open(sample_path).size
+    if not local_available and tile_base_url is None:
+        raise FileNotFoundError(
+            f"Zoom level {zoom} not found at {zoom_dir} and no tile_base_url in JSON"
+        )
+
+    if not local_available:
+        print(f"  Local tiles not found — fetching from {tile_base_url}")
+
+    def tile_local(x, y):
+        return zoom_dir / str(x) / f"{y}{img_ext}" if local_available else None
+
+    def tile_url(x, y):
+        return f"{tile_base_url}/{zoom}/{x}/{y}{img_ext}" if tile_base_url else None
+
+    # Determine tile dimensions from the 0/0 tile
+    sample = _open_tile(tile_local(0, 0), tile_url(0, 0))
+    if sample is None:
+        raise FileNotFoundError(
+            f"Could not load sample tile for zoom {zoom} from local or remote source"
+        )
+    tile_w, tile_h = sample.size
 
     composed = Image.new("RGB", (cols * tile_w, rows * tile_h))
-    loaded = 0
+    composed.paste(sample.convert("RGB"), (0, 0))
+    loaded = 1
     for x in range(cols):
         for y in range(rows):
-            tp = zoom_dir / str(x) / f"{y}{img_ext}"
-            if tp.exists():
-                composed.paste(Image.open(tp).convert("RGB"), (x * tile_w, y * tile_h))
+            if x == 0 and y == 0:
+                continue  # already pasted
+            tile = _open_tile(tile_local(x, y), tile_url(x, y))
+            if tile is not None:
+                composed.paste(tile.convert("RGB"), (x * tile_w, y * tile_h))
                 loaded += 1
 
     print(f"  Zoom {zoom}: {cols}×{rows} tile grid ({loaded} tiles loaded) → {composed.width}×{composed.height}")
@@ -178,6 +227,73 @@ def detect_content_box(img, bg_tolerance=BG_TOLERANCE, row_threshold=BG_ROW_THRE
     return (left, top, right + 1, bot + 1)
 
 
+def crop_black_edge(img, threshold=BLACK_THRESHOLD):
+    """
+    Strip rows/cols from each edge that are predominantly black (≥95% of sampled
+    pixels below threshold per channel).  Stops at the first row/col that has
+    meaningful non-black content.  Conservative: interior black regions are kept.
+    """
+    w, h = img.size
+    pixels = img.load()
+
+    xs = list(range(0, w, max(1, w // 400)))
+    ys = list(range(0, h, max(1, h // 400)))
+
+    def px_black(x, y):
+        p = pixels[x, y]
+        return all(c <= threshold for c in p[:3])
+
+    def row_is_black(y):
+        hits = sum(1 for x in xs if px_black(x, y))
+        return hits / len(xs) >= 0.95
+
+    def col_is_black(x):
+        hits = sum(1 for y in ys if px_black(x, y))
+        return hits / len(ys) >= 0.95
+
+    top   = next((y for y in range(h)           if not row_is_black(y)), 0)
+    bot   = next((y for y in range(h-1, -1, -1) if not row_is_black(y)), h-1)
+    left  = next((x for x in range(w)           if not col_is_black(x)), 0)
+    right = next((x for x in range(w-1, -1, -1) if not col_is_black(x)), w-1)
+
+    print(f"  Black edge crop (threshold={threshold}): left={left}, top={top}, right={right}, bot={bot}")
+    return img.crop((left, top, right + 1, bot + 1))
+
+
+def crop_black_tight(img, threshold=BLACK_THRESHOLD):
+    """
+    Find the minimum bounding box of all non-black pixels — the exact first/last
+    row and column that contains any pixel above threshold.  More precise than edge
+    mode; will clip to exactly where content begins on every edge.
+    """
+    w, h = img.size
+    pixels = img.load()
+
+    # Sample every Nth pixel per row/col for speed, but use a finer stride than edge mode
+    stride_x = max(1, w // 800)
+    stride_y = max(1, h // 800)
+
+    def row_has_content(y):
+        return any(
+            not all(pixels[x, y][c] <= threshold for c in range(3))
+            for x in range(0, w, stride_x)
+        )
+
+    def col_has_content(x):
+        return any(
+            not all(pixels[x, y][c] <= threshold for c in range(3))
+            for y in range(0, h, stride_y)
+        )
+
+    top   = next((y for y in range(h)           if row_has_content(y)), 0)
+    bot   = next((y for y in range(h-1, -1, -1) if row_has_content(y)), h-1)
+    left  = next((x for x in range(w)           if col_has_content(x)), 0)
+    right = next((x for x in range(w-1, -1, -1) if col_has_content(x)), w-1)
+
+    print(f"  Black tight crop (threshold={threshold}): left={left}, top={top}, right={right}, bot={bot}")
+    return img.crop((left, top, right + 1, bot + 1))
+
+
 def apply_aspect_crop(img, target_aspect_w, target_aspect_h):
     """Show full height, center-crop width if wider than target aspect ratio."""
     iw, ih = img.size
@@ -200,11 +316,30 @@ def main():
     parser.add_argument('pano_id', help='Pano ID')
     parser.add_argument('--zoom', type=int, default=None, help='Force specific zoom level (default: auto)')
     parser.add_argument('--out', default=None, help='Output path (default: static/panos/{id}/{id}_thumb.jpg)')
+    # Fill options
+    parser.add_argument('--no-fill', action='store_true',
+                        help='Disable black-region fill pass (fill is on by default)')
+    parser.add_argument('--fill-threshold', type=int, default=15,
+                        help='Per-channel max considered black for fill (default: 15)')
+    parser.add_argument('--fill-window', type=int, default=60,
+                        help='Fill sliding-window half-width in px (default: 60)')
+    parser.add_argument('--fill-blur', type=int, default=15,
+                        help='Gaussian blur radius on filled regions (default: 15)')
+    parser.add_argument('--fill-depth', type=int, default=4,
+                        help='Rows/cols to skip inward before sampling (default: 4)')
+    parser.add_argument('--fill-depth-range', type=int, default=8,
+                        help='Rows/cols to average for fill color (default: 8)')
+    # Crop options
     parser.add_argument('--no-crop-bg', action='store_true', help='Disable solid-color border detection')
     parser.add_argument('--no-crop-sides', action='store_true', help='Disable side cropping for aspect ratio')
     parser.add_argument('--aspect', default='4:3', help='Target aspect ratio for side crop (default: 4:3)')
     parser.add_argument('--bg-tolerance', type=int, default=BG_TOLERANCE,
                         help=f'Max channel deviation from bg color (default: {BG_TOLERANCE})')
+    parser.add_argument('--black-crop', choices=['off', 'edge', 'tight'], default='off',
+                        help='Black background removal: edge=strip black border rows/cols, '
+                             'tight=crop to exact bounding box of non-black pixels (default: off)')
+    parser.add_argument('--black-threshold', type=int, default=BLACK_THRESHOLD,
+                        help=f'Per-channel max value considered black for --black-crop (default: {BLACK_THRESHOLD})')
     parser.add_argument('--quality', type=int, default=85, help='JPEG quality (default: 85)')
     args = parser.parse_args()
 
@@ -218,27 +353,55 @@ def main():
         raw = json.load(f)
     meta = raw.get('gigapan', raw)
 
-    W       = int(meta['width'])
-    H       = int(meta['height'])
-    levels  = int(meta.get('levels', 1))
-    img_ext = '.' + meta.get('img_type', 'jpg')
+    W             = int(meta['width'])
+    H             = int(meta['height'])
+    levels        = int(meta.get('levels', 1))
+    img_ext       = '.' + meta.get('img_type', 'jpg')
+    tile_base_url = meta.get('tile_base_url')
+    if isinstance(tile_base_url, list):
+        tile_base_url = tile_base_url[0] if tile_base_url else None
 
     print(f"Pano {args.pano_id}: {W}×{H}, {levels} levels")
+    if tile_base_url:
+        print(f"  tile_base_url: {tile_base_url}")
 
     zoom = args.zoom if args.zoom is not None else pick_zoom(W, H, levels)
     print(f"Using zoom level: {zoom}")
 
-    img, full_w, full_h = composite_full(pano_dir, zoom, W, H, levels, img_ext)
+    img, full_w, full_h = composite_full(pano_dir, zoom, W, H, levels, img_ext, tile_base_url)
 
+    # Step 1: always trim tile-grid padding (crop to actual content dimensions)
+    img = img.crop((0, 0, min(full_w, img.width), min(full_h, img.height)))
+    print(f"  Trimmed to content: {img.width}×{img.height}")
+
+    # Step 2: fill black regions (default on)
+    if not args.no_fill:
+        print("  Filling black regions...")
+        img = fill_black_regions(
+            img,
+            threshold=args.fill_threshold,
+            window=args.fill_window,
+            blur=args.fill_blur,
+            depth=args.fill_depth,
+            depth_range=args.fill_depth_range,
+        )
+        print(f"  After fill: {img.width}×{img.height}")
+
+    # Step 3: additional crop
     if args.no_crop_bg:
-        # Just remove tile grid padding at right/bottom edges
-        img = img.crop((0, 0, min(full_w, img.width), min(full_h, img.height)))
-        print(f"  Cropped to full image dimensions: {img.width}×{img.height}")
+        pass  # already trimmed in step 1
+    elif args.black_crop == 'edge':
+        img = crop_black_edge(img, args.black_threshold)
+        print(f"  After black edge crop: {img.width}×{img.height}")
+    elif args.black_crop == 'tight':
+        img = crop_black_tight(img, args.black_threshold)
+        print(f"  After black tight crop: {img.width}×{img.height}")
     else:
         box = detect_content_box(img, args.bg_tolerance)
         img = img.crop(box)
         print(f"  Content crop: {img.width}×{img.height}")
 
+    # Step 4: aspect crop
     if not args.no_crop_sides:
         aw, ah = args.aspect.split(':')
         img = apply_aspect_crop(img, int(aw), int(ah))

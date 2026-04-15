@@ -1,19 +1,18 @@
 {
   "gigapan": {
     "id": 1000152,
-    "name": "gphausdermeeres_1_8x11",
+    "name": "Haus der Meeres Aquarium in a WWII flak tower",
     "width": 25600,
     "height": 24576,
     "levels": 8,
     "img_type": "jpg",
     "views": 0,
-    "description": "Imported from local Gigapan Stitcher file: gphausdermeeres_1_8x11 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
+    "description": "The 'House of the Sea' is located in a WWII 'fire control flak tower.'\r\n\r\n\r\nThe sign on the top is \"a memorial against war and fascism designed by Lawrence Weiner.\"\r\n\r\nIt reads: \r\n\r\nZERSCHMETTERT IN STUCKE (shattered into pieces.)\r\n(IM FRIEDEN DER NACHT)\r\n\r\nAnd the English on the sign reads:\r\nIN THE STILL OF THE NIGHT\r\n\r\n\r\nImported from local Gigapan Stitcher file: gphausdermeeres_1_8x11 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gphausdermeeres_1_8x11.gigapan",
-    "tags": [],
-    "latitude": 48.1972452,
-    "longitude": 16.3525808,
-    "geo_precision": "exact",
+    "tags": [
+      "vienna"
+    ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000152"
   }
 }

@@ -180,56 +180,53 @@ static/panos/
 
 ## Utilities
 
-All utilities live in `util/`. Run from the **project root**.
+All utilities live in `util/`. Run from the **project root**. See `util/README.md` for full reference.
 
-### `fetch_gigapan_list.py`
+### Downloading from gigapan.com
 
-Fetches your full panorama list from gigapan.com and saves it as JSON.
+| Script | Purpose |
+|--------|---------|
+| `fetch_gigapan_list.py` | Fetch your full panorama list from gigapan.com |
+| `bulk_download.py` | Bulk download all missing/incomplete panoramas |
+| `gigapan_downloader.py` | Download a single panorama by ID |
 
-```bash
-python util/fetch_gigapan_list.py --user YOUR_USERNAME
-python util/fetch_gigapan_list.py --user YOUR_USERNAME --output util/gigapan_list.json
-python util/fetch_gigapan_list.py --missing-only   # print IDs not yet in static/panos/
-```
+### Adding local panoramas
 
-### `bulk_download.py`
+| Script | Purpose |
+|--------|---------|
+| `tile_image.py` | Tile a large image (TIFF, PSD, PSB, JPG, PNG) into XYZ format |
+| `flip_y_axis.py` | Convert TMS tiles (gdal2tiles default) to XYZ convention |
+| `move_tiles.py` | Reorganise tiles from z/y/x to z/x/y layout |
 
-Bulk download all panoramas not yet fully present. Checks completeness of existing directories and re-queues any with missing tiles.
+### Thumbnail generation
 
-```bash
-python util/bulk_download.py
-python util/bulk_download.py --workers 24 --delay 0.5
-python util/bulk_download.py --skip-verify   # fast mode, trust existing directories
-```
+| Script | Purpose |
+|--------|---------|
+| `gen_thumb.py` | Generate or regenerate a thumbnail for a single pano |
+| `generate_r2_thumbs.py` | Batch-generate thumbnails for Cloudflare-hosted panos |
 
-### `gigapan_downloader.py`
+### Image processing
 
-Download a single panorama by ID.
+| Script | Purpose |
+|--------|---------|
+| `reconstruct.py` | Reconstruct a full-resolution lossless TIFF from tiles |
+| `fill_black.py` | Fill black padding regions in an image with extended edge content |
+| `fill_black_tiles.py` | Apply black-fill directly to a tile set (memory-efficient, any image size) |
 
-```bash
-python util/gigapan_downloader.py 694 -o static/panos/694
-python util/gigapan_downloader.py 694 3 -o static/panos/694 -w 24
-```
+### Cloud storage
 
-### `flip_y_axis.py`
+| Script | Purpose |
+|--------|---------|
+| `upload_all_r2.py` | Upload local tile sets to Cloudflare R2 and set `tile_base_url` |
 
-Converts TMS tiles (y=0 at bottom) to XYZ tiles (y=0 at top). Use this after `gdal2tiles.py`.
+### Inventory and inspection
 
-```bash
-python util/flip_y_axis.py input_dir output_dir
-```
-
-### `move_tiles.py`
-
-Reorganizes tiles from `z/y/x` layout to `z/x/y`.
-
-```bash
-python util/move_tiles.py input_dir output_dir
-```
-
-### `tile_stats.py` / `tile_cnt.py` / `layer_to_tile_count.py`
-
-Inspect tile counts and file sizes per zoom level.
+| Script | Purpose |
+|--------|---------|
+| `inventory.py` | Full inventory report across all panos |
+| `reconcile.py` | Check for mismatches between JSON metadata and actual tiles |
+| `tile_stats.py` | Tile counts and file sizes per zoom level for one pano |
+| `tile_cnt.py` / `layer_to_tile_count.py` | Quick tile count helpers |
 
 ---
 

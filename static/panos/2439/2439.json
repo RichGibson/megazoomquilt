@@ -1,7 +1,7 @@
 {
   "gigapan": {
     "roll": 0.0,
-    "name": "burned dock Hanamaulu Bay (l49)",
+    "name": "Burned dock Hanamaulu Bay (l49)",
     "is_game": false,
     "snapshottable": true,
     "resolution": 1260220000.0,
@@ -49,6 +49,10 @@
     "field_of_view_h": 47.9197,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2439"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2439",
+    "tags": [
+      "hawaii",
+      "ocean"
+    ]
   }
 }

@@ -14,7 +14,10 @@
     <hr>
     <ul class="sidebar-list">
       {% for pano in panoramas %}
-        <li data-name="{{ pano['name']|lower }}">
+        <li data-name="{{ pano['name']|lower }}"
+            data-geo="{{ 'true' if (pano.get('latitude') and pano.get('longitude')) else 'false' }}"
+            data-cloudflare="{{ 'true' if pano.get('tile_base_url') else 'false' }}"
+            data-has-local="{{ 'true' if pano.get('has_local_tiles') else 'false' }}">
           <a href="{{ url_for('view_pano', pano_id=pano['id']) }}">{{ pano['name'] }}</a>
         </li>
       {% endfor %}
@@ -44,13 +47,16 @@
       <label class="geo-filter-label" title="Hide panoramas that already have coordinates">
         <input type="checkbox" id="geo-filter"> 📍 Unlocated only
       </label>
-      <label class="geo-filter-label" title="Show only panoramas with tiles on Cloudflare">
-        <input type="checkbox" id="cf-filter" checked> ☁️ Cloudflare only
-      </label>
+      <div class="size-btns" title="Filter by tile source">
+        <button class="size-btn" id="cf-filter" data-cf="cloudflare">☁️ Cloudflare</button>
+      </div>
       <div class="size-btns" title="Thumbnail size">
         <button class="size-btn" data-size="small">Small</button>
         <button class="size-btn" data-size="medium">Medium</button>
         <button class="size-btn" data-size="large">Large</button>
+      </div>
+      <div class="size-btns" title="Thumbnail crop mode">
+        <button class="size-btn" id="aspect-fit-btn">Fit</button>
       </div>
     </div>
 
@@ -62,12 +68,13 @@
          data-local="{{ 'true' if pano['id'] >= 1000000 else 'false' }}"
          data-geo="{{ 'true' if (pano.get('latitude') and pano.get('longitude')) else 'false' }}"
          data-cloudflare="{{ 'true' if pano.get('tile_base_url') else 'false' }}"
+         data-has-local="{{ 'true' if pano.get('has_local_tiles') else 'false' }}"
          data-pano-id="{{ pano['id'] }}"
          data-pano-w="{{ pano['width'] }}"
          data-pano-h="{{ pano['height'] }}"
          data-pano-name="{{ pano['name'] }}">
-        <div class="card-thumb">
-          <img src="{{ pano['tile_base_url'] + '/' + pano['id']|string + '_thumb.jpg' if pano.get('tile_base_url') else url_for('thumbnail', pano_id=pano['id']) }}"
+        <div class="card-thumb" style="--pano-ratio: {{ (pano['width'] / pano['height']) | round(4) }}">
+          <img src="{{ url_for('thumbnail', pano_id=pano['id']) }}"
                alt="{{ pano['name'] }}"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <span class="card-thumb-missing">No preview</span>
@@ -281,27 +288,58 @@
   const gigapanCount = document.getElementById('gigapan-count');
   const localCount = document.getElementById('local-count');
 
+  // ── CF filter cycle: cloudflare → all → local → cloudflare ──
+  const CF_STATES = [
+    { key: 'cloudflare', label: '☁️ Cloudflare' },
+    { key: 'all',        label: '🌐 All' },
+    { key: 'local',      label: '💾 Local' },
+  ];
+  const CF_KEY = 'mzq-cf-filter';
+
+  function applyCfState(key) {
+    const state = CF_STATES.find(s => s.key === key) || CF_STATES[0];
+    cfFilter.dataset.cf = state.key;
+    cfFilter.textContent = state.label;
+    cfFilter.classList.toggle('active', state.key !== 'all');
+    localStorage.setItem(CF_KEY, state.key);
+    applyFilters();
+  }
+
+  cfFilter.addEventListener('click', () => {
+    const cur = CF_STATES.findIndex(s => s.key === cfFilter.dataset.cf);
+    applyCfState(CF_STATES[(cur + 1) % CF_STATES.length].key);
+  });
+
   function applyFilters() {
-    const q        = searchInput.value.toLowerCase().trim();
-    const geoOnly  = geoFilter.checked;
-    const cfOnly   = cfFilter.checked;
+    const q       = searchInput.value.toLowerCase().trim();
+    const geoOnly = geoFilter.checked;
+    const cfMode  = cfFilter.dataset.cf;
     let count = 0, gp = 0, loc = 0;
     cards.forEach(card => {
       const textMatch = !q || card.dataset.name.includes(q);
       const geoMatch  = !geoOnly || card.dataset.geo !== 'true';
-      const cfMatch   = !cfOnly  || card.dataset.cloudflare === 'true';
+      const cfMatch   = cfMode === 'all'        ? true
+                      : cfMode === 'cloudflare'  ? card.dataset.cloudflare === 'true'
+                      :                            card.dataset.hasLocal === 'true';
       const match = textMatch && geoMatch && cfMatch;
       card.style.display = match ? '' : 'none';
-      // Keep nav context on the href
       const base = card.dataset.baseHref || card.getAttribute('href');
-      card.setAttribute('href', q ? base + (base.includes('?') ? '&' : '?') + 'q=' + encodeURIComponent(q) : base);
+      let href = base;
+      if (q)              href += (href.includes('?') ? '&' : '?') + 'q=' + encodeURIComponent(q);
+      if (cfMode === 'local') href += (href.includes('?') ? '&' : '?') + 'source=local';
+      card.setAttribute('href', href);
       if (match) {
         count++;
         if (card.dataset.local === 'true') loc++; else gp++;
       }
     });
     sidebarItems.forEach(li => {
-      li.style.display = !q || li.dataset.name.includes(q) ? '' : 'none';
+      const textMatch = !q || li.dataset.name.includes(q);
+      const geoMatch  = !geoOnly || li.dataset.geo !== 'true';
+      const cfMatch   = cfMode === 'all'       ? true
+                      : cfMode === 'cloudflare' ? li.dataset.cloudflare === 'true'
+                      :                           li.dataset.hasLocal === 'true';
+      li.style.display = (textMatch && geoMatch && cfMatch) ? '' : 'none';
     });
     visibleCount.textContent = count;
     gigapanCount.textContent = gp;
@@ -310,8 +348,9 @@
 
   searchInput.addEventListener('input', applyFilters);
   geoFilter.addEventListener('change', applyFilters);
-  cfFilter.addEventListener('change', applyFilters);
-  applyFilters();
+
+  // Restore saved CF filter state
+  applyCfState(localStorage.getItem(CF_KEY) || 'cloudflare');
 
   // ── Thumbnail size ──
   const grid = document.getElementById('card-grid');
@@ -329,5 +368,20 @@
 
   // Restore saved preference
   applySize(localStorage.getItem(SIZE_KEY) || 'small');
+
+  // ── Aspect fit toggle ──
+  const ASPECT_KEY   = 'mzq-thumb-aspect';
+  const aspectFitBtn = document.getElementById('aspect-fit-btn');
+
+  function applyAspect(fit) {
+    grid.classList.toggle('aspect-fit', fit);
+    aspectFitBtn.classList.toggle('active', fit);
+    localStorage.setItem(ASPECT_KEY, fit ? '1' : '');
+  }
+
+  aspectFitBtn.addEventListener('click', () => applyAspect(!grid.classList.contains('aspect-fit')));
+
+  // Restore saved preference
+  applyAspect(!!localStorage.getItem(ASPECT_KEY));
 </script>
 {% endblock %}

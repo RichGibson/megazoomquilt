@@ -1,15 +1,19 @@
 {
   "gigapan": {
     "id": 1000035,
-    "name": "continis_4x5",
+    "name": "Continis used book store",
     "width": 16384,
     "height": 11264,
     "levels": 7,
     "img_type": "jpg",
     "views": 0,
-    "description": "Imported from local Gigapan Stitcher file: continis_4x5 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
+    "description": "Continis is a used bookstore and antique shop located at Kirchengasse 19, 1070 Vienna, Austria, in the Neubau district. \r\n\r\nImported from local Gigapan Stitcher file: continis_4x5 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/continis_4x5.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000035"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000035",
+    "tags": [],
+    "latitude": 48.2016882,
+    "longitude": 16.351984,
+    "geo_precision": "exact"
   }
 }

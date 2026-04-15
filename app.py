@@ -110,6 +110,27 @@ def collect_tile_stats(base_dir):
 
     return results
 
+def resolve_tile_base_url(meta):
+    """Normalize tile_base_url (string or list) → first remote URL or None."""
+    raw = meta.get('tile_base_url')
+    if raw is None:
+        return None
+    if isinstance(raw, list):
+        return raw[0] if raw else None
+    return raw  # plain string
+
+def check_has_local_tiles(pano_id):
+    """Return True if zoom level 0 directory exists with at least one tile."""
+    z0 = BASE_DIR / str(pano_id) / "0"
+    if not z0.is_dir():
+        return False
+    for x_dir in z0.iterdir():
+        if x_dir.is_dir():
+            for f in x_dir.iterdir():
+                if f.suffix.lower() in ('.jpg', '.png'):
+                    return True
+    return False
+
 def load_pano_data():
     panoramas = []
     for entry in BASE_DIR.iterdir():
@@ -119,8 +140,8 @@ def load_pano_data():
                 try:
                     with json_path.open() as f:
                         data = json.load(f)
-                        data=data['gigapan']
-
+                        data = data['gigapan']
+                    data['has_local_tiles'] = check_has_local_tiles(data['id'])
                     panoramas.append(data)
                 except Exception as e:
                     print(f"Error loading {json_path}: {e}")
@@ -145,7 +166,7 @@ def thumbnail(pano_id):
     meta = raw.get('gigapan', raw)
 
     # Redirect to R2 thumbnail if tile_base_url is set
-    tile_base_url = meta.get('tile_base_url')
+    tile_base_url = resolve_tile_base_url(meta)
     if tile_base_url:
         return redirect(f"{tile_base_url}/{pano_id}_thumb.jpg")
 
@@ -178,7 +199,7 @@ def thumbnail(pano_id):
     cols = math.ceil(content_w / 256)
     rows = math.ceil(content_h / 256)
 
-    tile_base_url = meta.get('tile_base_url')
+    tile_base_url = resolve_tile_base_url(meta)
 
     if tile_base_url:
         import urllib.request
@@ -359,6 +380,9 @@ def view_pano(pano_id):
 
     with open(pano_json_path) as f:
         pano_data = json.load(f)
+    pano_data['gigapan']['has_local_tiles'] = check_has_local_tiles(pano_id)
+    # Normalize tile_base_url to a plain string for template use
+    pano_data['gigapan']['tile_base_url'] = resolve_tile_base_url(pano_data['gigapan'])
     p={}
     p['page_title']='View '
     results=collect_tile_stats(f"{BASE_DIR}/{pano_id}")
@@ -366,7 +390,9 @@ def view_pano(pano_id):
     # Collect geo-located panos for the location mini-map
     geo_panos = [
         {'id': pg['id'], 'name': pg['name'],
-         'lat': pg['latitude'], 'lng': pg['longitude']}
+         'lat': pg['latitude'], 'lng': pg['longitude'],
+         'width': pg.get('width', 0), 'height': pg.get('height', 0),
+         'tile_base_url': resolve_tile_base_url(pg) or ''}
         for pg in load_pano_data()
         if pg.get('latitude') and pg.get('longitude')
         and pg['latitude'] != 0 and pg['longitude'] != 0

@@ -219,6 +219,19 @@ a:hover {
   object-fit: cover;
   display: block;
 }
+
+/* ── Aspect-fit mode: show each pano at its natural ratio ── */
+#card-grid.aspect-fit .card-thumb {
+  aspect-ratio: var(--pano-ratio);
+}
+#card-grid.aspect-fit .card-thumb img {
+  object-fit: contain;
+}
+/* Magazine skin: don't let the first-card 3:1 override win in fit mode */
+.skin-magazine #card-grid.aspect-fit .card:first-child .card-thumb {
+  aspect-ratio: var(--pano-ratio);
+}
+
 .card-thumb-missing {
   display: none;
   width: 100%;
