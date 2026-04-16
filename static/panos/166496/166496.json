@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 350890000.0,
-    "latitude": null,
+    "latitude": 48.2044516,
     "created_at": "2014-12-04T09:46:02-05:00",
     "auth_key": "93629b01ed9cef0c289dea8bc6a3946f",
     "tiles_requested": null,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 11404,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": 16.3584548,
     "levels": 8,
     "description": "Seriously, I should focus on my incomplete robot...but yet I do this.",
     "visible": true,
@@ -46,8 +46,12 @@
     "distance": null,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "roboexotica"
+      "roboexotica",
+      "vienna",
+      "monochrom",
+      "mq"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/166496"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/166496",
+    "geo_precision": "approximate"
   }
 }
