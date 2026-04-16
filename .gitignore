@@ -1,7 +1,5 @@
 # panoramas — tiles ignored, JSON metadata tracked
-static/panos/**
-!static/panos/
-!static/panos/*/
+static/panos/*/*
 !static/panos/*/*.json
 
 # accidental directory
