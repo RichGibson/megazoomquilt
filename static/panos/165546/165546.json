@@ -5,7 +5,6 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 124548000.0,
-    "latitude": null,
     "created_at": "2014-11-11T20:14:48-05:00",
     "auth_key": "0e3fc56404b0a663451cbaaac8dee7a8",
     "tiles_requested": null,
@@ -31,7 +30,6 @@
     "allow_anonymous_snapshotting": false,
     "height": 14813,
     "allow_revenue_sharing": false,
-    "longitude": null,
     "levels": 7,
     "description": "This was a startling piece, and drew me in...from the Vienna 1900 exhibit at the MAK",
     "visible": true,
@@ -47,7 +45,8 @@
     "allow_others_to_add_to_gallery": true,
     "tags": [
       "mak_vienna",
-      "vienna"
+      "vienna",
+      "MAK"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/165546"
   }

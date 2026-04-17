@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 214456000.0,
-    "latitude": null,
+    "latitude": 48.20255,
     "created_at": "2014-12-29T13:19:03-05:00",
     "auth_key": "02216d5d5d5f4d70e777d7795230ac1d",
     "tiles_requested": null,
@@ -31,9 +31,9 @@
     "allow_anonymous_snapshotting": false,
     "height": 9437,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": 16.360859,
     "levels": 8,
-    "description": "Flower stand at the Museumsquartier U2 stand, taken Dec 29, 2014.\n\nCompare it with this image from Dec 20, 2009 http://gigapan.com/gigapans/39455",
+    "description": "Flower stand at the Museumsquartier U2 stand, taken Dec 29, 2014.\r\n\r\nCompare it with this image from Dec 20, 2009 http://gigapan.com/gigapans/39455",
     "visible": true,
     "tilt": null,
     "embeddable": true,
@@ -47,6 +47,10 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167239"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167239",
+    "tags": [
+      "vienna",
+      "mq"
+    ]
   }
 }

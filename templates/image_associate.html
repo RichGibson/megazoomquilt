@@ -1,0 +1,312 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<style>
+  .assoc-layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 1.25rem;
+    margin-top: 1rem;
+    align-items: start;
+  }
+  @media (max-width: 700px) {
+    .assoc-layout { grid-template-columns: 1fr; }
+  }
+
+  {# Left panel #}
+  .assoc-panel { display: flex; flex-direction: column; gap: 0.9rem; }
+  .assoc-img-wrap img {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    display: block;
+  }
+  .field-group { display: flex; flex-direction: column; gap: 0.25rem; }
+  .field-group label { font-size: 0.78rem; color: #777; font-weight: 600; }
+  .field-group input, .field-group select, .field-group textarea {
+    padding: 0.35rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .field-group textarea { resize: vertical; min-height: 3.5rem; }
+
+  .assoc-list { display: flex; flex-direction: column; gap: 0.4rem; }
+  .assoc-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    cursor: pointer;
+  }
+  .assoc-item:hover { background: #f0f7ff; border-color: #9ac; }
+  .assoc-item.selected { background: #e0f0ff; border-color: #0077cc; }
+  .assoc-item input[type=checkbox] { flex-shrink: 0; }
+  .assoc-item-thumb {
+    width: 48px; height: 24px;
+    object-fit: cover;
+    border-radius: 2px;
+    background: #222;
+    flex-shrink: 0;
+  }
+  .assoc-item-name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .assoc-item-id   { color: #aaa; font-size: 0.75rem; flex-shrink: 0; }
+
+  .btn-save {
+    padding: 0.5rem 1.2rem;
+    background: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+  .btn-save:hover { background: #005fa3; }
+
+  {# Map #}
+  #assoc-map {
+    height: 75vh;
+    min-height: 400px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
+  .exif-block {
+    font-size: 0.75rem;
+    color: #888;
+    line-height: 1.6;
+    background: #f8f8f8;
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+  }
+  .exif-block details summary { cursor: pointer; color: #666; }
+</style>
+{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom:0.5rem">Associate Image</h2>
+<p style="font-size:0.85rem;color:#666;margin-top:0">
+  Click pano markers on the map or check them in the list to associate.
+  <a href="{{ url_for('image_full', uid=uid) }}" target="_blank">View full image ↗</a>
+</p>
+
+<form method="post" id="assoc-form">
+<div class="assoc-layout">
+
+  {# Left panel #}
+  <div class="assoc-panel">
+
+    {# Image preview #}
+    <div class="assoc-img-wrap">
+      <img src="{{ url_for('image_thumb', uid=uid) }}" alt="{{ img.title }}">
+    </div>
+
+    {# Editable metadata #}
+    <div class="field-group">
+      <label>Title</label>
+      <input type="text" name="title" value="{{ img.get('title','') }}">
+    </div>
+
+    <div class="field-group">
+      <label>Type</label>
+      <select name="type">
+        {% for t in ['photo','aerial','map','screenshot','drawing'] %}
+        <option value="{{ t }}" {{ 'selected' if img.get('type') == t }}>{{ t }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label>Description</label>
+      <textarea name="description">{{ img.get('description','') }}</textarea>
+    </div>
+
+    <div class="field-group">
+      <label>Notes</label>
+      <textarea name="notes">{{ img.get('notes','') }}</textarea>
+    </div>
+
+    {# GPS — editable lat/lng; map click also sets these #}
+    <div style="display:flex;gap:0.5rem">
+      <div class="field-group" style="flex:1">
+        <label>Latitude</label>
+        <input type="number" name="latitude" id="inp-lat" step="any"
+               value="{{ '%.7f'|format(img.latitude) if img.get('latitude') else '' }}">
+      </div>
+      <div class="field-group" style="flex:1">
+        <label>Longitude</label>
+        <input type="number" name="longitude" id="inp-lng" step="any"
+               value="{{ '%.7f'|format(img.longitude) if img.get('longitude') else '' }}">
+      </div>
+    </div>
+    {% if img.get('altitude') %}
+    <div style="font-size:0.78rem;color:#999">Altitude: {{ img.altitude }}m (from EXIF, not editable)</div>
+    {% endif %}
+    <div style="font-size:0.75rem;color:#aaa">Click the map to set location</div>
+
+    {# EXIF summary #}
+    {% if img.get('exif') %}
+    <div class="exif-block">
+      <details>
+        <summary>EXIF data</summary>
+        {% for k, v in img.exif.items() %}
+          {% if not k.startswith('_') and k != 'gps_raw' %}
+          <div><strong>{{ k }}:</strong> {{ v }}</div>
+          {% endif %}
+        {% endfor %}
+      </details>
+    </div>
+    {% endif %}
+
+    {# Panorama checklist #}
+    <div style="font-size:0.78rem;color:#777;font-weight:600;margin-bottom:0.2rem">
+      Associated panoramas <span id="assoc-count">({{ img.pano_ids|length }})</span>
+    </div>
+    <div class="assoc-list" id="assoc-list">
+      {% for pano in panoramas %}
+      <label class="assoc-item {{ 'selected' if pano.id in img.pano_ids }}" id="item-{{ pano.id }}">
+        <input type="checkbox" name="pano_ids" value="{{ pano.id }}"
+               {{ 'checked' if pano.id in img.pano_ids }}
+               onchange="syncItem(this)">
+        <img class="assoc-item-thumb"
+             src="{{ url_for('thumbnail', pano_id=pano.id) }}"
+             onerror="this.style.background='#333';this.removeAttribute('src')" alt="">
+        <span class="assoc-item-name">{{ pano.name }}</span>
+        <span class="assoc-item-id">{{ pano.id }}</span>
+      </label>
+      {% endfor %}
+    </div>
+
+    <button type="submit" class="btn-save">Save associations</button>
+  </div>
+
+  {# Map column #}
+  <div style="display:flex;flex-direction:column;gap:0.3rem">
+    <div id="assoc-map"></div>
+    <div id="assoc-zoom" style="font-size:0.75rem;color:#999;text-align:right">Zoom: —</div>
+  </div>
+
+</div>
+</form>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+const imgLat    = {{ img.latitude   | tojson }};
+const imgLng    = {{ img.longitude  | tojson }};
+const centerLat = {{ center_lat | tojson }};
+const centerLng = {{ center_lng | tojson }};
+const panos     = {{ panoramas | tojson }};
+const initSelected = new Set({{ img.pano_ids | tojson }});
+
+const map = L.map('assoc-map');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap', maxZoom: 19
+}).addTo(map);
+
+const bounds = [];
+
+{# Image marker — star icon #}
+{% if img.get('latitude') %}
+const imgMarker = L.marker([imgLat, imgLng], {
+  icon: L.divIcon({
+    html: '<div style="font-size:22px;line-height:1;filter:drop-shadow(0 1px 2px #000)">📷</div>',
+    className: '', iconSize: [24,24], iconAnchor: [12,12]
+  }),
+  zIndexOffset: 1000
+}).addTo(map);
+imgMarker.bindTooltip({{ (img.title or 'Untitled') | tojson }} + ' (this image)', {permanent: true, direction: 'top'});
+bounds.push([imgLat, imgLng]);
+{% endif %}
+
+{# Pano markers #}
+const markerMap = {};
+panos.forEach(p => {
+  if (!p.latitude || !p.longitude) return;
+  const sel = initSelected.has(p.id);
+  const m = L.circleMarker([p.latitude, p.longitude], markerStyle(sel));
+  m.bindPopup(`
+    <strong>${p.name}</strong><br>
+    <img src="/thumbnail/${p.id}" style="width:180px;display:block;margin:4px 0"
+         onerror="this.remove()">
+    <label style="font-size:0.85rem;cursor:pointer">
+      <input type="checkbox" id="map-cb-${p.id}" ${sel ? 'checked' : ''}
+             onchange="togglePano(${p.id}, this.checked)"> Associate
+    </label>
+  `, {maxWidth: 200});
+  m.addTo(map);
+  markerMap[p.id] = m;
+  bounds.push([p.latitude, p.longitude]);
+});
+
+function markerStyle(selected) {
+  return {
+    radius: 7, weight: 2,
+    color:       selected ? '#0077cc' : '#555',
+    fillColor:   selected ? '#4af'    : '#aaa',
+    fillOpacity: 0.85,
+  };
+}
+
+function togglePano(id, checked) {
+  {# Sync checkbox in left panel #}
+  const cb = document.querySelector(`input[name=pano_ids][value="${id}"]`);
+  if (cb) { cb.checked = checked; syncItem(cb); }
+  {# Update marker style #}
+  if (markerMap[id]) markerMap[id].setStyle(markerStyle(checked));
+}
+
+function syncItem(cb) {
+  const id = parseInt(cb.value);
+  const label = document.getElementById('item-' + id);
+  if (label) label.classList.toggle('selected', cb.checked);
+  {# Sync map marker #}
+  if (markerMap[id]) markerMap[id].setStyle(markerStyle(cb.checked));
+  {# Update map popup checkbox #}
+  const mapCb = document.getElementById('map-cb-' + id);
+  if (mapCb) mapCb.checked = cb.checked;
+  {# Update count #}
+  const n = document.querySelectorAll('input[name=pano_ids]:checked').length;
+  document.getElementById('assoc-count').textContent = '(' + n + ')';
+}
+
+{# Always open at zoom 19 on the known center; fall back to fitBounds or world #}
+if (centerLat !== null) {
+  map.setView([centerLat, centerLng], 19);
+} else if (bounds.length) {
+  map.fitBounds(bounds, {padding: [40, 40], maxZoom: 19});
+} else {
+  map.setView([20, 0], 2);
+}
+
+{# Zoom display #}
+function updateZoom() {
+  document.getElementById('assoc-zoom').textContent = 'Zoom: ' + map.getZoom();
+}
+map.on('zoomend', updateZoom);
+updateZoom();
+
+{# Click map to set image location #}
+let placedMarker = null;
+map.on('click', function(e) {
+  const lat = e.latlng.lat.toFixed(7);
+  const lng = e.latlng.lng.toFixed(7);
+  document.getElementById('inp-lat').value = lat;
+  document.getElementById('inp-lng').value = lng;
+  if (placedMarker) map.removeLayer(placedMarker);
+  placedMarker = L.marker([lat, lng], {
+    icon: L.divIcon({
+      html: '<div style="font-size:22px;line-height:1;filter:drop-shadow(0 1px 2px #000)">📷</div>',
+      className: '', iconSize: [24,24], iconAnchor: [12,12]
+    }),
+    zIndexOffset: 1000
+  }).addTo(map);
+  placedMarker.bindTooltip('Image location (unsaved)', {permanent: true, direction: 'top'});
+});
+</script>
+{% endblock %}

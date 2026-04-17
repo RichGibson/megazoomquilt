@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 634189000.0,
-    "latitude": null,
+    "latitude": 48.1965504,
     "created_at": "2015-01-11T19:11:55-05:00",
     "auth_key": "8c8873eb93a436a86c9e02885b3e64a6",
     "tiles_requested": null,
@@ -31,9 +31,9 @@
     "allow_anonymous_snapshotting": false,
     "height": 18986,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": 16.4060051,
     "levels": 9,
-    "description": "An Experiment at a hand held panorama. This was 82 images, but I cropped it down quite a bit.\n\n",
+    "description": "An Experiment at a hand held panorama. This was 82 images, but I cropped it down quite a bit.",
     "visible": true,
     "tilt": null,
     "embeddable": true,
@@ -50,6 +50,7 @@
     "tags": [
       "vienna"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167712"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167712",
+    "geo_precision": "approximate"
   }
 }

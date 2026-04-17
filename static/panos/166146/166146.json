@@ -5,7 +5,6 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 105586000.0,
-    "latitude": null,
     "created_at": "2014-11-25T18:48:43-05:00",
     "auth_key": "17fe1953790554fcb52397a5471dade4",
     "tiles_requested": null,
@@ -31,7 +30,6 @@
     "allow_anonymous_snapshotting": false,
     "height": 11070,
     "allow_revenue_sharing": false,
-    "longitude": null,
     "levels": 7,
     "description": "At the MAK, the vest from a Football fan, decorated in off color patches.",
     "visible": true,
@@ -47,7 +45,8 @@
     "allow_others_to_add_to_gallery": true,
     "tags": [
       "mak_vienna",
-      "vienna"
+      "vienna",
+      "MAK"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/166146"
   }

@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 274681000.0,
-    "latitude": null,
+    "latitude": 48.2036686,
     "created_at": "2014-11-10T13:01:11-05:00",
     "auth_key": "b9cf367e9103d3acd257960ae6312fa0",
     "tiles_requested": null,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 11136,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": 16.360294,
     "levels": 8,
     "description": "More experiments with light",
     "visible": true,
@@ -47,6 +47,10 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/165487"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/165487",
+    "tags": [
+      "vienna"
+    ],
+    "geo_precision": "approximate"
   }
 }

@@ -5,7 +5,6 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 59816500.0,
-    "latitude": null,
     "created_at": "2014-11-26T06:58:19-05:00",
     "auth_key": "602630c027b141d862d3ddcf78200b0b",
     "tiles_requested": null,
@@ -31,7 +30,6 @@
     "allow_anonymous_snapshotting": false,
     "height": 7464,
     "allow_revenue_sharing": false,
-    "longitude": null,
     "levels": 6,
     "description": "Josef Hoffmann was an Architecht and Designer (1870-1956). He was a cofounder of the Vienna Secession and the Vienna Werkst\u00e4tte.\r\n\r\nThere is an exhibit of his work at the MAK http://www.mak.at/mak_design_labor/hoffmann_geometrisch\r\n\r\nIf I understood correctly, they had a visiting artist who made some geometric constructions, like this one, using ceramics and glassware from the MAK collection.\r\n\r\nThe constructions pull the eye in.",
     "visible": true,
@@ -47,7 +45,8 @@
     "allow_others_to_add_to_gallery": true,
     "tags": [
       "mak_vienna",
-      "vienna"
+      "vienna",
+      "MAK"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/166158"
   }

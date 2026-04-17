@@ -50,6 +50,8 @@
     "tags": [
       "mendocino"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14322"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14322",
+    "latitude": 39.4588866,
+    "longitude": -123.8089134
   }
 }

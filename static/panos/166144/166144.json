@@ -5,7 +5,6 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 246496000.0,
-    "latitude": null,
     "created_at": "2014-11-25T18:30:08-05:00",
     "auth_key": "eefa814fbb3f9719b15aefe6fe3805c7",
     "tiles_requested": null,
@@ -31,7 +30,6 @@
     "allow_anonymous_snapshotting": false,
     "height": 6457,
     "allow_revenue_sharing": false,
-    "longitude": null,
     "levels": 9,
     "description": "The MAK is the museum of design in Vienna. http://www.mak.at/ This is a sign from an old Pharmacy.",
     "visible": true,
@@ -47,7 +45,8 @@
     "allow_others_to_add_to_gallery": true,
     "tags": [
       "mak_vienna",
-      "vienna"
+      "vienna",
+      "MAK"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/166144"
   }

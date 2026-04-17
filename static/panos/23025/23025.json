@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 248073000.0,
-    "latitude": null,
+    "latitude": 38.4985192,
     "created_at": "2009-05-11T12:01:00-04:00",
     "auth_key": "27b1933a83fc3f953a706c7f0a11c1d2",
     "tiles_requested": 2984,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 9982,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -122.8998913,
     "levels": 8,
     "description": "Stealhead Beech is a Sonoma County Park.  It provides access to the Russian River.  Molly, Maddy, Spencer, Jay and I went there May 10, 2009 and had a great time.  But what is this strange thing?",
     "visible": true,
@@ -49,6 +49,8 @@
     "field_of_view_h": 30.9344,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/23025"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/23025",
+    "tags": [],
+    "geo_precision": "approximate"
   }
 }

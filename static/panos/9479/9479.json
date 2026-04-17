@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 916613000.0,
-    "latitude": null,
+    "latitude": 39.3068985,
     "created_at": "2008-09-23T01:04:49-04:00",
     "auth_key": "21574121eb4ea39c529fe2146c117106",
     "tiles_requested": 42555,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 18307,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": -123.8026285,
     "levels": 9,
     "description": "",
     "visible": true,
@@ -49,6 +49,10 @@
     "field_of_view_h": 48.213,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/9479"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/9479",
+    "tags": [
+      "mendocino"
+    ],
+    "geo_precision": "approximate"
   }
 }

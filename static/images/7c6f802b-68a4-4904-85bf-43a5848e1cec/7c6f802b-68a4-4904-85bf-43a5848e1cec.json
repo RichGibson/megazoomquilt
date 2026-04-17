@@ -1,0 +1,53 @@
+{
+  "id": "7c6f802b-68a4-4904-85bf-43a5848e1cec",
+  "original_filename": "U5.11_Rathaus_Baustelle_b.jpg",
+  "ext": "jpg",
+  "width": 3000,
+  "height": 1762,
+  "title": "U5 Rathaus Streetview",
+  "type": "screenshot",
+  "source_date": "2021-05-21",
+  "imported_at": "2026-04-17 01:21:17",
+  "latitude": 48.2111,
+  "longitude": 16.3562,
+  "altitude": null,
+  "description": "The Vienna Rathaus (city haul) from the rear, with construction cranes working on a new Ubahn U5 station.",
+  "notes": "",
+  "attribution": "",
+  "tags": [],
+  "pano_ids": [
+    167604
+  ],
+  "exif": {
+    "gps_raw": {
+      "GPSVersionID": "b'\\x02\\x02\\x00\\x00'",
+      "GPSLatitudeRef": "N",
+      "GPSLatitude": "(48.0, 12.0, 36.932580037664785)",
+      "GPSLongitudeRef": "E",
+      "GPSLongitude": "(16.0, 21.0, 22.3890479599141)",
+      "GPSTimeStamp": "(8.0, 51.0, 25.0)",
+      "GPSMapDatum": "WGS-84",
+      "GPSDateStamp": "2021:05:21"
+    },
+    "latitude": 48.2102591,
+    "longitude": 16.3562192,
+    "DateTimeOriginal": "2021:05:21 10:51:25",
+    "Make": "Panasonic",
+    "Model": "DMC-LX7",
+    "Software": "Adobe Photoshop CS6 (Windows)",
+    "FNumber": 3.5,
+    "ExposureTime": 0.0008,
+    "ISOSpeedRatings": 80.0,
+    "FocalLength": 4.7,
+    "FocalLengthIn35mmFilm": 24.0,
+    "ExposureBiasValue": 0.0,
+    "MeteringMode": 5.0,
+    "Flash": 16.0,
+    "WhiteBalance": 0.0,
+    "ExposureMode": 0.0,
+    "ExposureProgram": 3.0,
+    "ExifImageWidth": 3000,
+    "ExifImageHeight": 1762,
+    "Orientation": 1
+  }
+}

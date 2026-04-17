@@ -9,7 +9,7 @@
   #map {
     width: 100%;
     min-height: 320px;
-    max-height: 80vh;
+    max-height: 92vh;
     border-radius: 6px;
     border: 1px solid #ddd;
   }
@@ -33,6 +33,56 @@
   .pano-name { margin: 0; font-size: 1.5rem; font-weight: 700; }
   .external-link { font-size: 0.82rem; white-space: nowrap; }
   .pano-desc { margin: 0.2rem 0 0.5rem; font-size: 0.88rem; color: #555; line-height: 1.5; }
+
+  .assoc-gallery {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin: 0.75rem 0;
+  }
+  .assoc-gallery-item {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .assoc-gallery-item img {
+    width: 200px;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+    background: #222;
+  }
+  .assoc-gallery-item img:hover { opacity: 0.9; }
+  .assoc-gallery-caption {
+    padding: 0.4rem 0.5rem;
+    background: #fafafa;
+    flex: 1;
+  }
+  .assoc-gallery-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.3rem;
+  }
+  .assoc-gallery-date {
+    font-size: 0.75rem;
+    color: #999;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  .assoc-gallery-desc {
+    font-size: 0.78rem;
+    color: #666;
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
   .pano-meta-bar {
     display: flex;
     flex-wrap: wrap;
@@ -208,8 +258,8 @@
     font-weight: 600;
   }
   #location-map {
-    height: calc(100vh - 120px);
-    min-height: 400px;
+    height: 340px;
+    min-height: 200px;
     width: 100%;
     border-radius: 6px;
     border: 1px solid #ddd;
@@ -246,6 +296,7 @@
 </div>
 {% endif %}
 
+{# Title only — meta moves below viewer #}
 <div class="pano-header">
   <a href="{{ url_for('home') }}" class="back-link">← All panoramas</a>
   <a href="{{ url_for('edit_pano', pano_id=pano_id) }}" class="back-link" style="margin-left:1rem;">✎ Edit</a>
@@ -253,36 +304,7 @@
     <h1 class="pano-name">{{ pano.name }}</h1>
     <a href="https://www.gigapan.com/gigapans/{{ pano_id }}" target="_blank" class="external-link">gigapan.com ↗</a>
   </div>
-  {% if pano.description %}
-  <p class="pano-desc">{{ pano.description }}</p>
-  {% endif %}
-  <div class="pano-meta-bar">
-    <span>{{ pano.width }}×{{ pano.height }} &nbsp;·&nbsp; {{ "%.2f"|format(pano.width * pano.height / 1e9) }} GP{% if pano.resolution %} &nbsp;·&nbsp; {{ "{:,.0f}".format(pano.resolution / 1000000) }} MP{% endif %}</span>
-    <span>{{ pano.levels }} zoom levels</span>
-    {% if pano.views %}<span>👁 {{ pano.views }} views</span>{% endif %}
-    {% if pano.taken_at %}<span>{{ pano.taken_at[:10] }}</span>
-    {% elif pano.created_at %}<span>{{ pano.created_at[:10] }} (uploaded)</span>{% endif %}
-    {% if pano.field_of_view_w %}<span>{{ pano.field_of_view_w }}° FOV</span>{% endif %}
-    <span id="tile-source-badge">
-      {%- if pano.tile_base_url and pano.has_local_tiles -%}
-        ☁️+💾
-      {%- elif pano.tile_base_url -%}
-        ☁️ cloudflare
-      {%- else -%}
-        💾 local
-      {%- endif -%}
-    </span>
-    {% if pano.latitude and pano.longitude %}<span>📍 {{ "%.4f"|format(pano.latitude) }}, {{ "%.4f"|format(pano.longitude) }}</span>{% endif %}
-  </div>
 </div>
-
-{% if pano.tags %}
-<div class="tag-list">
-  {% for tag in pano.tags %}
-  <a class="tag" href="{{ url_for('tag_view', tag=tag) }}">#{{ tag }}</a>
-  {% endfor %}
-</div>
-{% endif %}
 
 <div id="map"></div>
 
@@ -295,6 +317,65 @@
   {% endif %}
   <span>Max tiles at this level: <strong id="tiles"></strong></span>
 </div>
+
+{# Associated images gallery #}
+<div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:0.4rem">
+  {% if associated_images %}<span style="font-size:0.82rem;color:#777">{{ associated_images|length }} associated image{{ 's' if associated_images|length != 1 }}</span>{% endif %}
+  <a href="{{ url_for('image_upload', pano_id=pano.id) }}"
+     style="font-size:0.82rem;color:#0077cc;text-decoration:none">+ Upload image</a>
+</div>
+{% if associated_images %}
+<div class="assoc-gallery">
+  {% for img in associated_images %}
+  <div class="assoc-gallery-item">
+    <a href="{{ url_for('image_full', uid=img.id) }}" target="_blank">
+      <img src="{{ url_for('image_thumb', uid=img.id) }}"
+           alt="{{ img.title }}"
+           onerror="this.style.background='#333';this.removeAttribute('src')">
+    </a>
+    <div class="assoc-gallery-caption">
+      <div class="assoc-gallery-title">
+        {{ img.title or 'Untitled' }}
+        <span style="display:flex;align-items:baseline;gap:0.4rem;flex-shrink:0">
+          {% if img.source_date %}<span class="assoc-gallery-date">{{ img.source_date }}</span>{% endif %}
+          <a href="{{ url_for('image_associate', uid=img.id) }}" title="Edit image"
+             style="font-size:0.72rem;color:#aaa;text-decoration:none;white-space:nowrap">✏ edit</a>
+        </span>
+      </div>
+      {% if img.description %}<div class="assoc-gallery-desc">{{ img.description }}</div>{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{# Pano description, meta, tags — below gallery #}
+{% if pano.description %}
+<p class="pano-desc">{{ pano.description }}</p>
+{% endif %}
+
+<div class="pano-meta-bar">
+  <span>{{ pano.width }}×{{ pano.height }} &nbsp;·&nbsp; {{ "%.2f"|format(pano.width * pano.height / 1e9) }} GP{% if pano.resolution %} &nbsp;·&nbsp; {{ "{:,.0f}".format(pano.resolution / 1000000) }} MP{% endif %}</span>
+  <span>{{ pano.levels }} zoom levels</span>
+  {% if pano.views %}<span>👁 {{ pano.views }} views</span>{% endif %}
+  {% if pano.taken_at %}<span>{{ pano.taken_at[:10] }}</span>
+  {% elif pano.created_at %}<span>{{ pano.created_at[:10] }} (uploaded)</span>{% endif %}
+  {% if pano.field_of_view_w %}<span>{{ pano.field_of_view_w }}° FOV</span>{% endif %}
+  <span id="tile-source-badge">
+    {%- if pano.tile_base_url and pano.has_local_tiles -%}☁️+💾
+    {%- elif pano.tile_base_url -%}☁️ cloudflare
+    {%- else -%}💾 local{%- endif -%}
+  </span>
+  {% if pano.latitude and pano.longitude %}<span>📍 {{ "%.4f"|format(pano.latitude) }}, {{ "%.4f"|format(pano.longitude) }}</span>{% endif %}
+</div>
+
+{% if pano.tags %}
+<div class="tag-list">
+  {% for tag in pano.tags %}
+  <a class="tag" href="{{ url_for('tag_view', tag=tag) }}">#{{ tag }}</a>
+  {% endfor %}
+</div>
+{% endif %}
 
 <details class="pano-details">
   <summary>Technical details &amp; tile statistics</summary>
@@ -387,10 +468,11 @@
   // This eliminates most of the empty background around wide/tall images.
   (function () {
     const mapDiv   = document.getElementById('map');
-    const maxH     = window.innerHeight * 0.80;
+    const maxH     = window.innerHeight * 0.92;
+    const minH     = window.innerHeight * 0.55;
     const aspect   = imageWidth / imageHeight;
     const idealH   = mapDiv.offsetWidth / aspect;
-    mapDiv.style.height = Math.min(idealH, maxH) + 'px';
+    mapDiv.style.height = Math.max(Math.min(idealH, maxH), minH) + 'px';
   })();
 
   // Compute correct CRS-space center: pixel coords ÷ 2^maxZoom

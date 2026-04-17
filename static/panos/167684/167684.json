@@ -5,7 +5,7 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 62056800.0,
-    "latitude": null,
+    "latitude": 48.2026534,
     "created_at": "2015-01-10T21:59:37-05:00",
     "auth_key": "af9c4eb4280238f13f7bfc7b3f933c11",
     "tiles_requested": null,
@@ -31,7 +31,7 @@
     "allow_anonymous_snapshotting": false,
     "height": 9394,
     "allow_revenue_sharing": false,
-    "longitude": null,
+    "longitude": 16.3565672,
     "levels": 7,
     "description": "At the Leopold Museum",
     "visible": true,
@@ -45,6 +45,12 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167684"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167684",
+    "tags": [
+      "vienna",
+      "mq",
+      "leopold"
+    ],
+    "geo_precision": "approximate"
   }
 }

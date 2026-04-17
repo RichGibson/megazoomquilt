@@ -445,10 +445,22 @@ def view_pano(pano_id):
     except ValueError:
         prev_id = next_id = None
 
+    # Load associated images
+    associated_images = []
+    idx_data = load_images_index()
+    for uid in idx_data.get('by_pano', {}).get(pano_id, []):
+        jp = IMAGES_DIR / uid / f'{uid}.json'
+        if jp.exists():
+            try:
+                associated_images.append(json.load(open(jp)))
+            except Exception:
+                pass
+
     return render_template("view.html", pano_id=pano_id, pano=pano_data['gigapan'],
                            p=p, results=results, geo_panos=geo_panos,
                            prev_id=prev_id, next_id=next_id,
-                           nav_tag=nav_tag, nav_q=nav_q)
+                           nav_tag=nav_tag, nav_q=nav_q,
+                           associated_images=associated_images)
 
 def backup_json(json_path: Path):
     """Copy id.json → id.bak, then id.bk1, id.bk2 … if .bak already exists."""
@@ -580,13 +592,196 @@ def qr_generator():
         dest = request.form.get('url', '').strip()
         if dest.startswith(('http://', 'https://')):
             import qrcode, base64
-            from urllib.parse import urlencode
-            target = request.host_url.rstrip('/') + '/go?' + urlencode({'u': dest})
-            img = qrcode.make(target)
+            img = qrcode.make(dest)
             buf = io.BytesIO()
             img.save(buf, format='PNG')
             qr_data_url = 'data:image/png;base64,' + base64.b64encode(buf.getvalue()).decode()
     return render_template('qr.html', qr_data_url=qr_data_url, dest=dest)
+
+
+IMAGES_DIR   = Path(__file__).resolve().parent / "static" / "images"
+IMAGES_INDEX = Path(__file__).resolve().parent / "static" / "images_index.json"
+
+
+def load_images_index():
+    if IMAGES_INDEX.exists():
+        with open(IMAGES_INDEX) as f:
+            return json.load(f)
+    return {'by_pano': {}, 'unassociated': [], 'all': []}
+
+
+@app.route("/images/<uid>/thumb")
+def image_thumb(uid):
+    """Serve or generate a thumbnail for an image."""
+    img_dir = IMAGES_DIR / uid
+    for ext in ('jpg', 'jpeg', 'png', 'tif', 'tiff', 'webp'):
+        src = img_dir / f'{uid}.{ext}'
+        if src.exists():
+            thumb = img_dir / f'{uid}_thumb.jpg'
+            if not thumb.exists():
+                im = Image.open(src)
+                im.thumbnail((400, 400))
+                im = im.convert('RGB')
+                im.save(thumb, format='JPEG', quality=85)
+            return send_file(thumb, mimetype='image/jpeg')
+    abort(404)
+
+
+@app.route("/images/<uid>/full")
+def image_full(uid):
+    """Serve the full-size original image."""
+    img_dir = IMAGES_DIR / uid
+    for ext in ('jpg', 'jpeg', 'png', 'tif', 'tiff', 'webp'):
+        src = img_dir / f'{uid}.{ext}'
+        if src.exists():
+            return send_file(src)
+    abort(404)
+
+
+@app.route("/images/<uid>/associate", methods=["GET", "POST"])
+def image_associate(uid):
+    """UI to associate an image with panoramas."""
+    json_path = IMAGES_DIR / uid / f'{uid}.json'
+    if not json_path.exists():
+        abort(404)
+    img_meta = json.load(open(json_path))
+
+    if request.method == "POST":
+        pano_ids = [int(x) for x in request.form.getlist('pano_ids') if x.isdigit()]
+        title    = request.form.get('title', img_meta.get('title', ''))
+        itype    = request.form.get('type',  img_meta.get('type', 'photo'))
+        notes       = request.form.get('notes',       img_meta.get('notes', ''))
+        description = request.form.get('description', img_meta.get('description', ''))
+        lat_str = request.form.get('latitude', '').strip()
+        lng_str = request.form.get('longitude', '').strip()
+        img_meta['pano_ids']    = pano_ids
+        img_meta['title']       = title
+        img_meta['type']        = itype
+        img_meta['notes']       = notes
+        img_meta['description'] = description
+        img_meta['latitude']    = float(lat_str) if lat_str else None
+        img_meta['longitude']   = float(lng_str) if lng_str else None
+        with open(json_path, 'w') as f:
+            json.dump(img_meta, f, indent=2)
+        # Rebuild index
+        import subprocess, sys
+        script = Path(__file__).resolve().parent / "util" / "import_images.py"
+        subprocess.Popen([sys.executable, str(script), '--reindex'],
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return redirect(url_for('image_associate', uid=uid))
+
+    all_panos = load_pano_data()
+
+    # Determine map center: image GPS → first associated pano → None
+    center_lat = img_meta.get('latitude')
+    center_lng = img_meta.get('longitude')
+    if center_lat is None and img_meta.get('pano_ids'):
+        for p in all_panos:
+            if p['id'] in img_meta['pano_ids'] and p.get('latitude') and p.get('longitude'):
+                center_lat = p['latitude']
+                center_lng = p['longitude']
+                break
+
+    # Filter to panos within ~100 km of center; always include already-associated ones
+    RADIUS_DEG = 1.0  # ~111 km per degree — coarse but fast
+    if center_lat is not None and center_lng is not None:
+        associated_set = set(img_meta.get('pano_ids', []))
+        panoramas = [
+            p for p in all_panos
+            if p.get('latitude') and p.get('longitude') and (
+                p['id'] in associated_set or (
+                    abs(p['latitude']  - center_lat) <= RADIUS_DEG and
+                    abs(p['longitude'] - center_lng) <= RADIUS_DEG
+                )
+            )
+        ]
+    else:
+        panoramas = [p for p in all_panos if p.get('latitude') and p.get('longitude')]
+
+    return render_template('image_associate.html',
+                           img=img_meta, uid=uid, panoramas=panoramas,
+                           center_lat=center_lat, center_lng=center_lng)
+
+
+IMAGE_EXTS = {'.jpg', '.jpeg', '.png', '.tif', '.tiff', '.webp', '.heic'}
+
+@app.route("/images/upload", methods=["GET", "POST"])
+def image_upload():
+    """Web upload form for a new image, optionally pre-associated with a pano."""
+    pano_id = request.args.get('pano_id') or request.form.get('pano_id', '')
+
+    if request.method == "POST":
+        f = request.files.get('file')
+        if not f or not f.filename:
+            return render_template('image_upload.html', pano_id=pano_id, error="No file selected.")
+
+        ext = Path(f.filename).suffix.lower()
+        if ext not in IMAGE_EXTS:
+            return render_template('image_upload.html', pano_id=pano_id,
+                                   error=f"Unsupported file type: {ext}")
+
+        import uuid as _uuid
+        uid      = str(_uuid.uuid4())
+        dest_dir = IMAGES_DIR / uid
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        dest_file = dest_dir / f'{uid}{ext}'
+        f.save(str(dest_file))
+
+        # Extract EXIF
+        from util.import_images import extract_exif, image_dimensions, build_index
+        exif    = extract_exif(dest_file)
+        w, h    = image_dimensions(dest_file)
+
+        from datetime import datetime as _dt
+        source_date = None
+        dt_str = exif.get('DateTimeOriginal') or exif.get('DateTimeDigitized') or exif.get('DateTime')
+        if dt_str:
+            try:
+                source_date = _dt.strptime(dt_str, '%Y:%m:%d %H:%M:%S').strftime('%Y-%m-%d')
+            except ValueError:
+                source_date = dt_str
+
+        title   = request.form.get('title', '').strip() or Path(f.filename).stem
+        lat_str = request.form.get('latitude',  '').strip()
+        lng_str = request.form.get('longitude', '').strip()
+        lat     = float(lat_str) if lat_str else exif.get('latitude')
+        lng     = float(lng_str) if lng_str else exif.get('longitude')
+
+        pano_ids = [int(pano_id)] if pano_id and pano_id.isdigit() else []
+
+        meta = {
+            'id':                uid,
+            'original_filename': f.filename,
+            'ext':               ext.lstrip('.'),
+            'width':             w,
+            'height':            h,
+            'title':             title,
+            'type':              request.form.get('type', 'photo'),
+            'source_date':       source_date,
+            'imported_at':       _dt.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'latitude':          lat,
+            'longitude':         lng,
+            'altitude':          exif.get('altitude'),
+            'description':       request.form.get('description', '').strip(),
+            'notes':             '',
+            'attribution':       '',
+            'tags':              [],
+            'pano_ids':          pano_ids,
+            'exif':              exif,
+        }
+        with open(dest_dir / f'{uid}.json', 'w') as jf:
+            json.dump(meta, jf, indent=2)
+        build_index()
+        return redirect(url_for('image_associate', uid=uid))
+
+    return render_template('image_upload.html', pano_id=pano_id, error=None)
+
+
+@app.route("/api/images")
+def api_images():
+    """JSON feed of images for the map."""
+    idx = load_images_index()
+    return jsonify(idx.get('all', []))
 
 
 if __name__ == "__main__":

@@ -215,13 +215,43 @@
     pendingCluster.addLayer(marker);
   });
 
+  // ── Non-panorama images (camera emoji markers) ───────────────────
+  const imageLayer = L.layerGroup();
+
+  fetch('/api/images')
+    .then(r => r.json())
+    .then(images => {
+      images.forEach(img => {
+        if (!img.latitude || !img.longitude) return;
+        if (img.pano_ids && img.pano_ids.length > 0) return; // only unassociated
+        const m = L.marker([img.latitude, img.longitude], {
+          icon: L.divIcon({
+            html: '<div style="font-size:18px;line-height:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.5))">📷</div>',
+            className: '', iconSize: [20, 20], iconAnchor: [10, 10]
+          })
+        });
+        const date  = img.source_date ? `<span class="popup-meta">${img.source_date}</span>` : '';
+        const thumb = img.id ? `<img src="/images/${img.id}/thumb"
+          style="width:200px;display:block;margin:4px 0;border-radius:2px"
+          onerror="this.remove()">` : '';
+        m.bindPopup(`
+          ${thumb}
+          <strong>${img.title || 'Untitled'}</strong><br>
+          ${date}
+          <br><a href="/images/${img.id}/associate" style="font-size:0.8rem">Edit / associate ↗</a>
+        `, {maxWidth: 220});
+        imageLayer.addLayer(m);
+      });
+    });
+
   map.addLayer(cluster);
   map.addLayer(pendingCluster);
 
   // Layer toggle control
   L.control.layers(null, {
     'Downloaded': cluster,
-    'Pending download': pendingCluster
+    'Pending download': pendingCluster,
+    'Non-panorama images': imageLayer,
   }, { collapsed: false, position: 'topright' }).addTo(map);
 
   if (bounds.length > 0) {

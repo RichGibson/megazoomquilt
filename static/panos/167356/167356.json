@@ -5,7 +5,6 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 410413000.0,
-    "latitude": null,
     "created_at": "2015-01-02T07:32:33-05:00",
     "auth_key": "285ff9d5a3bd51b89eca7599317c97b7",
     "tiles_requested": null,
@@ -31,7 +30,6 @@
     "allow_anonymous_snapshotting": false,
     "height": 27710,
     "allow_revenue_sharing": false,
-    "longitude": null,
     "levels": 8,
     "description": "Another try at this image. http://www.gigapan.org/gigapans/167349",
     "visible": true,
@@ -47,7 +45,8 @@
     "allow_others_to_add_to_gallery": true,
     "tags": [
       "mak_vienna",
-      "vienna"
+      "vienna",
+      "MAK"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/167356"
   }

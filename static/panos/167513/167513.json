@@ -5,7 +5,6 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 186742000.0,
-    "latitude": null,
     "created_at": "2015-01-06T17:11:49-05:00",
     "auth_key": "75a733e1b24f490b7d681918f231ff79",
     "tiles_requested": null,
@@ -31,7 +30,6 @@
     "allow_anonymous_snapshotting": false,
     "height": 15640,
     "allow_revenue_sharing": false,
-    "longitude": null,
     "levels": 7,
     "description": "A Festschrift is a book honoring a respected person. In this case the Archduke Rainer Ferdinand of Austria, in commemoration of the 25th anniversary of the Imperial Royal Austrian Museum of Art and Industry in 1889.\r\n\r\nThis is the museum now known as the Austrian Museum of Applied Arts, or the MAK.\r\n\r\nBook From the Vienna 1900 Exhibit...",
     "visible": true,
@@ -47,7 +45,8 @@
     "allow_others_to_add_to_gallery": true,
     "tags": [
       "mak_vienna",
-      "vienna"
+      "vienna",
+      "MAK"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/167513"
   }

@@ -5,7 +5,6 @@
     "is_game": false,
     "snapshottable": true,
     "resolution": 1968620000.0,
-    "latitude": 48.2110243,
     "created_at": "2015-01-08T11:30:55-05:00",
     "auth_key": "e7e52782b3193f6b3abd57cab2d596a7",
     "tiles_requested": null,
@@ -31,9 +30,8 @@
     "allow_anonymous_snapshotting": false,
     "height": 25922,
     "allow_revenue_sharing": false,
-    "longitude": 16.355719,
     "levels": 10,
-    "description": "An early experiment with handheld image capture.  55 images. I missed some areas in the sky, so I filled them in Photoshop.",
+    "description": "An early experiment with handheld image capture.  55 images. I missed some areas in the sky, so I filled them in Photoshop.\r\n\r\nIt looks like a large grassy area, but it was not that big. It w called Florianpark, and it existed in 2021, but was gone between March and May of 2021, and the road has been redirected.",
     "visible": true,
     "tilt": null,
     "embeddable": true,
@@ -48,7 +46,8 @@
     "tags": [
       "vienna"
     ],
-    "geo_precision": "exact",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167604"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167604",
+    "latitude": 48.211,
+    "longitude": 16.2556
   }
 }
