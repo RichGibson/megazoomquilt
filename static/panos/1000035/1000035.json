@@ -14,6 +14,7 @@
     "tags": [],
     "latitude": 48.2016882,
     "longitude": 16.351984,
-    "geo_precision": "exact"
+    "geo_precision": "exact",
+    "resolution": 184549376.0
   }
 }

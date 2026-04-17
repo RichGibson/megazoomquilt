@@ -10,6 +10,7 @@
     "description": "Tiled from: lucky13-01.tif",
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/lucky13-01.tif",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000257"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000257",
+    "resolution": 267701982.0
   }
 }

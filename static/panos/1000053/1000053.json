@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: schottenring_over_fence_10x4 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/schottenring_over_fence_10x4.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000053"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000053",
+    "resolution": 235929600.0
   }
 }

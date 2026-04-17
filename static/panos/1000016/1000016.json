@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: rabbitism_5x4 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091210",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091210/rabbitism_5x4.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000016"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000016",
+    "resolution": 117440512.0
   }
 }

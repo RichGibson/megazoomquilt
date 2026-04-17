@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: war_bridge_17x6 | Source: /Volumes/bigeneration/europe_2009/gigapans_stitched",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_stitched/war_bridge_17x6.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000156"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000156",
+    "resolution": 734003200.0
   }
 }

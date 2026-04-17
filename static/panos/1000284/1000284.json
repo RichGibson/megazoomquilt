@@ -10,6 +10,7 @@
     "description": "Tiled from: pillowb.psd",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/pillowb.psd",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000284"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000284",
+    "resolution": 151361980.0
   }
 }

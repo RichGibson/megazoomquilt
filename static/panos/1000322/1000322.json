@@ -10,6 +10,7 @@
     "description": "Tiled from: willow3_try4.psb",
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/willow3_try4.psb",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000322"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000322",
+    "resolution": 1369041926.0
   }
 }

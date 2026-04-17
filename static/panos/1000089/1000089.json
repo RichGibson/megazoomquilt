@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: rat_1_8x7 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/rat_1_8x7.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000089"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000089",
+    "resolution": 330301440.0
   }
 }

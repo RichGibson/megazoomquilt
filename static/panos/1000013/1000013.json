@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: yuri_4 | Source: /Volumes/bigeneration/panos_consolidated/gigapan_external_250",
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/yuri_4.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000013"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000013",
+    "resolution": 61014016.0
   }
 }

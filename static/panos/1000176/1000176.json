@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: mqhigh3_26x9 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/mqhigh3_26x9.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000176"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000176",
+    "resolution": 1358954496.0
   }
 }

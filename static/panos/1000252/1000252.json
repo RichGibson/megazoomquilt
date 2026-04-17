@@ -10,6 +10,7 @@
     "description": "Tiled from: farmers_market_tomatos.tif",
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/farmers_market_tomatos.tif",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000252"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000252",
+    "resolution": 193277280.0
   }
 }

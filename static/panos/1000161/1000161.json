@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: tonspur_1_8x10 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/tonspur_1_8x10.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000161"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000161",
+    "resolution": 1189085184.0
   }
 }

@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: santa_con_2_10x4 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/santa_con_2_10x4.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000086"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000086",
+    "resolution": 299892736.0
   }
 }

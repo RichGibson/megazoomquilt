@@ -13,6 +13,7 @@ from pathlib import Path
 
 SKINS = ['default', 'retro', 'amber', 'museum', 'blueprint', 'magazine', 'explorer']
 GIGAPAN_LIST_PATH = Path(__file__).resolve().parent / "gigapan_list.json"
+AUDIT_CACHE_PATH  = Path(__file__).resolve().parent / "static" / "audit_cache.json"
 
 # Tag → suggested map center [lat, lng, zoom] for the edit page location picker
 TAG_GEO_HINTS = {
@@ -119,6 +120,8 @@ def resolve_tile_base_url(meta):
         return raw[0] if raw else None
     return raw  # plain string
 
+
+
 def check_has_local_tiles(pano_id):
     """Return True if zoom level 0 directory exists with at least one tile."""
     z0 = BASE_DIR / str(pano_id) / "0"
@@ -164,11 +167,6 @@ def thumbnail(pano_id):
     with pano_json.open() as f:
         raw = json.load(f)
     meta = raw.get('gigapan', raw)
-
-    # Redirect to R2 thumbnail if tile_base_url is set
-    tile_base_url = resolve_tile_base_url(meta)
-    if tile_base_url:
-        return redirect(f"{tile_base_url}/{pano_id}_thumb.jpg")
 
     W = int(meta['width'])
     H = int(meta['height'])
@@ -364,12 +362,42 @@ def map_view():
 
     return render_template("map.html", panoramas=mapped, pending_panos=pending_panos, p={'page_title': 'Map'})
 
+@app.route("/admin/audit/refresh", methods=["POST"])
+def admin_audit_refresh():
+    import subprocess, sys
+    script = Path(__file__).resolve().parent / "util" / "run_audit.py"
+    subprocess.Popen([sys.executable, str(script)],
+                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                     close_fds=True)
+    return redirect(url_for('admin') + '?audit=running')
+
 @app.route("/admin")
 def admin():
-    panoramas = load_pano_data()
-    p={}
-    p['page_title']='Admin'
-    return render_template("admin.html", p=p, panoramas=panoramas)
+    local_panos = {p['id']: p for p in load_pano_data()}
+
+    all_from_list = []
+    if GIGAPAN_LIST_PATH.exists():
+        with open(GIGAPAN_LIST_PATH) as f:
+            all_from_list = json.load(f)
+
+    seen = set()
+    all_panos = []
+    for g in all_from_list:
+        pid = g['id']
+        seen.add(pid)
+        all_panos.append(local_panos[pid] if pid in local_panos else g)
+    for p in local_panos.values():
+        if p['id'] not in seen:
+            all_panos.append(p)
+    all_panos.sort(key=lambda x: x['id'])
+
+    audit = {}
+    if AUDIT_CACHE_PATH.exists():
+        with open(AUDIT_CACHE_PATH) as f:
+            audit = json.load(f)
+
+    return render_template("admin.html", p={'page_title': 'Admin'},
+                           panoramas=all_panos, audit=audit)
 
 
 @app.route("/view/<pano_id>")
@@ -534,6 +562,31 @@ def edit_pano_post(pano_id):
     from flask import flash
     flash(f'Saved — backup written.')
     return redirect(url_for('view_pano', pano_id=pano_id))
+
+
+@app.route("/go")
+def qr_redirect():
+    dest = request.args.get('u', '').strip()
+    if not dest.startswith(('http://', 'https://')):
+        abort(400)
+    return redirect(dest)
+
+
+@app.route("/qr", methods=["GET", "POST"])
+def qr_generator():
+    qr_data_url = None
+    dest = ''
+    if request.method == "POST":
+        dest = request.form.get('url', '').strip()
+        if dest.startswith(('http://', 'https://')):
+            import qrcode, base64
+            from urllib.parse import urlencode
+            target = request.host_url.rstrip('/') + '/go?' + urlencode({'u': dest})
+            img = qrcode.make(target)
+            buf = io.BytesIO()
+            img.save(buf, format='PNG')
+            qr_data_url = 'data:image/png;base64,' + base64.b64encode(buf.getvalue()).decode()
+    return render_template('qr.html', qr_data_url=qr_data_url, dest=dest)
 
 
 if __name__ == "__main__":

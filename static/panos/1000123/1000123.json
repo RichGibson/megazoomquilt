@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: curry66_10x8 | Source: /Volumes/bigeneration/europe_2009/gigapans_stitched",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_stitched/curry66_10x8.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000123"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000123",
+    "resolution": 585105408.0
   }
 }

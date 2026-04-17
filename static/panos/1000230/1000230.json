@@ -13,6 +13,7 @@
     "tags": [
       "steamboat_ed"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000230"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000230",
+    "resolution": 50046619.0
   }
 }

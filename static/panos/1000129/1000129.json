@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: gppostc_14x6 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091220",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/gppostc_14x6.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000129"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000129",
+    "resolution": 545259520.0
   }
 }

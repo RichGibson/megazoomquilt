@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: kultur_fur_alle_4x5 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091210",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091210/kultur_fur_alle_4x5.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000019"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000019",
+    "resolution": 138412032.0
   }
 }

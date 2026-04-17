@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: greg_temple_interior_sunday | Source: /Volumes/bigeneration/pix_consolidated/bm2012/panos",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/greg_temple_interior_sunday.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000139"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000139",
+    "resolution": 692060160.0
   }
 }

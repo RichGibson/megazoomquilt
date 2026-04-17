@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: rosie_02 | Source: /Volumes/bigeneration/panos_consolidated/gigapan_external_250",
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/rosie_02.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000103"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000103",
+    "resolution": 226492416.0
   }
 }

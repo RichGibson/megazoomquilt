@@ -10,6 +10,7 @@
     "description": "Tiled from: [Group 4]-IMG_7292_IMG_7336-45 images.tif",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-05/gigapan_n1/[Group 4]-IMG_7292_IMG_7336-45 images.tif",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000253"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000253",
+    "resolution": 356489937.0
   }
 }

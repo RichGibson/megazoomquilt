@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: u_donauinsel_6x5 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/u_donauinsel_6x5.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000014"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000014",
+    "resolution": 117440512.0
   }
 }

@@ -10,6 +10,7 @@
     "description": "Tiled from: panels2_flat.psb",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/greg/panels2_flat.psb",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000312"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000312",
+    "resolution": 1055030724.0
   }
 }

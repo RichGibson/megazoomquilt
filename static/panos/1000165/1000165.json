@@ -13,6 +13,7 @@
     "tags": [
       "roboexotica"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000165"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000165",
+    "resolution": 587202560.0
   }
 }

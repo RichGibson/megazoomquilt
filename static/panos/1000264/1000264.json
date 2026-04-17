@@ -10,6 +10,7 @@
     "description": "Tiled from: sics_doran_05_subset.tif",
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/sics_doran_05_subset.tif",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000264"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000264",
+    "resolution": 313831424.0
   }
 }

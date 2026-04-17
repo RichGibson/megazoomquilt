@@ -14,6 +14,7 @@
       "q21",
       "vienna"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000114"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000114",
+    "resolution": 356515840.0
   }
 }

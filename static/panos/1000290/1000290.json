@@ -10,6 +10,7 @@
     "description": "Tiled from: greg_panel08_flat.psd",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/greg/greg_panel08_flat.psd",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000290"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000290",
+    "resolution": 181635588.0
   }
 }

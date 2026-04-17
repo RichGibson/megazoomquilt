@@ -10,6 +10,7 @@
     "description": "Tiled from: grow_fourth_portland_core.psb",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/grow_fourth_portland_core.psb",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000315"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000315",
+    "resolution": 633614402.0
   }
 }

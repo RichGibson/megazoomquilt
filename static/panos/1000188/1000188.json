@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: ststephens_day_13x17 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/ststephens_day_13x17.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000188"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000188",
+    "resolution": 1673527296.0
   }
 }

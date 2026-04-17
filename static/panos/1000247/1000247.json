@@ -12,6 +12,7 @@
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/sics_doran_06.tif",
     "latitude": 38.3122601,
     "longitude": -123.0465679,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000247"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000247",
+    "resolution": 125763105.0
   }
 }

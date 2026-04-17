@@ -10,6 +10,7 @@
     "description": "Tiled from: willow_face.tif",
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/willow_face.tif",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000258"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000258",
+    "resolution": 314108118.0
   }
 }

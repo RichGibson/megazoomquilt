@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: fringes_and_meloncholy_9x13 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091212",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/fringes_and_meloncholy_9x13.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000174"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000174",
+    "resolution": 822083584.0
   }
 }

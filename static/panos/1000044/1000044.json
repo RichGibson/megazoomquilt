@@ -13,6 +13,7 @@
     "tags": [
       "siggraph"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000044"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000044",
+    "resolution": 283115520.0
   }
 }

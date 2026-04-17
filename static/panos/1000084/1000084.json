@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: gp_falafal_by_ring_10x4 | Source: /Volumes/bigeneration/europe_2009/gigapans_early",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/gp_falafal_by_ring_10x4.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000084"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000084",
+    "resolution": 293601280.0
   }
 }

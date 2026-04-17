@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: cafe_kautchen_12x5 | Source: /Volumes/bigeneration/europe_2009/gigapans_early",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/cafe_kautchen_12x5.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000046"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000046",
+    "resolution": 217055232.0
   }
 }

@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: tram_2_10x4 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091210",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091210/tram_2_10x4.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000055"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000055",
+    "resolution": 245366784.0
   }
 }

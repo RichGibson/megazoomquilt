@@ -17,6 +17,9 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from generate_r2_thumbs import generate_thumb
+
 BASE_DIR    = Path(__file__).resolve().parent.parent / "static/panos"
 R2_BASE     = "r2:megazoomquilt-panos/panos"
 TILE_URL    = "https://tiles.megazoomquilt.com/panos"
@@ -140,6 +143,11 @@ def main():
         if ok:
             set_tile_base_url(pano_id)
             log(f"  OK {pano_id} — tile_base_url set", upload_log)
+            thumb_ok = generate_thumb(pano_id)
+            if thumb_ok:
+                log(f"  OK {pano_id} — thumbnail generated", upload_log)
+            else:
+                log(f"  WARN {pano_id} — thumbnail generation failed", upload_log)
             ok_count += 1
         else:
             log(f"  FAILED {pano_id}", upload_log)

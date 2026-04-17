@@ -13,6 +13,7 @@
     "tags": [
       "burning_man"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000210"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000210",
+    "resolution": 257949696.0
   }
 }

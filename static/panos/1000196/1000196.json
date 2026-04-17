@@ -15,6 +15,7 @@
     "tags": [
       "vienna"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000196"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000196",
+    "resolution": 3101687808.0
   }
 }

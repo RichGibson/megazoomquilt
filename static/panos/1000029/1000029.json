@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: cotage_night_8x5 | Source: /Volumes/bigeneration/pix_consolidated/copy_20090109/cottage_night_8x5",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20090109/cottage_night_8x5/cotage_night_8x5.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000029"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000029",
+    "resolution": 181665792.0
   }
 }

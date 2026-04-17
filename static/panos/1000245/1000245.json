@@ -10,6 +10,7 @@
     "description": "Tiled from: joe_autopano2.tif",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-06/joe_cychosz/joe_autopano2.tif",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000245"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000245",
+    "resolution": 180775872.0
   }
 }

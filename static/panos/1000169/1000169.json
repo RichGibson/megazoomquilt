@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: gpfleischmarkt_18x9 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gpfleischmarkt_18x9.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000169"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000169",
+    "resolution": 905969664.0
   }
 }

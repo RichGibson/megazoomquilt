@@ -15,6 +15,7 @@
     "tags": [
       "maker_faire"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000094"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000094",
+    "resolution": 176947200.0
   }
 }

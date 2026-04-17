@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: mirror_thing | Source: /Volumes/bigeneration/pix_consolidated/bm2012/panos",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/mirror_thing.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000011"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000011",
+    "resolution": 103809024.0
   }
 }

@@ -10,6 +10,7 @@
     "description": "Tiled from: molly_bear_dec_94.tiff",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/scans_2013-02-04/molly_bear_dec_94.tiff",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000237"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000237",
+    "resolution": 194060032.0
   }
 }

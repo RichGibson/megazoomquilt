@@ -10,6 +10,7 @@
     "description": "Tiled from: 5311.100.tif",
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/5311.100.tif",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000265"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000265",
+    "resolution": 466771380.0
   }
 }

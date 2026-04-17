@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: sra_15x7 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091210",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091210/sra_15x7.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000141"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000141",
+    "resolution": 692060160.0
   }
 }

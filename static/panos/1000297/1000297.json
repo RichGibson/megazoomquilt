@@ -10,6 +10,7 @@
     "description": "Tiled from: sascha_shultz.psd",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/sascha_shultz.psd",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000297"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000297",
+    "resolution": 372995996.0
   }
 }

@@ -10,6 +10,7 @@
     "description": "Tiled from: chris_mosaic.psb",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/gigapans/chris_mosaic.psb",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000311"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000311",
+    "resolution": 653044032.0
   }
 }

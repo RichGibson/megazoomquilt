@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: inoperable_sybox_5x10b | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091210",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091210/inoperable_sybox_5x10b.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000117"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000117",
+    "resolution": 352321536.0
   }
 }

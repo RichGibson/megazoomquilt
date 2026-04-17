@@ -13,6 +13,7 @@
     "tags": [
       "wherecamp"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000261"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000261",
+    "resolution": 320600896.0
   }
 }

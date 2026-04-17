@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: gprupertkirche_13x16 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gprupertkirche_13x16.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000189"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000189",
+    "resolution": 1585446912.0
   }
 }

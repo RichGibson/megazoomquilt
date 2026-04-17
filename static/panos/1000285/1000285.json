@@ -10,6 +10,7 @@
     "description": "Tiled from: [Group 1]-IMG_0198_IMG_0204-7 images.psd",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/shulgin_2014/[Group 1]-IMG_0198_IMG_0204-7 images.psd",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000285"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000285",
+    "resolution": 80104722.0
   }
 }

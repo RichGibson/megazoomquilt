@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: farmers_market_tomatos | Source: /Volumes/bigeneration/panos_consolidated/gigapan_external_250",
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/farmers_market_tomatos.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000091"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000091",
+    "resolution": 198836224.0
   }
 }

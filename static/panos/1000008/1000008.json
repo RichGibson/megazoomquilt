@@ -14,6 +14,7 @@
       "siggraph",
       "portrait"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000008"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000008",
+    "resolution": 75497472.0
   }
 }

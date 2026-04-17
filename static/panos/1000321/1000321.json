@@ -10,6 +10,7 @@
     "description": "Tiled from: core_circle.psb",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/core_circle.psb",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000321"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000321",
+    "resolution": 1121734350.0
   }
 }

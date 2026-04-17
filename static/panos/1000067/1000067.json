@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: gpnasch_partial_7x5 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gpnasch_partial_7x5.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000067"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000067",
+    "resolution": 276824064.0
   }
 }

@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: gpgasometer_14x14 | Source: /Volumes/bigeneration/europe_2009/gigapans_start_20091222",
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gpgasometer_14x14.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000175"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000175",
+    "resolution": 1332740096.0
   }
 }

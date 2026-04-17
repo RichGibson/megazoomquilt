@@ -10,6 +10,7 @@
     "description": "Tiled from: chris.tif",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/chris.tif",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000241"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000241",
+    "resolution": 360786880.0
   }
 }

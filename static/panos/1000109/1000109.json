@@ -16,6 +16,7 @@
       "roboexotica",
       "vienna"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000109"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000109",
+    "resolution": 458227712.0
   }
 }

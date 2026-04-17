@@ -10,6 +10,7 @@
     "description": "Tiled from: IMG_9285.tif",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/hackers_2011/IMG_9285.tif",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000218"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000218",
+    "resolution": 17915904.0
   }
 }

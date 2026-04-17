@@ -10,6 +10,7 @@
     "description": "Imported from local Gigapan Stitcher file: willow_face | Source: /Volumes/bigeneration/panos_consolidated/panos_2012_2013ish",
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/willow_face.gigapan",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000057"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000057",
+    "resolution": 272629760.0
   }
 }

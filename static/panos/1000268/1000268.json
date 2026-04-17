@@ -10,6 +10,7 @@
     "description": "Tiled from: bull.tif",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/bull.tif",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000268"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000268",
+    "resolution": 787947586.0
   }
 }

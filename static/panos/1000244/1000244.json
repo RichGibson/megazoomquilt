@@ -10,6 +10,7 @@
     "description": "Tiled from: [Group 1]-IMG_0022_IMG_0029-8 images.tif",
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-07/jan_grey_experiment/set1/[Group 1]-IMG_0022_IMG_0029-8 images.tif",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000244"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000244",
+    "resolution": 116656644.0
   }
 }
