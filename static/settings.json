@@ -1,0 +1,4 @@
+{
+  "cluster_max_radius": 5,
+  "cluster_disable_at_zoom": 12
+}

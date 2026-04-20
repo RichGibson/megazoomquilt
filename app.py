@@ -14,6 +14,25 @@ from pathlib import Path
 SKINS = ['default', 'retro', 'amber', 'museum', 'blueprint', 'magazine', 'explorer']
 GIGAPAN_LIST_PATH = Path(__file__).resolve().parent / "gigapan_list.json"
 AUDIT_CACHE_PATH  = Path(__file__).resolve().parent / "static" / "audit_cache.json"
+SETTINGS_PATH     = Path(__file__).resolve().parent / "static" / "settings.json"
+
+SETTINGS_DEFAULTS = {
+    'cluster_max_radius':      40,
+    'cluster_disable_at_zoom': 13,
+}
+
+def load_settings():
+    if SETTINGS_PATH.exists():
+        with open(SETTINGS_PATH) as f:
+            s = json.load(f)
+        return {**SETTINGS_DEFAULTS, **s}
+    return dict(SETTINGS_DEFAULTS)
+
+def save_settings(data):
+    tmp = SETTINGS_PATH.with_suffix('.tmp')
+    with open(tmp, 'w') as f:
+        json.dump(data, f, indent=2)
+    tmp.replace(SETTINGS_PATH)
 
 # Tag → suggested map center [lat, lng, zoom] for the edit page location picker
 TAG_GEO_HINTS = {
@@ -360,19 +379,20 @@ def map_view():
             and g['id'] not in downloaded_ids
         ]
 
-    return render_template("map.html", panoramas=mapped, pending_panos=pending_panos, p={'page_title': 'Map'})
+    return render_template("map.html", panoramas=mapped, pending_panos=pending_panos,
+                           p={'page_title': 'Map'}, settings=load_settings())
 
-@app.route("/admin/audit/refresh", methods=["POST"])
+@app.route("/list/audit/refresh", methods=["POST"])
 def admin_audit_refresh():
     import subprocess, sys
     script = Path(__file__).resolve().parent / "util" / "run_audit.py"
     subprocess.Popen([sys.executable, str(script)],
                      stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                      close_fds=True)
-    return redirect(url_for('admin') + '?audit=running')
+    return redirect(url_for('pano_list') + '?audit=running')
 
-@app.route("/admin")
-def admin():
+@app.route("/list")
+def pano_list():
     local_panos = {p['id']: p for p in load_pano_data()}
 
     all_from_list = []
@@ -396,8 +416,22 @@ def admin():
         with open(AUDIT_CACHE_PATH) as f:
             audit = json.load(f)
 
-    return render_template("admin.html", p={'page_title': 'Admin'},
+    return render_template("list.html", p={'page_title': 'List'},
                            panoramas=all_panos, audit=audit)
+
+
+@app.route("/admin", methods=["GET", "POST"])
+def admin():
+    if request.method == "POST":
+        s = load_settings()
+        for key in SETTINGS_DEFAULTS:
+            val = request.form.get(key, '').strip()
+            if val:
+                s[key] = int(val)
+        save_settings(s)
+        return redirect(url_for('admin'))
+    settings = load_settings()
+    return render_template("admin.html", p={'page_title': 'Admin'}, settings=settings)
 
 
 @app.route("/view/<pano_id>")

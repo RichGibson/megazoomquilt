@@ -1,288 +1,129 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block title %}Admin — MegaZoomQuilt{% endblock %}
+
+{% block head %}
 <style>
-  .admin-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
-    margin-bottom: 0.75rem;
-    flex-wrap: wrap;
+  .admin-tools {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
   }
-  .admin-stats { color: #555; font-size: 0.9rem; }
-  .audit-meta  { font-size: 0.78rem; color: #999; }
-  .btn-refresh {
-    padding: 0.3rem 0.9rem;
-    font-size: 0.82rem;
+  .admin-card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .admin-card h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+  .admin-card p  { margin: 0; font-size: 0.83rem; color: #666; line-height: 1.5; }
+  .admin-card a.btn {
+    align-self: flex-start;
+    margin-top: 0.25rem;
+    padding: 0.35rem 0.9rem;
+    background: #0077cc;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.83rem;
+  }
+  .admin-card a.btn:hover { background: #005fa3; }
+  .settings-form {
+    margin-top: 2rem;
+    max-width: 560px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1.25rem;
+  }
+  .settings-form h3 { margin: 0 0 1rem; font-size: 1rem; font-weight: 600; }
+  .setting-row {
+    display: grid;
+    grid-template-columns: 180px 90px 1fr;
+    align-items: start;
+    gap: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+  }
+  .setting-row label { font-weight: 600; padding-top: 0.3rem; }
+  .setting-row input[type=number] {
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .setting-desc { color: #888; line-height: 1.4; padding-top: 0.25rem; }
+  .btn-save {
+    padding: 0.4rem 1rem;
     background: #0077cc;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 0.85rem;
   }
-  .btn-refresh:hover { background: #005fa3; }
-  .btn-refresh:disabled { background: #aaa; cursor: default; }
-
-  #admin-table { border-collapse: collapse; width: 100%; font-size: 0.82rem; }
-  #admin-table th {
-    background: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 4px 6px;
-    white-space: nowrap;
-    text-align: left;
-  }
-  #admin-table th.sortable {
-    cursor: pointer;
-    user-select: none;
-  }
-  #admin-table th.sortable:hover { background: #e0e8f0; }
-  #admin-table th .sort-icon { margin-left: 4px; color: #999; font-size: 0.75rem; }
-  #admin-table th.sort-asc .sort-icon::after  { content: '▲'; color: #0077cc; }
-  #admin-table th.sort-desc .sort-icon::after { content: '▼'; color: #0077cc; }
-  #admin-table th:not(.sort-asc):not(.sort-desc) .sort-icon::after { content: '⇅'; }
-
-  #admin-table td {
-    border: 1px solid #ddd;
-    padding: 3px 6px;
-    vertical-align: middle;
-  }
-  #admin-table tr:hover td { background: #f9f9ff; }
-
-  .cnt-cell  { width: 2.5rem; text-align: right; color: #bbb; font-size: 0.75rem; }
-  .name-cell { width: 30%; }
-  .thumb-cell { width: 80px; padding: 2px 4px !important; }
-  .thumb-cell img {
-    width: 80px;
-    height: 40px;
-    object-fit: cover;
-    display: block;
-    background: #222;
-    border-radius: 2px;
-  }
-  .thumb-cell .no-thumb {
-    width: 80px; height: 40px;
-    background: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    font-size: 0.7rem;
-    border-radius: 2px;
-  }
-
-  .ok   { color: #2a2; font-weight: 600; }
-  .miss { color: #c44; }
-  .warn { color: #c80; }
-
-  .tile-bar-wrap { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
-  .tile-bar { height: 8px; width: 60px; background: #e0e0e0; border-radius: 3px; overflow: hidden; display: inline-block; }
-  .tile-bar-fill { height: 100%; background: #4a9; }
-  .tile-bar-fill.low { background: #c44; }
-  .tile-bar-fill.mid { background: #c80; }
-
-  .row-no-json td { background: #fafafa; color: #aaa; }
-  .row-no-json td a { color: #aaa; }
+  .btn-save:hover { background: #005fa3; }
 </style>
+{% endblock %}
 
-<div class="admin-header">
-  <h2 style="margin:0">Admin</h2>
-  <span class="admin-stats">
-    <strong>{{ panoramas|length }}</strong> total
-    &mdash; <strong>{{ panoramas | selectattr('width', 'defined') | list | length }}</strong> with local JSON
-  </span>
-  <form method="post" action="{{ url_for('admin_audit_refresh') }}" style="display:inline">
-    <button class="btn-refresh" id="refresh-btn" type="submit"
-            onclick="this.disabled=true;this.textContent='Running…'">
-      Regenerate audit
-    </button>
-  </form>
-  {% if request.args.get('audit') == 'running' %}
-    <span class="audit-meta warn" id="audit-status">⏳ Audit running… <span id="audit-countdown"></span></span>
-    <script>
-      let secs = 10;
-      const cd = document.getElementById('audit-countdown');
-      const iv = setInterval(() => {
-        cd.textContent = '(refreshing in ' + secs + 's)';
-        if (--secs < 0) { clearInterval(iv); location.href = '{{ url_for("admin") }}'; }
-      }, 1000);
-    </script>
-  {% elif audit.get('_generated_at') %}
-    <span class="audit-meta">Audit: {{ audit['_generated_at'] }}</span>
-  {% else %}
-    <span class="audit-meta warn">No audit cache — click Regenerate</span>
-  {% endif %}
+{% block content %}
+<h2 style="margin-bottom:0.25rem">Admin</h2>
+<p style="font-size:0.85rem;color:#666;margin-top:0">System tools and configuration.</p>
+
+<div class="admin-tools">
+
+  {# QR code generator #}
+  <div class="admin-card">
+    <h3>QR Code Generator</h3>
+    <p>Generate a QR code for any URL.</p>
+    <a class="btn" href="{{ url_for('qr_generator') }}">Open</a>
+  </div>
+
+  {# Panorama list / audit #}
+  <div class="admin-card">
+    <h3>Panorama List &amp; Audit</h3>
+    <p>Browse all panoramas, check tile/JSON status, run tile audit.</p>
+    <a class="btn" href="{{ url_for('pano_list') }}">Open</a>
+  </div>
+
+  {# Upload image #}
+  <div class="admin-card">
+    <h3>Upload Image</h3>
+    <p>Import a new image without associating it to a specific panorama.</p>
+    <a class="btn" href="{{ url_for('image_upload') }}">Upload</a>
+  </div>
+
 </div>
 
-<table id="admin-table">
-  <thead>
-    <tr>
-      {# Count #}
-      <th class="cnt-cell">#</th>
+{# Map clustering settings #}
+<form method="post" class="settings-form">
+  <h3>Map Settings</h3>
 
-      {# Thumbnail #}
-      <th>Thumb</th>
+  <div class="setting-row">
+    <label for="cluster_max_radius">cluster_max_radius</label>
+    <input type="number" id="cluster_max_radius" name="cluster_max_radius"
+           value="{{ settings.cluster_max_radius }}" min="0" max="200">
+    <div class="setting-desc">
+      Pixel radius within which nearby markers are merged into a cluster.
+      Lower = more individual dots visible. Default: 40.
+    </div>
+  </div>
 
-      {# Sortable: ID #}
-      <th class="sortable" data-col="id">ID<span class="sort-icon"></span></th>
+  <div class="setting-row">
+    <label for="cluster_disable_at_zoom">cluster_disable_at_zoom</label>
+    <input type="number" id="cluster_disable_at_zoom" name="cluster_disable_at_zoom"
+           value="{{ settings.cluster_disable_at_zoom }}" min="1" max="19">
+    <div class="setting-desc">
+      Zoom level at which clustering is fully disabled and all markers
+      show individually. Lower = individual dots appear sooner as you zoom out. Default: 13.
+    </div>
+  </div>
 
-      {# Sortable: Name #}
-      <th class="sortable" data-col="name">Name<span class="sort-icon"></span></th>
+  <button type="submit" class="btn-save">Save settings</button>
+</form>
 
-      {# Sortable: Size (MP) #}
-      <th class="sortable" data-col="mp">Size<span class="sort-icon"></span></th>
-
-      {# JSON / Thumb / Local / R2 #}
-      <th>JSON</th>
-      <th>Thumb</th>
-      <th>Local tiles</th>
-      <th>R2</th>
-
-      {# Levels / Views #}
-      <th>Levels</th>
-      <th>Views</th>
-
-      {# Sortable: Taken #}
-      <th class="sortable" data-col="taken">Taken<span class="sort-icon"></span></th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for pano in panoramas %}
-    {% set pid = pano['id'] | string %}
-    {% set a = audit.get(pid, {}) %}
-    {% set has_json  = a.get('has_json',  pano.get('width') is not none) %}
-    {% set has_thumb = a.get('has_thumb', false) %}
-    {% set on_r2     = a.get('on_r2',     pano.get('tile_base_url') is not none) %}
-    {% set local     = a.get('local',     0) %}
-    {% set expected  = a.get('expected',  0) %}
-    {% set pct       = ((local / expected * 100) | int) if expected > 0 else 0 %}
-    {% set mp        = ((pano['resolution'] / 1000000) | round(0) | int) if pano.get('resolution') else 0 %}
-    <tr class="{{ 'row-no-json' if not has_json else '' }}"
-        data-id="{{ pano['id'] }}"
-        data-name="{{ pano.get('name', '') | lower }}"
-        data-mp="{{ mp }}"
-        data-taken="{{ pano.get('taken_at', '') or '' }}">
-
-      {# Count #}
-      <td class="cnt-cell">{{ loop.index }}</td>
-
-      {# Thumbnail #}
-      <td class="thumb-cell">
-        {% if has_json %}
-          <a href="{{ url_for('view_pano', pano_id=pano['id']) }}">
-            <img src="{{ url_for('thumbnail', pano_id=pano['id']) }}"
-                 alt="" loading="lazy"
-                 onerror="this.outerHTML='<div class=\'no-thumb\'>no thumb</div>'">
-          </a>
-        {% else %}
-          <div class="no-thumb">—</div>
-        {% endif %}
-      </td>
-
-      {# ID #}
-      <td>
-        {% if has_json %}
-          <a href="{{ url_for('view_pano', pano_id=pano['id']) }}">{{ pano['id'] }}</a>
-        {% else %}
-          {{ pano['id'] }}
-        {% endif %}
-      </td>
-
-      {# Name #}
-      <td class="name-cell">{{ pano.get('name', '—') }}</td>
-
-      {# Size #}
-      <td>
-        {% if pano.get('width') and pano.get('height') %}
-          {{ pano['width'] }}×{{ pano['height'] }}
-          {% if mp %}<br><small>{{ mp }} MP</small>{% endif %}
-        {% else %}—{% endif %}
-      </td>
-
-      {# JSON #}
-      <td>{% if has_json %}<span class="ok">✓</span>{% else %}<span class="miss">✗</span>{% endif %}</td>
-
-      {# Thumb #}
-      <td>{% if has_thumb %}<span class="ok">✓</span>{% else %}<span class="miss">✗</span>{% endif %}</td>
-
-      {# Local tiles #}
-      <td>
-        {% if not has_json %}
-          <span class="miss">—</span>
-        {% elif on_r2 and local == 0 %}
-          <span class="audit-meta">R2 only</span>
-        {% elif expected == 0 %}
-          <span class="audit-meta">—</span>
-        {% else %}
-          <div class="tile-bar-wrap">
-            <div class="tile-bar">
-              <div class="tile-bar-fill {{ 'low' if pct < 50 else ('mid' if pct < 95 else '') }}"
-                   style="width:{{ pct }}%"></div>
-            </div>
-            <span class="{{ 'miss' if pct < 50 else ('warn' if pct < 95 else 'ok') }}">{{ pct }}%</span>
-          </div>
-        {% endif %}
-      </td>
-
-      {# R2 #}
-      <td>{% if on_r2 %}<span class="ok">✓</span>{% else %}<span class="miss">✗</span>{% endif %}</td>
-
-      {# Levels #}
-      <td>{{ pano.get('levels', '—') }}</td>
-
-      {# Views #}
-      <td>{{ pano.get('views', '—') }}</td>
-
-      {# Taken #}
-      <td>{{ pano['taken_at'][:10] if pano.get('taken_at') else '—' }}</td>
-
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-<script>
-(function () {
-  const tbody = document.querySelector('#admin-table tbody');
-  const headers = document.querySelectorAll('#admin-table th.sortable');
-  let currentCol = null, currentDir = 1;
-
-  function renumber() {
-    tbody.querySelectorAll('tr').forEach((tr, i) => {
-      tr.querySelector('.cnt-cell').textContent = i + 1;
-    });
-  }
-
-  function sortBy(col, dir) {
-    const rows = Array.from(tbody.querySelectorAll('tr'));
-    rows.sort((a, b) => {
-      let av = a.dataset[col] || '', bv = b.dataset[col] || '';
-      if (col === 'id' || col === 'mp') {
-        av = parseFloat(av) || 0;
-        bv = parseFloat(bv) || 0;
-        return (av - bv) * dir;
-      }
-      // string / date: nulls always last
-      if (!av && bv) return 1;
-      if (av && !bv) return -1;
-      return av.localeCompare(bv) * dir;
-    });
-    rows.forEach(r => tbody.appendChild(r));
-    renumber();
-  }
-
-  headers.forEach(th => {
-    th.addEventListener('click', () => {
-      const col = th.dataset.col;
-      const dir = (col === currentCol) ? -currentDir : 1;
-      currentCol = col;
-      currentDir = dir;
-
-      headers.forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
-      th.classList.add(dir === 1 ? 'sort-asc' : 'sort-desc');
-
-      sortBy(col, dir);
-    });
-  });
-})();
-</script>
 {% endblock %}

@@ -1,0 +1,288 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .admin-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .admin-stats { color: #555; font-size: 0.9rem; }
+  .audit-meta  { font-size: 0.78rem; color: #999; }
+  .btn-refresh {
+    padding: 0.3rem 0.9rem;
+    font-size: 0.82rem;
+    background: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .btn-refresh:hover { background: #005fa3; }
+  .btn-refresh:disabled { background: #aaa; cursor: default; }
+
+  #admin-table { border-collapse: collapse; width: 100%; font-size: 0.82rem; }
+  #admin-table th {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 4px 6px;
+    white-space: nowrap;
+    text-align: left;
+  }
+  #admin-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+  }
+  #admin-table th.sortable:hover { background: #e0e8f0; }
+  #admin-table th .sort-icon { margin-left: 4px; color: #999; font-size: 0.75rem; }
+  #admin-table th.sort-asc .sort-icon::after  { content: '▲'; color: #0077cc; }
+  #admin-table th.sort-desc .sort-icon::after { content: '▼'; color: #0077cc; }
+  #admin-table th:not(.sort-asc):not(.sort-desc) .sort-icon::after { content: '⇅'; }
+
+  #admin-table td {
+    border: 1px solid #ddd;
+    padding: 3px 6px;
+    vertical-align: middle;
+  }
+  #admin-table tr:hover td { background: #f9f9ff; }
+
+  .cnt-cell  { width: 2.5rem; text-align: right; color: #bbb; font-size: 0.75rem; }
+  .name-cell { width: 30%; }
+  .thumb-cell { width: 80px; padding: 2px 4px !important; }
+  .thumb-cell img {
+    width: 80px;
+    height: 40px;
+    object-fit: cover;
+    display: block;
+    background: #222;
+    border-radius: 2px;
+  }
+  .thumb-cell .no-thumb {
+    width: 80px; height: 40px;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 0.7rem;
+    border-radius: 2px;
+  }
+
+  .ok   { color: #2a2; font-weight: 600; }
+  .miss { color: #c44; }
+  .warn { color: #c80; }
+
+  .tile-bar-wrap { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .tile-bar { height: 8px; width: 60px; background: #e0e0e0; border-radius: 3px; overflow: hidden; display: inline-block; }
+  .tile-bar-fill { height: 100%; background: #4a9; }
+  .tile-bar-fill.low { background: #c44; }
+  .tile-bar-fill.mid { background: #c80; }
+
+  .row-no-json td { background: #fafafa; color: #aaa; }
+  .row-no-json td a { color: #aaa; }
+</style>
+
+<div class="admin-header">
+  <h2 style="margin:0">Panorama List</h2>
+  <span class="admin-stats">
+    <strong>{{ panoramas|length }}</strong> total
+    &mdash; <strong>{{ panoramas | selectattr('width', 'defined') | list | length }}</strong> with local JSON
+  </span>
+  <form method="post" action="{{ url_for('admin_audit_refresh') }}" style="display:inline">
+    <button class="btn-refresh" id="refresh-btn" type="submit"
+            onclick="this.disabled=true;this.textContent='Running…'">
+      Regenerate audit
+    </button>
+  </form>
+  {% if request.args.get('audit') == 'running' %}
+    <span class="audit-meta warn" id="audit-status">⏳ Audit running… <span id="audit-countdown"></span></span>
+    <script>
+      let secs = 10;
+      const cd = document.getElementById('audit-countdown');
+      const iv = setInterval(() => {
+        cd.textContent = '(refreshing in ' + secs + 's)';
+        if (--secs < 0) { clearInterval(iv); location.href = '{{ url_for("admin") }}'; }
+      }, 1000);
+    </script>
+  {% elif audit.get('_generated_at') %}
+    <span class="audit-meta">Audit: {{ audit['_generated_at'] }}</span>
+  {% else %}
+    <span class="audit-meta warn">No audit cache — click Regenerate</span>
+  {% endif %}
+</div>
+
+<table id="admin-table">
+  <thead>
+    <tr>
+      {# Count #}
+      <th class="cnt-cell">#</th>
+
+      {# Thumbnail #}
+      <th>Thumb</th>
+
+      {# Sortable: ID #}
+      <th class="sortable" data-col="id">ID<span class="sort-icon"></span></th>
+
+      {# Sortable: Name #}
+      <th class="sortable" data-col="name">Name<span class="sort-icon"></span></th>
+
+      {# Sortable: Size (MP) #}
+      <th class="sortable" data-col="mp">Size<span class="sort-icon"></span></th>
+
+      {# JSON / Thumb / Local / R2 #}
+      <th>JSON</th>
+      <th>Thumb</th>
+      <th>Local tiles</th>
+      <th>R2</th>
+
+      {# Levels / Views #}
+      <th>Levels</th>
+      <th>Views</th>
+
+      {# Sortable: Taken #}
+      <th class="sortable" data-col="taken">Taken<span class="sort-icon"></span></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for pano in panoramas %}
+    {% set pid = pano['id'] | string %}
+    {% set a = audit.get(pid, {}) %}
+    {% set has_json  = a.get('has_json',  pano.get('width') is not none) %}
+    {% set has_thumb = a.get('has_thumb', false) %}
+    {% set on_r2     = a.get('on_r2',     pano.get('tile_base_url') is not none) %}
+    {% set local     = a.get('local',     0) %}
+    {% set expected  = a.get('expected',  0) %}
+    {% set pct       = ((local / expected * 100) | int) if expected > 0 else 0 %}
+    {% set mp        = ((pano['resolution'] / 1000000) | round(0) | int) if pano.get('resolution') else 0 %}
+    <tr class="{{ 'row-no-json' if not has_json else '' }}"
+        data-id="{{ pano['id'] }}"
+        data-name="{{ pano.get('name', '') | lower }}"
+        data-mp="{{ mp }}"
+        data-taken="{{ pano.get('taken_at', '') or '' }}">
+
+      {# Count #}
+      <td class="cnt-cell">{{ loop.index }}</td>
+
+      {# Thumbnail #}
+      <td class="thumb-cell">
+        {% if has_json %}
+          <a href="{{ url_for('view_pano', pano_id=pano['id']) }}">
+            <img src="{{ url_for('thumbnail', pano_id=pano['id']) }}"
+                 alt="" loading="lazy"
+                 onerror="this.outerHTML='<div class=\'no-thumb\'>no thumb</div>'">
+          </a>
+        {% else %}
+          <div class="no-thumb">—</div>
+        {% endif %}
+      </td>
+
+      {# ID #}
+      <td>
+        {% if has_json %}
+          <a href="{{ url_for('view_pano', pano_id=pano['id']) }}">{{ pano['id'] }}</a>
+        {% else %}
+          {{ pano['id'] }}
+        {% endif %}
+      </td>
+
+      {# Name #}
+      <td class="name-cell">{{ pano.get('name', '—') }}</td>
+
+      {# Size #}
+      <td>
+        {% if pano.get('width') and pano.get('height') %}
+          {{ pano['width'] }}×{{ pano['height'] }}
+          {% if mp %}<br><small>{{ mp }} MP</small>{% endif %}
+        {% else %}—{% endif %}
+      </td>
+
+      {# JSON #}
+      <td>{% if has_json %}<span class="ok">✓</span>{% else %}<span class="miss">✗</span>{% endif %}</td>
+
+      {# Thumb #}
+      <td>{% if has_thumb %}<span class="ok">✓</span>{% else %}<span class="miss">✗</span>{% endif %}</td>
+
+      {# Local tiles #}
+      <td>
+        {% if not has_json %}
+          <span class="miss">—</span>
+        {% elif on_r2 and local == 0 %}
+          <span class="audit-meta">R2 only</span>
+        {% elif expected == 0 %}
+          <span class="audit-meta">—</span>
+        {% else %}
+          <div class="tile-bar-wrap">
+            <div class="tile-bar">
+              <div class="tile-bar-fill {{ 'low' if pct < 50 else ('mid' if pct < 95 else '') }}"
+                   style="width:{{ pct }}%"></div>
+            </div>
+            <span class="{{ 'miss' if pct < 50 else ('warn' if pct < 95 else 'ok') }}">{{ pct }}%</span>
+          </div>
+        {% endif %}
+      </td>
+
+      {# R2 #}
+      <td>{% if on_r2 %}<span class="ok">✓</span>{% else %}<span class="miss">✗</span>{% endif %}</td>
+
+      {# Levels #}
+      <td>{{ pano.get('levels', '—') }}</td>
+
+      {# Views #}
+      <td>{{ pano.get('views', '—') }}</td>
+
+      {# Taken #}
+      <td>{{ pano['taken_at'][:10] if pano.get('taken_at') else '—' }}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<script>
+(function () {
+  const tbody = document.querySelector('#admin-table tbody');
+  const headers = document.querySelectorAll('#admin-table th.sortable');
+  let currentCol = null, currentDir = 1;
+
+  function renumber() {
+    tbody.querySelectorAll('tr').forEach((tr, i) => {
+      tr.querySelector('.cnt-cell').textContent = i + 1;
+    });
+  }
+
+  function sortBy(col, dir) {
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    rows.sort((a, b) => {
+      let av = a.dataset[col] || '', bv = b.dataset[col] || '';
+      if (col === 'id' || col === 'mp') {
+        av = parseFloat(av) || 0;
+        bv = parseFloat(bv) || 0;
+        return (av - bv) * dir;
+      }
+      // string / date: nulls always last
+      if (!av && bv) return 1;
+      if (av && !bv) return -1;
+      return av.localeCompare(bv) * dir;
+    });
+    rows.forEach(r => tbody.appendChild(r));
+    renumber();
+  }
+
+  headers.forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.col;
+      const dir = (col === currentCol) ? -currentDir : 1;
+      currentCol = col;
+      currentDir = dir;
+
+      headers.forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
+      th.classList.add(dir === 1 ? 'sort-asc' : 'sort-desc');
+
+      sortBy(col, dir);
+    });
+  });
+})();
+</script>
+{% endblock %}
