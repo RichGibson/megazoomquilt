@@ -6,6 +6,8 @@ static/panos/*/*
 # accidental directory
 util/static/
 
+
+
 # OS
 .DS_Store
 static/.DS_Store
@@ -15,6 +17,7 @@ static/.DS_Store
 *.swo
 
 # Project-specific scratch/generated files
+audit_cache.json
 gigapan_list.json
 README-old.md
 README2.md
