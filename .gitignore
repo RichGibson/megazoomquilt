@@ -17,7 +17,7 @@ static/.DS_Store
 *.swo
 
 # Project-specific scratch/generated files
-audit_cache.json
+static/audit_cache.json
 gigapan_list.json
 README-old.md
 README2.md
