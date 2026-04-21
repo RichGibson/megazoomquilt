@@ -181,10 +181,13 @@ THUMB_MAX_TILES = 16  # never composite more tiles than this
 
 @app.route("/thumbnail/<pano_id>")
 def thumbnail(pano_id):
-    # Serve cached thumbnail if it exists locally
-    cached_path = BASE_DIR / pano_id / f"{pano_id}_thumb.jpg"
+    # Serve cached thumbnail if it exists locally (WebP preferred, JPEG fallback)
+    cached_path = BASE_DIR / pano_id / f"{pano_id}_thumb.webp"
     if cached_path.exists():
-        return send_file(cached_path, mimetype="image/jpeg")
+        return send_file(cached_path, mimetype="image/webp")
+    legacy_path = BASE_DIR / pano_id / f"{pano_id}_thumb.jpg"
+    if legacy_path.exists():
+        return send_file(legacy_path, mimetype="image/jpeg")
 
     pano_json = BASE_DIR / pano_id / f"{pano_id}.json"
     if not pano_json.exists():
@@ -226,12 +229,15 @@ def thumbnail(pano_id):
 
     if tile_base_url:
         import urllib.request
+        _HEADERS = {'User-Agent': 'Mozilla/5.0 (compatible; megazoomquilt-thumb/1.0)'}
         def fetch_tile(x, y):
             url = f"{tile_base_url}/{zoom}/{x}/{y}{img_ext}"
             try:
-                with urllib.request.urlopen(url, timeout=10) as resp:
+                req = urllib.request.Request(url, headers=_HEADERS)
+                with urllib.request.urlopen(req, timeout=10) as resp:
                     return Image.open(io.BytesIO(resp.read())).convert("RGB")
-            except Exception:
+            except Exception as e:
+                app.logger.warning("fetch_tile failed %s: %s", url, e)
                 return None
 
         sample = fetch_tile(0, 0)
@@ -283,13 +289,13 @@ def thumbnail(pano_id):
 
     # Save to cache then serve
     try:
-        composed.save(cached_path, format="JPEG", quality=85)
-        return send_file(cached_path, mimetype="image/jpeg")
+        composed.save(cached_path, format="WEBP", quality=85)
+        return send_file(cached_path, mimetype="image/webp")
     except Exception:
         buf = io.BytesIO()
-        composed.save(buf, format="JPEG", quality=85)
+        composed.save(buf, format="WEBP", quality=85)
         buf.seek(0)
-        return send_file(buf, mimetype="image/jpeg")
+        return send_file(buf, mimetype="image/webp")
 
 
 @app.route('/.well-known/appspecific/com.chrome.devtools.json')
