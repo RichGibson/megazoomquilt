@@ -103,7 +103,7 @@
       const cd = document.getElementById('audit-countdown');
       const iv = setInterval(() => {
         cd.textContent = '(refreshing in ' + secs + 's)';
-        if (--secs < 0) { clearInterval(iv); location.href = '{{ url_for("admin") }}'; }
+        if (--secs < 0) { clearInterval(iv); location.href = '{{ url_for("pano_list") }}'; }
       }, 1000);
     </script>
   {% elif audit.get('_generated_at') %}

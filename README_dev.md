@@ -2,6 +2,10 @@
 
 ## TODO
 
+- [ ] **Separate pano JSON and thumbnails from the codebase.** Personal data files
+  (`static/panos/*/` JSON and `_thumb.jpg`) should not live in the git repo alongside
+  the application code. Options: gitignore them and manage separately, move to a
+  dedicated data repo, or serve from R2/object storage entirely.
 - [ ] **Non-rectangular images.** Some panoramas have irregular/non-rectangular content
   surrounded by black fill. Investigate smarter thumbnail cropping — detect content
   bounding box, consider how to present these in the viewer. See `README_thumbnail.md`.
