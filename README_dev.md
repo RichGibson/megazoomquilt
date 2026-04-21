@@ -1,4 +1,14 @@
+
+## download from gigapan.com 
  python  util/bulk_download.py --list util/gigapan_list.json --panos-dir static/panos --workers 2 --log-file dow --reverse
+
+## Restart gunicorn
+
+sudo systemctl restart megazoomquilt
+
+## show logs
+
+journalctl -u megazoomquilt -n 50
 
 ## TODO
 
