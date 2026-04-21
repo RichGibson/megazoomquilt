@@ -93,7 +93,7 @@ a:hover {
 }
 .sidebar-count {
   font-size: 0.82rem;
-  color: #777;
+  color: #666;
   margin: 0.4rem 0 0;
 }
 .sidebar hr {
@@ -109,8 +109,11 @@ a:hover {
   overflow-y: auto;
   flex: 1;
 }
-.sidebar-list li {
-  padding: 0.2rem 0;
+.sidebar-list li a {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 2px 0;
 }
 
 /* Search input */
@@ -152,7 +155,7 @@ a:hover {
 
 .sort-label {
   font-size: 0.82rem;
-  color: #777;
+  color: #666;
   margin-right: 0.2rem;
 }
 .sort-btn {
@@ -221,14 +224,14 @@ a:hover {
 }
 
 /* ── Aspect-fit mode: show each pano at its natural ratio ── */
-#card-grid.aspect-fit .card-thumb {
+html.mzq-aspect-fit #card-grid .card-thumb {
   aspect-ratio: var(--pano-ratio);
 }
-#card-grid.aspect-fit .card-thumb img {
+html.mzq-aspect-fit #card-grid .card-thumb img {
   object-fit: contain;
 }
 /* Magazine skin: don't let the first-card 3:1 override win in fit mode */
-.skin-magazine #card-grid.aspect-fit .card:first-child .card-thumb {
+html.mzq-aspect-fit .skin-magazine #card-grid .card:first-child .card-thumb {
   aspect-ratio: var(--pano-ratio);
 }
 
@@ -267,7 +270,7 @@ a:hover {
 }
 .card-meta {
   font-size: 0.78rem;
-  color: #777;
+  color: #666;
 }
 .card-desc {
   font-size: 0.82rem;
@@ -279,7 +282,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   font-size: 0.78rem;
-  color: #888;
+  color: #666;
   margin-top: 0.25rem;
   padding-top: 0.25rem;
   border-top: 1px solid #eee;
@@ -288,7 +291,7 @@ a:hover {
 footer {
   margin-top: 2rem;
   font-size: 0.8rem;
-  color: #888;
+  color: #666;
   text-align: center;
 }
 

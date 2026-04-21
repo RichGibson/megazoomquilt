@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<script>
+(function(){
+  var s = localStorage.getItem('mzq-thumb-size');
+  if (s === 'medium' || s === 'large') document.documentElement.classList.add('mzq-size-' + s);
+  if (localStorage.getItem('mzq-thumb-aspect')) document.documentElement.classList.add('mzq-aspect-fit');
+  var cf = localStorage.getItem('mzq-cf-filter') || 'cloudflare';
+  if (cf !== 'all') document.documentElement.classList.add('mzq-cf-' + cf);
+})();
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="page-layout">
 
@@ -18,7 +30,7 @@
             data-geo="{{ 'true' if (pano.get('latitude') and pano.get('longitude')) else 'false' }}"
             data-cloudflare="{{ 'true' if pano.get('tile_base_url') else 'false' }}"
             data-has-local="{{ 'true' if pano.get('has_local_tiles') else 'false' }}">
-          <a href="{{ url_for('view_pano', pano_id=pano['id']) }}">{{ pano['name'] }}</a>
+          <a href="{{ url_for('view_pano', pano_id=pano['id']) }}">{{ pano['name'] or 'Panorama ' ~ pano['id'] }}</a>
         </li>
       {% endfor %}
     </ul>
@@ -76,6 +88,7 @@
         <div class="card-thumb" style="--pano-ratio: {{ (pano['width'] / pano['height']) | round(4) }}">
           <img src="{{ url_for('thumbnail', pano_id=pano['id']) }}"
                alt="{{ pano['name'] }}"
+               loading="lazy"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <span class="card-thumb-missing">No preview</span>
           {% if pano.get('resolution') %}
@@ -114,17 +127,23 @@
 </div>
 
 <style>
+  /* CF filter: hide non-matching cards before JS runs to prevent CLS */
+  html.mzq-cf-cloudflare #card-grid .card[data-cloudflare="false"] { display: none; }
+  html.mzq-cf-cloudflare .sidebar-list li[data-cloudflare="false"] { display: none; }
+  html.mzq-cf-local #card-grid .card[data-has-local="false"] { display: none; }
+  html.mzq-cf-local .sidebar-list li[data-has-local="false"] { display: none; }
+
   /* size-medium: images only, 320px columns */
-  #card-grid.size-medium .card-body { display: none; }
-  #card-grid.size-medium .card { border-radius: 4px; overflow: hidden; }
-  #card-grid.size-medium .card-thumb { border-radius: 0; }
-  #card-grid.size-medium { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 0.4rem; }
+  html.mzq-size-medium #card-grid .card-body { display: none; }
+  html.mzq-size-medium #card-grid .card { border-radius: 4px; overflow: hidden; }
+  html.mzq-size-medium #card-grid .card-thumb { border-radius: 0; }
+  html.mzq-size-medium #card-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 0.4rem; }
 
   /* size-large: images only, 640px columns */
-  #card-grid.size-large .card-body { display: none; }
-  #card-grid.size-large .card { border-radius: 4px; overflow: hidden; }
-  #card-grid.size-large .card-thumb { border-radius: 0; }
-  #card-grid.size-large { grid-template-columns: repeat(auto-fill, minmax(640px, 1fr)); gap: 0.4rem; }
+  html.mzq-size-large #card-grid .card-body { display: none; }
+  html.mzq-size-large #card-grid .card { border-radius: 4px; overflow: hidden; }
+  html.mzq-size-large #card-grid .card-thumb { border-radius: 0; }
+  html.mzq-size-large #card-grid { grid-template-columns: repeat(auto-fill, minmax(640px, 1fr)); gap: 0.4rem; }
 
   .size-btns {
     display: flex;
@@ -302,6 +321,8 @@
     cfFilter.textContent = state.label;
     cfFilter.classList.toggle('active', state.key !== 'all');
     localStorage.setItem(CF_KEY, state.key);
+    document.documentElement.classList.remove('mzq-cf-cloudflare', 'mzq-cf-local');
+    if (state.key !== 'all') document.documentElement.classList.add('mzq-cf-' + state.key);
     applyFilters();
   }
 
@@ -358,8 +379,8 @@
   const SIZE_KEY = 'mzq-thumb-size';
 
   function applySize(size) {
-    grid.classList.remove('size-medium', 'size-large');
-    if (size === 'medium' || size === 'large') grid.classList.add('size-' + size);
+    document.documentElement.classList.remove('mzq-size-medium', 'mzq-size-large');
+    if (size === 'medium' || size === 'large') document.documentElement.classList.add('mzq-size-' + size);
     sizeBtns.forEach(b => b.classList.toggle('active', b.dataset.size === size));
     localStorage.setItem(SIZE_KEY, size);
   }
@@ -374,7 +395,7 @@
   const aspectFitBtn = document.getElementById('aspect-fit-btn');
 
   function applyAspect(fit) {
-    grid.classList.toggle('aspect-fit', fit);
+    document.documentElement.classList.toggle('mzq-aspect-fit', fit);
     aspectFitBtn.classList.toggle('active', fit);
     localStorage.setItem(ASPECT_KEY, fit ? '1' : '');
   }
