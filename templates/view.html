@@ -299,7 +299,7 @@
 {# Title only — meta moves below viewer #}
 <div class="pano-header">
   <a href="{{ url_for('home') }}" class="back-link">← All panoramas</a>
-  <a href="{{ url_for('edit_pano', pano_id=pano_id) }}" class="back-link" style="margin-left:1rem;">✎ Edit</a>
+  {% if is_local %}<a href="{{ url_for('edit_pano', pano_id=pano_id) }}" class="back-link" style="margin-left:1rem;">✎ Edit</a>{% endif %}
   <div class="pano-title-row">
     <h1 class="pano-name">{{ pano.name }}</h1>
     <a href="https://www.gigapan.com/gigapans/{{ pano_id }}" target="_blank" class="external-link">gigapan.com ↗</a>
@@ -321,8 +321,8 @@
 {# Associated images gallery #}
 <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:0.4rem">
   {% if associated_images %}<span style="font-size:0.82rem;color:#777">{{ associated_images|length }} associated image{{ 's' if associated_images|length != 1 }}</span>{% endif %}
-  <a href="{{ url_for('image_upload', pano_id=pano.id) }}"
-     style="font-size:0.82rem;color:#0077cc;text-decoration:none">+ Upload image</a>
+  {% if is_local %}<a href="{{ url_for('image_upload', pano_id=pano.id) }}"
+     style="font-size:0.82rem;color:#0077cc;text-decoration:none">+ Upload image</a>{% endif %}
 </div>
 {% if associated_images %}
 <div class="assoc-gallery">
@@ -338,8 +338,8 @@
         {{ img.title or 'Untitled' }}
         <span style="display:flex;align-items:baseline;gap:0.4rem;flex-shrink:0">
           {% if img.source_date %}<span class="assoc-gallery-date">{{ img.source_date }}</span>{% endif %}
-          <a href="{{ url_for('image_associate', uid=img.id) }}" title="Edit image"
-             style="font-size:0.72rem;color:#aaa;text-decoration:none;white-space:nowrap">✏ edit</a>
+          {% if is_local %}<a href="{{ url_for('image_associate', uid=img.id) }}" title="Edit image"
+             style="font-size:0.72rem;color:#aaa;text-decoration:none;white-space:nowrap">✏ edit</a>{% endif %}
         </span>
       </div>
       {% if img.description %}<div class="assoc-gallery-desc">{{ img.description }}</div>{% endif %}

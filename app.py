@@ -56,12 +56,16 @@ TAG_GEO_HINTS = {
     'london':       [51.507, -0.128,   12],
 }
 
+def _is_local():
+    host = request.host.split(':')[0]
+    return host in ('localhost', '127.0.0.1', '::1')
+
 @app.context_processor
 def inject_skin():
     skin = request.cookies.get('skin', 'default')
     if skin not in SKINS:
         skin = 'default'
-    return {'skin': skin}
+    return {'skin': skin, 'is_local': _is_local()}
 
 @app.route('/skin/<name>')
 def set_skin(name):
@@ -427,6 +431,8 @@ def pano_list():
 
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
+    if not _is_local():
+        abort(403)
     if request.method == "POST":
         s = load_settings()
         for key in SETTINGS_DEFAULTS:
@@ -520,6 +526,8 @@ def backup_json(json_path: Path):
 
 @app.route("/edit/<pano_id>", methods=["GET"])
 def edit_pano(pano_id):
+    if not _is_local():
+        abort(403)
     json_path = BASE_DIR / pano_id / f"{pano_id}.json"
     if not json_path.exists():
         abort(404)
@@ -551,6 +559,8 @@ def edit_pano(pano_id):
 
 @app.route("/edit/<pano_id>", methods=["POST"])
 def edit_pano_post(pano_id):
+    if not _is_local():
+        abort(403)
     json_path = BASE_DIR / pano_id / f"{pano_id}.json"
     if not json_path.exists():
         abort(404)
@@ -679,7 +689,8 @@ def image_full(uid):
 
 @app.route("/images/<uid>/associate", methods=["GET", "POST"])
 def image_associate(uid):
-    """UI to associate an image with panoramas."""
+    if not _is_local():
+        abort(403)
     json_path = IMAGES_DIR / uid / f'{uid}.json'
     if not json_path.exists():
         abort(404)
@@ -746,7 +757,8 @@ IMAGE_EXTS = {'.jpg', '.jpeg', '.png', '.tif', '.tiff', '.webp', '.heic'}
 
 @app.route("/images/upload", methods=["GET", "POST"])
 def image_upload():
-    """Web upload form for a new image, optionally pre-associated with a pano."""
+    if not _is_local():
+        abort(403)
     pano_id = request.args.get('pano_id') or request.form.get('pano_id', '')
 
     if request.method == "POST":

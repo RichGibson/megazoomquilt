@@ -238,7 +238,7 @@
           ${thumb}
           <strong>${img.title || 'Untitled'}</strong><br>
           ${date}
-          <br><a href="/images/${img.id}/associate" style="font-size:0.8rem">Edit / associate ↗</a>
+          {% if is_local %}<br><a href="/images/${img.id}/associate" style="font-size:0.8rem">Edit / associate ↗</a>{% endif %}
         `, {maxWidth: 220});
         imageLayer.addLayer(m);
       });
