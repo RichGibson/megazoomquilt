@@ -167,6 +167,8 @@ def load_pano_data():
                     panoramas.append(data)
                 except Exception as e:
                     print(f"Error loading {json_path}: {e}")
+                    panoramas.append({'id': int(entry.name) if entry.name.isdigit() else entry.name,
+                                      'name': f'[JSON error: {e}]', '_error': str(e)})
     panoramas = sorted(panoramas, key=lambda p: p['id'])
     return panoramas
 
@@ -413,8 +415,11 @@ def pano_list():
 
     audit = {}
     if AUDIT_CACHE_PATH.exists():
-        with open(AUDIT_CACHE_PATH) as f:
-            audit = json.load(f)
+        try:
+            with open(AUDIT_CACHE_PATH) as f:
+                audit = json.load(f)
+        except (json.JSONDecodeError, ValueError):
+            audit = {}  # corrupt/empty cache — will show "no audit" warning in template
 
     return render_template("list.html", p={'page_title': 'List'},
                            panoramas=all_panos, audit=audit)
