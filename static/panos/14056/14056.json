@@ -49,7 +49,13 @@
     "field_of_view_h": 0.969559,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tags": [],
+    "tags": [
+      "l51_kilauea_lighthouse_16x9",
+      "upload",
+      "0.4.3865",
+      "macintosh",
+      "job_402"
+    ],
     "geo_precision": "exact",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/14056"
   }

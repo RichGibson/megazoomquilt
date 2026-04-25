@@ -50,8 +50,13 @@
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
     "tags": [
+      "uk",
       "hursley",
-      "graveyard"
+      "all",
+      "saints",
+      "church",
+      "tombstones",
+      "cemetery"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1937"
   }

@@ -50,7 +50,9 @@
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "london"
+      "canal",
+      "london",
+      "uk"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1966"
   }

@@ -49,6 +49,13 @@
     "field_of_view_h": 66.3171,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/16212"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/16212",
+    "tags": [
+      "stevens_creek",
+      "creek",
+      "mountain_view",
+      "bicycle",
+      "rich_gibson"
+    ]
   }
 }

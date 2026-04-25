@@ -49,6 +49,13 @@
     "field_of_view_h": 94.7452,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/27232"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/27232",
+    "tags": [
+      "ny_june_2009",
+      "nj",
+      "new_jersey",
+      "train",
+      "station"
+    ]
   }
 }

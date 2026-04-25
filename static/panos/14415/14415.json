@@ -48,7 +48,11 @@
     "distance": null,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "london"
+      "macintosh",
+      "0.4.3865",
+      "upload",
+      "e2_belfast_light_11x4",
+      "job_454"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/14415"
   }

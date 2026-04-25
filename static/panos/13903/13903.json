@@ -50,7 +50,15 @@
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "nasa_ames"
+      "upload",
+      "0.4.3865",
+      "macintosh",
+      "ames_fields_28x5",
+      "job_370",
+      "nasa",
+      "ames",
+      "arc",
+      "mountain_view"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/13903"
   }

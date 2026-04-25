@@ -50,9 +50,11 @@
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "oregon",
       "yoncalla",
-      "graveyard"
+      "miller",
+      "applegate",
+      "oregon",
+      "cemetery"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1837"
   }

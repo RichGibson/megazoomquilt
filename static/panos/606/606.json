@@ -50,8 +50,10 @@
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "ocean",
-      "calshot"
+      "calshot",
+      "uk",
+      "beach",
+      "houses"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/606"
   }

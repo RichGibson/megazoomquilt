@@ -49,6 +49,9 @@
     "field_of_view_h": 1.19427,
     "distance": 50.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38713"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38713",
+    "tags": [
+      "vienna"
+    ]
   }
 }

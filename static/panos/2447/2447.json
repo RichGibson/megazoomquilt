@@ -49,6 +49,15 @@
     "field_of_view_h": 45.1279,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2447"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2447",
+    "tags": [
+      "iao",
+      "valley",
+      "hawaii",
+      "hi",
+      "maui",
+      "creek",
+      "spencer"
+    ]
   }
 }

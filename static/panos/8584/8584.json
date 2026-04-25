@@ -50,8 +50,10 @@
     "distance": null,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "bm_2008",
-      "burning_man"
+      "burningman",
+      "bme",
+      "bm",
+      "bme2008"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/8584"
   }

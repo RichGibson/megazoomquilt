@@ -49,6 +49,10 @@
     "field_of_view_h": 63.2135,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/29099"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/29099",
+    "tags": [
+      "crucible",
+      "fire_arts"
+    ]
   }
 }

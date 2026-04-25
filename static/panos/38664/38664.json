@@ -49,6 +49,10 @@
     "field_of_view_h": 59.8709,
     "distance": 15.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38664"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38664",
+    "tags": [
+      "vienna",
+      "falafal"
+    ]
   }
 }

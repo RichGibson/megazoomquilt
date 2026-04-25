@@ -49,10 +49,7 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tags": [
-      "florence_ave",
-      "sebastopol"
-    ],
+    "tags": [],
     "geo_precision": "exact",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/2117"
   }

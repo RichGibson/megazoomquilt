@@ -49,6 +49,12 @@
     "field_of_view_h": 179.216,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38562"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38562",
+    "tags": [
+      "figlemuller",
+      "table",
+      "restaurant",
+      "vienna"
+    ]
   }
 }

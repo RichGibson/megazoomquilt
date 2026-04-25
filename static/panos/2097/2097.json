@@ -50,7 +50,14 @@
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "hursley"
+      "hursley",
+      "uk",
+      "street",
+      "village",
+      "flint",
+      "wall",
+      "rich",
+      "gibson"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/2097"
   }

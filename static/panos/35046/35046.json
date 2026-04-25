@@ -49,6 +49,13 @@
     "field_of_view_h": 40.1329,
     "distance": 15.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/35046"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/35046",
+    "tags": [
+      "regolith2009",
+      "regolith",
+      "nasa",
+      "ames",
+      "ames_research_center"
+    ]
   }
 }

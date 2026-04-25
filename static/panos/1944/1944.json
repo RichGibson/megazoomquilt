@@ -51,7 +51,11 @@
     "allow_others_to_add_to_gallery": true,
     "tags": [
       "hursley",
-      "graveyard"
+      "all",
+      "souls",
+      "church",
+      "graveyard",
+      "uk"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1944"
   }

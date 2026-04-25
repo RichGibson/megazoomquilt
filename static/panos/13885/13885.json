@@ -49,6 +49,17 @@
     "field_of_view_h": 54.2056,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/13885"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/13885",
+    "tags": [
+      "upload",
+      "0.4.3865",
+      "macintosh",
+      "rainforest_canopy_11x9",
+      "job_362",
+      "cas",
+      "california",
+      "san_francisco",
+      "rainforest"
+    ]
   }
 }

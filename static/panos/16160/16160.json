@@ -50,6 +50,10 @@
     "distance": null,
     "allow_others_to_add_to_gallery": true,
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/16160",
-    "tags": []
+    "tags": [
+      "steamboat_ed",
+      "steamboat",
+      "workshop"
+    ]
   }
 }

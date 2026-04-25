@@ -49,6 +49,7 @@
     "field_of_view_h": 28.4478,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1795"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1795",
+    "tags": []
   }
 }

@@ -47,9 +47,7 @@
     "field_of_view_h": 34.6597,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tags": [
-      "mendocino"
-    ],
+    "tags": [],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/14344"
   }
 }

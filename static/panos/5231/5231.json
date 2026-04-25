@@ -50,7 +50,12 @@
     "distance": null,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "where2.0"
+      "where20",
+      "where",
+      "oreilly",
+      "good",
+      "productions",
+      "teardown"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/5231"
   }

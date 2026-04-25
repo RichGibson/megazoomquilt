@@ -49,6 +49,17 @@
     "field_of_view_h": 21.6729,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/13919"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/13919",
+    "tags": [
+      "upload",
+      "0.4.3865",
+      "macintosh",
+      "airship_multi_20x3",
+      "job_243",
+      "ames",
+      "arc",
+      "nasa",
+      "mountain_view"
+    ]
   }
 }

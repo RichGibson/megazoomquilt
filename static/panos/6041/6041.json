@@ -50,7 +50,9 @@
     "distance": null,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "sebastopol"
+      "street",
+      "sebastopol",
+      "night"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/6041",
     "geo_precision": "exact"

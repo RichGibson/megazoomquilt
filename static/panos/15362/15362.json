@@ -49,7 +49,16 @@
     "field_of_view_h": 93.5573,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tags": [],
+    "tags": [
+      "steamboat",
+      "steamboat_ed",
+      "shop",
+      "molly",
+      "spencer",
+      "jay",
+      "jack",
+      "workshop"
+    ],
     "geo_precision": "exact",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/15362"
   }

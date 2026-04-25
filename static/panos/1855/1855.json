@@ -49,6 +49,13 @@
     "field_of_view_h": 28.3657,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1855"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1855",
+    "tags": [
+      "lake",
+      "shasta",
+      "houseboat",
+      "marina",
+      "california"
+    ]
   }
 }

@@ -50,7 +50,15 @@
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "nasa_ames"
+      "upload",
+      "macintosh",
+      "0.4.3865",
+      "stairs_pipes_12x12",
+      "job_339",
+      "ames",
+      "arc",
+      "nasa",
+      "mountain_view"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/13906"
   }

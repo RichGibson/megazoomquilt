@@ -50,9 +50,7 @@
     "distance": null,
     "allow_others_to_add_to_gallery": true,
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/5267",
-    "tags": [
-      "san_francisco"
-    ],
+    "tags": [],
     "geo_precision": "approximate"
   }
 }

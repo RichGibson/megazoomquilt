@@ -16,17 +16,18 @@
 <div class="page-layout">
 
   <aside class="sidebar">
-    <input type="search" id="pano-search" class="search-input" placeholder="Search…" autocomplete="off">
+    <input type="search" id="pano-search" class="search-input" placeholder="Search…" autocomplete="off"
+           value="{{ query or '' }}">
     {% set gigapan_count = panoramas|selectattr('id', 'lt', 1000000)|list|length %}
     {% set local_count = panoramas|selectattr('id', 'ge', 1000000)|list|length %}
     <p class="sidebar-count">
-      <strong id="visible-count">{{ panoramas|length }}</strong> of {{ panoramas|length }}<br>
+      <strong id="visible-count">{{ panoramas|length }}</strong> of {{ total_count }}<br>
       <span id="gigapan-count">{{ gigapan_count }}</span> gigapan.com &nbsp;·&nbsp; <span id="local-count">{{ local_count }}</span> local
     </p>
     <hr>
     <ul class="sidebar-list">
       {% for pano in panoramas %}
-        <li data-name="{{ pano['name']|lower }}"
+        <li data-name="{{ pano['name']|lower }} {{ (pano.get('tags') or [])|join(' ')|lower }}"
             data-geo="{{ 'true' if (pano.get('latitude') and pano.get('longitude')) else 'false' }}"
             data-cloudflare="{{ 'true' if pano.get('tile_base_url') else 'false' }}"
             data-has-local="{{ 'true' if pano.get('has_local_tiles') else 'false' }}">
@@ -41,7 +42,14 @@
     <div class="tag-filter-bar">
       <span>Filtered by</span>
       <span class="tag-active">#{{ active_tag }}</span>
-      <a href="{{ url_for('home') }}">✕ clear</a>
+      <a href="{{ url_for('home', query=query or None) }}">✕ clear</a>
+    </div>
+    {% endif %}
+    {% if query %}
+    <div class="tag-filter-bar">
+      <span>Query:</span>
+      <span class="tag-active">{{ query }}</span>
+      <a href="{{ url_for('home', sort=sort) }}">✕ clear</a>
     </div>
     {% endif %}
     <div class="sort-bar">
@@ -51,7 +59,7 @@
         {% set is_desc = sort == field + '_desc' %}
         {% set is_active = is_asc or is_desc %}
         {% set next_sort = (field + '_desc') if is_asc else (field + '_asc') %}
-        <a href="{{ url_for('home', sort=next_sort) }}"
+        <a href="{{ url_for('home', sort=next_sort, query=query or None) }}"
            class="sort-btn{% if is_active %} sort-btn-active{% endif %}">
           {{ label }}{% if is_asc %} ↑{% elif is_desc %} ↓{% endif %}
         </a>
@@ -76,7 +84,7 @@
       {% for pano in panoramas %}
       <a class="card" href="{{ url_for('view_pano', pano_id=pano['id']) }}{% if active_tag %}?tag={{ active_tag | urlencode }}{% endif %}"
          data-base-href="{{ url_for('view_pano', pano_id=pano['id']) }}{% if active_tag %}?tag={{ active_tag | urlencode }}{% endif %}"
-         data-name="{{ pano['name']|lower }} {{ pano.get('description', '')|lower }}"
+         data-name="{{ pano['name']|lower }} {{ pano.get('description', '')|lower }} {{ (pano.get('tags') or [])|join(' ')|lower }}"
          data-local="{{ 'true' if pano['id'] >= 1000000 else 'false' }}"
          data-geo="{{ 'true' if (pano.get('latitude') and pano.get('longitude')) else 'false' }}"
          data-cloudflare="{{ 'true' if pano.get('tile_base_url') else 'false' }}"

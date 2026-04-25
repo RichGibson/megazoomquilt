@@ -50,7 +50,13 @@
     "distance": 30.0,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "sebastopol"
+      "sebastopol",
+      "foo07",
+      "foo",
+      "foocamp",
+      "oreilly",
+      "make",
+      "gassification"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/242"
   }

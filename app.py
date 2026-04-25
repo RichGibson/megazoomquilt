@@ -306,6 +306,7 @@ def chrome_devtools_stub():
 def home():
     panoramas = load_pano_data()
     sort = request.args.get('sort', 'id_asc')
+    query = request.args.get('query', '').strip()
     # For date sorts, nulls always sort last regardless of direction.
     # date_asc:  key=(0 if dated else 1, date), reverse=False  → earliest first, nulls last
     # date_desc: key=(1 if dated else 0, date), reverse=True   → latest first, nulls last
@@ -323,9 +324,17 @@ def home():
     }
     key, reverse = sort_config.get(sort, sort_config['id_asc'])
     panoramas = sorted(panoramas, key=key, reverse=reverse)
+    total_count = len(panoramas)
+    if query:
+        q = query.lower()
+        panoramas = [p for p in panoramas
+                     if q in p.get('name', '').lower()
+                     or q in (p.get('description') or '').lower()
+                     or any(q in t.lower() for t in (p.get('tags') or []))]
     p={}
     p['page_title']='Megazoomquilt'
-    return render_template("index.html", panoramas=panoramas, p=p, sort=sort)
+    return render_template("index.html", panoramas=panoramas, p=p, sort=sort,
+                           query=query, total_count=total_count)
 
 @app.route("/tags")
 def tags_page():

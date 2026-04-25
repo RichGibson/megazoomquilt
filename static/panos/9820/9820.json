@@ -49,6 +49,7 @@
     "field_of_view_h": 68.8883,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/9820"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/9820",
+    "tags": []
   }
 }

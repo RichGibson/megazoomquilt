@@ -49,6 +49,12 @@
     "field_of_view_h": 30.9279,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2474"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2474",
+    "tags": [
+      "hawaii",
+      "kauai",
+      "hi",
+      "beach"
+    ]
   }
 }

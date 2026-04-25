@@ -49,6 +49,12 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5629"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5629",
+    "tags": [
+      "bay_day",
+      "ferry",
+      "point",
+      "richmond"
+    ]
   }
 }

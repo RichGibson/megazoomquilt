@@ -49,6 +49,13 @@
     "field_of_view_h": 23.1261,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14092"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14092",
+    "tags": [
+      "macintosh",
+      "0.4.3865",
+      "upload",
+      "l63_park_beach_ship_68x5",
+      "job_408"
+    ]
   }
 }

@@ -49,6 +49,13 @@
     "field_of_view_h": 25.0433,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14079"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14079",
+    "tags": [
+      "macintosh",
+      "0.4.3865",
+      "upload",
+      "l53_north_from_kiluhua_lighthouse_11x7",
+      "job_404"
+    ]
   }
 }

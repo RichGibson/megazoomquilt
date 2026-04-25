@@ -49,6 +49,14 @@
     "field_of_view_h": 41.9519,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2415"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2415",
+    "tags": [
+      "iao",
+      "valley",
+      "hawaii",
+      "iao",
+      "needle",
+      "forest"
+    ]
   }
 }

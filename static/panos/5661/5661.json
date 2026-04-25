@@ -49,9 +49,7 @@
     "field_of_view_h": null,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tags": [
-      "maker_faire"
-    ],
+    "tags": [],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/5661"
   }
 }

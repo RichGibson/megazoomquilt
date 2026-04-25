@@ -49,6 +49,13 @@
     "field_of_view_h": 51.3916,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14358"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14358",
+    "tags": [
+      "macintosh",
+      "0.4.3865",
+      "upload",
+      "c10night_7x6",
+      "job_436"
+    ]
   }
 }

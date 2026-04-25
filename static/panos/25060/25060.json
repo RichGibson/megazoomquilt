@@ -49,6 +49,11 @@
     "field_of_view_h": 121.986,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/25060"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/25060",
+    "tags": [
+      "makerfaire",
+      "makerfaire2009",
+      "makerfaire09"
+    ]
   }
 }

@@ -49,6 +49,14 @@
     "field_of_view_h": 20.1552,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5604"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5604",
+    "tags": [
+      "street",
+      "overpass",
+      "berkeley",
+      "university",
+      "night",
+      "bay_day"
+    ]
   }
 }

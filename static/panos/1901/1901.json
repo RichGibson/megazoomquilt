@@ -49,9 +49,7 @@
     "field_of_view_h": 33.6493,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tags": [
-      "sebastopol"
-    ],
+    "tags": [],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1901"
   }
 }

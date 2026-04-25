@@ -49,6 +49,12 @@
     "field_of_view_h": 95.4814,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/17726"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/17726",
+    "tags": [
+      "oakland",
+      "art",
+      "sfmedialabs",
+      "abco"
+    ]
   }
 }

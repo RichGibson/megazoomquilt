@@ -50,8 +50,10 @@
     "distance": null,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "bm_2007",
-      "burning_man"
+      "bme",
+      "brc",
+      "burning_man",
+      "swan"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/594"
   }

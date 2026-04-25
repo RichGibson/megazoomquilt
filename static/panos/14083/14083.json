@@ -49,6 +49,13 @@
     "field_of_view_h": 72.7694,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14083"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14083",
+    "tags": [
+      "macintosh",
+      "0.4.3865",
+      "upload",
+      "l57_trail_22x10",
+      "job_406"
+    ]
   }
 }

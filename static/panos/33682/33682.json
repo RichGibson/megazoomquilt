@@ -49,6 +49,14 @@
     "field_of_view_h": 94.7442,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/33682"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/33682",
+    "tags": [
+      "bike",
+      "rail",
+      "art",
+      "railroadsquare",
+      "handcar",
+      "maker"
+    ]
   }
 }

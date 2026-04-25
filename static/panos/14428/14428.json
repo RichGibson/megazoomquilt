@@ -49,6 +49,13 @@
     "field_of_view_h": 91.1996,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14428"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14428",
+    "tags": [
+      "macintosh",
+      "0.4.3865",
+      "upload",
+      "gx_ccc_clouds_14x11",
+      "job_464"
+    ]
   }
 }

@@ -49,6 +49,13 @@
     "field_of_view_h": 96.9757,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/31419"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/31419",
+    "tags": [
+      "bme2009",
+      "bme",
+      "bm",
+      "bme_2009",
+      "burning_man"
+    ]
   }
 }

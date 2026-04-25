@@ -49,6 +49,13 @@
     "field_of_view_h": 57.949,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38722"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38722",
+    "tags": [
+      "mqitalian50",
+      "museumsquartier",
+      "mq",
+      "quartier21",
+      "vienna"
+    ]
   }
 }

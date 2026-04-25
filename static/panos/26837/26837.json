@@ -49,6 +49,13 @@
     "field_of_view_h": 58.2599,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/26837"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/26837",
+    "tags": [
+      "nyc_june_2009",
+      "bbg",
+      "garden",
+      "brooklyn",
+      "brooklyn_botanic_garden"
+    ]
   }
 }

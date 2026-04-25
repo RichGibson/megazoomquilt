@@ -49,6 +49,13 @@
     "field_of_view_h": 18.1588,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14061"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14061",
+    "tags": [
+      "macintosh",
+      "0.4.3865",
+      "upload",
+      "l64_bay_36x11",
+      "job_410"
+    ]
   }
 }

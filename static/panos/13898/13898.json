@@ -50,7 +50,15 @@
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "nasa_ames"
+      "mountain_view",
+      "ames",
+      "arc",
+      "nasa",
+      "macintosh",
+      "0.4.3865",
+      "upload",
+      "airship_ventures_16x8",
+      "job_244"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/13898"
   }

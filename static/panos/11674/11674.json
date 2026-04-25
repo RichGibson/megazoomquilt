@@ -50,7 +50,12 @@
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "nasa_ames"
+      "vacuum",
+      "tanks",
+      "nasa",
+      "ames",
+      "arc",
+      "mountain_view"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/11674"
   }

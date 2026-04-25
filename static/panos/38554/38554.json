@@ -49,6 +49,11 @@
     "field_of_view_h": 71.626,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38554"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38554",
+    "tags": [
+      "roboe09",
+      "hobot",
+      "vienna"
+    ]
   }
 }

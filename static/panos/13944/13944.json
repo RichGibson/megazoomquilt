@@ -49,6 +49,18 @@
     "field_of_view_h": 58.2482,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/13944"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/13944",
+    "tags": [
+      "upload",
+      "0.4.3865",
+      "macintosh",
+      "n242_roof_pipes_8x6",
+      "job_386",
+      "n242",
+      "arc",
+      "nasa",
+      "ames",
+      "mountain_view"
+    ]
   }
 }

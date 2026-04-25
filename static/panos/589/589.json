@@ -49,6 +49,13 @@
     "field_of_view_h": 22.1953,
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/589"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/589",
+    "tags": [
+      "sonoma",
+      "county",
+      "california",
+      "ocean",
+      "coast"
+    ]
   }
 }

@@ -49,6 +49,11 @@
     "field_of_view_h": 28.9349,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/28073"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/28073",
+    "tags": [
+      "crucible",
+      "fire_arts_festival",
+      "oakland"
+    ]
   }
 }

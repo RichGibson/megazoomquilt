@@ -50,7 +50,12 @@
     "distance": 120.0,
     "allow_others_to_add_to_gallery": true,
     "tags": [
-      "nasa_ames"
+      "mountain_view",
+      "moffet_field",
+      "ames",
+      "nasa",
+      "zeppelin",
+      "arc"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/12057"
   }
