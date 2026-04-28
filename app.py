@@ -171,8 +171,6 @@ def load_pano_data():
                     panoramas.append(data)
                 except Exception as e:
                     print(f"Error loading {json_path}: {e}")
-                    panoramas.append({'id': int(entry.name) if entry.name.isdigit() else entry.name,
-                                      'name': f'[JSON error: {e}]', '_error': str(e)})
     panoramas = sorted(panoramas, key=lambda p: p['id'])
     return panoramas
 
