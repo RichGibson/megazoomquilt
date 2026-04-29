@@ -110,7 +110,12 @@ def set_skin(name):
     return resp
 
 def collect_tile_stats(base_dir):
-    """Walk a pano tile directory and return per-zoom-level size and grid statistics."""
+    """Walk a pano tile directory and return per-zoom-level size and grid statistics.
+
+    Expects tiles at base_dir/<level>/<x>/<y>.jpg|png (OSM/XYZ layout).
+    Returns a list of dicts sorted by level, each containing: level, count,
+    min_size, max_size, avg_size (bytes), cols, and rows.
+    """
     base_dir = Path(base_dir)
     results=[]
     stats = defaultdict(lambda: {
@@ -186,7 +191,13 @@ def check_has_local_tiles(pano_id):
     return False
 
 def load_pano_data():
-    """Scan BASE_DIR for pano JSON files and return a sorted list of metadata dicts."""
+    """Scan BASE_DIR for pano JSON files and return a sorted list of metadata dicts.
+
+    Each subdirectory of BASE_DIR is expected to contain a <id>.json file with a
+    top-level 'gigapan' key. Entries that fail to load are included with an '_error'
+    key so the UI can surface them rather than silently drop them. Results are sorted
+    by numeric pano id ascending.
+    """
     panoramas = []
     for entry in BASE_DIR.iterdir():
         if entry.is_dir():
@@ -247,7 +258,15 @@ def geo_panos_from_cache():
 
 @app.route("/thumbnail/<pano_id>")
 def thumbnail(pano_id):
-    """Serve a WebP thumbnail for a pano, compositing from tiles if not yet cached."""
+    """Serve a WebP thumbnail for a pano, compositing from tiles if not yet cached.
+
+    Checks for an existing <id>_thumb.webp (or legacy .jpg) on disk first. If absent,
+    selects the shallowest zoom level where the shorter content side meets THUMB_MIN_DIM
+    without exceeding THUMB_MAX_TILES total tiles, then fetches tiles either from a remote
+    tile_base_url or the local tile directory. Tiles are composited into a single image,
+    cropped to the actual content bounds (removing quadtree black padding), saved as WebP,
+    and served. Falls back to an in-memory buffer if the disk write fails.
+    """
     # Serve cached thumbnail if it exists locally (WebP preferred, JPEG fallback)
     cached_path = BASE_DIR / pano_id / f"{pano_id}_thumb.webp"
     if cached_path.exists():
@@ -453,7 +472,12 @@ def admin_audit_refresh():
 
 @app.route("/list")
 def pano_list():
-    """Render the full inventory list merging local panos with the gigapan_list.json catalogue."""
+    """Render the full inventory list merging local panos with the gigapan_list.json catalogue.
+
+    Panos present in gigapan_list.json are shown in catalogue order; local panos not in
+    the catalogue are appended at the end. The audit cache (audit_cache.json) is overlaid
+    if present to show tile-level health indicators per pano.
+    """
     local_panos = {p['id']: p for p in _get_pano_cache()}
 
     all_from_list = []
@@ -503,7 +527,13 @@ def admin():
 
 @app.route("/view/<pano_id>")
 def view_pano(pano_id):
-    """Render the full-screen viewer for a single panorama with tile stats and navigation."""
+    """Render the full-screen viewer for a single panorama with tile stats and navigation.
+
+    Augments the cached pano dict with live has_local_tiles and resolved tile_base_url
+    values. Computes prev/next ids for sequential navigation, optionally filtered by
+    tag or search query passed as ?tag= or ?q= parameters. Also loads associated
+    ancillary images and geo-located panos for the location mini-map.
+    """
     pano = get_pano(pano_id)
     if pano is None:
         return f"Metadata for panorama {pano_id} not found.", 404
@@ -594,7 +624,14 @@ def edit_pano(pano_id):
 
 @app.route("/edit/<pano_id>", methods=["POST"])
 def edit_pano_post(pano_id):
-    """Save submitted edits to a panorama's name, tags, and geo fields (localhost only)."""
+    """Save submitted edits to a panorama's name, tags, and geo fields (localhost only).
+
+    Reads the existing JSON from disk, applies form fields, and writes it back. Geo
+    coordinates are set when both lat and lng are provided, and removed when both are
+    cleared. geo_precision and geo_note are also cleared when coordinates are removed.
+    A numbered backup of the original JSON is written before every save, and the pano
+    cache is invalidated so the next request reflects the change.
+    """
     if not _is_local():
         abort(403)
     json_path = BASE_DIR / pano_id / f"{pano_id}.json"
@@ -725,7 +762,15 @@ def image_full(uid):
 
 @app.route("/images/<uid>/associate", methods=["GET", "POST"])
 def image_associate(uid):
-    """Render and handle the form for associating an image with one or more panoramas (localhost only)."""
+    """Render and handle the form for associating an image with one or more panoramas (localhost only).
+
+    POST: updates the image's metadata JSON (pano_ids, title, type, notes, description,
+    lat/lng) and triggers a background reindex via import_images.py --reindex.
+
+    GET: determines a map center from the image's own GPS or its first associated pano,
+    then filters the pano list to those within ~1 degree (~111 km) of that center,
+    always including already-associated panos regardless of distance.
+    """
     if not _is_local():
         abort(403)
     json_path = IMAGES_DIR / uid / f'{uid}.json'
@@ -792,7 +837,14 @@ def image_associate(uid):
 
 @app.route("/images/upload", methods=["GET", "POST"])
 def image_upload():
-    """Handle image upload, extract EXIF metadata, and redirect to the associate form (localhost only)."""
+    """Handle image upload, extract EXIF metadata, and redirect to the associate form (localhost only).
+
+    Validates the file extension against IMAGE_EXTS, saves the file under a new UUID
+    directory in IMAGES_DIR, extracts EXIF (date, GPS), and writes a metadata JSON.
+    Form-supplied lat/lng take precedence over EXIF GPS. If a pano_id query parameter is
+    present the image is pre-associated with that pano. Redirects to image_associate on
+    success.
+    """
     if not _is_local():
         abort(403)
     pano_id = request.args.get('pano_id') or request.form.get('pano_id', '')
