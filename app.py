@@ -51,6 +51,7 @@ SORT_CONFIG = {
 }
 
 def load_settings():
+    """Load settings from disk, falling back to defaults for any missing keys."""
     if SETTINGS_PATH.exists():
         with open(SETTINGS_PATH) as f:
             s = json.load(f)
@@ -58,6 +59,7 @@ def load_settings():
     return dict(SETTINGS_DEFAULTS)
 
 def save_settings(data):
+    """Write settings dict to disk atomically via a temp file."""
     tmp = SETTINGS_PATH.with_suffix('.tmp')
     with open(tmp, 'w') as f:
         json.dump(data, f, indent=2)
@@ -85,11 +87,13 @@ TAG_GEO_HINTS = {
 }
 
 def _is_local():
+    """Return True if the request originates from localhost."""
     host = request.host.split(':')[0]
     return host in ('localhost', '127.0.0.1', '::1')
 
 @app.context_processor
 def inject_skin():
+    """Inject skin name and is_local flag into every template context."""
     skin = request.cookies.get('skin', 'default')
     if skin not in SKINS:
         skin = 'default'
@@ -97,6 +101,7 @@ def inject_skin():
 
 @app.route('/skin/<name>')
 def set_skin(name):
+    """Set the active skin cookie and redirect back to the referring page."""
     if name not in SKINS:
         name = 'default'
     dest = request.referrer or url_for('home')
@@ -105,6 +110,7 @@ def set_skin(name):
     return resp
 
 def collect_tile_stats(base_dir):
+    """Walk a pano tile directory and return per-zoom-level size and grid statistics."""
     base_dir = Path(base_dir)
     results=[]
     stats = defaultdict(lambda: {
@@ -180,6 +186,7 @@ def check_has_local_tiles(pano_id):
     return False
 
 def load_pano_data():
+    """Scan BASE_DIR for pano JSON files and return a sorted list of metadata dicts."""
     panoramas = []
     for entry in BASE_DIR.iterdir():
         if entry.is_dir():
@@ -201,6 +208,7 @@ _pano_cache = None   # sorted list for iteration
 _pano_index = None   # id → pano for O(1) lookup
 
 def _get_pano_cache():
+    """Return the cached pano list, loading from disk on first call."""
     global _pano_cache, _pano_index
     if _pano_cache is None:
         _pano_cache = load_pano_data()
@@ -208,6 +216,7 @@ def _get_pano_cache():
     return _pano_cache
 
 def invalidate_pano_cache():
+    """Clear the pano list and index caches so the next request reloads from disk."""
     global _pano_cache, _pano_index
     _pano_cache = None
     _pano_index = None
@@ -219,6 +228,7 @@ def get_pano(pano_id):
     return _pano_index.get(pid)
 
 def geo_panos_from_cache():
+    """Return all geo-located panos as dicts with lat/lng/width/height/tile_base_url keys."""
     return [
         {
             'id':            pg['id'],
@@ -237,6 +247,7 @@ def geo_panos_from_cache():
 
 @app.route("/thumbnail/<pano_id>")
 def thumbnail(pano_id):
+    """Serve a WebP thumbnail for a pano, compositing from tiles if not yet cached."""
     # Serve cached thumbnail if it exists locally (WebP preferred, JPEG fallback)
     cached_path = BASE_DIR / pano_id / f"{pano_id}_thumb.webp"
     if cached_path.exists():
@@ -352,10 +363,12 @@ def thumbnail(pano_id):
 
 @app.route('/.well-known/appspecific/com.chrome.devtools.json')
 def chrome_devtools_stub():
+    """Return an empty JSON response to silence Chrome DevTools discovery requests."""
     return jsonify({}), 200
 
 @app.route("/")
 def home():
+    """Render the main gallery index with sorting and full-text search."""
     panoramas = _get_pano_cache()
     sort = request.args.get('sort', 'id_asc')
     query = request.args.get('query', '').strip()
@@ -375,6 +388,7 @@ def home():
 
 @app.route("/tags")
 def tags_page():
+    """Render the tag cloud page with usage counts."""
     panoramas = _get_pano_cache()
     counts = {}
     for pano in panoramas:
@@ -390,6 +404,7 @@ def tags_page():
 
 @app.route("/tag/<tag>")
 def tag_view(tag):
+    """Render the gallery filtered to a single tag, with sorting."""
     panoramas = _get_pano_cache()
     sort = request.args.get('sort', 'id_asc')
     key, reverse = SORT_CONFIG.get(sort, SORT_CONFIG['id_asc'])
@@ -400,6 +415,7 @@ def tag_view(tag):
 
 @app.route("/map")
 def map_view():
+    """Render the Leaflet map with downloaded and pending panorama markers."""
     panoramas = _get_pano_cache()
     mapped = geo_panos_from_cache()
 
@@ -428,6 +444,7 @@ def map_view():
 
 @app.route("/list/audit/refresh", methods=["POST"])
 def admin_audit_refresh():
+    """Kick off a background audit run and redirect to the list page."""
     script = Path(__file__).resolve().parent / "util" / "run_audit.py"
     subprocess.Popen([sys.executable, str(script)],
                      stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
@@ -436,6 +453,7 @@ def admin_audit_refresh():
 
 @app.route("/list")
 def pano_list():
+    """Render the full inventory list merging local panos with the gigapan_list.json catalogue."""
     local_panos = {p['id']: p for p in _get_pano_cache()}
 
     all_from_list = []
@@ -468,6 +486,7 @@ def pano_list():
 
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
+    """Render and handle the admin settings form (localhost only)."""
     if not _is_local():
         abort(403)
     if request.method == "POST":
@@ -484,6 +503,7 @@ def admin():
 
 @app.route("/view/<pano_id>")
 def view_pano(pano_id):
+    """Render the full-screen viewer for a single panorama with tile stats and navigation."""
     pano = get_pano(pano_id)
     if pano is None:
         return f"Metadata for panorama {pano_id} not found.", 404
@@ -549,6 +569,7 @@ def backup_json(json_path: Path):
 
 @app.route("/edit/<pano_id>", methods=["GET"])
 def edit_pano(pano_id):
+    """Render the edit form for a panorama's metadata (localhost only)."""
     if not _is_local():
         abort(403)
     pano = get_pano(pano_id)
@@ -573,6 +594,7 @@ def edit_pano(pano_id):
 
 @app.route("/edit/<pano_id>", methods=["POST"])
 def edit_pano_post(pano_id):
+    """Save submitted edits to a panorama's name, tags, and geo fields (localhost only)."""
     if not _is_local():
         abort(403)
     json_path = BASE_DIR / pano_id / f"{pano_id}.json"
@@ -641,6 +663,7 @@ def edit_pano_post(pano_id):
 
 @app.route("/go")
 def qr_redirect():
+    """Redirect to the URL in the ?u= parameter; used as the QR code landing target."""
     dest = request.args.get('u', '').strip()
     if not dest.startswith(('http://', 'https://')):
         abort(400)
@@ -649,6 +672,7 @@ def qr_redirect():
 
 @app.route("/qr", methods=["GET", "POST"])
 def qr_generator():
+    """Render a QR code generator form and return the encoded PNG as a data URL."""
     qr_data_url = None
     dest = ''
     if request.method == "POST":
@@ -664,6 +688,7 @@ def qr_generator():
 
 
 def load_images_index():
+    """Load and return the images index JSON, or an empty index if the file does not exist."""
     if IMAGES_INDEX.exists():
         with open(IMAGES_INDEX) as f:
             return json.load(f)
@@ -700,6 +725,7 @@ def image_full(uid):
 
 @app.route("/images/<uid>/associate", methods=["GET", "POST"])
 def image_associate(uid):
+    """Render and handle the form for associating an image with one or more panoramas (localhost only)."""
     if not _is_local():
         abort(403)
     json_path = IMAGES_DIR / uid / f'{uid}.json'
@@ -766,6 +792,7 @@ def image_associate(uid):
 
 @app.route("/images/upload", methods=["GET", "POST"])
 def image_upload():
+    """Handle image upload, extract EXIF metadata, and redirect to the associate form (localhost only)."""
     if not _is_local():
         abort(403)
     pano_id = request.args.get('pano_id') or request.form.get('pano_id', '')
