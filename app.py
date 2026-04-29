@@ -1,5 +1,4 @@
-from flask import Flask, render_template_string, abort, render_template, send_file, Response, request, jsonify, redirect, make_response, url_for, flash
-import os
+from flask import Flask, abort, render_template, send_file, Response, request, jsonify, redirect, make_response, url_for, flash
 import io
 import json
 import math
@@ -114,31 +113,28 @@ def collect_tile_stats(base_dir):
         "y_values": set()
     })
 
-    for root, _, files in os.walk(base_dir):
-        for file in files:
-            if file.lower().endswith((".jpg", ".png")):
-                full_path = Path(root) / file
-                try:
-                    size = full_path.stat().st_size
-                except Exception as e:
-                    print(f"Could not read {full_path}: {e}")
-                    continue
-
-                try:
-                    rel_parts = full_path.relative_to(base_dir).parts
-                    level = rel_parts[0]
-                    x = rel_parts[1]
-                    y = Path(rel_parts[2]).stem  # remove .jpg/.png
-                except Exception as e:
-                    print(f"Invalid path structure: {full_path} — {e}")
-                    continue
-
-                data = stats[level]
-                data["sizes"].append(size)
-                data["x_values"].add(int(x))
-                data["y_values"].add(int(y))
-    #print("\nTile Size Statistics by Level:")
-    #print(f"{'Level':<6} {'Count':>6} {'Min (B)':>10} {'Max (B)':>10} {'Avg (B)':>10} {'Cols':>6} {'Rows':>6}")
+    for full_path in base_dir.rglob('*'):
+        if not full_path.is_file():
+            continue
+        if full_path.suffix.lower() not in ('.jpg', '.png'):
+            continue
+        try:
+            size = full_path.stat().st_size
+        except Exception as e:
+            print(f"Could not read {full_path}: {e}")
+            continue
+        try:
+            rel_parts = full_path.relative_to(base_dir).parts
+            level = rel_parts[0]
+            x = rel_parts[1]
+            y = Path(rel_parts[2]).stem
+        except Exception as e:
+            print(f"Invalid path structure: {full_path} — {e}")
+            continue
+        data = stats[level]
+        data["sizes"].append(size)
+        data["x_values"].add(int(x))
+        data["y_values"].add(int(y))
     for level in sorted(stats.keys(), key=lambda x: int(x)):
         data = stats[level]
         sizes = data["sizes"]
@@ -148,7 +144,6 @@ def collect_tile_stats(base_dir):
         avg_size = int(statistics.mean(sizes))
         cols = len(data["x_values"])
         rows = len(data["y_values"])
-        #print(f"{level:<6} {count:>6} {min_size:>10} {max_size:>10} {avg_size:>10} {cols:>6} {rows:>6}")
         results.append({
             "level": level,
             "count": count,
@@ -496,9 +491,8 @@ def view_pano(pano_id):
     pano = dict(pano)
     pano['has_local_tiles'] = check_has_local_tiles(pano_id)
     pano['tile_base_url'] = resolve_tile_base_url(pano)
-    p={}
-    p['page_title']='View '
-    results=collect_tile_stats(f"{BASE_DIR}/{pano_id}")
+    p = {'page_title': 'View'}
+    results = collect_tile_stats(BASE_DIR / pano_id)
 
     geo_panos = geo_panos_from_cache()
 
@@ -641,7 +635,7 @@ def edit_pano_post(pano_id):
         json.dump(data, f, indent=2)
     invalidate_pano_cache()
 
-    flash(f'Saved — backup written.')
+    flash('Saved — backup written.')
     return redirect(url_for('view_pano', pano_id=pano_id))
 
 
