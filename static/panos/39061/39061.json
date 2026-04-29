@@ -55,6 +55,7 @@
       "quartier21",
       "vienna",
       "wien"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/39061"
   }
 }

@@ -55,6 +55,7 @@
       "wien",
       "vienna",
       "invader"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/39062"
   }
 }

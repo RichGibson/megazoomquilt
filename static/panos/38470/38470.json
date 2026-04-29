@@ -55,6 +55,7 @@
       "roboe09",
       "robo_exotica",
       "monochrom"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38470"
   }
 }
