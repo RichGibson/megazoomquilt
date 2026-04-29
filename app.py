@@ -38,6 +38,19 @@ SETTINGS_DEFAULTS = {
     'cluster_disable_at_zoom': 13,
 }
 
+SORT_CONFIG = {
+    'id_asc':       (lambda p: p['id'],                                               False),
+    'id_desc':      (lambda p: p['id'],                                               True),
+    'name_asc':     (lambda p: p['name'].lower(),                                     False),
+    'name_desc':    (lambda p: p['name'].lower(),                                     True),
+    'date_asc':     (lambda p: (0 if p.get('taken_at') else 1,    p.get('taken_at') or ''),   False),
+    'date_desc':    (lambda p: (1 if p.get('taken_at') else 0,    p.get('taken_at') or ''),   True),
+    'uploaded_asc': (lambda p: (0 if p.get('created_at') else 1,  p.get('created_at') or ''), False),
+    'uploaded_desc':(lambda p: (1 if p.get('created_at') else 0,  p.get('created_at') or ''), True),
+    'size_asc':     (lambda p: p.get('width', 0) * p.get('height', 0),               False),
+    'size_desc':    (lambda p: p.get('width', 0) * p.get('height', 0),               True),
+}
+
 def load_settings():
     if SETTINGS_PATH.exists():
         with open(SETTINGS_PATH) as f:
@@ -335,22 +348,7 @@ def home():
     panoramas = _get_pano_cache()
     sort = request.args.get('sort', 'id_asc')
     query = request.args.get('query', '').strip()
-    # For date sorts, nulls always sort last regardless of direction.
-    # date_asc:  key=(0 if dated else 1, date), reverse=False  → earliest first, nulls last
-    # date_desc: key=(1 if dated else 0, date), reverse=True   → latest first, nulls last
-    sort_config = {
-        'id_asc':    (lambda p: p['id'],                                              False),
-        'id_desc':   (lambda p: p['id'],                                              True),
-        'name_asc':  (lambda p: p['name'].lower(),                                    False),
-        'name_desc': (lambda p: p['name'].lower(),                                    True),
-        'date_asc':       (lambda p: (0 if p.get('taken_at') else 1,   p.get('taken_at') or ''),   False),
-        'date_desc':      (lambda p: (1 if p.get('taken_at') else 0,   p.get('taken_at') or ''),   True),
-        'uploaded_asc':   (lambda p: (0 if p.get('created_at') else 1, p.get('created_at') or ''), False),
-        'uploaded_desc':  (lambda p: (1 if p.get('created_at') else 0, p.get('created_at') or ''), True),
-        'size_asc':       (lambda p: p.get('width', 0) * p.get('height', 0),                        False),
-        'size_desc':      (lambda p: p.get('width', 0) * p.get('height', 0),                        True),
-    }
-    key, reverse = sort_config.get(sort, sort_config['id_asc'])
+    key, reverse = SORT_CONFIG.get(sort, SORT_CONFIG['id_asc'])
     panoramas = sorted(panoramas, key=key, reverse=reverse)
     total_count = len(panoramas)
     if query:
@@ -383,19 +381,7 @@ def tags_page():
 def tag_view(tag):
     panoramas = _get_pano_cache()
     sort = request.args.get('sort', 'id_asc')
-    sort_config = {
-        'id_asc':       (lambda p: p['id'],                                              False),
-        'id_desc':      (lambda p: p['id'],                                              True),
-        'name_asc':     (lambda p: p['name'].lower(),                                    False),
-        'name_desc':    (lambda p: p['name'].lower(),                                    True),
-        'date_asc':     (lambda p: (0 if p.get('taken_at') else 1,   p.get('taken_at') or ''),   False),
-        'date_desc':    (lambda p: (1 if p.get('taken_at') else 0,   p.get('taken_at') or ''),   True),
-        'uploaded_asc': (lambda p: (0 if p.get('created_at') else 1, p.get('created_at') or ''), False),
-        'uploaded_desc':(lambda p: (1 if p.get('created_at') else 0, p.get('created_at') or ''), True),
-        'size_asc':     (lambda p: p.get('width', 0) * p.get('height', 0),              False),
-        'size_desc':    (lambda p: p.get('width', 0) * p.get('height', 0),              True),
-    }
-    key, reverse = sort_config.get(sort, sort_config['id_asc'])
+    key, reverse = SORT_CONFIG.get(sort, SORT_CONFIG['id_asc'])
     filtered = [p for p in panoramas if tag in (p.get('tags') or [])]
     filtered = sorted(filtered, key=key, reverse=reverse)
     return render_template("index.html", panoramas=filtered, sort=sort,
