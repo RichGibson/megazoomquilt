@@ -189,22 +189,26 @@ def load_pano_data():
     return panoramas
 
 
-_pano_cache = None
+_pano_cache = None   # sorted list for iteration
+_pano_index = None   # id → pano for O(1) lookup
 
 def _get_pano_cache():
-    global _pano_cache
+    global _pano_cache, _pano_index
     if _pano_cache is None:
         _pano_cache = load_pano_data()
+        _pano_index = {p['id']: p for p in _pano_cache}
     return _pano_cache
 
 def invalidate_pano_cache():
-    global _pano_cache
+    global _pano_cache, _pano_index
     _pano_cache = None
+    _pano_index = None
 
 def get_pano(pano_id):
     """Look up a single pano by id from the cache. Returns None if not found."""
+    _get_pano_cache()  # ensure populated
     pid = int(pano_id) if str(pano_id).isdigit() else pano_id
-    return next((p for p in _get_pano_cache() if p['id'] == pid), None)
+    return _pano_index.get(pid)
 
 
 @app.route("/thumbnail/<pano_id>")
