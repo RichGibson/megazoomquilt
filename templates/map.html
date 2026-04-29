@@ -195,7 +195,7 @@
     const taken    = p.taken_at ? p.taken_at.slice(0, 10) : (p.created_at ? p.created_at.slice(0, 10) : '');
     const thumbUrl = `/thumbnail/${p.id}`;
     const ratio    = p.height > 0 ? (p.width / p.height).toFixed(4) : 2;
-    const marker   = L.marker([p.latitude, p.longitude], { icon: panoMarkerIcon });
+    const marker   = L.marker([p.lat, p.lng], { icon: panoMarkerIcon });
     marker.bindPopup(`
       <a href="/view/${p.id}" style="display:block;text-decoration:none;color:inherit;">
         <img src="${thumbUrl}" alt="${p.name}"
@@ -207,7 +207,7 @@
     marker.bindTooltip(p.name, { permanent: true, direction: 'top', className: 'pano-label', pane: 'tooltipPane' });
     marker.pano = p;
     cluster.addLayer(marker);
-    bounds.push([p.latitude, p.longitude]);
+    bounds.push([p.lat, p.lng]);
   });
 
   cluster.on('animationend', () => {
@@ -312,7 +312,7 @@
     const mapBounds = map.getBounds();
 
     const visible = panos.filter(p =>
-      mapBounds.contains(L.latLng(p.latitude, p.longitude))
+      mapBounds.contains(L.latLng(p.lat, p.lng))
     );
     const pendingVisible = pendingPanos.filter(p =>
       mapBounds.contains(L.latLng(p.latitude, p.longitude))

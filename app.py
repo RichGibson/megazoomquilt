@@ -223,6 +223,22 @@ def get_pano(pano_id):
     pid = int(pano_id) if str(pano_id).isdigit() else pano_id
     return _pano_index.get(pid)
 
+def geo_panos_from_cache():
+    return [
+        {
+            'id':            pg['id'],
+            'name':          pg['name'],
+            'lat':           pg['latitude'],
+            'lng':           pg['longitude'],
+            'width':         pg.get('width', 0),
+            'height':        pg.get('height', 0),
+            'tile_base_url': resolve_tile_base_url(pg) or '',
+        }
+        for pg in _get_pano_cache()
+        if pg.get('latitude') and pg.get('longitude')
+        and pg['latitude'] != 0 and pg['longitude'] != 0
+    ]
+
 
 @app.route("/thumbnail/<pano_id>")
 def thumbnail(pano_id):
@@ -390,9 +406,7 @@ def tag_view(tag):
 @app.route("/map")
 def map_view():
     panoramas = _get_pano_cache()
-    mapped = [p for p in panoramas
-              if p.get('latitude') and p.get('longitude')
-              and p['latitude'] != 0 and p['longitude'] != 0]
+    mapped = geo_panos_from_cache()
 
     # Pending: in gigapan_list.json but not yet downloaded, with coordinates
     downloaded_ids = {p['id'] for p in panoramas}
@@ -486,23 +500,12 @@ def view_pano(pano_id):
     p['page_title']='View '
     results=collect_tile_stats(f"{BASE_DIR}/{pano_id}")
 
-    all_panos = _get_pano_cache()
-
-    # Collect geo-located panos for the location mini-map
-    geo_panos = [
-        {'id': pg['id'], 'name': pg['name'],
-         'lat': pg['latitude'], 'lng': pg['longitude'],
-         'width': pg.get('width', 0), 'height': pg.get('height', 0),
-         'tile_base_url': resolve_tile_base_url(pg) or ''}
-        for pg in all_panos
-        if pg.get('latitude') and pg.get('longitude')
-        and pg['latitude'] != 0 and pg['longitude'] != 0
-    ]
+    geo_panos = geo_panos_from_cache()
 
     nav_tag = request.args.get('tag', '').strip()
     nav_q   = request.args.get('q',   '').strip().lower()
 
-    all_panos = list(all_panos)
+    all_panos = list(_get_pano_cache())
     if nav_tag:
         all_panos = [p for p in all_panos if nav_tag in (p.get('tags') or [])]
     if nav_q:
@@ -566,13 +569,7 @@ def edit_pano(pano_id):
             hint_center = TAG_GEO_HINTS[tag]
             break
 
-    geo_panos = [
-        {'id': pg['id'], 'name': pg['name'],
-         'lat': pg['latitude'], 'lng': pg['longitude']}
-        for pg in _get_pano_cache()
-        if pg.get('latitude') and pg.get('longitude')
-        and pg['latitude'] != 0 and pg['longitude'] != 0
-    ]
+    geo_panos = geo_panos_from_cache()
 
     return render_template("edit.html", pano=pano, pano_id=pano_id,
                            tags_str=tags_str, hint_center=hint_center,
