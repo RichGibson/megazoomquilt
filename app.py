@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string, abort, render_template, send_file, Response, request, jsonify, redirect, make_response, url_for
+from flask import Flask, render_template_string, abort, render_template, send_file, Response, request, jsonify, redirect, make_response, url_for, flash
 import os
 import io
 import json
@@ -6,15 +6,32 @@ import math
 import statistics
 from collections import defaultdict
 from PIL import Image
+from pathlib import Path
+import urllib.request
+import subprocess, sys
+import shutil
+import qrcode, base64
+import uuid as _uuid
+from util.import_images import extract_exif, image_dimensions, build_index
+from datetime import datetime as _dt
 
 app = Flask(__name__)
 app.secret_key = 'mzq-dev-key-change-in-prod'
-from pathlib import Path
 
 SKINS = ['default', 'retro', 'amber', 'museum', 'blueprint', 'magazine', 'explorer']
 GIGAPAN_LIST_PATH = Path(__file__).resolve().parent / "gigapan_list.json"
 AUDIT_CACHE_PATH  = Path(__file__).resolve().parent / "static" / "audit_cache.json"
 SETTINGS_PATH     = Path(__file__).resolve().parent / "static" / "settings.json"
+
+IMAGES_DIR   = Path(__file__).resolve().parent / "static" / "images"
+IMAGES_INDEX = Path(__file__).resolve().parent / "static" / "images_index.json"
+IMAGE_EXTS = {'.jpg', '.jpeg', '.png', '.tif', '.tiff', '.webp', '.heic'}
+
+# Directory where folders of image pyramids (e.g., 590/, 591/) are stored
+BASE_DIR = Path(__file__).resolve().parent / "static/panos"
+
+THUMB_MIN_DIM = 128   # target at least this many pixels on the shorter content side
+THUMB_MAX_TILES = 16  # never composite more tiles than this
 
 SETTINGS_DEFAULTS = {
     'cluster_max_radius':      40,
@@ -53,7 +70,6 @@ TAG_GEO_HINTS = {
     'wherecamp':    [37.422, -122.084, 13],
     'roboexotica':  [48.203, 16.366,   14],
     'sasha_shulgin':[37.927, -122.513, 14],
-    'london':       [51.507, -0.128,   12],
 }
 
 def _is_local():
@@ -75,8 +91,6 @@ def set_skin(name):
     resp = make_response(redirect(dest))
     resp.set_cookie('skin', name, max_age=60*60*24*365)
     return resp
-# Directory where image folders (e.g., 590/, 591/) are stored
-BASE_DIR = Path(__file__).resolve().parent / "static/panos"
 
 def collect_tile_stats(base_dir):
     base_dir = Path(base_dir)
@@ -174,8 +188,24 @@ def load_pano_data():
     panoramas = sorted(panoramas, key=lambda p: p['id'])
     return panoramas
 
-THUMB_MIN_DIM = 128   # target at least this many pixels on the shorter content side
-THUMB_MAX_TILES = 16  # never composite more tiles than this
+
+_pano_cache = None
+
+def _get_pano_cache():
+    global _pano_cache
+    if _pano_cache is None:
+        _pano_cache = load_pano_data()
+    return _pano_cache
+
+def invalidate_pano_cache():
+    global _pano_cache
+    _pano_cache = None
+
+def get_pano(pano_id):
+    """Look up a single pano by id from the cache. Returns None if not found."""
+    pid = int(pano_id) if str(pano_id).isdigit() else pano_id
+    return next((p for p in _get_pano_cache() if p['id'] == pid), None)
+
 
 @app.route("/thumbnail/<pano_id>")
 def thumbnail(pano_id):
@@ -187,12 +217,9 @@ def thumbnail(pano_id):
     if legacy_path.exists():
         return send_file(legacy_path, mimetype="image/jpeg")
 
-    pano_json = BASE_DIR / pano_id / f"{pano_id}.json"
-    if not pano_json.exists():
+    meta = get_pano(pano_id)
+    if meta is None:
         abort(404)
-    with pano_json.open() as f:
-        raw = json.load(f)
-    meta = raw.get('gigapan', raw)
 
     W = int(meta['width'])
     H = int(meta['height'])
@@ -226,7 +253,6 @@ def thumbnail(pano_id):
     tile_base_url = resolve_tile_base_url(meta)
 
     if tile_base_url:
-        import urllib.request
         _HEADERS = {'User-Agent': 'Mozilla/5.0 (compatible; megazoomquilt-thumb/1.0)'}
         def fetch_tile(x, y):
             url = f"{tile_base_url}/{zoom}/{x}/{y}{img_ext}"
@@ -302,7 +328,7 @@ def chrome_devtools_stub():
 
 @app.route("/")
 def home():
-    panoramas = load_pano_data()
+    panoramas = _get_pano_cache()
     sort = request.args.get('sort', 'id_asc')
     query = request.args.get('query', '').strip()
     # For date sorts, nulls always sort last regardless of direction.
@@ -336,7 +362,7 @@ def home():
 
 @app.route("/tags")
 def tags_page():
-    panoramas = load_pano_data()
+    panoramas = _get_pano_cache()
     counts = {}
     for pano in panoramas:
         for tag in pano.get('tags') or []:
@@ -351,7 +377,7 @@ def tags_page():
 
 @app.route("/tag/<tag>")
 def tag_view(tag):
-    panoramas = load_pano_data()
+    panoramas = _get_pano_cache()
     sort = request.args.get('sort', 'id_asc')
     sort_config = {
         'id_asc':       (lambda p: p['id'],                                              False),
@@ -373,7 +399,7 @@ def tag_view(tag):
 
 @app.route("/map")
 def map_view():
-    panoramas = load_pano_data()
+    panoramas = _get_pano_cache()
     mapped = [p for p in panoramas
               if p.get('latitude') and p.get('longitude')
               and p['latitude'] != 0 and p['longitude'] != 0]
@@ -403,7 +429,6 @@ def map_view():
 
 @app.route("/list/audit/refresh", methods=["POST"])
 def admin_audit_refresh():
-    import subprocess, sys
     script = Path(__file__).resolve().parent / "util" / "run_audit.py"
     subprocess.Popen([sys.executable, str(script)],
                      stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
@@ -412,7 +437,7 @@ def admin_audit_refresh():
 
 @app.route("/list")
 def pano_list():
-    local_panos = {p['id']: p for p in load_pano_data()}
+    local_panos = {p['id']: p for p in _get_pano_cache()}
 
     all_from_list = []
     if GIGAPAN_LIST_PATH.exists():
@@ -460,18 +485,18 @@ def admin():
 
 @app.route("/view/<pano_id>")
 def view_pano(pano_id):
-    pano_json_path = BASE_DIR / pano_id / f"{pano_id}.json"
-    if not pano_json_path.exists():
+    pano = get_pano(pano_id)
+    if pano is None:
         return f"Metadata for panorama {pano_id} not found.", 404
 
-    with open(pano_json_path) as f:
-        pano_data = json.load(f)
-    pano_data['gigapan']['has_local_tiles'] = check_has_local_tiles(pano_id)
-    # Normalize tile_base_url to a plain string for template use
-    pano_data['gigapan']['tile_base_url'] = resolve_tile_base_url(pano_data['gigapan'])
+    pano = dict(pano)
+    pano['has_local_tiles'] = check_has_local_tiles(pano_id)
+    pano['tile_base_url'] = resolve_tile_base_url(pano)
     p={}
     p['page_title']='View '
     results=collect_tile_stats(f"{BASE_DIR}/{pano_id}")
+
+    all_panos = _get_pano_cache()
 
     # Collect geo-located panos for the location mini-map
     geo_panos = [
@@ -479,7 +504,7 @@ def view_pano(pano_id):
          'lat': pg['latitude'], 'lng': pg['longitude'],
          'width': pg.get('width', 0), 'height': pg.get('height', 0),
          'tile_base_url': resolve_tile_base_url(pg) or ''}
-        for pg in load_pano_data()
+        for pg in all_panos
         if pg.get('latitude') and pg.get('longitude')
         and pg['latitude'] != 0 and pg['longitude'] != 0
     ]
@@ -487,7 +512,7 @@ def view_pano(pano_id):
     nav_tag = request.args.get('tag', '').strip()
     nav_q   = request.args.get('q',   '').strip().lower()
 
-    all_panos = load_pano_data()  # sorted by id asc
+    all_panos = list(all_panos)
     if nav_tag:
         all_panos = [p for p in all_panos if nav_tag in (p.get('tags') or [])]
     if nav_q:
@@ -514,7 +539,7 @@ def view_pano(pano_id):
             except Exception:
                 pass
 
-    return render_template("view.html", pano_id=pano_id, pano=pano_data['gigapan'],
+    return render_template("view.html", pano_id=pano_id, pano=pano,
                            p=p, results=results, geo_panos=geo_panos,
                            prev_id=prev_id, next_id=next_id,
                            nav_tag=nav_tag, nav_q=nav_q,
@@ -524,14 +549,12 @@ def backup_json(json_path: Path):
     """Copy id.json → id.bak, then id.bk1, id.bk2 … if .bak already exists."""
     bak = json_path.with_suffix('.bak')
     if not bak.exists():
-        import shutil
         shutil.copy2(json_path, bak)
         return
     n = 1
     while True:
         numbered = json_path.with_suffix(f'.bk{n}')
         if not numbered.exists():
-            import shutil
             shutil.copy2(json_path, numbered)
             return
         n += 1
@@ -541,12 +564,9 @@ def backup_json(json_path: Path):
 def edit_pano(pano_id):
     if not _is_local():
         abort(403)
-    json_path = BASE_DIR / pano_id / f"{pano_id}.json"
-    if not json_path.exists():
+    pano = get_pano(pano_id)
+    if pano is None:
         abort(404)
-    with open(json_path) as f:
-        data = json.load(f)
-    pano = data['gigapan']
     tags_str = ', '.join(pano.get('tags') or [])
 
     # Build a geo hint: first tag that has a known centroid
@@ -559,7 +579,7 @@ def edit_pano(pano_id):
     geo_panos = [
         {'id': pg['id'], 'name': pg['name'],
          'lat': pg['latitude'], 'lng': pg['longitude']}
-        for pg in load_pano_data()
+        for pg in _get_pano_cache()
         if pg.get('latitude') and pg.get('longitude')
         and pg['latitude'] != 0 and pg['longitude'] != 0
     ]
@@ -632,8 +652,8 @@ def edit_pano_post(pano_id):
     backup_json(json_path)
     with open(json_path, 'w') as f:
         json.dump(data, f, indent=2)
+    invalidate_pano_cache()
 
-    from flask import flash
     flash(f'Saved — backup written.')
     return redirect(url_for('view_pano', pano_id=pano_id))
 
@@ -653,7 +673,6 @@ def qr_generator():
     if request.method == "POST":
         dest = request.form.get('url', '').strip()
         if dest.startswith(('http://', 'https://')):
-            import qrcode, base64
             img = qrcode.make(dest)
             buf = io.BytesIO()
             img.save(buf, format='PNG')
@@ -661,8 +680,6 @@ def qr_generator():
     return render_template('qr.html', qr_data_url=qr_data_url, dest=dest)
 
 
-IMAGES_DIR   = Path(__file__).resolve().parent / "static" / "images"
-IMAGES_INDEX = Path(__file__).resolve().parent / "static" / "images_index.json"
 
 
 def load_images_index():
@@ -727,13 +744,12 @@ def image_associate(uid):
         with open(json_path, 'w') as f:
             json.dump(img_meta, f, indent=2)
         # Rebuild index
-        import subprocess, sys
         script = Path(__file__).resolve().parent / "util" / "import_images.py"
         subprocess.Popen([sys.executable, str(script), '--reindex'],
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         return redirect(url_for('image_associate', uid=uid))
 
-    all_panos = load_pano_data()
+    all_panos = _get_pano_cache()
 
     # Determine map center: image GPS → first associated pano → None
     center_lat = img_meta.get('latitude')
@@ -766,7 +782,6 @@ def image_associate(uid):
                            center_lat=center_lat, center_lng=center_lng)
 
 
-IMAGE_EXTS = {'.jpg', '.jpeg', '.png', '.tif', '.tiff', '.webp', '.heic'}
 
 @app.route("/images/upload", methods=["GET", "POST"])
 def image_upload():
@@ -784,7 +799,6 @@ def image_upload():
             return render_template('image_upload.html', pano_id=pano_id,
                                    error=f"Unsupported file type: {ext}")
 
-        import uuid as _uuid
         uid      = str(_uuid.uuid4())
         dest_dir = IMAGES_DIR / uid
         dest_dir.mkdir(parents=True, exist_ok=True)
@@ -792,11 +806,9 @@ def image_upload():
         f.save(str(dest_file))
 
         # Extract EXIF
-        from util.import_images import extract_exif, image_dimensions, build_index
         exif    = extract_exif(dest_file)
         w, h    = image_dimensions(dest_file)
 
-        from datetime import datetime as _dt
         source_date = None
         dt_str = exif.get('DateTimeOriginal') or exif.get('DateTimeDigitized') or exif.get('DateTime')
         if dt_str:

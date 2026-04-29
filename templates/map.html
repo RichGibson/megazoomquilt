@@ -98,6 +98,7 @@
     box-shadow: none;
   }
   .pano-label::before { display: none; }
+  .hide-titles .pano-label { display: none !important; }
   .skin-retro .pano-label, .skin-amber .pano-label {
     background: var(--bg);
     border-color: var(--p-dim);
@@ -156,7 +157,34 @@
     maxZoom: 19
   }).addTo(map);
 
-  // ── Downloaded panoramas (blue default markers) ──────────────────
+  // ── Panorama-camera SVG icon (matches view page) ─────────────────
+  function panoIcon(width, height, fill, stroke) {
+    const rx = 3;
+    const arcY = height * 0.72;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg"
+        width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+      <rect x="1" y="1" width="${width-2}" height="${height-2}"
+            rx="${rx}" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/>
+      <path d="M ${width*0.22},${arcY}
+               Q ${width*0.5},${arcY - height*0.52}
+                 ${width*0.78},${arcY}"
+            fill="none" stroke="white"
+            stroke-width="${Math.max(1.4, width/18)}"
+            stroke-linecap="round"/>
+      <circle cx="${width*0.5}" cy="${arcY}" r="${width/10}"
+              fill="white" opacity="0.95"/>
+    </svg>`;
+    return L.divIcon({
+      html: svg,
+      className: '',
+      iconSize:   [width,  height],
+      iconAnchor: [width/2, height/2],
+      popupAnchor:[0, -height/2 - 4]
+    });
+  }
+  const panoMarkerIcon = panoIcon(28, 18, '#3a7bd5', 'white');
+
+  // ── Downloaded panoramas ──────────────────────────────────────────
   const cluster = L.markerClusterGroup({
     maxClusterRadius: {{ settings.cluster_max_radius }},
     disableClusteringAtZoom: {{ settings.cluster_disable_at_zoom }}
@@ -167,7 +195,7 @@
     const taken    = p.taken_at ? p.taken_at.slice(0, 10) : (p.created_at ? p.created_at.slice(0, 10) : '');
     const thumbUrl = `/thumbnail/${p.id}`;
     const ratio    = p.height > 0 ? (p.width / p.height).toFixed(4) : 2;
-    const marker   = L.marker([p.latitude, p.longitude]);
+    const marker   = L.marker([p.latitude, p.longitude], { icon: panoMarkerIcon });
     marker.bindPopup(`
       <a href="/view/${p.id}" style="display:block;text-decoration:none;color:inherit;">
         <img src="${thumbUrl}" alt="${p.name}"
@@ -253,6 +281,25 @@
     'Pending download': pendingCluster,
     'Non-panorama images': imageLayer,
   }, { collapsed: false, position: 'topright' }).addTo(map);
+
+  // Show titles checkbox (appended below the layer control)
+  const TitlesControl = L.Control.extend({
+    options: { position: 'topright' },
+    onAdd: function() {
+      const div = L.DomUtil.create('div', 'leaflet-control leaflet-bar');
+      div.style.cssText = 'background:white;padding:5px 10px;font-size:13px;cursor:default;';
+      div.innerHTML = '<label style="display:flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap;">' +
+        '<input type="checkbox" id="chk-titles" checked> Show titles</label>';
+      L.DomEvent.disableClickPropagation(div);
+      return div;
+    }
+  });
+  new TitlesControl().addTo(map);
+
+  document.addEventListener('change', function(e) {
+    if (e.target.id === 'chk-titles')
+      map.getContainer().classList.toggle('hide-titles', !e.target.checked);
+  });
 
   if (bounds.length > 0) {
     map.fitBounds(bounds, { padding: [40, 40] });
