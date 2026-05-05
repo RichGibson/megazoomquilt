@@ -52,6 +52,7 @@
     "tags": [
       "siggraph2010",
       "siggraph"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/55161"
   }
 }

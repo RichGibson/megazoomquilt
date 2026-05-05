@@ -53,6 +53,7 @@
       "bme",
       "ir",
       "bme2009"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/54438"
   }
 }

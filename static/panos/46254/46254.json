@@ -53,6 +53,7 @@
       "drats",
       "dratstest",
       "wherecamp"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/46254"
   }
 }
