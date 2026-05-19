@@ -63,7 +63,7 @@ def download_metadata(fmt, photo_id, output_dir):
         url = f"{BASE_URL}/gigapans/{photo_id}.{fmt}"
         for attempt in range(MAX_RETRIES):
             try:
-                resp = requests.get(url, timeout=30, headers=HEADERS)
+                resp = requests.get(url, timeout=120, headers=HEADERS)
                 if resp.status_code == 200:
                     data = resp.content
                     path.write_bytes(data)
@@ -173,7 +173,7 @@ def safe_request(url):
             time.sleep(wait)
 
         try:
-            resp = requests.get(url, timeout=20, headers=HEADERS)
+            resp = requests.get(url, timeout=120, headers=HEADERS)
 
             if resp.status_code == 429:
                 retry_after = int(resp.headers.get('Retry-After', 60))
