@@ -53,6 +53,7 @@
       "dimsum",
       "san_francisco",
       "restaurant"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/70815"
   }
 }

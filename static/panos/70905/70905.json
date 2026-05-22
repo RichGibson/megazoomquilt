@@ -53,6 +53,7 @@
       "long_now",
       "strobist",
       "indoor"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/70905"
   }
 }

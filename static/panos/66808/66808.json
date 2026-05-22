@@ -57,6 +57,7 @@
       "kaiser",
       "wasser",
       "kaiser-wasser"
-    ]
+    ],
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/66808"
   }
 }
