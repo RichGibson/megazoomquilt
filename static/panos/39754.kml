@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  
+    <Document>
+
+      <name>Panoramas</name>
+      <open>1</open>
+
+      <Style id="panoramaStyle">
+        <IconStyle>
+          <Icon><href>http://gigapan.org/images/ge_icon.png</href></Icon>
+        </IconStyle>
+        <BalloonStyle>
+          <text>$[description]</text>
+        </BalloonStyle>
+      </Style>
+
+      
+  <PhotoOverlay id="gigapan_39754">
+  <name>Haus Der Meeres from outside</name>
+  <Snippet maxLines="1">
+    <![CDATA[<a href="#gigapan_39754">Enter panorama</a>]]>
+  </Snippet>
+
+  
+    <description>
+      <![CDATA[
+
+        <div align="center">
+
+          <table width="500">
+            <tr>
+              <td>
+                <a href="http://gigapan.org">
+                  <img alt="Logo" src='http://gigapan.org/images/logo.png?1380820263/' />
+                </a>
+              </td>
+              <td>
+                <font size="10">$[name]</font>
+                <hr>
+                <a href="#gigapan_39754;flyto">Enter Panorama</a> |
+                <a href="http://gigapan.org/gigapans/39754">
+                  "Panorama at GigaPan.com"</a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center">
+                <a href="#gigapan_39754"><img alt="Haus Der Meeres from outside" class="thumbnail" src="//static.gigapan.com/gigapans0/39754/images/39754-500x470.jpg" title="Haus Der Meeres from outside" /></a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <p>A WWII flak tower, now an aquarium</p>
+                <p>Explore Score: $[score]</p>
+                <p align="right">
+                  <b>Author</b>:
+                  <a href="http://gigapan.org/profiles/Rich">
+                    Rich Gibson
+                  </a>
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      ]]>
+    </description>
+  
+
+  <Camera id="gigapan_39754_camera">
+    <longitude>16.352337878</longitude>
+    <latitude>48.197131287</latitude>
+    <altitude>6.0</altitude>
+    <heading>0.0</heading>
+    <tilt>90.0</tilt>
+    <roll>0.0</roll>
+  </Camera>
+
+  <styleUrl>#panoramaStyle</styleUrl>
+
+  <ExtendedData>
+    <Data name="score">
+      <value>0.0</value>
+    </Data>
+  </ExtendedData>
+
+  <color>feffffff</color>
+
+  <Icon>
+    <href>http://gigapan.org/get_ge_tile/39754/$[level]/$[y]/$[x]</href>
+  </Icon>
+
+  <rotation>0.0</rotation>
+
+  <ViewVolume id="gigapan_39754_viewvolume">
+    <leftFov>-31.10525</leftFov>
+    <rightFov>31.10525</rightFov>
+    <bottomFov>-10.7566</bottomFov>
+    <topFov>47.7335068369289</topFov>
+    <near>15.0</near>
+  </ViewVolume>
+
+  <ImagePyramid>
+    <tileSize>256</tileSize>
+    <maxWidth>25216</maxWidth>
+    <maxHeight>23708</maxHeight>
+    <gridOrigin>upperLeft</gridOrigin>
+  </ImagePyramid>
+
+  <Point id="gigapan_39754_point">
+    <coordinates>16.352337878,48.197131287</coordinates>
+  </Point>
+
+  <shape>sphere</shape>
+
+</PhotoOverlay>
+
+
+
+
+    </Document>
+  
+</kml>
