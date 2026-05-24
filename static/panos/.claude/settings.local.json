@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -r \"hetzner\\\\|[0-9]\\\\{1,3\\\\}\\\\.[0-9]\\\\{1,3\\\\}\\\\.[0-9]\\\\{1,3\\\\}\\\\.[0-9]\\\\{1,3\\\\}\" /Users/rich/todo/projects/megazoomquilt --include=\"*.md\" -i)"
+    ]
+  }
+}
