@@ -140,8 +140,8 @@
       {# Levels / Views #}
       <th>Levels</th>
 
-      <th>local</th>
-      <th>expected</th>
+      <th class="sortable" data-col="local">local<span class="sort-icon"></span></th>
+      <th class="sortable" data-col="expected">expected<span class="sort-icon"></span></th>
       <th class="sortable" data-col="missing">missing<span class="sort-icon"></span></th>
 
       {# Sortable: Taken #}
@@ -164,6 +164,8 @@
         data-name="{{ pano.get('name', '') | lower }}"
         data-mp="{{ mp }}"
         data-taken="{{ pano.get('taken_at', '') or '' }}"
+        data-local="{{ local }}"
+        data-expected="{{ expected }}"
         data-missing="{{ local - expected }}">
 
       {# Count #}
@@ -263,7 +265,7 @@
     const rows = Array.from(tbody.querySelectorAll('tr'));
     rows.sort((a, b) => {
       let av = a.dataset[col] || '', bv = b.dataset[col] || '';
-      if (col === 'id' || col === 'mp' || col === 'missing') {
+      if (col === 'id' || col === 'mp' || col === 'missing' || col === 'local' || col === 'expected') {
         av = parseFloat(av) || 0;
         bv = parseFloat(bv) || 0;
         return (av - bv) * dir;
