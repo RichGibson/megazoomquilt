@@ -272,15 +272,15 @@
       });
     });
 
-  map.addLayer(cluster);
-  map.addLayer(pendingCluster);
+  //map.addLayer(cluster);
+  //map.addLayer(pendingCluster);
 
   // Layer toggle control
-  L.control.layers(null, {
-    'Downloaded': cluster,
-    'Pending download': pendingCluster,
-    'Non-panorama images': imageLayer,
-  }, { collapsed: false, position: 'topright' }).addTo(map);
+  // L.control.layers(null, {
+  //  'Downloaded': cluster,
+  //  'Pending download': pendingCluster,
+  //  'Non-panorama images': imageLayer,
+  // }, { collapsed: false, position: 'topright' }).addTo(map);
 
   // Show titles checkbox (appended below the layer control)
   const TitlesControl = L.Control.extend({
