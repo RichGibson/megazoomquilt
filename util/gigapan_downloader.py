@@ -6,7 +6,6 @@ Usage:
     python3 util/gigapan_downloader.py 590 3 -o static/panos/590   # specific zoom level
     python3 util/gigapan_downloader.py 590 -o static/panos/590 -w 24
 """
-
 import click
 import json
 import math
@@ -30,6 +29,7 @@ _rate_limit_lock  = threading.Lock()
 _missing_lock     = threading.Lock()
 
 REPORT_INTERVAL = 300   # seconds between progress lines (~5 minutes)
+REPORT_INTERVAL = 3   # seconds between progress lines (~5 minutes)
 MAX_RETRIES     = 7     # attempts per tile before giving up
 BASE_BACKOFF    = 2     # seconds; doubled on each retry
 
@@ -230,6 +230,7 @@ def download_tile(photo_id, level, col, row, output_dir):
 
     content = resp.content
     if not is_valid_jpeg(content):
+        print(content)
         raise RuntimeError(f"Invalid JPEG ({len(content)} bytes)")
 
     tile_path.write_bytes(content)

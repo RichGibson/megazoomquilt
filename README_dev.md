@@ -1,4 +1,29 @@
+id 828
 
+as of 5/26/26 static/panos is 204G and contains most of my panos.
+
+Look for panos on R2. I was downloading onto pistonbot for a bit, and from there to R2 so they never hit my laptop.
+
+python3 util/r2_incomplete.py
+  - Default: reads audit_cache.json (fast), shows the table above
+  - --check-r2: additionally queries R2 via rclone size for each incomplete pano to compare R2 vs local vs expected
+  - --no-cache: scans static/panos directly (slow, use if cache is stale)
+  - --ids-only: just prints IDs — useful for piping into other scripts
+  - --json: structured output
+
+
+
+# some tiles that are invalid, they are 404's I think.
+[18:39:01]   ✗ Tile 7/62/14: Invalid JPEG (345 bytes)
+[18:39:01]   ✗ Tile 7/57/14: Invalid JPEG (345 bytes)
+[18:39:01]   ✗ Tile 7/60/14: Invalid JPEG (345 bytes)
+[18:39:01]   ✗ Tile 7/56/14: Invalid JPEG (345 bytes)
+
+ssh root@95.216.142.119
+
+screen -x ...
+su - webapps
+95.216.142.119
 ## download from gigapan.com 
  python  util/bulk_download.py --list util/gigapan_list.json --panos-dir static/panos --workers 2 --log-file dow --reverse
 
