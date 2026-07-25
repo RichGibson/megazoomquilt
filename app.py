@@ -463,7 +463,9 @@ def map_view():
 
 @app.route("/list/audit/refresh", methods=["POST"])
 def admin_audit_refresh():
-    """Kick off a background audit run and redirect to the list page."""
+    """Kick off a background audit run and redirect to the list page (localhost only)."""
+    if not _is_local():
+        abort(403)
     script = Path(__file__).resolve().parent / "util" / "run_audit.py"
     subprocess.Popen([sys.executable, str(script)],
                      stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
