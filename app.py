@@ -510,6 +510,12 @@ def pano_list():
                            panoramas=all_panos, audit=audit)
 
 
+@app.route("/about")
+def about():
+    """Render the static About page."""
+    return render_template("about.html", p={'page_title': 'About'})
+
+
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
     """Render and handle the admin settings form (localhost only)."""

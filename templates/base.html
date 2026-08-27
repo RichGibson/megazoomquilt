@@ -39,6 +39,11 @@
           <li><a href="{{ url_for('map_view') }}">Map</a></li>
           <li><a href="{{ url_for('tags_page') }}">Tags</a></li>
           <li><a href="{{ url_for('pano_list') }}">List</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+			<!--
+          <li><a href="{% if is_local %}http://localhost:1222{% else %}https://blog.megazoomquilt.com{% endif %}">Blog</a></li>
+          <li><a href="{% if is_local %}http://localhost:1222/about/{% else %}https://blog.megazoomquilt.com/about/{% endif %}">About</a></li>
+			-->
           {% if is_local %}<li><a href="{{ url_for('admin') }}">Admin</a></li>{% endif %}
           <li class="skin-switcher">
             <select id="skin-select" aria-label="Theme" onchange="location='/skin/'+this.value">
