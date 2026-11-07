@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Users — MegaZoomQuilt{% endblock %}
+
+{# Page styles: larger user names and pano counts #}
+{% block head %}
+<style>
+  .users-sidebar { font-size: 1.05rem; }
+  .users-sidebar .user-count { color: #888; font-size: 0.95rem; }
+  .users-cloud .tag { font-size: 1.3rem; padding: 0.3rem 0.8rem; }
+  .users-cloud .user-count { opacity: 0.65; font-size: 0.85em; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-layout">
+
+  <aside class="sidebar">
+    <p class="sidebar-count">{{ users|length }} users</p>
+    <hr>
+    <ul class="sidebar-list users-sidebar">
+      {% for u in users %}
+      <li>
+        <a href="{{ url_for('user_view', slug=u.slug) }}">{{ u.display_name }}</a>
+        <span class="user-count"> {{ u.count }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </aside>
+
+  <main>
+    <h2 style="margin:0 0 1rem; font-size:1.1rem; font-weight:600;">Users</h2>
+    <div class="tag-cloud users-cloud">
+      {% for u in users %}
+      <a class="tag" href="{{ url_for('user_view', slug=u.slug) }}">
+        {{ u.display_name }} <span class="user-count">{{ u.count }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </main>
+
+</div>
+{% endblock %}
