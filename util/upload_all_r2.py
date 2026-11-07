@@ -7,6 +7,7 @@ Usage:
     python3 util/upload_all_r2.py
     python3 util/upload_all_r2.py --log dow --dry-run
     python3 util/upload_all_r2.py --upload-log upload_r2.log
+    python3 util/upload_all_r2.py --complete-only   # skip panos still missing tiles
 """
 
 import argparse
@@ -19,6 +20,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from generate_r2_thumbs import generate_thumb
+from gigapan_downloader import check_completeness
 
 BASE_DIR    = Path(__file__).resolve().parent.parent / "static/panos"
 R2_BASE     = "r2:megazoomquilt-panos/panos"
@@ -98,6 +100,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--log', default=str(DEFAULT_LOG), help='Download log file (to detect in-progress pano)')
     parser.add_argument('--upload-log', default=str(DEFAULT_UPLOAD_LOG), help='Upload log file')
+    parser.add_argument('--complete-only', action='store_true', help='Skip panos that are still missing tiles')
     parser.add_argument('--dry-run', action='store_true', help='Show what would be uploaded without doing it')
     args = parser.parse_args()
 
@@ -127,6 +130,11 @@ def main():
             continue  # already on R2
         if not has_local_tiles(entry):
             continue  # no tiles to upload
+        if args.complete_only:
+            missing, total, _ = check_completeness(entry)
+            if missing != 0:
+                log(f"  skip {pano_id}: {missing}/{total} tiles missing", upload_log)
+                continue
         to_upload.append(pano_id)
 
     log(f"{len(to_upload)} panos to upload.", upload_log)
