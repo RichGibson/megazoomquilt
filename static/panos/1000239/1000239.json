@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/SIGGRAPH2012/pix/Rich_Pictures/2012-08-07/david_davis/david_davis.tif",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000239",
-    "resolution": 211680438.0
+    "resolution": 211680438.0,
+    "owner": "rich"
   }
 }

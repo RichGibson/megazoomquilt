@@ -54,6 +54,7 @@
       "ames",
       "arc"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/11620"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/11620",
+    "owner": "rich"
   }
 }

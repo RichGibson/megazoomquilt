@@ -58,6 +58,7 @@
       "nasa_ames",
       "moffet_field"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/84943"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/84943",
+    "owner": "rich"
   }
 }

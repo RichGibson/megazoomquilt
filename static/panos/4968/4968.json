@@ -54,6 +54,7 @@
       "makerfaire",
       "techshop"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4968"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4968",
+    "owner": "rich"
   }
 }

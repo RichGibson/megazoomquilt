@@ -59,6 +59,7 @@
       "uk",
       "keble"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1999"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1999",
+    "owner": "rich"
   }
 }

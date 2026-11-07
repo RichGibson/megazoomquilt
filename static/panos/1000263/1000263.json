@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/20080610-01.tif",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000263",
-    "resolution": 363445557.0
+    "resolution": 363445557.0,
+    "owner": "rich"
   }
 }

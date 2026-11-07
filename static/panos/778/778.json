@@ -53,6 +53,7 @@
       "ccc",
       "finowfurt"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/778"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/778",
+    "owner": "rich"
   }
 }

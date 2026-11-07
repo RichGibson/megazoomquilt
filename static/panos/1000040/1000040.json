@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/rosie_01.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000040",
-    "resolution": 134217728.0
+    "resolution": 134217728.0,
+    "owner": "rich"
   }
 }

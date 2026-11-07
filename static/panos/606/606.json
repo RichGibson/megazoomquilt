@@ -55,6 +55,7 @@
       "beach",
       "houses"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/606"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/606",
+    "owner": "rich"
   }
 }

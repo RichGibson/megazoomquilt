@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gpgwall_2_15x10.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000166",
-    "resolution": 1012924416.0
+    "resolution": 1012924416.0,
+    "owner": "rich"
   }
 }

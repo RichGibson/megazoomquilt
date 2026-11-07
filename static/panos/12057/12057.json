@@ -57,6 +57,7 @@
       "zeppelin",
       "arc"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/12057"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/12057",
+    "owner": "rich"
   }
 }

@@ -49,6 +49,7 @@
       "summerfield"
     ],
     "geo_precision": "approximate",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/172115"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/172115",
+    "owner": "rich"
   }
 }

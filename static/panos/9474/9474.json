@@ -53,6 +53,7 @@
     "tags": [
       "mendocino"
     ],
-    "geo_precision": "approximate"
+    "geo_precision": "approximate",
+    "owner": "rich"
   }
 }

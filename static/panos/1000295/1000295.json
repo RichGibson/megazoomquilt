@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/greg/greg_panel05.psd",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000295",
-    "resolution": 211831152.0
+    "resolution": 211831152.0,
+    "owner": "rich"
   }
 }

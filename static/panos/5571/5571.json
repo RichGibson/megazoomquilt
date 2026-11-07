@@ -55,6 +55,7 @@
       "truck",
       "asphalt"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5571"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5571",
+    "owner": "rich"
   }
 }

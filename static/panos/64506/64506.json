@@ -54,6 +54,7 @@
       "portrait",
       "think_conference"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/64506"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/64506",
+    "owner": "rich"
   }
 }

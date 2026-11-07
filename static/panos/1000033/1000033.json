@@ -14,6 +14,7 @@
       "siggraph"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000033",
-    "resolution": 264241152.0
+    "resolution": 264241152.0,
+    "owner": "rich"
   }
 }

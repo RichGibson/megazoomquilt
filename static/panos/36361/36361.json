@@ -54,6 +54,7 @@
       "burning_man",
       "bme2009"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/36361"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/36361",
+    "owner": "rich"
   }
 }

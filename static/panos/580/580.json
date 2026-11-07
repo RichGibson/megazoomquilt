@@ -60,6 +60,7 @@
       "bm",
       "bme2007"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/580"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/580",
+    "owner": "rich"
   }
 }

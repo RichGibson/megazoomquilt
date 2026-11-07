@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/man_2012-08-24.psb",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000323",
-    "resolution": 2262514400.0
+    "resolution": 2262514400.0,
+    "owner": "rich"
   }
 }

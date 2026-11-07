@@ -59,6 +59,7 @@
       "ccc",
       "monochrom"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/777"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/777",
+    "owner": "rich"
   }
 }

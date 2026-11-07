@@ -57,6 +57,7 @@
       "nasa",
       "arc",
       "ames"
-    ]
+    ],
+    "owner": "rich"
   }
 }

@@ -56,6 +56,7 @@
       "solar",
       "panels"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2060"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2060",
+    "owner": "rich"
   }
 }

@@ -57,6 +57,7 @@
       "micro",
       "pathology"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/53259"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/53259",
+    "owner": "rich"
   }
 }

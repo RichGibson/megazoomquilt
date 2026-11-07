@@ -54,6 +54,7 @@
       "makerfair",
       "lego"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4985"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4985",
+    "owner": "rich"
   }
 }

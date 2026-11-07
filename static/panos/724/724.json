@@ -53,6 +53,7 @@
       "london",
       "street"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/724"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/724",
+    "owner": "rich"
   }
 }

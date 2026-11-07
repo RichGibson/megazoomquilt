@@ -54,6 +54,7 @@
       "strobist",
       "indoor"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/70905"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/70905",
+    "owner": "rich"
   }
 }

@@ -54,6 +54,7 @@
       "eureka",
       "brooklyn",
       "nyc_june_2009"
-    ]
+    ],
+    "owner": "rich"
   }
 }

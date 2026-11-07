@@ -54,6 +54,7 @@
       "makerfair",
       "gassifier"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5002"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5002",
+    "owner": "rich"
   }
 }

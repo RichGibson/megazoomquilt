@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/kantine_lobby_13x7.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000125",
-    "resolution": 513802240.0
+    "resolution": 513802240.0,
+    "owner": "rich"
   }
 }

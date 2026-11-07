@@ -16,6 +16,7 @@
       "sebastopol"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000216",
-    "resolution": 26739744.0
+    "resolution": 26739744.0,
+    "owner": "rich"
   }
 }

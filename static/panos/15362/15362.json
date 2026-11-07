@@ -60,6 +60,7 @@
       "workshop"
     ],
     "geo_precision": "exact",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/15362"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/15362",
+    "owner": "rich"
   }
 }

@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gp360trains.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000098",
-    "resolution": 288358400.0
+    "resolution": 288358400.0,
+    "owner": "rich"
   }
 }

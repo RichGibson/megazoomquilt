@@ -54,6 +54,7 @@
       "family_history",
       "cemetery"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1793"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1793",
+    "owner": "rich"
   }
 }

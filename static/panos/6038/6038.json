@@ -53,6 +53,7 @@
       "sebastopol"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/6038",
-    "geo_precision": "exact"
+    "geo_precision": "exact",
+    "owner": "rich"
   }
 }

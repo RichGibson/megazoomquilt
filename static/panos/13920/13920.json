@@ -61,6 +61,7 @@
       "nasa",
       "mountain_view"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/13920"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/13920",
+    "owner": "rich"
   }
 }

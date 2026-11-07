@@ -58,6 +58,7 @@
       "make",
       "gassification"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/242"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/242",
+    "owner": "rich"
   }
 }

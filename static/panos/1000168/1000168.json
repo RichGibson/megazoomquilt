@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/its_four_oclock_18x10.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000168",
-    "resolution": 1254096896.0
+    "resolution": 1254096896.0,
+    "owner": "rich"
   }
 }

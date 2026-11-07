@@ -51,6 +51,7 @@
       "quatier21",
       "roboexotica"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/166380"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/166380",
+    "owner": "rich"
   }
 }

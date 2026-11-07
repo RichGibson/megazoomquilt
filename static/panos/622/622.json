@@ -52,6 +52,7 @@
     "tags": [
       "ccc"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/622"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/622",
+    "owner": "rich"
   }
 }

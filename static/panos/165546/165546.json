@@ -48,6 +48,7 @@
       "vienna",
       "MAK"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/165546"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/165546",
+    "owner": "rich"
   }
 }

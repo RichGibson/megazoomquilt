@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/pipe_3x9.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000030",
-    "resolution": 198180864.0
+    "resolution": 198180864.0,
+    "owner": "rich"
   }
 }

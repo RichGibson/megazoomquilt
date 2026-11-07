@@ -52,6 +52,7 @@
     "tags": [
       "mendocino"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/9524"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/9524",
+    "owner": "rich"
   }
 }

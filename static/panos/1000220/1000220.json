@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/hackers_2011/IMG_9272.tif",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000220",
-    "resolution": 17915904.0
+    "resolution": 17915904.0,
+    "owner": "rich"
   }
 }

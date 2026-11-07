@@ -55,6 +55,7 @@
       "head",
       "uk"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/608"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/608",
+    "owner": "rich"
   }
 }

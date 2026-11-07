@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/karlskirche_platform_18x7.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000143",
-    "resolution": 572522496.0
+    "resolution": 572522496.0,
+    "owner": "rich"
   }
 }

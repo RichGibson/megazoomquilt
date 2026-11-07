@@ -55,6 +55,7 @@
       "bm",
       "bme2008"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/8584"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/8584",
+    "owner": "rich"
   }
 }

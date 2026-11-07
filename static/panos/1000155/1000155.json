@@ -14,6 +14,7 @@
       "roboexotica"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000155",
-    "resolution": 311427072.0
+    "resolution": 311427072.0,
+    "owner": "rich"
   }
 }

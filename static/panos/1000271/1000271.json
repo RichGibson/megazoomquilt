@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bay_day_01b.tif",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000271",
-    "resolution": 629374228.0
+    "resolution": 629374228.0,
+    "owner": "rich"
   }
 }

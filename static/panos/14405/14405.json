@@ -55,6 +55,7 @@
       "church",
       "cemetery"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14405"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14405",
+    "owner": "rich"
   }
 }

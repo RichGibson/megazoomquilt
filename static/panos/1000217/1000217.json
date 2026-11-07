@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/benihana_1.tif",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000217",
-    "resolution": 44074800.0
+    "resolution": 44074800.0,
+    "owner": "rich"
   }
 }

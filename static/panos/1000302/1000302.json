@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/panos_2012_2013ish/maddy_molly_jay.psd",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000302",
-    "resolution": 210862680.0
+    "resolution": 210862680.0,
+    "owner": "rich"
   }
 }

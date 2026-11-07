@@ -55,6 +55,7 @@
       "uk",
       "castle"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/607"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/607",
+    "owner": "rich"
   }
 }

@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/gpmqu2_trains_8x2.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000025",
-    "resolution": 110100480.0
+    "resolution": 110100480.0,
+    "owner": "rich"
   }
 }

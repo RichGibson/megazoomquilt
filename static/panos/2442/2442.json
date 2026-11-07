@@ -54,6 +54,7 @@
       "hawaii",
       "hi"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2442"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2442",
+    "owner": "rich"
   }
 }

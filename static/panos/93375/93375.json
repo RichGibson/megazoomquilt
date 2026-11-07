@@ -54,6 +54,7 @@
       "wien",
       "rlgwien2011"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/93375"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/93375",
+    "owner": "rich"
   }
 }

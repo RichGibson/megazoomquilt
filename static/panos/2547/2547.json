@@ -53,6 +53,7 @@
       "sebastopol",
       "night"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2547"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2547",
+    "owner": "rich"
   }
 }

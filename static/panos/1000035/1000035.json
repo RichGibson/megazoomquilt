@@ -15,6 +15,7 @@
     "latitude": 48.2016882,
     "longitude": 16.351984,
     "geo_precision": "exact",
-    "resolution": 184549376.0
+    "resolution": 184549376.0,
+    "owner": "rich"
   }
 }

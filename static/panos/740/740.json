@@ -53,6 +53,7 @@
       "sebastopol",
       "laguna_de_santa_rosa"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/740"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/740",
+    "owner": "rich"
   }
 }

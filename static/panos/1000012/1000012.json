@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091210/poster_4_4x3.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000012",
-    "resolution": 80740352.0
+    "resolution": 80740352.0,
+    "owner": "rich"
   }
 }

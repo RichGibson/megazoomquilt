@@ -58,6 +58,7 @@
       "mom",
       "property"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1949"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1949",
+    "owner": "rich"
   }
 }

@@ -56,6 +56,7 @@
       "tower",
       "bridge"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1973"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1973",
+    "owner": "rich"
   }
 }

@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/greg_temple_interior_sunday.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000139",
-    "resolution": 692060160.0
+    "resolution": 692060160.0,
+    "owner": "rich"
   }
 }

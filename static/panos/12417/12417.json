@@ -55,6 +55,7 @@
       "arc",
       "mounain_view"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/12417"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/12417",
+    "owner": "rich"
   }
 }

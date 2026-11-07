@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_stitched/spittelberg_market.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000115",
-    "resolution": 425721856.0
+    "resolution": 425721856.0,
+    "owner": "rich"
   }
 }

@@ -57,6 +57,7 @@
       "job_402"
     ],
     "geo_precision": "exact",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14056"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14056",
+    "owner": "rich"
   }
 }

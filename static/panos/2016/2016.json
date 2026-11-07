@@ -55,6 +55,7 @@
       "lights",
       "germany"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2016"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2016",
+    "owner": "rich"
   }
 }

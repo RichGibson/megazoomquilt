@@ -53,6 +53,7 @@
       "microgigapan",
       "fofs"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/64733"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/64733",
+    "owner": "rich"
   }
 }

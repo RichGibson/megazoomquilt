@@ -53,6 +53,7 @@
       "sebastopol",
       "farmers_market"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5465"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5465",
+    "owner": "rich"
   }
 }

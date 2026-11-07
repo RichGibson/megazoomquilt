@@ -54,6 +54,7 @@
       "oreilly",
       "where20"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5136"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5136",
+    "owner": "rich"
   }
 }

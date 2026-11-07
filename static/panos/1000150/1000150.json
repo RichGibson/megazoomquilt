@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/iftf03.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000150",
-    "resolution": 356515840.0
+    "resolution": 356515840.0,
+    "owner": "rich"
   }
 }

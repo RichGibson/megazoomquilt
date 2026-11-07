@@ -54,6 +54,7 @@
       "london",
       "uk"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1966"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1966",
+    "owner": "rich"
   }
 }

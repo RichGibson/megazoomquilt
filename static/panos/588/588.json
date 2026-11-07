@@ -59,6 +59,7 @@
       "bme2007"
     ],
     "geo_precision": "approximate",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/588"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/588",
+    "owner": "rich"
   }
 }

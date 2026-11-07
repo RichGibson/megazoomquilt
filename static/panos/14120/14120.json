@@ -53,6 +53,7 @@
       "mendocino",
       "railroad"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14120"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14120",
+    "owner": "rich"
   }
 }

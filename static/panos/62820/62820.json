@@ -56,6 +56,7 @@
       "bme",
       "bme2010"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/62820"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/62820",
+    "owner": "rich"
   }
 }

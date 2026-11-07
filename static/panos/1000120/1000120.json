@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/gpdodads_11x6.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000120",
-    "resolution": 436207616.0
+    "resolution": 436207616.0,
+    "owner": "rich"
   }
 }

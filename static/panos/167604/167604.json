@@ -48,6 +48,7 @@
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/167604",
     "latitude": 48.211,
-    "longitude": 16.2556
+    "longitude": 16.2556,
+    "owner": "rich"
   }
 }

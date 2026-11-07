@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/copy_2007_summer_iphoto/calshot_35x9.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000004",
-    "resolution": 4259840.0
+    "resolution": 4259840.0,
+    "owner": "rich"
   }
 }

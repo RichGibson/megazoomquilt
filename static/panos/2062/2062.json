@@ -55,6 +55,7 @@
       "rocky",
       "beach"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2062"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2062",
+    "owner": "rich"
   }
 }

@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/barrow_02.tif",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000269",
-    "resolution": 653719540.0
+    "resolution": 653719540.0,
+    "owner": "rich"
   }
 }

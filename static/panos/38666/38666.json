@@ -54,6 +54,7 @@
       "street",
       "schnitzel",
       "vienna"
-    ]
+    ],
+    "owner": "rich"
   }
 }

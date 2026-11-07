@@ -56,6 +56,7 @@
       "vienna",
       "wien"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/39061"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/39061",
+    "owner": "rich"
   }
 }

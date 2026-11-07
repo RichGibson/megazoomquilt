@@ -55,6 +55,7 @@
       "uk",
       "cemetery"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/600"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/600",
+    "owner": "rich"
   }
 }

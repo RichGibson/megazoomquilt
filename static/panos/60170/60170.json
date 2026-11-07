@@ -54,6 +54,7 @@
       "bunker",
       "wwii"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/60170"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/60170",
+    "owner": "rich"
   }
 }

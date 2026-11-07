@@ -54,6 +54,7 @@
       "planaire",
       "explorable_microscopy"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/70867"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/70867",
+    "owner": "rich"
   }
 }

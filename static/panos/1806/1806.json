@@ -55,6 +55,7 @@
       "yoncalla",
       "oregon"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1806"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1806",
+    "owner": "rich"
   }
 }

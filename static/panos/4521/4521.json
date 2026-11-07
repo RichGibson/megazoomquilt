@@ -54,6 +54,7 @@
       "arc",
       "nasa"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4521"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4521",
+    "owner": "rich"
   }
 }

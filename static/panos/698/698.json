@@ -53,6 +53,7 @@
       "geffrye",
       "london"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/698"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/698",
+    "owner": "rich"
   }
 }

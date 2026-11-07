@@ -54,6 +54,7 @@
       "camping"
     ],
     "geo_precision": "approximate",
-    "geo_note": "Approximate from Google Maps"
+    "geo_note": "Approximate from Google Maps",
+    "owner": "rich"
   }
 }

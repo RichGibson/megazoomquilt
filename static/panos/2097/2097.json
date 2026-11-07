@@ -59,6 +59,7 @@
       "rich",
       "gibson"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2097"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2097",
+    "owner": "rich"
   }
 }

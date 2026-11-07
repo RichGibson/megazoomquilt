@@ -48,6 +48,7 @@
     "tags": [
       "siggraph_studio_2012"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/111496"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/111496",
+    "owner": "rich"
   }
 }

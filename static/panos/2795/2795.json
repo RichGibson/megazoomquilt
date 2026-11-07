@@ -52,6 +52,7 @@
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/2795",
     "tags": [
       "long_now"
-    ]
+    ],
+    "owner": "rich"
   }
 }

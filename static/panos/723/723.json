@@ -57,6 +57,7 @@
       "sea",
       "serpents"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/723"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/723",
+    "owner": "rich"
   }
 }

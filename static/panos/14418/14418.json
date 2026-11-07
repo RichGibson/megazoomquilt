@@ -54,6 +54,7 @@
       "g4_ccc_planes_14x3",
       "job_460"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14418"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14418",
+    "owner": "rich"
   }
 }

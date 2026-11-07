@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/tonspur_1_8x10.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000161",
-    "resolution": 1189085184.0
+    "resolution": 1189085184.0,
+    "owner": "rich"
   }
 }

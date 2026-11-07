@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/rat_2_11x4.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000151",
-    "resolution": 364904448.0
+    "resolution": 364904448.0,
+    "owner": "rich"
   }
 }

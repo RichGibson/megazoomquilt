@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/copy_20090108/night_skyline_8x3/night_skyline_8x3.tif",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000242",
-    "resolution": 112372260.0
+    "resolution": 112372260.0,
+    "owner": "rich"
   }
 }

@@ -55,6 +55,7 @@
       "burning_man",
       "swan"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/594"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/594",
+    "owner": "rich"
   }
 }

@@ -55,6 +55,7 @@
       "moffett_field",
       "mountain_view"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/12046"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/12046",
+    "owner": "rich"
   }
 }

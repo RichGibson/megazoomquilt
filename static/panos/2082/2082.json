@@ -54,6 +54,7 @@
       "uk",
       "motorcycles"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2082"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2082",
+    "owner": "rich"
   }
 }

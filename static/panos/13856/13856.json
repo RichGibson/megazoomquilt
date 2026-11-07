@@ -54,6 +54,7 @@
       "van",
       "rv"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/13856"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/13856",
+    "owner": "rich"
   }
 }

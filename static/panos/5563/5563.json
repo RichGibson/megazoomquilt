@@ -55,6 +55,7 @@
       "concrete",
       "industrial"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5563"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5563",
+    "owner": "rich"
   }
 }

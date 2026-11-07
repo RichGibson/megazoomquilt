@@ -56,6 +56,7 @@
       "rosa"
     ],
     "geo_precision": "exact",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2844"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2844",
+    "owner": "rich"
   }
 }

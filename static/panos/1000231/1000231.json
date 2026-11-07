@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_work_2008/bm_2008/media_bbq.tif",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000231",
-    "resolution": 57307770.0
+    "resolution": 57307770.0,
+    "owner": "rich"
   }
 }

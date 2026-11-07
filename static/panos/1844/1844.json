@@ -54,6 +54,7 @@
       "highway",
       "oregon"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1844"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1844",
+    "owner": "rich"
   }
 }

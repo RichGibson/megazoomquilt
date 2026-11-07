@@ -51,6 +51,7 @@
       "monochrom",
       "quartier21"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167176"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167176",
+    "owner": "rich"
   }
 }

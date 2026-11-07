@@ -55,6 +55,7 @@
       "mendocino",
       "ocean"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/828"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/828",
+    "owner": "rich"
   }
 }

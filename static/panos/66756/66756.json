@@ -57,6 +57,7 @@
       "gallery",
       "sybok"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/66756"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/66756",
+    "owner": "rich"
   }
 }

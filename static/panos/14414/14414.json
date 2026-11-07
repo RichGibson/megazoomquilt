@@ -56,6 +56,7 @@
       "e2_belfast_dark_11x4",
       "job_452"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14414"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14414",
+    "owner": "rich"
   }
 }

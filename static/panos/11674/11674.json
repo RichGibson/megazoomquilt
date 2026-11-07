@@ -57,6 +57,7 @@
       "arc",
       "mountain_view"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/11674"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/11674",
+    "owner": "rich"
   }
 }

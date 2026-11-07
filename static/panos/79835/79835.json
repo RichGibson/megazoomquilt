@@ -55,6 +55,7 @@
       "2011",
       "lowcostmacro"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/79835"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/79835",
+    "owner": "rich"
   }
 }

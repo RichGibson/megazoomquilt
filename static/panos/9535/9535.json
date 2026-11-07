@@ -51,6 +51,7 @@
     "allow_others_to_add_to_gallery": true,
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/9535",
     "tags": [],
-    "geo_precision": "approximate"
+    "geo_precision": "approximate",
+    "owner": "rich"
   }
 }

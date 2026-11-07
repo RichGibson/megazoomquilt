@@ -54,6 +54,7 @@
       "roboexotica",
       "monochrom"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38337"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38337",
+    "owner": "rich"
   }
 }

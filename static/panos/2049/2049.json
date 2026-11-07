@@ -53,6 +53,7 @@
       "florence_ave",
       "sebastopol"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2049"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2049",
+    "owner": "rich"
   }
 }

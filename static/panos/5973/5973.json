@@ -55,6 +55,7 @@
       "sebastopol",
       "neap"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5973"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5973",
+    "owner": "rich"
   }
 }

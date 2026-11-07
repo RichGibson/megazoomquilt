@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/farmers_market_tomatos.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000091",
-    "resolution": 198836224.0
+    "resolution": 198836224.0,
+    "owner": "rich"
   }
 }

@@ -54,6 +54,7 @@
       "p8_calshot_18x9",
       "job_482"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14453"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14453",
+    "owner": "rich"
   }
 }

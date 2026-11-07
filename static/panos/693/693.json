@@ -53,6 +53,7 @@
       "church",
       "london"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/693"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/693",
+    "owner": "rich"
   }
 }

@@ -54,6 +54,7 @@
       "mendocino",
       "maddy"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/827"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/827",
+    "owner": "rich"
   }
 }

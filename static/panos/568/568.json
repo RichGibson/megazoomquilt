@@ -54,6 +54,7 @@
       "burning_man"
     ],
     "geo_precision": "approximate",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/568"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/568",
+    "owner": "rich"
   }
 }

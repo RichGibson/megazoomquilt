@@ -53,6 +53,7 @@
       "home",
       "garden"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/46777"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/46777",
+    "owner": "rich"
   }
 }

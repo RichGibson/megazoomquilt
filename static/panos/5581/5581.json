@@ -55,6 +55,7 @@
       "road",
       "paving"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5581"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5581",
+    "owner": "rich"
   }
 }

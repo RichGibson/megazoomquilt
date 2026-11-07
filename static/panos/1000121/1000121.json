@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/mqhigh1_14x6.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000121",
-    "resolution": 477102080.0
+    "resolution": 477102080.0,
+    "owner": "rich"
   }
 }

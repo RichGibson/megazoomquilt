@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/la_llorena_dismantling.psd",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000278",
-    "resolution": 126135222.0
+    "resolution": 126135222.0,
+    "owner": "rich"
   }
 }

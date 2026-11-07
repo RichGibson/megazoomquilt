@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/scaffolding_12x4.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000050",
-    "resolution": 183500800.0
+    "resolution": 183500800.0,
+    "owner": "rich"
   }
 }

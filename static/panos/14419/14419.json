@@ -54,6 +54,7 @@
       "g3_ccc_12x4",
       "job_458"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14419"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14419",
+    "owner": "rich"
   }
 }

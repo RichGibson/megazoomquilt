@@ -53,6 +53,7 @@
       "rose",
       "vienna"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38469"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38469",
+    "owner": "rich"
   }
 }

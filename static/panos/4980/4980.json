@@ -54,6 +54,7 @@
       "makerfair",
       "accrc"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4980"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4980",
+    "owner": "rich"
   }
 }

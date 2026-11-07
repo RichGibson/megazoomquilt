@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091220/annakirche_15x15.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000178",
-    "resolution": 1639972864.0
+    "resolution": 1639972864.0,
+    "owner": "rich"
   }
 }

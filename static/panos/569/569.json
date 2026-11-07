@@ -55,6 +55,7 @@
       "ibm",
       "uk"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/569"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/569",
+    "owner": "rich"
   }
 }

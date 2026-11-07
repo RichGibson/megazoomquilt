@@ -57,6 +57,7 @@
       "decom",
       "studio"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/61987"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/61987",
+    "owner": "rich"
   }
 }

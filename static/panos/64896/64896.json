@@ -56,6 +56,7 @@
       "arse2010",
       "monochrom"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/64896"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/64896",
+    "owner": "rich"
   }
 }

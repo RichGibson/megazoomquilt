@@ -52,6 +52,7 @@
       "switzerland"
     ],
     "geo_precision": "approximate",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167731"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167731",
+    "owner": "rich"
   }
 }

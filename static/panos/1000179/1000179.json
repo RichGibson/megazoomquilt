@@ -14,6 +14,7 @@
       "burning_man"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000179",
-    "resolution": 77332480.0
+    "resolution": 77332480.0,
+    "owner": "rich"
   }
 }

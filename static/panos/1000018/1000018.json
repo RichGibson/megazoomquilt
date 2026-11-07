@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091210/typo_passage_machine_3x7.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000018",
-    "resolution": 146800640.0
+    "resolution": 146800640.0,
+    "owner": "rich"
   }
 }

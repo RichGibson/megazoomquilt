@@ -53,6 +53,7 @@
       "wherecamp",
       "wherecamp2008"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5332"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5332",
+    "owner": "rich"
   }
 }

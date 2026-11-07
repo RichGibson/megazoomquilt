@@ -54,6 +54,7 @@
       "coast_rail_lighter_15x4",
       "job_450"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14412"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14412",
+    "owner": "rich"
   }
 }

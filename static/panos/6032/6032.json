@@ -52,6 +52,7 @@
     "tags": [
       "sebastopol"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/6032"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/6032",
+    "owner": "rich"
   }
 }

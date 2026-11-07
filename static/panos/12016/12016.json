@@ -55,6 +55,7 @@
       "ames",
       "nasa"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/12016"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/12016",
+    "owner": "rich"
   }
 }

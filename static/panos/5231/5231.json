@@ -57,6 +57,7 @@
       "productions",
       "teardown"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5231"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5231",
+    "owner": "rich"
   }
 }

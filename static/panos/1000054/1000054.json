@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/gpflowerbldg_6x6.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000054",
-    "resolution": 219152384.0
+    "resolution": 219152384.0,
+    "owner": "rich"
   }
 }

@@ -16,6 +16,7 @@
       "maker_faire"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000110",
-    "resolution": 234291200.0
+    "resolution": 234291200.0,
+    "owner": "rich"
   }
 }

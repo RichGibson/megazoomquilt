@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/pix_consolidated/bm2012/panos/headless_man.tif",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000255",
-    "resolution": 446544722.0
+    "resolution": 446544722.0,
+    "owner": "rich"
   }
 }

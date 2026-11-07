@@ -55,6 +55,7 @@
       "plan",
       "sebastopol"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5554"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5554",
+    "owner": "rich"
   }
 }

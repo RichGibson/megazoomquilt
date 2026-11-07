@@ -56,6 +56,7 @@
       "england",
       "uk"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2013"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2013",
+    "owner": "rich"
   }
 }

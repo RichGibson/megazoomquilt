@@ -13,6 +13,7 @@
     "latitude": 38.3122601,
     "longitude": -123.0465679,
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000247",
-    "resolution": 125763105.0
+    "resolution": 125763105.0,
+    "owner": "rich"
   }
 }

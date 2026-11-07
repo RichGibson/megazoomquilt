@@ -55,6 +55,7 @@
       "maker",
       "fair"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4933"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/4933",
+    "owner": "rich"
   }
 }

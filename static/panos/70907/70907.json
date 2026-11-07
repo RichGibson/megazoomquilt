@@ -54,6 +54,7 @@
       "long_now",
       "orrery"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/70907"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/70907",
+    "owner": "rich"
   }
 }

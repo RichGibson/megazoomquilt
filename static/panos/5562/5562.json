@@ -57,6 +57,7 @@
       "industrial",
       "decay"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5562"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5562",
+    "owner": "rich"
   }
 }

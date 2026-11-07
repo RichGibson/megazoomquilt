@@ -53,6 +53,7 @@
       "wacco",
       "sebastopol"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/11186"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/11186",
+    "owner": "rich"
   }
 }

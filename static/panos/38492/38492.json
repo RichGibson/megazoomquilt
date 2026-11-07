@@ -57,6 +57,7 @@
       "taug",
       "taugshow"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38492"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/38492",
+    "owner": "rich"
   }
 }

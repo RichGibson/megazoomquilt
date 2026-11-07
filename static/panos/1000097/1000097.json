@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091212/kauzechen_sat_12x4.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000097",
-    "resolution": 449839104.0
+    "resolution": 449839104.0,
+    "owner": "rich"
   }
 }

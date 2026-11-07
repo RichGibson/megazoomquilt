@@ -52,6 +52,7 @@
       "garden",
       "train"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14324"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14324",
+    "owner": "rich"
   }
 }

@@ -58,6 +58,7 @@
       "tombstones",
       "cemetery"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1937"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/1937",
+    "owner": "rich"
   }
 }

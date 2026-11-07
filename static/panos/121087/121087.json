@@ -51,6 +51,7 @@
     "tags": [
       "burning_man"
     ],
-    "geo_precision": "region"
+    "geo_precision": "region",
+    "owner": "rich"
   }
 }

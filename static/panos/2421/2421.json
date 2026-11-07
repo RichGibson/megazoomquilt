@@ -58,6 +58,7 @@
       "creek"
     ],
     "geo_precision": "exact",
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2421"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/2421",
+    "owner": "rich"
   }
 }

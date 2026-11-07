@@ -54,6 +54,7 @@
       "wherecamp",
       "hacking"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5337"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5337",
+    "owner": "rich"
   }
 }

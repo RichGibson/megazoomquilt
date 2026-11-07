@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/panos_consolidated/gigapan_external_250/yuri_1.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000015",
-    "resolution": 62390272.0
+    "resolution": 62390272.0,
+    "owner": "rich"
   }
 }

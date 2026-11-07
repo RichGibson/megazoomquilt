@@ -17,6 +17,7 @@
       "vienna"
     ],
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000158",
-    "resolution": 880803840.0
+    "resolution": 880803840.0,
+    "owner": "rich"
   }
 }

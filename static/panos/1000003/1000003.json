@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_early/figlemuller_table_11x5_test_3865.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000003",
-    "resolution": 38993920.0
+    "resolution": 38993920.0,
+    "owner": "rich"
   }
 }

@@ -54,6 +54,7 @@
       "wherecamp",
       "brian_hamlin"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5303"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/5303",
+    "owner": "rich"
   }
 }

@@ -50,6 +50,7 @@
       "ubahn",
       "subway"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167784"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/167784",
+    "owner": "rich"
   }
 }

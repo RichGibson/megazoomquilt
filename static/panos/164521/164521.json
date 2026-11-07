@@ -48,6 +48,7 @@
     "tags": [
       "vienna"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/164521"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/164521",
+    "owner": "rich"
   }
 }

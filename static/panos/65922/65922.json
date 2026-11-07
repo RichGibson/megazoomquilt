@@ -52,6 +52,7 @@
     "tags": [
       "yoz"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/65922"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/65922",
+    "owner": "rich"
   }
 }

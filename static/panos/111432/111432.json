@@ -45,6 +45,7 @@
     "field_of_view_h": 29.8485,
     "distance": null,
     "allow_others_to_add_to_gallery": true,
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/111432"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/111432",
+    "owner": "rich"
   }
 }

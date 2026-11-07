@@ -54,6 +54,7 @@
       "coast_hill_29x3",
       "job_446"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14410"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14410",
+    "owner": "rich"
   }
 }

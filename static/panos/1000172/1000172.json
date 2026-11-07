@@ -11,6 +11,7 @@
     "source": "local",
     "source_path": "/Volumes/bigeneration/europe_2009/gigapans_start_20091222/grabon_18x9.gigapan",
     "tile_base_url": "https://tiles.megazoomquilt.com/panos/1000172",
-    "resolution": 905969664.0
+    "resolution": 905969664.0,
+    "owner": "rich"
   }
 }

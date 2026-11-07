@@ -54,6 +54,7 @@
       "coast_rail_darker_15x4",
       "job_448"
     ],
-    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14409"
+    "tile_base_url": "https://tiles.megazoomquilt.com/panos/14409",
+    "owner": "rich"
   }
 }
