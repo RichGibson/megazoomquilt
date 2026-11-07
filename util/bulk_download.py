@@ -8,6 +8,7 @@ Usage:
     python3 util/bulk_download.py
     python3 util/bulk_download.py --list gigapan_list.json --panos-dir static/panos
     python3 util/bulk_download.py --workers 24 --delay 0.5
+    python3 util/bulk_download.py --by-size       # smallest panos first
     python3 util/bulk_download.py --skip-verify   # faster: skip tile count check
 """
 
@@ -90,6 +91,7 @@ def main():
     parser.add_argument("--delay",       type=float, default=1.0,      help="Seconds between panos (default: 1.0)")
     parser.add_argument("--workers",     type=int,   default=16,       help="Concurrent tile workers (default: 16)")
     parser.add_argument("--skip-verify", action="store_true",          help="Skip tile count — trust directory existence")
+    parser.add_argument("--by-size",     action="store_true",          help="Download smallest panos (width x height) first")
     parser.add_argument("--reverse",     action="store_true",          help="Download from end of list to beginning")
     args = parser.parse_args()
 
@@ -110,6 +112,8 @@ def main():
     )
 
     to_download = incomplete + not_started
+    if args.by_size:
+        to_download.sort(key=lambda p: int(p.get('width') or 0) * int(p.get('height') or 0))
     if args.reverse:
         to_download = list(reversed(to_download))
     total       = len(to_download)
