@@ -32,6 +32,7 @@
   }
   .pano-name { margin: 0; font-size: 1.5rem; font-weight: 700; }
   .external-link { font-size: 0.82rem; white-space: nowrap; }
+  .pano-owner-badge { font-size: 0.82rem; white-space: nowrap; margin-right: auto; }
   .pano-desc { margin: 0.2rem 0 0.5rem; font-size: 0.88rem; color: #555; line-height: 1.5; }
 
   .assoc-gallery {
@@ -302,6 +303,9 @@
   {% if is_local %}<a href="{{ url_for('edit_pano', pano_id=pano_id) }}" class="back-link" style="margin-left:1rem;">✎ Edit</a>{% endif %}
   <div class="pano-title-row">
     <h1 class="pano-name">{{ pano.name }}</h1>
+    {% if pano.get('owner') and profiles.get(pano.owner) %}
+    <a href="{{ url_for('user_view', slug=pano.owner) }}" class="pano-owner-badge">by {{ profiles[pano.owner].display_name }}</a>
+    {% endif %}
     <a href="https://www.gigapan.com/gigapans/{{ pano_id }}" target="_blank" class="external-link">gigapan.com ↗</a>
   </div>
 </div>
@@ -506,7 +510,18 @@
   }).addTo(map);
 
   map.invalidateSize(false);   // ensure Leaflet knows the resized container
+
+  // Open to the content area if known (skips large black empty regions)
+  {% if pano.content_bounds %}
+  const cb = {{ pano.content_bounds | tojson }};
+  const contentBounds = L.latLngBounds(
+    map.unproject([cb.left,  cb.bottom], maxZoom),
+    map.unproject([cb.right, cb.top],    maxZoom)
+  );
+  map.fitBounds(contentBounds, { animate: false });
+  {% else %}
   map.fitBounds(bounds, { animate: false });
+  {% endif %}
 
   const miniMapLayer = L.tileLayer(tileUrlTemplate, {
     tileSize: 256,

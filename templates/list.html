@@ -128,6 +128,9 @@
       {# Sortable: Name #}
       <th class="sortable" data-col="name">Name<span class="sort-icon"></span></th>
 
+      {# Owner #}
+      <th>Owner</th>
+
       {# Sortable: Size (MP) #}
       <th class="sortable" data-col="mp">Size<span class="sort-icon"></span></th>
 
@@ -195,6 +198,13 @@
 
       {# Name #}
       <td class="name-cell">{{ pano.get('name', '—') }}</td>
+
+      {# Owner #}
+      <td>
+        {% if pano.get('owner') and profiles.get(pano.owner) %}
+          <a href="{{ url_for('user_view', slug=pano.owner) }}">{{ profiles[pano.owner].display_name }}</a>
+        {% else %}—{% endif %}
+      </td>
 
       {# Size #}
       <td>

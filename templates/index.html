@@ -45,6 +45,13 @@
       <a href="{{ url_for('home', query=query or None) }}">✕ clear</a>
     </div>
     {% endif %}
+    {% if active_user %}
+    <div class="tag-filter-bar">
+      <span>Filtered by user</span>
+      <span class="tag-active">{{ active_user_name }}</span>
+      <a href="{{ url_for('home', query=query or None) }}">✕ clear</a>
+    </div>
+    {% endif %}
     {% if query %}
     <div class="tag-filter-bar">
       <span>Query:</span>
@@ -59,7 +66,7 @@
         {% set is_desc = sort == field + '_desc' %}
         {% set is_active = is_asc or is_desc %}
         {% set next_sort = (field + '_desc') if is_asc else (field + '_asc') %}
-        <a href="{{ url_for('home', sort=next_sort, query=query or None) }}"
+        <a href="{{ url_for(request.endpoint, sort=next_sort, query=query or None, **request.view_args) }}"
            class="sort-btn{% if is_active %} sort-btn-active{% endif %}">
           {{ label }}{% if is_asc %} ↑{% elif is_desc %} ↓{% endif %}
         </a>
@@ -110,6 +117,9 @@
           <div class="card-desc">{{ pano['description'][:120] }}{% if pano['description']|length > 120 %}…{% endif %}</div>
           {% endif %}
           <div class="card-footer">
+            {% if pano.get('owner') and profiles.get(pano.owner) %}
+            <span>👤 {{ profiles[pano.owner].display_name }}</span>
+            {% endif %}
             <span>👁 {{ pano.get('views', 0) }}</span>
             {% if pano.get('latitude') and pano.get('longitude') %}
             <span>📍 {{ "%.4f"|format(pano['latitude']) }}, {{ "%.4f"|format(pano['longitude']) }}</span>
@@ -375,7 +385,19 @@
     localCount.textContent = loc;
   }
 
-  searchInput.addEventListener('input', applyFilters);
+  // Keep the sort links' query param in sync with the live search box,
+  // so clicking Sort after typing doesn't drop an unsubmitted search term.
+  function syncSortLinks() {
+    const q = searchInput.value.trim();
+    document.querySelectorAll('.sort-btn').forEach(a => {
+      const url = new URL(a.href, window.location.origin);
+      if (q) url.searchParams.set('query', q);
+      else url.searchParams.delete('query');
+      a.href = url.pathname + (url.search ? url.search : '');
+    });
+  }
+
+  searchInput.addEventListener('input', () => { applyFilters(); syncSortLinks(); });
   geoFilter.addEventListener('change', applyFilters);
 
   // Restore saved CF filter state

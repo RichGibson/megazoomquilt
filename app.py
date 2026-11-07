@@ -18,7 +18,7 @@ app = Flask(__name__)
 app.secret_key = 'mzq-dev-key-change-in-prod'
 
 SKINS = ['default', 'retro', 'amber', 'museum', 'blueprint', 'magazine', 'explorer']
-GIGAPAN_LIST_PATH = Path(__file__).resolve().parent / "gigapan_list.json"
+PROFILES_DIR = Path(__file__).resolve().parent / "profiles"
 AUDIT_CACHE_PATH  = Path(__file__).resolve().parent / "static" / "audit_cache.json"
 SETTINGS_PATH     = Path(__file__).resolve().parent / "static" / "settings.json"
 
@@ -65,6 +65,35 @@ def save_settings(data):
         json.dump(data, f, indent=2)
     tmp.replace(SETTINGS_PATH)
 
+def load_profiles():
+    """Load every profiles/<slug>/profile.json into a dict keyed by slug."""
+    profiles = {}
+    if not PROFILES_DIR.is_dir():
+        return profiles
+    for entry in PROFILES_DIR.iterdir():
+        profile_path = entry / "profile.json"
+        if entry.is_dir() and profile_path.is_file():
+            with open(profile_path) as f:
+                profiles[entry.name] = json.load(f)
+    return profiles
+
+
+def load_catalog_entries():
+    """Merge every profiles/<slug>/gigapan_list.json into one list, each entry
+    tagged with the owning profile's slug under 'owner'."""
+    entries = []
+    if not PROFILES_DIR.is_dir():
+        return entries
+    for list_path in sorted(PROFILES_DIR.glob('*/gigapan_list.json')):
+        slug = list_path.parent.name
+        with open(list_path) as f:
+            for g in json.load(f):
+                g = dict(g)
+                g.setdefault('owner', slug)
+                entries.append(g)
+    return entries
+
+
 # Tag → suggested map center [lat, lng, zoom] for the edit page location picker
 TAG_GEO_HINTS = {
     'burning_man':  [40.786, -119.203, 12],
@@ -93,11 +122,11 @@ def _is_local():
 
 @app.context_processor
 def inject_skin():
-    """Inject skin name and is_local flag into every template context."""
+    """Inject skin name, is_local flag, and profile map into every template context."""
     skin = request.cookies.get('skin', 'default')
     if skin not in SKINS:
         skin = 'default'
-    return {'skin': skin, 'is_local': _is_local()}
+    return {'skin': skin, 'is_local': _is_local(), 'profiles': load_profiles()}
 
 @app.route('/skin/<name>')
 def set_skin(name):
@@ -108,6 +137,17 @@ def set_skin(name):
     resp = make_response(redirect(dest))
     resp.set_cookie('skin', name, max_age=60*60*24*365)
     return resp
+
+def filter_by_query(panoramas, query):
+    """Filter panos by name/description/tags matching query (case-insensitive)."""
+    if not query:
+        return panoramas
+    q = query.lower()
+    return [p for p in panoramas
+            if q in p.get('name', '').lower()
+            or q in (p.get('description') or '').lower()
+            or any(q in t.lower() for t in (p.get('tags') or []))]
+
 
 def collect_tile_stats(base_dir):
     """Walk a pano tile directory and return per-zoom-level size and grid statistics.
@@ -256,6 +296,56 @@ def geo_panos_from_cache():
     ]
 
 
+def _thumb_content_crop(img, tol=20, row_thr=0.95, margin=20):
+    """Strip solid-color (very dark or very light) padding borders from a thumbnail."""
+    w, h = img.size
+    px = img.load()
+
+    def is_pad(c):
+        b = (c[0] + c[1] + c[2]) // 3
+        return b <= 30 or b >= 225
+
+    def edge_bg(c1, c2):
+        if all(abs(c1[i] - c2[i]) <= tol for i in range(3)):
+            avg = tuple((c1[i] + c2[i]) // 2 for i in range(3))
+            if is_pad(avg):
+                return avg
+        return None
+
+    tl, tr = px[0, 0], px[w - 1, 0]
+    bl, br = px[0, h - 1], px[w - 1, h - 1]
+    top_bg   = edge_bg(tl, tr)
+    bot_bg   = edge_bg(bl, br)
+    left_bg  = edge_bg(tl, bl)
+    right_bg = edge_bg(tr, br)
+
+    xs = list(range(0, w, max(1, w // 400)))
+    ys = list(range(0, h, max(1, h // 400)))
+
+    def row_is_bg(y, bg):
+        hits = sum(1 for x in xs if all(abs(px[x, y][i] - bg[i]) <= tol for i in range(3)))
+        return hits / len(xs) >= row_thr
+
+    def col_is_bg(x, bg):
+        hits = sum(1 for y in ys if all(abs(px[x, y][i] - bg[i]) <= tol for i in range(3)))
+        return hits / len(ys) >= row_thr
+
+    top   = next((y for y in range(h)            if not row_is_bg(y, top_bg)),   0)   if top_bg   else 0
+    bot   = next((y for y in range(h - 1, -1, -1) if not row_is_bg(y, bot_bg)),  h-1) if bot_bg   else h - 1
+    left  = next((x for x in range(w)            if not col_is_bg(x, left_bg)),  0)   if left_bg  else 0
+    right = next((x for x in range(w - 1, -1, -1) if not col_is_bg(x, right_bg)), w-1) if right_bg else w - 1
+
+    top   = max(0,   top   - margin)
+    bot   = min(h-1, bot   + margin)
+    left  = max(0,   left  - margin)
+    right = min(w-1, right + margin)
+
+    box = (left, top, right + 1, bot + 1)
+    if box != (0, 0, w, h):
+        return img.crop(box), box
+    return img, (0, 0, w, h)
+
+
 @app.route("/thumbnail/<pano_id>")
 def thumbnail(pano_id):
     """Serve a WebP thumbnail for a pano, compositing from tiles if not yet cached.
@@ -369,6 +459,30 @@ def thumbnail(pano_id):
     crop_h = min(content_h, composed.height)
     composed = composed.crop((0, 0, crop_w, crop_h))
 
+    # Strip solid-color padding borders (e.g. large black areas where subject is off-center)
+    thumb_w, thumb_h = composed.width, composed.height
+    composed, content_box = _thumb_content_crop(composed)
+
+    # Persist content_bounds to JSON so the viewer can open to the right region
+    if content_box != (0, 0, thumb_w, thumb_h):
+        scale = 2 ** (max_zoom - zoom)
+        cb = {
+            'left':   min(int(content_box[0] * scale), W),
+            'top':    min(int(content_box[1] * scale), H),
+            'right':  min(int(content_box[2] * scale), W),
+            'bottom': min(int(content_box[3] * scale), H),
+        }
+        try:
+            json_path = BASE_DIR / pano_id / f"{pano_id}.json"
+            with open(json_path) as jf:
+                raw_json = json.load(jf)
+            raw_json['gigapan']['content_bounds'] = cb
+            with open(json_path, 'w') as jf:
+                json.dump(raw_json, jf, indent=2)
+            invalidate_pano_cache()
+        except Exception as e:
+            app.logger.warning("Failed to write content_bounds for %s: %s", pano_id, e)
+
     # Save to cache then serve
     try:
         composed.save(cached_path, format="WEBP", quality=85)
@@ -394,12 +508,7 @@ def home():
     key, reverse = SORT_CONFIG.get(sort, SORT_CONFIG['id_asc'])
     panoramas = sorted(panoramas, key=key, reverse=reverse)
     total_count = len(panoramas)
-    if query:
-        q = query.lower()
-        panoramas = [p for p in panoramas
-                     if q in p.get('name', '').lower()
-                     or q in (p.get('description') or '').lower()
-                     or any(q in t.lower() for t in (p.get('tags') or []))]
+    panoramas = filter_by_query(panoramas, query)
     p={}
     p['page_title']='Megazoomquilt'
     return render_template("index.html", panoramas=panoramas, p=p, sort=sort,
@@ -423,14 +532,51 @@ def tags_page():
 
 @app.route("/tag/<tag>")
 def tag_view(tag):
-    """Render the gallery filtered to a single tag, with sorting."""
+    """Render the gallery filtered to a single tag, with sorting and search."""
     panoramas = _get_pano_cache()
     sort = request.args.get('sort', 'id_asc')
+    query = request.args.get('query', '').strip()
     key, reverse = SORT_CONFIG.get(sort, SORT_CONFIG['id_asc'])
     filtered = [p for p in panoramas if tag in (p.get('tags') or [])]
     filtered = sorted(filtered, key=key, reverse=reverse)
-    return render_template("index.html", panoramas=filtered, sort=sort,
+    filtered = filter_by_query(filtered, query)
+    return render_template("index.html", panoramas=filtered, sort=sort, query=query,
                            active_tag=tag, p={'page_title': f'#{tag}'})
+
+@app.route("/users")
+def users_page():
+    """Render the user list with pano counts per profile."""
+    panoramas = _get_pano_cache()
+    profiles = load_profiles()
+    counts = {}
+    for pano in panoramas:
+        owner = pano.get('owner')
+        if owner:
+            counts[owner] = counts.get(owner, 0) + 1
+    users = [
+        {'slug': slug, 'display_name': profiles[slug]['display_name'], 'count': counts.get(slug, 0)}
+        for slug in profiles
+    ]
+    users.sort(key=lambda u: (-u['count'], u['display_name'].lower()))
+    return render_template("users.html", users=users, p={'page_title': 'Users'})
+
+
+@app.route("/user/<slug>")
+def user_view(slug):
+    """Render the gallery filtered to a single profile's panos, with sorting and search."""
+    panoramas = _get_pano_cache()
+    sort = request.args.get('sort', 'id_asc')
+    query = request.args.get('query', '').strip()
+    key, reverse = SORT_CONFIG.get(sort, SORT_CONFIG['id_asc'])
+    filtered = [p for p in panoramas if p.get('owner') == slug]
+    filtered = sorted(filtered, key=key, reverse=reverse)
+    filtered = filter_by_query(filtered, query)
+    profiles = load_profiles()
+    display_name = profiles.get(slug, {}).get('display_name', slug)
+    return render_template("index.html", panoramas=filtered, sort=sort, query=query,
+                           active_user=slug, active_user_name=display_name,
+                           p={'page_title': f'{display_name}'})
+
 
 @app.route("/map")
 def map_view():
@@ -438,25 +584,23 @@ def map_view():
     panoramas = _get_pano_cache()
     mapped = geo_panos_from_cache()
 
-    # Pending: in gigapan_list.json but not yet downloaded, with coordinates
+    # Pending: in a profile's gigapan_list.json but not yet downloaded, with coordinates
     downloaded_ids = {p['id'] for p in panoramas}
-    pending_panos = []
-    if GIGAPAN_LIST_PATH.exists():
-        with open(GIGAPAN_LIST_PATH) as f:
-            gigapan_list = json.load(f)
-        pending_panos = [
-            {
-                'id':          g['id'],
-                'name':        g['name'],
-                'description': g.get('description') or '',
-                'latitude':    g['latitude'],
-                'longitude':   g['longitude'],
-            }
-            for g in gigapan_list
-            if g.get('latitude') and g.get('longitude')
-            and g['latitude'] != 0 and g['longitude'] != 0
-            and g['id'] not in downloaded_ids
-        ]
+    gigapan_list = load_catalog_entries()
+    pending_panos = [
+        {
+            'id':          g['id'],
+            'name':        g['name'],
+            'description': g.get('description') or '',
+            'latitude':    g['latitude'],
+            'longitude':   g['longitude'],
+            'owner':       g.get('owner'),
+        }
+        for g in gigapan_list
+        if g.get('latitude') and g.get('longitude')
+        and g['latitude'] != 0 and g['longitude'] != 0
+        and g['id'] not in downloaded_ids
+    ]
 
     return render_template("map.html", panoramas=mapped, pending_panos=pending_panos,
                            p={'page_title': 'Map'}, settings=load_settings())
@@ -482,10 +626,7 @@ def pano_list():
     """
     local_panos = {p['id']: p for p in _get_pano_cache()}
 
-    all_from_list = []
-    if GIGAPAN_LIST_PATH.exists():
-        with open(GIGAPAN_LIST_PATH) as f:
-            all_from_list = json.load(f)
+    all_from_list = load_catalog_entries()
 
     seen = set()
     all_panos = []
